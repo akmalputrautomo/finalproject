@@ -14,7 +14,7 @@ export const RouterList = () => {
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        {/* <Route path="/" element={<OtpRegister />} /> */}
+        <Route path="/otp" element={<OtpRegister />} />
       </Routes>
       {/* </Provider> */}
     </BrowserRouter>

@@ -4,17 +4,19 @@ import { Home } from "../pages/Home";
 import { Register } from "../pages/auth/Register";
 import { Login } from "../pages/auth/Login";
 import { Provider } from "react-redux";
+import OtpRegister from "../pages/auth/Otpregister";
 
 export const RouterList = () => {
   return (
     <BrowserRouter>
-    {/* <Provider store={store}> */}
+      {/* <Provider store={store}> */}
       <Routes>
-        {/* <Route path="/" element={<Home />} /> */}
-        <Route path="/" element={<Register />} />
+        <Route path="/" element={<Home />} />
+        {/* <Route path="/" element={<Register />} /> */}
         <Route path="/login" element={<Login />} />
+        {/* <Route path="/" element={<OtpRegister />} /> */}
       </Routes>
-    {/* </Provider> */}
+      {/* </Provider> */}
     </BrowserRouter>
   );
 };

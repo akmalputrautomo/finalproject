@@ -40,7 +40,6 @@ export const Register = () => {
             <div className="logo flex flex-row justify-center items-center lg:mt-4 ">
               <img src={logo} alt="" className="w-20 mt-3" />
             </div>
-
             <div className="form w-[70vw] lg:w-[20vw]">
               <div className="">
                 <h1 className="text-center text-[#116E63] font-serif font-semibold text-xl">Register</h1>

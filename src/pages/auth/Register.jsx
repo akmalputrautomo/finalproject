@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "../../assets/img/Group 88.png";
+import logo from "../../assets/img/Logo.png";
 
 export const Register = () => {
   const [showPassword, setShowPassword] = useState(false);

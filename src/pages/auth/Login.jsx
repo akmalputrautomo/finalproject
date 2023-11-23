@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import logo from "../../assets/img/Logo.png";
 import google from "../../assets/img/google.png";
 import facebook from "../../assets/img/facebook.png";
-import { Form, Input, Select } from "antd";
+import { Form, Input } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 
@@ -11,6 +11,10 @@ export const Login = () => {
 
   const register = () => {
     navigate("/register");
+  };
+
+  const forgotpswd = () => {
+    navigate("/forgetpass");
   };
 
   return (
@@ -44,30 +48,36 @@ export const Login = () => {
               >
                 <Form.Item
                   name="username"
+                  label="Username"
+                  labelCol={{span:24}}
                   rules={[
                     {
                       required: true,
                       message: "Please input your Username",
                     },
                   ]}
+                  hasFeedback
                 >
                   <Input className={`focus:outline-none focus:ring-2 focus:ring-green-800`} prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
                 </Form.Item>
                 <Form.Item
                   name="password"
+                  label="Password"
+                  labelCol={{span:24}}
                   rules={[
                     {
                       required: true,
                       message: "Please input your password!",
                     },
                   ]}
+                  hasFeedback
                 >
                   <Input.Password prefix={<LockOutlined className="site-form-item-icon" />} placeholder="Password" />
                 </Form.Item>
                 <div className="mt-1">
                   <p
                     className="text-sm font-medium text-[#116E63] cursor-pointer text-end"
-                    // onClick={forgotpswd}
+                    onClick={forgotpswd}
                   >
                     Forgot Password?
                   </p>

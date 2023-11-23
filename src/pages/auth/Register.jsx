@@ -51,21 +51,24 @@ export const Register = () => {
                   }}
                   // onFinish={onRegist}
                 >
-                  <p>Name</p>
                   <Form.Item
                     name="username"
+                    label="Username"
+                  labelCol={{ span: 24 }}
                     rules={[
                       {
                         required: true,
-                        message: "Please input your Email!",
+                        message: "Please input your Username!",
                       },
                     ]}
+                    hasFeedback
                   >
                     <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
                   </Form.Item>
-                  <p>Email</p>
                   <Form.Item
                     name="email"
+                    label="Email"
+                  labelCol={{ span: 24 }}
                     rules={[
                       {
                         type: "email",
@@ -76,35 +79,51 @@ export const Register = () => {
                         message: "Please input your Email!",
                       },
                     ]}
+                    hasFeedback
                   >
                     <Input prefix={<AiOutlineMail className="site-form-item-icon" />} placeholder="Email" />
                   </Form.Item>
-                  <p>Nomor Telepone</p>
                   <Form.Item
                     name="phone"
+                    label="Phone Number"
+                  labelCol={{ span: 24 }}
                     rules={[
                       {
                         required: true,
                         message: "Please input your phone number!",
                       },
                     ]}
+                    hasFeedback
                   >
                     <Input addonBefore={prefixSelector} style={{ width: "100%" }} placeholder="Phone Number" />
                   </Form.Item>
-                  <p>Password</p>
                   <Form.Item
                     name="password"
-                    rules={[
-                      {
-                        required: true,
-                        message: "Please input your password!",
-                      },
-                    ]}
+                    label="Password"
+                  labelCol={{ span: 24 }}
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please input your password!",
+                    },
+                    {
+                      min: 6,
+                      message: 'Password must have a minimum length of 6',
+                    },
+                    {
+                      pattern: new RegExp(
+                        "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$"
+                      ),
+                      message:
+                        "Password must contain at least one lowercase letter, uppercase letter, number, and special character",
+                    },
+                  ]}
+                  hasFeedback
                   >
                     <Input.Password prefix={<LockOutlined className="site-form-item-icon" />} placeholder="Password" />
                   </Form.Item>
                   <div className="text-sm flex flex-row gap-1 font-medium text-gray-500 mt-6">
-                    <p>Have account?</p>
+                    <p>Have an account?</p>
                     <button
                       className="text-[#116E63] "
                       onClick={() => {

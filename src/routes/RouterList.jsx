@@ -5,6 +5,7 @@ import { Register } from "../pages/auth/Register";
 import { Login } from "../pages/auth/Login";
 import { Provider } from "react-redux";
 import OtpRegister from "../pages/auth/Otpregister";
+import { ForgetPass } from "../pages/auth/ForgetPass";
 
 export const RouterList = () => {
   return (
@@ -15,6 +16,7 @@ export const RouterList = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/otp" element={<OtpRegister />} />
+        <Route path="/forgetpass" element={<ForgetPass />} />
       </Routes>
       {/* </Provider> */}
     </BrowserRouter>

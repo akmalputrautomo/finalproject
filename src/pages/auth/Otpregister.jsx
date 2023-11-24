@@ -41,9 +41,17 @@ const OtpRegister = () => {
                   <i class="fa-solid fa-arrow-left"></i>
                 </button> */}
                 <p>Ketik 6 digit kode yang dikirimkan ke</p>
-                <OTPInput value={otp} onChange={setOtp} numInputs={6} renderSeparator={<span className="p-3">-</span>} renderInput={(props) => <input {...props} />} />
+                <OTPInput
+                  inputStyle={"border rounded-lg border-black"}
+                  // containerStyle={"bg-blue-100 w-[200px] h-[200px]"}
+                  value={otp}
+                  onChange={setOtp}
+                  numInputs={6}
+                  renderSeparator={<span>-</span>}
+                  renderInput={(props) => <input {...props} />}
+                />
                 <div className="flex justify-center items-center">
-                  <button className="bg-[#116E63] w-full rounded-md text-white ">SIMPAN</button>
+                  <button className="bg-[#116E63] w-full p-2 rounded-md text-white ">SIMPAN</button>
                 </div>
               </div>
             </div>

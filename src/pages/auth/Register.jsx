@@ -25,7 +25,8 @@ export const Register = () => {
   return (
     <>
       <div className="login-section bg-slate-600 w-screen h-screen flex justify-center items-center">
-        <div className="side bg-[#F8F8F8] w-[90vw] h-[70vh] lg:w-[30vw] rounded-tl-xl rounded-bl-xl shadow-xl lg:flex hidden justify-center flex-col items-center">
+        {/* section kiri */}
+        <div className="side bg-[#F8F8F8] w-[90vw] h-[80vh] lg:w-[30vw] rounded-tl-xl rounded-bl-xl shadow-xl lg:flex hidden justify-center flex-col items-center">
           <img src={logo} alt="" className="w-40 mt-3" />
           <h1 className="text-2xl text-white font-semibold font-serif">
             <span className="text-[#F2A227]">Learn</span>
@@ -35,7 +36,9 @@ export const Register = () => {
             <span className="text-[#F2A227]">time</span>
           </h1>
         </div>
-        <div className="wrapper-box bg-white w-[90vw] lg:h-[70vh] h-fit lg:w-[30vw] rounded-r-xl rounded-l-xl lg:rounded-l-none  drop-shadow-lg flex items-center  justify-center">
+
+        {/* section kanan */}
+        <div className="wrapper-box bg-white w-[90vw] lg:h-[80vh] h-fit lg:w-[30vw] rounded-r-xl rounded-l-xl lg:rounded-l-none  drop-shadow-lg flex items-center  justify-center">
           <div className="content  flex flex-col items-center py-4 lg:mt-0">
             <div className="logo flex flex-row justify-center items-center lg:mt-4 ">
               <img src={logo} alt="" className="w-20 mt-3" />
@@ -54,7 +57,7 @@ export const Register = () => {
                   <Form.Item
                     name="username"
                     label="Username"
-                  labelCol={{ span: 24 }}
+                    labelCol={{ span: 24 }}
                     rules={[
                       {
                         required: true,
@@ -68,7 +71,7 @@ export const Register = () => {
                   <Form.Item
                     name="email"
                     label="Email"
-                  labelCol={{ span: 24 }}
+                    labelCol={{ span: 24 }}
                     rules={[
                       {
                         type: "email",
@@ -86,7 +89,7 @@ export const Register = () => {
                   <Form.Item
                     name="phone"
                     label="Phone Number"
-                  labelCol={{ span: 24 }}
+                    labelCol={{ span: 24 }}
                     rules={[
                       {
                         required: true,
@@ -100,25 +103,22 @@ export const Register = () => {
                   <Form.Item
                     name="password"
                     label="Password"
-                  labelCol={{ span: 24 }}
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input your password!",
-                    },
-                    {
-                      min: 6,
-                      message: 'Password must have a minimum length of 6',
-                    },
-                    {
-                      pattern: new RegExp(
-                        "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$"
-                      ),
-                      message:
-                        "Password must contain at least one lowercase letter, uppercase letter, number, and special character",
-                    },
-                  ]}
-                  hasFeedback
+                    labelCol={{ span: 24 }}
+                    rules={[
+                      {
+                        required: true,
+                        message: "Please input your password!",
+                      },
+                      {
+                        min: 6,
+                        message: "Password must have a minimum length of 6",
+                      },
+                      {
+                        pattern: new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$"),
+                        message: "Password must contain at least one lowercase letter, uppercase letter, number, and special character",
+                      },
+                    ]}
+                    hasFeedback
                   >
                     <Input.Password prefix={<LockOutlined className="site-form-item-icon" />} placeholder="Password" />
                   </Form.Item>

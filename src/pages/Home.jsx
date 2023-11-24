@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../assets/component/navbar";
 import logo from "../assets/img/Frame 88 1.png";
+import { KategoriBelajar } from "../assets/component/KategoriBelajar";
 
 export const Home = () => {
   return (
@@ -20,6 +21,7 @@ export const Home = () => {
         {/* section kanan */}
         <img src={logo}></img>
       </div>
+      <KategoriBelajar/>
     </div>
   );
 };

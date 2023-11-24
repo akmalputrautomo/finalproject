@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import logo from "../../assets/img/Logo.png";
-import { useNavigate } from "react-router-dom";
-import { Form, Input } from "antd";
-import { AiOutlineMail } from "react-icons/ai";
-import OTPInput from "react-otp-input";
+import { Form } from "antd";
+import { InputOTP } from "antd-input-otp";
 
 const OtpRegister = () => {
-  const [otp, setOtp] = useState("");
-  const navigate = useNavigate();
+  const [form] = Form.useForm();
+
+  const handleFinish = (values) => {
+    // Your logic
+  };
 
   return (
     <>
@@ -32,24 +33,12 @@ const OtpRegister = () => {
             <div className="form w-[70vw] lg:w-[20vw] ">
               <div className=" flex flex-col gap-5">
                 <h1 className="text-center text-[#116E63] font-serif font-semibold text-xl">Masukan OTP</h1>
-                {/* <button
-                  className="flex justify-start"
-                  onClick={() => {
-                    navigate("/login");
-                  }}
-                >
-                  <i class="fa-solid fa-arrow-left"></i>
-                </button> */}
                 <p>Ketik 6 digit kode yang dikirimkan ke</p>
-                <OTPInput
-                  inputStyle={"border rounded-lg border-black"}
-                  // containerStyle={"bg-blue-100 w-[200px] h-[200px]"}
-                  value={otp}
-                  onChange={setOtp}
-                  numInputs={6}
-                  renderSeparator={<span>-</span>}
-                  renderInput={(props) => <input {...props} />}
-                />
+                <Form onFinish={handleFinish} form={form}>
+                  <Form.Item name="otp">
+                    <InputOTP autoSubmit={form} inputType="numeric" />
+                  </Form.Item>
+                </Form>
                 <div className="flex justify-center items-center">
                   <button className="bg-[#116E63] w-full p-2 rounded-md text-white ">SIMPAN</button>
                 </div>

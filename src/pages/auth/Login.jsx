@@ -1,13 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../assets/img/Logo.png";
 import google from "../../assets/img/google.png";
 import facebook from "../../assets/img/facebook.png";
 import { Form, Input } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
+import { useLoginUser } from "../../services/auth/authLogin";
 
 export const Login = () => {
   const navigate = useNavigate();
+  const [Email, setEmail] = useState("");
+  const [Password, setPassword] = useState("");
+
+  const handleInput = (e) => {
+    if (e) {
+      if (e.target.id === "email") {
+        setEmail(e.target.value);
+      }
+      if (e.target.id === "password") {
+        setPassword(e.target.value);
+      }
+    }
+  };
+
+  const { mutate: postLogin, data: errMsg, status } = useLoginUser();
+
+  const handleSubmit = () => {
+    postLogin({
+      email: Email,
+      password: Password,
+    });
+  };
+
+  // useEffect(() => {
+  //   if (errMsg) {
+  //     toast.error(errMsg, {
+  //       position: "top-right",
+  //       autoClose: 3500,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: true,
+  //       draggable: true,
+  //       progress: undefined,
+  //       theme: "light",
+  //     });
+  //   }
+  // }, [status === "success"]);
 
   const register = () => {
     navigate("/register");
@@ -44,12 +82,14 @@ export const Login = () => {
                 initialValues={{
                   remember: true,
                 }}
-                // onFinish={onLogin}
+                onFinish={handleSubmit}
               >
                 <Form.Item
                   name="username"
                   label="Username"
-                  labelCol={{span:24}}
+                  id="email"
+                  onChange={handleInput}
+                  labelCol={{ span: 24 }}
                   rules={[
                     {
                       required: true,
@@ -63,7 +103,9 @@ export const Login = () => {
                 <Form.Item
                   name="password"
                   label="Password"
-                  labelCol={{span:24}}
+                  id="password"
+                  onChange={handleInput}
+                  labelCol={{ span: 24 }}
                   rules={[
                     {
                       required: true,
@@ -75,10 +117,7 @@ export const Login = () => {
                   <Input.Password prefix={<LockOutlined className="site-form-item-icon" />} placeholder="Password" />
                 </Form.Item>
                 <div className="mt-1">
-                  <p
-                    className="text-sm font-medium text-[#116E63] cursor-pointer text-end"
-                    onClick={forgotpswd}
-                  >
+                  <p className="text-sm font-medium text-[#116E63] cursor-pointer text-end" onClick={forgotpswd}>
                     Forgot Password?
                   </p>
                 </div>
@@ -90,7 +129,7 @@ export const Login = () => {
                 </div>
 
                 <div className="button  items-center  flex flex-col mt-4 ">
-                  <button htmlType="submit" className="login-form-button bg-[#116E63] w-full h-12 rounded-xl text-white text-sm">
+                  <button onClick={handleSubmit} htmlType="submit" className="login-form-button bg-[#116E63] w-full h-12 rounded-xl text-white text-sm">
                     Log in
                   </button>
 

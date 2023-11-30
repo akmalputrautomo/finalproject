@@ -15,7 +15,7 @@ export const KategoriBelajar = () => {
   }, []);
 
   const belajar = useSelector((state) => state);
-  // console.log(belajar, "belajar");
+  console.log(belajar, "belajar");
 
   return (
     <div className="bg-[#CFE2E080] px-[9rem] py-[1.5rem]">
@@ -25,6 +25,9 @@ export const KategoriBelajar = () => {
       </div>
 
       {/* image map */}
+      {/* {belajar.map((film) => (
+        <h1>{film.title}</h1>
+      ))} */}
     </div>
   );
 };

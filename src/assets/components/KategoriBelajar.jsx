@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getDatakategori } from "../../redux/action/kategoribelajarrr";
 
 export const KategoriBelajar = () => {
+  const dispatch = useDispatch();
+
+  const getkategoribelajarrrr = () => {
+    dispatch(getDatakategori());
+  };
+  // console.log(getkategoribelajarrrr, "123");
+
+  useEffect(() => {
+    getkategoribelajarrrr();
+  }, []);
+
+  const belajar = useSelector((state) => state);
+  console.log(belajar, "belajar");
+
   return (
     <div className="bg-[#CFE2E080] px-[9rem] py-[1.5rem]">
       <div className="flex justify-between">
@@ -9,10 +25,9 @@ export const KategoriBelajar = () => {
       </div>
 
       {/* image map */}
-      {/* <div>
-        <div className="py-[1rem]">gambar</div>
-        <span className="text-[#000000] text-[1.1rem]">judul kategori</span>
-      </div> */}
+      {/* {belajar.map((film) => (
+        <h1>{film.title}</h1>
+      ))} */}
     </div>
   );
 };

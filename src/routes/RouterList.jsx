@@ -7,6 +7,8 @@ import { LoginUser } from "../pages/auth/LoginUser";
 import { Provider } from "react-redux";
 import OtpRegister from "../pages/auth/Otpregister";
 import { ForgetPass } from "../pages/auth/ForgetPass";
+import { DetailKelas } from "../assets/components/DetailKelas";
+import { DetailKelasPembayaran } from "../assets/components/DetailKelasPembayaran";
 
 export const RouterList = () => {
   return (
@@ -19,6 +21,8 @@ export const RouterList = () => {
         <Route path="/loginu" element={<LoginUser />} />
         <Route path="/otp" element={<OtpRegister />} />
         <Route path="/forgetpass" element={<ForgetPass />} />
+        <Route path="/detailKelas" element={<DetailKelas />} />
+        <Route path="/detailKelasPembayaran" element={<DetailKelasPembayaran />} />
       </Routes>
       {/* </Provider> */}
     </BrowserRouter>

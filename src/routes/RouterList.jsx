@@ -9,6 +9,8 @@ import OtpRegister from "../pages/auth/Otpregister";
 import { ForgetPass } from "../pages/auth/ForgetPass";
 import { BerandaKelasSaya } from "../pages/BerandaKelasSaya";
 import { BerandaKelas } from "../pages/BerandaKelas";
+import { DetailKelas } from "../assets/components/DetailKelas";
+import { DetailKelasPembayaran } from "../assets/components/DetailKelasPembayaran";
 
 export const RouterList = () => {
   return (
@@ -23,6 +25,8 @@ export const RouterList = () => {
         <Route path="/forgetpass" element={<ForgetPass />} />
         <Route path="/kelassaya" element={<BerandaKelasSaya/>} />
         <Route path="/berandakelas" element={<BerandaKelas/>}/>
+        <Route path="/detailKelas" element={<DetailKelas />} />
+        <Route path="/detailKelasPembayaran" element={<DetailKelasPembayaran />} />
       </Routes>
       {/* </Provider> */}
     </BrowserRouter>

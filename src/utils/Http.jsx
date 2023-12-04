@@ -14,7 +14,8 @@ const http = axios.create({
 http.interceptors.request.use((config) => {
   config.headers = {
     ...config.headers,
-    Authorization: `Bearer ${getToken ? getToken : ""}`,
+    // Authorization: `Bearer ${getToken ? getToken : ""}`,
+    // Authorization: `Bearer ${process.env.REACT_APP_KEY}`,
   };
 
   return config;

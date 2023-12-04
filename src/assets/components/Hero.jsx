@@ -3,8 +3,8 @@ import logo from "../img/HeroImg.png";
 
 const Hero = () => {
   return (
-    <div>
-      <div className="w-full h-full flex">
+    <div className="w-full h-full">
+      <div className=" flex">
         {/* section kiri */}
         <div className="w-1/2 flex flex-col px-[9rem] mt-10 ">
           <h1 className="text-[#116E63] text-[2.5rem] font-bold font-2xl">Learning </h1>

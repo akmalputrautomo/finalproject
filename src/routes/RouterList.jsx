@@ -13,6 +13,8 @@ import { DetailKelas } from "../assets/components/DetailKelas";
 import { DetailKelasPembayaran } from "../assets/components/DetailKelasPembayaran";
 import { LoginAdmin } from "../auth/admin/LoginAdmin";
 import { HomeAdm } from "../pages/HomeAdm";
+import { WebAkunProfil } from "../pages/notifikasi/WebAkunProfil";
+import WebNotifikasi from "../assets/components/WebNotifikasi";
 
 export const RouterList = () => {
   return (
@@ -25,10 +27,12 @@ export const RouterList = () => {
         <Route path="/loginu" element={<LoginUser />} />
         <Route path="/otp" element={<OtpRegister />} />
         <Route path="/forgetpass" element={<ForgetPass />} />
-        <Route path="/kelassaya" element={<BerandaKelasSaya/>} />
-        <Route path="/berandakelas" element={<BerandaKelas/>}/>
+        <Route path="/kelassaya" element={<BerandaKelasSaya />} />
+        <Route path="/berandakelas" element={<BerandaKelas />} />
         <Route path="/detailKelas" element={<DetailKelas />} />
         <Route path="/detailKelasPembayaran" element={<DetailKelasPembayaran />} />
+        <Route path="/WebAkunProfil" element={<WebAkunProfil />} />
+        <Route path="/WebNotifikasi" element={<WebNotifikasi />} />
 
         {/* Admin */}
         <Route path="/loginAdm" element={<LoginAdmin />} />

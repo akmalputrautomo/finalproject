@@ -8,14 +8,13 @@ export const KategoriBelajar = () => {
   const getkategoribelajarrrr = () => {
     dispatch(getDatakategori());
   };
-  // console.log(getkategoribelajarrrr, "123");
+
+  const belajar = useSelector((state) => state.kategori.kategori.categories);
+  console.log(belajar, "belajar");
 
   useEffect(() => {
     getkategoribelajarrrr();
   }, []);
-
-  const belajar = useSelector((state) => state);
-  console.log(belajar, "belajar");
 
   return (
     <div className="bg-[#CFE2E080] px-[9rem] py-[1.5rem]">
@@ -24,10 +23,8 @@ export const KategoriBelajar = () => {
         <button className="text-[1.2rem] font-bold text-[#116E63] hover:opacity-80">Lihat Semua</button>
       </div>
 
-      {/* image map */}
-      {/* {belajar.map((film) => (
-        <h1>{film.title}</h1>
-      ))} */}
+      {/* map */}
+      {belajar && belajar.map((film) => <p key={film.id}>{film.name} </p>)}
     </div>
   );
 };

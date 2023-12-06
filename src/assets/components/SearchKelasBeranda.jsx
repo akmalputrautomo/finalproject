@@ -1,5 +1,6 @@
 import React from "react";
 import search from "../img/search.png";
+import { Button } from "@nextui-org/button";
 
 export const SearchKelasBeranda = () => {
   return (
@@ -14,9 +15,10 @@ export const SearchKelasBeranda = () => {
 
       {/* button filter */}
       <div className="flex justify-between py-6 gap-6">
-        <button className="border bg-white w-[25%] h-10 rounded-2xl text-md focus:bg-[#116E63] focus:text-white hover:opacity-70">All</button>
-        <button className="border bg-white w-[40%] h-10 rounded-2xl text-md focus:bg-[#116E63] focus:text-white hover:opacity-70">Kelas Premium</button>
-        <button className="border bg-white w-[35%] h-10 rounded-2xl text-md focus:bg-[#116E63] focus:text-white hover:opacity-70">Kelas Gratis</button>
+        {/* <button className="border bg-white w-[25%] h-10 rounded-2xl text-md focus:bg-[#116E63] focus:text-white hover:opacity-70">All</button> */}
+        <Button value="all" className="bg-white w-[25%] focus:bg-[#116E63] focus:text-white" defaultValue={"all"}>All</Button>
+        <Button className="bg-white w-[40%] focus:bg-[#116E63] focus:text-white">Kelas Premium</Button>
+        <Button className="bg-white w-[35%] focus:bg-[#116E63] focus:text-white">Kelas Gratis</Button>
       </div>
 
     </div>

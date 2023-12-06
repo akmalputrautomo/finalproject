@@ -14,7 +14,7 @@ export const Home = () => {
       <Navbar />
       <Hero />
       <KategoriBelajar />
-      <KursusPopuler/>
+      <KursusPopuler />
     </div>
   );
 };

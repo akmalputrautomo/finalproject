@@ -2,7 +2,6 @@ import React from "react";
 import { Checkbox, CheckboxGroup } from "@nextui-org/checkbox";
 
 export const FilterKelasBeranda = () => {
-
   return (
     <div>
       <div className="px-5 space-y-5">
@@ -44,7 +43,6 @@ export const FilterKelasBeranda = () => {
           </div>
 
           <button className="text-[#DB1B1B] text-md hover:opacity-80 flex justify-center w-full pt-10">Hapus Filter</button>
-
         </div>
       </div>
     </div>

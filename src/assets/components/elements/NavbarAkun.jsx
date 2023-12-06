@@ -1,8 +1,8 @@
 import React from "react";
-import logo from "../img/Logo.png";
+import logo from "../../img/Logo.png";
 import { useNavigate } from "react-router-dom";
 
-const NavbarNotifikasi = () => {
+export const NavbarAkun = () => {
   const navigate = useNavigate();
   return (
     <div>
@@ -16,20 +16,23 @@ const NavbarNotifikasi = () => {
             </svg>
           </button>
         </form>
-        <div className="flex gap-4 items-center ">
-          <button className=" w-[5rem] h-[2.5rem] rounded-md">
-            <i class="fa-solid fa-list text-[16px]"></i>
+        <div className="flex gap-2 items-center ">
+          <button className=" w-[3rem] h-[2.5rem] rounded-md">
+            <i class="fa-solid fa-list text-[#116E63] text-[16px]"> </i>
           </button>
-          <button className="w-[10rem] h-[2.5rem] bg-[#116E63] rounded-md ">
-            <i class="fa-regular fa-bell text-white text-[16px]"> Notifikasi</i>
+          <button
+            className="w-[3rem] h-[2.5rem] rounded-md "
+            onClick={() => {
+              navigate("/WebNotifikasi");
+            }}
+          >
+            <i class="fa-regular fa-bell text-[#116E63]"></i>
           </button>
-          <button onClick={() => navigate("/WebAkunProfil")}>
-            <i class="fa-regular fa-user text-[#116E63]"></i>
+          <button className="bg-[#116E63] w-[8rem] h-[2.5rem] rounded-md">
+            <i class="fa-solid fa-user text-white "> Akun</i>
           </button>
         </div>
       </div>
     </div>
   );
 };
-
-export default NavbarNotifikasi;

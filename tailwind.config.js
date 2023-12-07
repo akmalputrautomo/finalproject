@@ -5,6 +5,10 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}", "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {},
+    screens: {
+      mobile: "375px",
+      desktop: "1440px",
+    },
   },
   plugins: [nextui()],
 };

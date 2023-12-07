@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { NavbarAkun } from "../../assets/components/elements/NavbarAkun";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export const WebAkunProfil = () => {
+  const navigate = useNavigate();
   return (
     <>
       <div>
@@ -32,10 +33,20 @@ export const WebAkunProfil = () => {
               <button className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2 ">
                 <i class="fa-solid fa-pen text-[#116E63] text-[1.5rem]  "></i>Profil Saya
               </button>
-              <button className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2">
+              <button
+                onClick={() => {
+                  navigate("/WebUbahPassword");
+                }}
+                className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2"
+              >
                 <i class="fa-solid fa-gear text-[#116E63] text-[1.5rem]"></i>Ubah Password
               </button>
-              <button className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2">
+              <button
+                onClick={() => {
+                  navigate("/WebRiwayatPembayaran");
+                }}
+                className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2"
+              >
                 <i class="fa-solid fa-cart-shopping text-[#116E63] text-[1.5rem]"></i>Riwayat Pembayaran
               </button>
               <button className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2">
@@ -72,35 +83,6 @@ export const WebAkunProfil = () => {
                   <button className="flex justify-center items-center  bg-[#116E63] text-white w-[75%] rounded-xl h-[3rem] text-[1rem] font-bold">Simpan Profil Saya</button>
                 </div>
               </div>
-
-              {/* ubah password */}
-
-              {/* <div>
-                <h1 className="font-bold text-2xl flex justify-center pt-4">Ubah Password</h1>
-                <div className="flex flex-col gap-4 pt-4">
-                  <div>
-                    <p>Masukkan Password Lama</p>
-                    <input type="password" className=" border rounded-xl w-[80%] h-[3rem]"></input>
-                  </div>
-                  <div>
-                    <p>Masukkan Password Baru</p>
-                    <input type="password" className="border rounded-xl w-[80%] h-[3rem]"></input>
-                  </div>
-                  <div>
-                    <p>Ulangi Password Baru</p>
-                    <input type="password" className="border rounded-xl w-[80%] h-[3rem]"></input>
-                  </div>
-                  <div className="flex justify-start items-center w-full">
-                    <button className="rounded-full bg-[#116E63] text-white w-[80%] h-[2.5rem]">Ubah Password</button>
-                  </div>
-                </div>
-              </div> */}
-
-              {/* riwayat pembayaran */}
-
-              {/* <div>
-                <h1 className="font-bold text-2xl flex justify-center pt-4">Riwayat Pembayaran</h1>
-              </div> */}
             </div>
           </div>
         </div>

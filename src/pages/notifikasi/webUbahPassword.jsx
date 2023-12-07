@@ -1,8 +1,10 @@
 import React from "react";
 import { NavbarAkun } from "../../assets/components/elements/NavbarAkun";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export const WebUbahPassword = () => {
+  const navigate = useNavigate();
+
   return (
     <div>
       <div>
@@ -29,13 +31,23 @@ export const WebUbahPassword = () => {
           {/* button */}
           <div className="flex w-full ">
             <div className="w-[50%] flex flex-col items-start gap-10 p-8  ">
-              <button className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2 ">
+              <button
+                onClick={() => {
+                  navigate("/WebAkunProfil");
+                }}
+                className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2 "
+              >
                 <i class="fa-solid fa-pen text-[#116E63] text-[1.5rem]  "></i>Profil Saya
               </button>
               <button className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2">
                 <i class="fa-solid fa-gear text-[#116E63] text-[1.5rem]"></i>Ubah Password
               </button>
-              <button className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2">
+              <button
+                onClick={() => {
+                  navigate("/WebRiwayatPembayaran");
+                }}
+                className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2"
+              >
                 <i class="fa-solid fa-cart-shopping text-[#116E63] text-[1.5rem]"></i>Riwayat Pembayaran
               </button>
               <button className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2">

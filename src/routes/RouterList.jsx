@@ -15,6 +15,7 @@ import { LoginAdmin } from "../auth/admin/LoginAdmin";
 import { HomeAdm } from "../pages/HomeAdm";
 import { WebAkunProfil } from "../pages/notifikasi/WebAkunProfil";
 import WebNotifikasi from "../assets/components/WebNotifikasi";
+import { WebUbahPassword } from "../pages/notifikasi/webUbahPassword";
 
 export const RouterList = () => {
   return (
@@ -33,6 +34,7 @@ export const RouterList = () => {
         <Route path="/detailKelasPembayaran" element={<DetailKelasPembayaran />} />
         <Route path="/WebAkunProfil" element={<WebAkunProfil />} />
         <Route path="/WebNotifikasi" element={<WebNotifikasi />} />
+        <Route path="/WebUbahPassword" element={<WebUbahPassword />} />
 
         {/* Admin */}
         <Route path="/loginAdm" element={<LoginAdmin />} />

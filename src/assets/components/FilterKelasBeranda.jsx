@@ -1,9 +1,6 @@
 import React from "react";
-<<<<<<< HEAD
 
-=======
 import { Checkbox, CheckboxGroup } from "@nextui-org/checkbox";
->>>>>>> fcff3e7ae6c2566e12e06714dadeb66f87cad102
 
 export const FilterKelasBeranda = () => {
   return (

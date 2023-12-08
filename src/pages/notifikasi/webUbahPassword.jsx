@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavbarAkun } from "../../assets/components/elements/NavbarAkun";
 import { Navigate, useNavigate } from "react-router-dom";
 
 export const WebUbahPassword = () => {
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+
+  const showpass = () => {
+    setShowPassword(!showPassword);
+  };
 
   return (
     <div>
@@ -61,9 +66,12 @@ export const WebUbahPassword = () => {
               <div>
                 <h1 className="font-bold text-2xl flex justify-center pt-4">Ubah Password</h1>
                 <div className="flex flex-col gap-4 pt-4 mobile:pl-4 desktop:pl-0">
-                  <div>
+                  <div className="relative">
                     <p>Masukkan Password Lama</p>
-                    <input type="password" className=" border rounded-xl w-[80%] h-[3rem] mobile:w-[95%] desktop:w-[80%]"></input>
+                    <input type={showPassword ? "text" : "password"} className=" border rounded-xl w-[80%] h-[3rem] mobile:w-[95%] desktop:w-[80%]"></input>
+                    <span className="absolute right-[7rem] top-[2.3rem] cursor-pointer mobile:right-7 desktop:right-[7rem]" onClick={showpass}>
+                      {showPassword ? "Hide" : "Show"}
+                    </span>
                   </div>
                   <div>
                     <p>Masukkan Password Baru</p>

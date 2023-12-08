@@ -1,4 +1,4 @@
-import { Button } from "@nextui-org/button";
+// import { Button } from "@nextui-org/button";
 import React from "react";
 
 export const MulaiBelajar = () => {
@@ -90,7 +90,7 @@ export const MulaiBelajar = () => {
             </div>
           </div>
           <br />
-          <Button className="bg-[#116E63] w-3/4 h-[2.5rem]  flex justify-center items-center rounded-3xl text-white font-semibold text-sm gap-2 ">
+          <button className="bg-[#116E63] w-3/4 h-[2.5rem]  flex justify-center items-center rounded-3xl text-white font-semibold text-sm gap-2 ">
             <p>Beli Sekarang</p>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -100,7 +100,7 @@ export const MulaiBelajar = () => {
               viewBox="0 0 512 512">
               <path d="M0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM281 385c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l71-71L136 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l182.1 0-71-71c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L393 239c9.4 9.4 9.4 24.6 0 33.9L281 385z" />
             </svg>
-          </Button>
+          </button>
         </div>
       </div>
     </div>

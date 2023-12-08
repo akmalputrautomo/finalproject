@@ -7,7 +7,8 @@ module.exports = {
     extend: {},
     screens: {
       mobile: "375px",
-      desktop: "1440px",
+      tablet: "834px",
+      desktop: "1280px",
     },
   },
   plugins: [nextui()],

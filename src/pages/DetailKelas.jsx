@@ -1,7 +1,6 @@
 import React, { Fragment, useState } from "react";
-
+import { BeliMateriPremium } from "../assets/components/BeliMateriPremium";
 import { useNavigate } from "react-router-dom";
-import { BeliMateriPremium } from "./BeliMateriPremium";
 
 export const DetailKelas = () => {
 

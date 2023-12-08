@@ -11,6 +11,8 @@ import { BerandaKelasSaya } from "../pages/BerandaKelasSaya";
 import { BerandaKelas } from "../pages/BerandaKelas";
 import { DetailKelas } from "../assets/components/DetailKelas";
 import { DetailKelasPembayaran } from "../assets/components/DetailKelasPembayaran";
+import PembayaranSukses from "../pages/PembayaranSukses";
+import { MulaiBelajar } from "../assets/components/MulaiBelajar";
 
 export const RouterList = () => {
   return (
@@ -27,6 +29,8 @@ export const RouterList = () => {
         <Route path="/berandakelas" element={<BerandaKelas/>}/>
         <Route path="/detailKelas" element={<DetailKelas />} />
         <Route path="/detailKelasPembayaran" element={<DetailKelasPembayaran />} />
+        <Route path="/pembayaranSukses" element={<PembayaranSukses />} />
+        <Route path="/mulaiBelajar" element={<MulaiBelajar />} />
       </Routes>
       {/* </Provider> */}
     </BrowserRouter>

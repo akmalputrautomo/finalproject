@@ -1,5 +1,5 @@
 import React from "react";
-import 'flowbite/dist/flowbite.min.js';
+
 
 export const FilterKelasBeranda = () => {
 

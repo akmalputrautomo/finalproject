@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavbarAkun } from "../../assets/components/elements/NavbarAkun";
 import { Navigate, useNavigate } from "react-router-dom";
+import NavbarBurger from "../../assets/components/elements/NavbarBurger";
 
 export const WebUbahPassword = () => {
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ export const WebUbahPassword = () => {
       <div className="mobile:hidden desktop:block">
         <NavbarAkun />
       </div>
-      <div className="w-full h-[8rem] bg-[#E7F0EF] text-[16px] font-bold">
+      <div className="w-full h-[8rem] bg-[#E7F0EF] text-[16px] font-bold mobile:hidden desktop:block ">
         <button
           onClick={() => {
             Navigate();
@@ -27,10 +28,13 @@ export const WebUbahPassword = () => {
         </button>
       </div>
 
-      <div className="flex justify-center items-center mt-[-4rem]  ">
-        <div className="w-[65%] h-[37rem] flex border border-[#116E63] rounded-md flex-col mobile:w-full desktop:w-[65%]  ">
-          <div className="w-full bg-[#116E63] h-[4rem] flex justify-center items-center ">
-            <h1 className="text-white font-bold text-2xl">Akun</h1>
+      <div className="flex justify-center items-center mt-[-4rem] mobile:mt-0 desktop:mt-[-4rem] ">
+        <div className="w-[65%] h-[37rem] flex border border-[#116E63] rounded-md flex-col mobile:w-full desktop:w-[65%]  mobile:h-screen desktop:h-[37rem]">
+          <div className="w-full bg-[#116E63] h-[4rem] flex mobile:justify-between desktop:justify-center items-center  ">
+            <h1 className="text-white font-bold text-2xl mobile:pl-4 desktop:pl-0">Akun</h1>
+            <div className="mobile:block desktop:hidden ">
+              <NavbarBurger />
+            </div>
           </div>
 
           {/* button */}

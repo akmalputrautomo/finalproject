@@ -12,7 +12,7 @@ export const DetailKelasPembayaran = () => {
       <div className="flex flex-col justify-center items-center ">
         <div className="w-full px-[8rem] pt-4">
       
-          <button className="flex items-center  gap-2" onClick={() => {navigate("detailKelas");} }>
+          <button className="flex items-center  gap-2" onClick={() => {navigate("/detailKelas");} }>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               height="16"
@@ -35,7 +35,8 @@ export const DetailKelasPembayaran = () => {
                   key="1"
                   aria-label="1"
                   title="Transfer Bank"
-                  className="bg-[#3C3C3C] px-4 mb-2 rounded-lg text-white font-semibold ">
+                  itemStyles="text-white"
+                  className="bg-[#3C3C3C] px-4 mb-2 text-white rounded-lg font-semibold ">
                   {defaultContent}
                 </AccordionItem>
                 <AccordionItem
@@ -43,7 +44,7 @@ export const DetailKelasPembayaran = () => {
                   aria-label="Accordion 2"
                   title="Credit Card"
                   className="bg-[#116E63] px-4 mt-2 rounded-lg text-white font-semibold ">
-                  <div className="w-full h-[20rem] p-8 mb-2 bg-white rounded-xl ">
+                  <div className="w-full h-[23rem] p-8 mb-2 bg-white rounded-xl ">
                     <div className=" space-y-4 ">
                       <div className=" flex justify-center items-center ">
                         <svg

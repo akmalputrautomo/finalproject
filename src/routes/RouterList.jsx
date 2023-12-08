@@ -9,14 +9,16 @@ import OtpRegister from "../auth/user/Otpregister";
 import { ForgetPass } from "../auth/user/ForgetPass";
 import { BerandaKelasSaya } from "../pages/BerandaKelasSaya";
 import { BerandaKelas } from "../pages/BerandaKelas";
-import { DetailKelas } from "../assets/components/DetailKelas";
 import { DetailKelasPembayaran } from "../assets/components/DetailKelasPembayaran";
+import PembayaranSukses from "../pages/PembayaranSukses";
+import { MulaiBelajar } from "../assets/components/MulaiBelajar";
 import { LoginAdmin } from "../auth/admin/LoginAdmin";
 import { HomeAdm } from "../pages/admin/HomeAdm";
 import { WebAkunProfil } from "../pages/notifikasi/WebAkunProfil";
 import WebNotifikasi from "../assets/components/WebNotifikasi";
 import { WebUbahPassword } from "../pages/notifikasi/webUbahPassword";
 import { WebRiwayatPembayaran } from "../pages/notifikasi/WebRiwayatPembayaran";
+import { DetailKelas } from "../pages/DetailKelas";
 
 export const RouterList = () => {
   return (
@@ -33,6 +35,8 @@ export const RouterList = () => {
         <Route path="/berandakelas" element={<BerandaKelas />} />
         <Route path="/detailKelas" element={<DetailKelas />} />
         <Route path="/detailKelasPembayaran" element={<DetailKelasPembayaran />} />
+        <Route path="/pembayaranSukses" element={<PembayaranSukses />} />
+        <Route path="/mulaiBelajar" element={<MulaiBelajar />} />
         <Route path="/WebAkunProfil" element={<WebAkunProfil />} />
         <Route path="/WebNotifikasi" element={<WebNotifikasi />} />
         <Route path="/WebUbahPassword" element={<WebUbahPassword />} />

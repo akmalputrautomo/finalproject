@@ -2,7 +2,10 @@ import React from "react";
 import logo from "../img/Logo.png";
 import { useNavigate } from "react-router-dom";
 
+
 const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
   const navigate = useNavigate();
 
   return (
@@ -29,6 +32,7 @@ const Navbar = () => {
       </div>
     </div>
   );
-};
+}
+
 
 export default Navbar;

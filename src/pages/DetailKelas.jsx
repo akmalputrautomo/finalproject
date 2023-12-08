@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { BeliMateriPremium } from "./popUp/BeliMateriPremium";
+import { BeliMateriPremium } from "../assets/components/BeliMateriPremium";
 import { useNavigate } from "react-router-dom";
 
 export const DetailKelas = () => {

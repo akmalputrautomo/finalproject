@@ -36,7 +36,7 @@ export const DetailKelasPembayaran = () => {
                   aria-label="1"
                   title="Transfer Bank"
                   itemStyles="text-white"
-                  className="bg-[#3C3C3C] px-4 mb-2 rounded-lg font-semibold ">
+                  className="bg-[#3C3C3C] px-4 mb-2 text-white rounded-lg font-semibold ">
                   {defaultContent}
                 </AccordionItem>
                 <AccordionItem

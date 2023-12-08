@@ -19,7 +19,7 @@ const PembayaranSukses = () => {
           <p>Terimakasih atas pembayaran transaksi</p>
         </div>
         <p className="text-[#116E63] text-3xl font-bold">Selamat!</p>
-        <img  src={illustration} />
+        <img height={200} width={200} src={illustration} />
         <p className="text-center font-bold">
           Transaksi pembayaran kelas premium berhasil!
           <p className="font-normal">E-receipt telah dikirimkan ke email.</p>

@@ -1,6 +1,6 @@
 import { Card, CardBody } from '@nextui-org/react'
 import React from 'react'
-import icon from "../img/icon.png"
+import icon from "../../img/icon.png"
 export const CardAdm = () => {
   return (
     <div className='flex flex-row gap-10 justify-center pt-[50px]'>

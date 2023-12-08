@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import searchIcon from "../../img/searchIcon.png"
+import searchIcon from "../../../img/searchIcon.png"
 
 export const SearchBar = ({ handle }) => {
   const [keyword, setKeyword] = useState("");

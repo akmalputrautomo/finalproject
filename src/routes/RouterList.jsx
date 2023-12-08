@@ -12,7 +12,7 @@ import { BerandaKelas } from "../pages/BerandaKelas";
 import { DetailKelas } from "../assets/components/DetailKelas";
 import { DetailKelasPembayaran } from "../assets/components/DetailKelasPembayaran";
 import { LoginAdmin } from "../auth/admin/LoginAdmin";
-import { HomeAdm } from "../pages/HomeAdm";
+import { HomeAdm } from "../pages/admin/HomeAdm";
 import { WebAkunProfil } from "../pages/notifikasi/WebAkunProfil";
 import WebNotifikasi from "../assets/components/WebNotifikasi";
 import { WebUbahPassword } from "../pages/notifikasi/webUbahPassword";

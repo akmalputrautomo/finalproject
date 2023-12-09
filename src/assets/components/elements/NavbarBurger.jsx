@@ -1,6 +1,6 @@
-import { Button, Link, Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenu, NavbarMenuItem, NavbarMenuToggle } from "@nextui-org/react";
+import { Link, Navbar, NavbarContent, NavbarItem, NavbarMenu, NavbarMenuItem, NavbarMenuToggle } from "@nextui-org/react";
 import React from "react";
-import { Router } from "react-router-dom";
+
 import { Link as RouterLink } from "react-router-dom";
 
 const NavbarBurger = () => {
@@ -10,9 +10,13 @@ const NavbarBurger = () => {
     { label: "Riwayat Pembayaran", path: "/WebRiwayatPembayaran" },
   ];
 
+  const navbarStyle = {
+    backgroundColor: "#116E63", // Sesuaikan dengan warna latar belakang dan tingkat transparansi yang diinginkan
+  };
+
   return (
     <div>
-      <Navbar disableAnimation isBordered>
+      <Navbar disableAnimation isBordered style={navbarStyle}>
         <NavbarContent className="sm:hidden" justify="end">
           <NavbarMenuToggle />
         </NavbarContent>
@@ -29,21 +33,6 @@ const NavbarBurger = () => {
             <AcmeLogo />
             <p className="font-bold text-inherit">ACME</p>
           </NavbarBrand> */}
-          <NavbarItem>
-            <Link color="foreground" href="#">
-              Features
-            </Link>
-          </NavbarItem>
-          <NavbarItem isActive>
-            <Link href="#" aria-current="page" color="warning">
-              Customers
-            </Link>
-          </NavbarItem>
-          <NavbarItem>
-            <Link color="foreground" href="#">
-              Integrations
-            </Link>
-          </NavbarItem>
         </NavbarContent>
 
         <NavbarContent justify="end">

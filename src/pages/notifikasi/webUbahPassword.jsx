@@ -32,7 +32,7 @@ export const WebUbahPassword = () => {
         <div className="w-[65%] h-[37rem] flex border border-[#116E63] rounded-md flex-col mobile:w-full desktop:w-[65%]  mobile:h-screen desktop:h-[37rem]">
           <div className="w-full bg-[#116E63] h-[4rem] flex mobile:justify-between desktop:justify-center items-center  ">
             <h1 className="text-white font-bold text-2xl mobile:pl-4 desktop:pl-0">Akun</h1>
-            <div className="mobile:block desktop:hidden ">
+            <div className="mobile:block desktop:hidden">
               <NavbarBurger />
             </div>
           </div>

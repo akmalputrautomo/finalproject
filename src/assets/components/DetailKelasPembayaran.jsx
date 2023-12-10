@@ -8,9 +8,9 @@ export const DetailKelasPembayaran = () => {
 
   const navigate = useNavigate();
   return (
-    <div className="w-full ">
+    <div className="w-full bg-gradient-to-b from-[#CFE2E0] via-white to-white ">
       <div className="flex flex-col justify-center items-center ">
-        <div className="w-full px-[8rem] pt-4 mobile:px-1 desktop:px-[8rem]">
+        <div className="w-full ml-10  px-[8rem] pt-4 mobile:px-1 desktop:px-[8rem]">
           <button
             className="flex items-center  gap-2"
             onClick={() => {
@@ -23,14 +23,14 @@ export const DetailKelasPembayaran = () => {
             <p>Kembali</p>
           </button>
         </div>
-        <div className="flex flex-col  w-full justify-center items-center space-y-20 mobile:px-2 desktop:px-0 mobile:py-4 desktop:py-0">
-          <div className="bg-[#DB1B1B] w-2/4 h-12  rounded-xl align-middle text-white flex items-center justify-center mobile:w-full desktop:w-2/4  ">
+        <div className="flex flex-col  w-full justify-center items-center desktop:space-y-20 mobile:space-y-8 mobile:px-2 desktop:px-0 mobile:py-4 desktop:py-0">
+          <div className="bg-[#DB1B1B] desktop:w-2/4 mobile:w-[23rem] mobile:text-sm desktop:text-base  h-12  rounded-xl align-middle text-white flex items-center justify-center   ">
             <p>Selesaikan Pembayaran sampai 10 Maret 2023 12:00</p>
           </div>
-          <div className="flex gap-6 ">
-            <div className=" w-[40rem]">
-              <Accordion>
-                <AccordionItem key="1" aria-label="1" title="Transfer Bank" itemStyles="text-white" className="bg-[#3C3C3C] px-4 mb-2 text-white rounded-lg font-semibold ">
+          <div className=" flex desktop:flex-row mobile:flex-col-reverse gap-6 mobile:justify-center mobile:items-center desktop:items-start ">
+            <div className="flex-row  justify-center items-center desktop:w-[40rem] mobile:w-[25rem] ">
+              <Accordion className="">
+                <AccordionItem key="1" aria-label="1"  title="Transfer Bank"  className="bg-[#3C3C3C] px-4 mb-2 text-white rounded-lg font-semibold ">
                   {defaultContent}
                 </AccordionItem>
                 <AccordionItem key="2" aria-label="Accordion 2" title="Credit Card" className="bg-[#116E63] px-4 mt-2 rounded-lg text-white font-semibold ">
@@ -130,10 +130,18 @@ export const DetailKelasPembayaran = () => {
                   </div>
                 </AccordionItem>
               </Accordion>
+              <div className="mobile:block desktop:hidden flex justify-center items-center ">
+                  <Button className="bg-[#DB1B1B] ml-2 w-[24rem] h-[2.5rem] px-4 mt-6  flex justify-center items-center rounded-3xl text-white font-semibold text-sm gap-2 ">
+                    <p>Bayar dan Ikutan Kelas Selamanya</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="white" height="20" width="20" viewBox="0 0 512 512">
+                      <path d="M0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM281 385c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l71-71L136 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l182.1 0-71-71c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L393 239c9.4 9.4 9.4 24.6 0 33.9L281 385z" />
+                    </svg>
+                  </Button>
+                </div>
             </div>
 
-            <div className="w-2/5 h-[24rem] px-6 py-6 rounded-3xl bg-white shadow-2xl  ">
-              <div className="flex w-full  flex-col justify-center items-center space-y-4 ">
+            <div className=" desktop:w-2/5  desktop:h-[24rem] mobile:h-[18rem] px-6 py-6 rounded-3xl bg-white shadow-2xl  ">
+              <div className="relative flex w-full  flex-col justify-center items-center space-y-4 ">
                 <p className="flex justify-start w-full  text-xl font-bold">Pembayaran Kelas</p>
                 <div className="w-80 h-36 shadow-lg rounded-3xl">
                   <div className="bg-emerald-500 w-full h-2/5 rounded-t-3xl "></div>
@@ -157,7 +165,7 @@ export const DetailKelasPembayaran = () => {
                     <p className="text-[#116E63]">Rp 238,372</p>
                   </div>
                 </div>
-                <div>
+                <div className="mobile:hidden desktop:block">
                   <Button className="bg-[#DB1B1B] w-full h-[2.5rem] px-4 mt-6  flex justify-center items-center rounded-3xl text-white font-semibold text-sm gap-2 ">
                     <p>Bayar dan Ikutan Kelas Selamanya</p>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="white" height="20" width="20" viewBox="0 0 512 512">

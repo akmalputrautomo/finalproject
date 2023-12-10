@@ -13,8 +13,8 @@ const PembayaranSukses = () => {
       <div className="mobile:hidden desktop:block">
         <Navbar></Navbar>
       </div>
-      <div>
-        <div className="flex flex-col justify-center items-center space-y-12 mt-8">
+      <div >
+        <div className=" flex flex-col justify-center items-center space-y-12 mt-8">
           <div className="bg-[#45C440] w-2/4 h-12 font-semibold  rounded-xl align-middle text-white flex items-center justify-center mobile:w-3/4 desktop:w-2/4  ">
             <p>Terimakasih atas pembayaran transaksi</p>
           </div>
@@ -24,7 +24,7 @@ const PembayaranSukses = () => {
             Transaksi pembayaran kelas premium berhasil!
             <p className="font-normal">E-receipt telah dikirimkan ke email.</p>
           </p>
-          <Button className="bg-[#116E63] w-1/5 h-[2.5rem]  flex justify-center items-center rounded-3xl text-white font-semibold text-sm gap-2 mobile:w-2/4 desktop:1/5">Mulai Belajar</Button>
+          <Button className="bg-[#116E63]  h-[2.5rem]  flex justify-center items-center rounded-3xl text-white font-semibold text-sm gap-2 desktop:w-1/5 mobile:w-2/4 desktop:1/5">Mulai Belajar</Button>
         </div>
         <div className="flex justify-center items-center">
           <button

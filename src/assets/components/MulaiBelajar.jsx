@@ -7,8 +7,8 @@ export const MulaiBelajar = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center ">
-      <div className="bg-white w-4/12 h-2/3 rounded-3xl flex justify-center items-center ">
+    <div className="fixed inset-0 bg-black bg-opacity-80 flex justify-center desktop:items-center mobile:items-end ">
+      <div className="bg-white desktop:w-4/12 mobile:w-full desktop:h-2/3 mobile:h-4/5 desktop:rounded-3xl mobile:rounded-t-3xl flex justify-center items-center  ">
         <div className="flex flex-col justify-center items-center ">
           <button className="place-self-end mr-4 mb-8">
             <svg

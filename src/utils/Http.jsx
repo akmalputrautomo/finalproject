@@ -8,17 +8,17 @@ const http = axios.create({
   timeout: 30000,
   headers: {
     accept: "application/json",
+    "Content-Type": "application/json",
   },
 });
 
 http.interceptors.request.use((config) => {
   config.headers = {
     ...config.headers,
-    // Authorization: `Bearer ${getToken ? getToken : ""}`,
-    // Authorization: `Bearer ${process.env.REACT_APP_KEY}`,
+    Authorization: `Bearer ${getToken ? getToken : ""}`,
   };
 
   return config;
 });
 
-export { http };
+export default http;

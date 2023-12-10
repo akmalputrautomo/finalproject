@@ -11,13 +11,13 @@ const queryCourse = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <NextUIProvider>
   <React.StrictMode>
-    <Provider store={store}>
-      <QueryClientProvider client={queryCourse}>
-        <RouterList />
-      </QueryClientProvider>
-    </Provider>
+    <NextUIProvider>
+      <Provider store={store}>
+        <QueryClientProvider client={queryCourse}>
+          <RouterList />
+        </QueryClientProvider>
+      </Provider>
+    </NextUIProvider>
   </React.StrictMode>
-  </NextUIProvider>
 );

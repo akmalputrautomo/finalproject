@@ -1,7 +1,7 @@
-import { http } from "../../utils/Http";
 import { endpoint } from "../../utils/endpoint";
 import { CookieKeys, CookieStorage } from "../../utils/cookies";
 import { useMutation } from "@tanstack/react-query";
+import http from "../../utils/Http";
 
 const fetchLogin = async (input) => {
   return await http

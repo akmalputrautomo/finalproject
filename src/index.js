@@ -6,6 +6,7 @@ import store from "./redux/store/store";
 import { Provider } from "react-redux";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { NextUIProvider } from "@nextui-org/react";
+import { ToastContainer } from "react-toastify";
 
 const queryCourse = new QueryClient();
 
@@ -17,6 +18,7 @@ root.render(
         <QueryClientProvider client={queryCourse}>
           <RouterList />
         </QueryClientProvider>
+        <ToastContainer />
       </Provider>
     </NextUIProvider>
   </React.StrictMode>

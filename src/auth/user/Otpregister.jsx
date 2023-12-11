@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import logo from "../../assets/img/Logo.png";
 import { Form } from "antd";
 import { InputOTP } from "antd-input-otp";
@@ -6,10 +5,7 @@ import { InputOTP } from "antd-input-otp";
 const OtpRegister = () => {
   const [form] = Form.useForm();
 
-  const handleFinish = (values) => {
-    // Your logic
-  };
-
+  const handleFinish = (value) => {};
   return (
     <>
       <div className="login-section bg-slate-600 w-screen h-screen flex justify-center items-center">
@@ -35,12 +31,14 @@ const OtpRegister = () => {
                 <h1 className="text-center text-[#116E63] font-serif font-semibold text-xl">Masukan OTP</h1>
                 <p>Ketik 6 digit kode yang dikirimkan ke</p>
                 <Form onFinish={handleFinish} form={form}>
-                  <Form.Item name="otp">
+                  <Form.Item name="otp" rules={[{ required: true, message: "Masukkan OTP" }]}>
                     <InputOTP autoSubmit={form} inputType="numeric" />
                   </Form.Item>
                 </Form>
                 <div className="flex justify-center items-center">
-                  <button className="bg-[#116E63] w-full p-2 rounded-md text-white ">SIMPAN</button>
+                  <button className="bg-[#116E63] w-full p-2 rounded-md text-white" onClick={handleFinish}>
+                    SIMPAN
+                  </button>
                 </div>
               </div>
             </div>

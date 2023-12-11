@@ -16,3 +16,8 @@ const useCreateUser = () => {
   return useMutation(RegisterUser);
 };
 export { RegisterUser, useCreateUser };
+
+// redux
+export const reduxRegisterUser = async (input) => {
+  return await http.post(endpoint.REGISTER_USER, input);
+};

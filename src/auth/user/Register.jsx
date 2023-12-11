@@ -5,6 +5,9 @@ import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useCreateUser } from "../../services/auth/authRegister";
+import { useDispatch, useSelector } from "react-redux";
+import { RegisterUserrr } from "../../redux/action/auth/authRegister";
+import { toast } from "react-toastify";
 
 export const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -13,19 +16,36 @@ export const Register = () => {
   const [email, setemail] = useState("");
   const [no_hp, setno_hp] = useState("");
   const [password, setpassword] = useState("");
-  const { mutate: Regis } = useCreateUser();
+  // const { mutate: Regis } = useCreateUser();
+  const dispatch = useDispatch();
+  const Data = useSelector((state) => state.regis);
 
   const showPass = () => {
     setShowPassword(!showPassword);
   };
 
-  const registerUser = () => {
-    Regis({
-      name: name,
-      email: email,
-      no_hp: no_hp,
-      password: password,
-    });
+  // const registerUser = () => {
+  //   Regis({
+  //     name: name,
+  //     email: email,
+  //     no_hp: no_hp,
+  //     password: password,
+  //   });
+  // };
+
+  const registerUser = async () => {
+    const success = await dispatch(
+      RegisterUserrr({
+        name: name,
+        email: email,
+        no_hp: no_hp,
+        password: password,
+      })
+    );
+    if (success) {
+      toast.success("Tautan Verifikasi telah dikirim!");
+      navigate("/otp");
+    }
   };
 
   const { Option } = Select;

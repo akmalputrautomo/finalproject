@@ -6,61 +6,44 @@ export const DetailKelasPembayaran = () => {
   const defaultContent =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   return (
-    <div className="w-full ">
+    <div className="w-full bg-gradient-to-b from-[#CFE2E0] via-white to-white ">
       <div className="flex flex-col justify-center items-center ">
-        <div className="w-full px-[8rem] pt-4">
-      
-          <button className="flex items-center  gap-2" onClick={() => {navigate("detailKelas");} }>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              height="16"
-              width="14"
-              viewBox="0 0 448 512">
+        <div className="w-full ml-10  px-[8rem] pt-4 mobile:px-1 desktop:px-[8rem]">
+          <button
+            className="flex items-center  gap-2"
+            onClick={() => {
+              navigate("/detailKelas");
+            }}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512">
               <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
             </svg>
             <p>Kembali</p>
           </button>
-    
         </div>
-        <div className="flex flex-col  w-full justify-center items-center space-y-20">
-          <div className="bg-[#DB1B1B] w-2/4 h-12  rounded-xl align-middle text-white flex items-center justify-center   ">
+        <div className="flex flex-col  w-full justify-center items-center desktop:space-y-20 mobile:space-y-8 mobile:px-2 desktop:px-0 mobile:py-4 desktop:py-0">
+          <div className="bg-[#DB1B1B] desktop:w-2/4 mobile:w-[23rem] mobile:text-sm desktop:text-base  h-12  rounded-xl align-middle text-white flex items-center justify-center   ">
             <p>Selesaikan Pembayaran sampai 10 Maret 2023 12:00</p>
           </div>
-          <div className="flex gap-6">
-            <div className=" w-[40rem] ">
-              <Accordion>
-                <AccordionItem
-                  key="1"
-                  aria-label="1"
-                  title="Transfer Bank"
-                  className="bg-[#3C3C3C] px-4 mb-2 rounded-lg text-white font-semibold ">
+          <div className=" flex desktop:flex-row mobile:flex-col-reverse gap-6 mobile:justify-center mobile:items-center desktop:items-start ">
+            <div className="flex-row  justify-center items-center desktop:w-[40rem] mobile:w-[25rem] ">
+              <Accordion className="">
+                <AccordionItem key="1" aria-label="1"  title="Transfer Bank"  className="bg-[#3C3C3C] px-4 mb-2 text-white rounded-lg font-semibold ">
                   {defaultContent}
                 </AccordionItem>
-                <AccordionItem
-                  key="2"
-                  aria-label="Accordion 2"
-                  title="Credit Card"
-                  className="bg-[#116E63] px-4 mt-2 rounded-lg text-white font-semibold ">
-                  <div className="w-full h-[20rem] p-8 mb-2 bg-white rounded-xl ">
+                <AccordionItem key="2" aria-label="Accordion 2" title="Credit Card" className="bg-[#116E63] px-4 mt-2 rounded-lg text-white font-semibold ">
+                  <div className="w-full h-[23rem] p-8 mb-2 bg-white rounded-xl ">
                     <div className=" space-y-4 ">
                       <div className=" flex justify-center items-center ">
-                        <svg
-                          width="296"
-                          height="20"
-                          viewBox="0 0 296 20"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
+                        <svg width="296" height="20" viewBox="0 0 296 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <g clip-path="url(#clip0_91_9102)">
                             <path
                               d="M72.168 18.8889C72.168 18.5369 72.4072 18.2478 72.7982 18.2478C73.1718 18.2478 73.424 18.5245 73.424 18.8889C73.424 19.2534 73.1718 19.5301 72.7982 19.5301C72.4072 19.5301 72.168 19.2409 72.168 18.8889ZM73.8499 18.8889V17.8873H73.3981V18.1313C73.2549 17.951 73.0375 17.8379 72.742 17.8379C72.1598 17.8379 71.7028 18.2781 71.7028 18.8894C71.7028 19.5008 72.1595 19.941 72.742 19.941C73.0374 19.941 73.2549 19.8278 73.3981 19.6476V19.8907H73.8494V18.8889H73.8499ZM89.1136 18.8889C89.1136 18.5369 89.3528 18.2478 89.7439 18.2478C90.118 18.2478 90.3697 18.5245 90.3697 18.8889C90.3697 19.2534 90.118 19.5301 89.7439 19.5301C89.3529 19.5301 89.1136 19.2409 89.1136 18.8889ZM90.796 18.8889V17.0833H90.3439V18.1313C90.2006 17.951 89.9833 17.8379 89.6877 17.8379C89.1055 17.8379 88.6486 18.2781 88.6486 18.8894C88.6486 19.5008 89.1052 19.941 89.6877 19.941C89.9833 19.941 90.2006 19.8278 90.3439 19.6476V19.8907H90.796V18.8889ZM79.4566 18.2272C79.7477 18.2272 79.9346 18.4031 79.9824 18.7129H78.9045C78.9527 18.4237 79.1348 18.2272 79.4567 18.2272H79.4566ZM79.4657 17.8368C78.8569 17.8368 78.4309 18.2638 78.4309 18.8883C78.4309 19.5251 78.874 19.9399 79.4959 19.9399C79.8088 19.9399 80.0954 19.8646 80.3475 19.6593L80.1261 19.3366C79.952 19.4708 79.7302 19.5461 79.5218 19.5461C79.2306 19.5461 78.9656 19.4161 78.9004 19.0556H80.443C80.4474 19.0014 80.4519 18.9468 80.4519 18.8882C80.4474 18.2639 80.0469 17.8366 79.4654 17.8366L79.4657 17.8368ZM84.9195 18.8882C84.9195 18.5362 85.1587 18.2471 85.5497 18.2471C85.9233 18.2471 86.1755 18.5238 86.1755 18.8882C86.1755 19.2526 85.9233 19.5293 85.5497 19.5293C85.1587 19.5293 84.9193 19.2402 84.9193 18.8882H84.9195ZM86.6012 18.8882V17.8873H86.1498V18.1313C86.006 17.951 85.7892 17.8379 85.4936 17.8379C84.9114 17.8379 84.4544 18.2781 84.4544 18.8894C84.4544 19.5008 84.9111 19.941 85.4936 19.941C85.7892 19.941 86.006 19.8278 86.1498 19.6476V19.8907H86.6014V18.8889L86.6012 18.8882ZM82.3684 18.8882C82.3684 19.4957 82.8071 19.9398 83.4767 19.9398C83.7895 19.9398 83.998 19.8727 84.2234 19.701L84.0065 19.349C83.8369 19.4665 83.6588 19.5293 83.4622 19.5293C83.1016 19.5251 82.8365 19.2737 82.8365 18.8882C82.8365 18.5027 83.1016 18.2515 83.4622 18.2471C83.6583 18.2471 83.8364 18.3099 84.0065 18.4274L84.2234 18.0754C83.9976 17.9037 83.7892 17.8366 83.4767 17.8366C82.8071 17.8366 82.3684 18.2806 82.3684 18.8882ZM88.192 17.8366C87.9314 17.8366 87.7617 17.9541 87.6443 18.1301V17.8873H87.1966V19.8896H87.6489V18.7672C87.6489 18.4358 87.7966 18.2517 88.0919 18.2517C88.1886 18.2504 88.2846 18.2675 88.3744 18.3021L88.5136 17.8917C88.4136 17.8537 88.2833 17.837 88.1918 17.837L88.192 17.8366ZM76.0833 18.0465C75.8659 17.9084 75.5665 17.837 75.2361 17.837C74.7098 17.837 74.371 18.0802 74.371 18.478C74.371 18.8045 74.6232 19.0059 75.0878 19.0688L75.3012 19.098C75.5489 19.1316 75.6658 19.1944 75.6658 19.3075C75.6658 19.4624 75.5013 19.5507 75.1923 19.5507C74.8794 19.5507 74.6536 19.4543 74.5014 19.3412L74.2891 19.6807C74.5368 19.8567 74.8497 19.9406 75.1885 19.9406C75.7885 19.9406 76.1362 19.6683 76.1362 19.287C76.1362 18.9351 75.8625 18.7509 75.4104 18.6881L75.1975 18.6583C75.002 18.6339 74.8453 18.596 74.8453 18.4618C74.8453 18.3154 74.993 18.2273 75.2408 18.2273C75.506 18.2273 75.7627 18.3237 75.8885 18.399L76.084 18.047L76.0833 18.0465ZM81.9121 17.8374C81.6515 17.8374 81.4817 17.9549 81.3649 18.1308V17.8873H80.9172V19.8896H81.369V18.7672C81.369 18.4358 81.5167 18.2517 81.812 18.2517C81.9087 18.2504 82.0047 18.2675 82.0945 18.3021L82.2337 17.8917C82.1337 17.8537 82.0033 17.837 81.9118 17.837L81.9121 17.8374ZM78.0572 17.8873H77.3185V17.2798H76.8618V17.8873H76.4405V18.2852H76.8618V19.1987C76.8618 19.6633 77.0489 19.94 77.5833 19.94C77.7793 19.94 78.0052 19.8814 78.1484 19.7852L78.0179 19.4123C77.8831 19.4876 77.7354 19.5256 77.618 19.5256C77.3922 19.5256 77.3185 19.3914 77.3185 19.1904V18.2856H78.0572V17.8873ZM71.3034 19.8901V18.6335C71.3034 18.1602 70.9905 17.8418 70.4861 17.8375C70.2209 17.8332 69.9474 17.9128 69.7559 18.1937C69.6126 17.9717 69.3868 17.8375 69.0693 17.8375C68.8475 17.8375 68.6306 17.9003 68.4609 18.1348V17.8873H68.0088V19.8896H68.4645V18.7794C68.4645 18.4318 68.6644 18.2471 68.9733 18.2471C69.2733 18.2471 69.425 18.4356 69.425 18.775V19.8894H69.8817V18.7791C69.8817 18.4315 70.0902 18.2468 70.39 18.2468C70.6985 18.2468 70.8457 18.4353 70.8457 18.7747V19.8891L71.3034 19.8901Z"
                               fill="#231F20"
                             />
-                            <path
-                              d="M82.5923 14.1667H75.9258V1.66675H82.5924L82.5923 14.1667Z"
-                              fill="#FF5F00"
-                            />
+                            <path d="M82.5923 14.1667H75.9258V1.66675H82.5924L82.5923 14.1667Z" fill="#FF5F00" />
                             <path
                               d="M76.6262 7.91667C76.6262 5.39159 77.8186 3.14224 79.6753 1.69266C78.2699 0.593783 76.5315 -0.00261366 74.7417 8.61048e-06C70.3328 8.61048e-06 66.7588 3.54436 66.7588 7.91667C66.7588 12.289 70.3328 15.8333 74.7417 15.8333C76.5316 15.836 78.27 15.2396 79.6755 14.1407C77.8189 12.6914 76.6262 10.4419 76.6262 7.91667Z"
                               fill="#DB1B1B"
@@ -75,14 +58,8 @@ export const DetailKelasPembayaran = () => {
                               d="M121.404 8.55756C121.39 9.67194 122.397 10.2938 123.156 10.6636C123.936 11.043 124.198 11.2862 124.195 11.6254C124.189 12.1447 123.573 12.3738 122.996 12.3827C121.99 12.3984 121.406 12.1112 120.941 11.894L120.578 13.5894C121.045 13.8044 121.909 13.9918 122.804 14C124.906 14 126.282 12.9622 126.289 11.3532C126.298 9.31114 123.465 9.19807 123.484 8.28529C123.491 8.00856 123.755 7.71322 124.334 7.63809C124.62 7.60015 125.411 7.57114 126.307 7.98401L126.659 6.34369C126.177 6.16812 125.557 6 124.786 6C122.807 6 121.415 7.05189 121.404 8.55756ZM130.04 6.14134C129.656 6.14134 129.333 6.36526 129.188 6.70895L126.185 13.8795H128.286L128.704 12.7242L131.271 12.7242L131.514 13.8795H133.365L131.75 6.14134H130.04ZM130.334 8.23173L130.94 11.1374H129.28L130.334 8.23173ZM118.857 6.14134L117.201 13.8795H119.203L120.858 6.14134L118.857 6.14134ZM115.895 6.14134L113.812 11.4082L112.969 6.92989C112.87 6.42998 112.479 6.14134 112.046 6.14134H108.639L108.592 6.366C109.291 6.51776 110.086 6.76251 110.567 7.02436C110.861 7.1843 110.946 7.32416 111.042 7.7043L112.639 13.8795H114.754L117.998 6.14134H115.895Z"
                               fill="#1B2073"
                             />
-                            <path
-                              d="M108.592 0H134.082V2.66667H108.592V0Z"
-                              fill="#1B2073"
-                            />
-                            <path
-                              d="M108.592 17.3333H134.082V19.9999H108.592V17.3333Z"
-                              fill="#F7B802"
-                            />
+                            <path d="M108.592 0H134.082V2.66667H108.592V0Z" fill="#1B2073" />
+                            <path d="M108.592 17.3333H134.082V19.9999H108.592V17.3333Z" fill="#F7B802" />
                           </g>
                           <g clip-path="url(#clip2_91_9102)">
                             <path
@@ -120,68 +97,57 @@ export const DetailKelasPembayaran = () => {
                           />
                           <defs>
                             <clipPath id="clip0_91_9102">
-                              <rect
-                                width="25.8333"
-                                height="20"
-                                fill="white"
-                                transform="translate(66.7588)"
-                              />
+                              <rect width="25.8333" height="20" fill="white" transform="translate(66.7588)" />
                             </clipPath>
                             <clipPath id="clip1_91_9102">
-                              <rect
-                                width="26.25"
-                                height="20"
-                                fill="white"
-                                transform="translate(108.592)"
-                              />
+                              <rect width="26.25" height="20" fill="white" transform="translate(108.592)" />
                             </clipPath>
                             <clipPath id="clip2_91_9102">
-                              <rect
-                                width="31.2"
-                                height="20"
-                                fill="white"
-                                transform="translate(150.842)"
-                              />
+                              <rect width="31.2" height="20" fill="white" transform="translate(150.842)" />
                             </clipPath>
                           </defs>
                         </svg>
                       </div>
                       <div className="text-black">
                         <p>Card number</p>
-                      <Input type="email" fill="none" label="" placeholder="4480 0000 0000 0000" className=" border border-slate-300 rounded-md " />
+                        <Input type="email" fill="none" label="" placeholder="4480 0000 0000 0000" className=" border border-slate-300 rounded-md " />
                       </div>
                       <div className="text-black ">
                         <p>Card holder name</p>
-                      <Input type="email" fill="none" label="" placeholder="John Doe" className=" border border-slate-300 rounded-md" />
+                        <Input type="email" fill="none" label="" placeholder="John Doe" className=" border border-slate-300 rounded-md" />
                       </div>
                       <div className="text-black flex w-full gap-4">
                         <div className="w-1/2">
-                        <p>CVV</p>
-                      <Input type="email" fill="none" label="" placeholder="000" className=" border border-slate-300 rounded-md" />
+                          <p>CVV</p>
+                          <Input type="email" fill="none" label="" placeholder="000" className=" border border-slate-300 rounded-md" />
                         </div>
                         <div className="w-1/2">
-                        <p>Expiry date</p>
-                      <Input type="email" fill="none" label="" placeholder="07/24" className=" border border-slate-300 rounded-md" />
+                          <p>Expiry date</p>
+                          <Input type="email" fill="none" label="" placeholder="07/24" className=" border border-slate-300 rounded-md" />
                         </div>
-                        
                       </div>
                     </div>
                   </div>
                 </AccordionItem>
               </Accordion>
+              <div className="mobile:block desktop:hidden flex justify-center items-center ">
+                  <Button className="bg-[#DB1B1B] ml-2 w-[24rem] h-[2.5rem] px-4 mt-6  flex justify-center items-center rounded-3xl text-white font-semibold text-sm gap-2 ">
+                    <p>Bayar dan Ikutan Kelas Selamanya</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="white" height="20" width="20" viewBox="0 0 512 512">
+                      <path d="M0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM281 385c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l71-71L136 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l182.1 0-71-71c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L393 239c9.4 9.4 9.4 24.6 0 33.9L281 385z" />
+                    </svg>
+                  </Button>
+                </div>
             </div>
-            <div className="w-2/5 h-[24rem] px-6 py-6 rounded-3xl bg-white shadow-2xl">
-              <div className="flex w-full  flex-col justify-center items-center space-y-4 ">
-                <p className="flex justify-start w-full  text-xl font-bold">
-                  Pembayaran Kelas
-                </p>
+
+            <div className=" desktop:w-2/5  desktop:h-[24rem] mobile:h-[18rem] px-6 py-6 rounded-3xl bg-white shadow-2xl  ">
+              <div className="relative flex w-full  flex-col justify-center items-center space-y-4 ">
+                <p className="flex justify-start w-full  text-xl font-bold">Pembayaran Kelas</p>
                 <div className="w-80 h-36 shadow-lg rounded-3xl">
                   <div className="bg-emerald-500 w-full h-2/5 rounded-t-3xl "></div>
                   <div className="px-2 py-1  ">
                     <p className="text-[#116E63] font-bold">UI/UX Design</p>
-                    <p className="text-sm font-bold">
-                      Belajar Web Designer dengan Figma
-                    </p>
+                    <p className="text-sm font-bold">Belajar Web Designer dengan Figma</p>
                     <p className="text-xs">by Angela Doe</p>
                   </div>
                 </div>
@@ -199,15 +165,10 @@ export const DetailKelasPembayaran = () => {
                     <p className="text-[#116E63]">Rp 238,372</p>
                   </div>
                 </div>
-                <div>
+                <div className="mobile:hidden desktop:block">
                   <Button className="bg-[#DB1B1B] w-full h-[2.5rem] px-4 mt-6  flex justify-center items-center rounded-3xl text-white font-semibold text-sm gap-2 ">
                     <p>Bayar dan Ikutan Kelas Selamanya</p>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="white"
-                      height="20"
-                      width="20"
-                      viewBox="0 0 512 512">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="white" height="20" width="20" viewBox="0 0 512 512">
                       <path d="M0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM281 385c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l71-71L136 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l182.1 0-71-71c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L393 239c9.4 9.4 9.4 24.6 0 33.9L281 385z" />
                     </svg>
                   </Button>

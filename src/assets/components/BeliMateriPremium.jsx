@@ -9,8 +9,8 @@ export const BeliMateriPremium = ({isVisible, onClose })=> {
         if (!isVisible) return null;
 
   return (
-    <div className='fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center '>
-        <div className='bg-white w-4/12 h-2/3 rounded-3xl flex justify-center items-center '>
+    <div className='fixed inset-0 bg-black bg-opacity-80 flex justify-center desktop:items-center mobile:items-end '>
+        <div className='bg-white desktop:w-4/12 mobile:w-full desktop:h-2/3 mobile:h-3/4 desktop:rounded-3xl mobile:rounded-t-3xl flex justify-center items-center '>
             <div className=' flex flex-col justify-center items-center space-y-6'>
 
             <button className='place-self-end' onClick={() => onClose()}> 
@@ -20,7 +20,7 @@ export const BeliMateriPremium = ({isVisible, onClose })=> {
                 Selangkah lagi Menuju <p className='text-[#116E63]'>Kelas Premium</p>
             </p>
             
-            <div className='w-[28rem] h-52 shadow-lg rounded-3xl '>
+            <div className=' desktop:w-[28rem] mobile:w-[22rem] h-52 shadow-lg rounded-3xl '>
             <div className='bg-emerald-500 w-full h-2/5 rounded-t-3xl '></div>
             <div className='px-2 py-1 space-y-1 '>
             <div className='flex justify-between text-sm '>

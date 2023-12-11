@@ -3,14 +3,47 @@ import { Form, Input, Select } from "antd";
 import { AiOutlineMail } from "react-icons/ai";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useCreateUser } from "../../services/auth/authRegister";
 
 export const Register = () => {
-  // const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+  const [name, setname] = useState("");
+  const [email, setemail] = useState("");
+  const [no_hp, setno_hp] = useState("");
+  const [password, setpassword] = useState("");
+  const { mutate: Regis } = useCreateUser();
 
-  // const showPass = () => {
-  //   setShowPassword(!showPassword);
-  // };
+  const showPass = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleInput = (e) => {
+    if (e) {
+    }
+    if (e.target.id === "name") {
+      setname(e.target.value);
+    }
+    if (e.target.id === "email") {
+      setemail(e.target.value);
+    }
+    if (e.target.id === "no_hp") {
+      setno_hp(e.target.value);
+    }
+    if (e.target.id === "password") {
+      setpassword(e.target.value);
+    }
+  };
+
+  const registerUser = () => {
+    Regis({
+      name: name,
+      email: email,
+      no_hp: no_hp,
+      password: password,
+    });
+  };
 
   const { Option } = Select;
   const prefixSelector = (
@@ -26,7 +59,7 @@ export const Register = () => {
     <>
       <div className="login-section bg-slate-600 w-screen h-screen flex justify-center items-center">
         {/* section kiri */}
-        <div className="side bg-[#F8F8F8] w-[90vw] h-[80vh] lg:w-[30vw] rounded-tl-xl rounded-bl-xl shadow-xl lg:flex hidden justify-center flex-col items-center">
+        <div className="side bg-[#F8F8F8] w-[90vw] h-[70vh] justify-center flex-col items-center rounded-tl-xl rounded-bl-xl shadow-xl desktop:w-[30vw] desktop:flex hidden">
           <img src={logo} alt="" className="w-40 mt-3" />
           <h1 className="text-2xl text-white font-semibold font-serif">
             <span className="text-[#F2A227]">Learn</span>
@@ -38,12 +71,12 @@ export const Register = () => {
         </div>
 
         {/* section kanan */}
-        <div className="wrapper-box bg-white w-[90vw] lg:h-[80vh] h-fit lg:w-[30vw] rounded-r-xl rounded-l-xl lg:rounded-l-none  drop-shadow-lg flex items-center  justify-center">
-          <div className="content  flex flex-col items-center py-4 lg:mt-0">
-            <div className="logo flex flex-row justify-center items-center lg:mt-4 ">
+        <div className="wrapper-box bg-white w-[90vw] h-fit rounded-r-xl rounded-l-xl drop-shadow-lg flex items-center justify-center desktop:w-[30vw] desktop:h-[70vh] desktop:rounded-l-none">
+          <div className="content  flex flex-col items-center py-4 desktop:mt-0">
+            <div className="logo flex flex-row justify-center items-center desktop:mt-4 ">
               <img src={logo} alt="" className="w-20 mt-3" />
             </div>
-            <div className="form w-[70vw] lg:w-[20vw]">
+            <div className="form w-[70vw] desktop:w-[20vw]">
               <div className="">
                 <h1 className="text-center text-[#116E63] font-serif font-semibold text-xl">Register</h1>
                 <Form
@@ -55,6 +88,8 @@ export const Register = () => {
                   // onFinish={onRegist}
                 >
                   <Form.Item
+                    onChange={handleInput}
+                    id="name"
                     name="username"
                     label="Username"
                     labelCol={{ span: 24 }}
@@ -69,6 +104,8 @@ export const Register = () => {
                     <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
                   </Form.Item>
                   <Form.Item
+                    onChange={handleInput}
+                    id="email"
                     name="email"
                     label="Email"
                     labelCol={{ span: 24 }}
@@ -87,6 +124,8 @@ export const Register = () => {
                     <Input prefix={<AiOutlineMail className="site-form-item-icon" />} placeholder="Email" />
                   </Form.Item>
                   <Form.Item
+                    onChange={handleInput}
+                    id="no_hp"
                     name="phone"
                     label="Phone Number"
                     labelCol={{ span: 24 }}
@@ -101,6 +140,8 @@ export const Register = () => {
                     <Input addonBefore={prefixSelector} style={{ width: "100%" }} placeholder="Phone Number" />
                   </Form.Item>
                   <Form.Item
+                    onChange={handleInput}
+                    id="password"
                     name="password"
                     label="Password"
                     labelCol={{ span: 24 }}
@@ -134,8 +175,14 @@ export const Register = () => {
                     </button>
                   </div>
                   <Form.Item>
-                    <div className="button flex items-center flex justify-between mt-4 space-x-4">
-                      <button htmlType="submit" className="login-form-button bg-[#116E63] rounded-xl w-full h-12 text-white text-sm">
+                    <div className="button flex items-center justify-between mt-4 space-x-4">
+                      <button
+                        onClick={() => {
+                          registerUser();
+                        }}
+                        htmlType="submit"
+                        className="login-form-button bg-[#116E63] rounded-xl w-full h-12 text-white text-sm"
+                      >
                         Register
                       </button>
                     </div>
@@ -156,17 +203,17 @@ export const Register = () => {
 
     //       <div className="mb-4">
     //         <label className=" text-gray-600">Nama</label>
-    //         <input type="text" id="nama" placeholder="Nama Lengkap" className="mt-1 p-2 w-full border rounded-xl" />
+    //         <input type="text" id="nama" onChange={handleInput} placeholder="Nama Lengkap" className="mt-1 p-2 w-full border rounded-xl" />
     //       </div>
 
     //       <div className="mb-4">
     //         <label className=" text-gray-600">Email</label>
-    //         <input type="email" id="email" placeholder="Contoh: ganteng123@gmail.com" className="mt-1 p-2 w-full border rounded-xl" />
+    //         <input type="email" id="email" onChange={handleInput} placeholder="Contoh: ganteng123@gmail.com" className="mt-1 p-2 w-full border rounded-xl" />
     //       </div>
 
     //       <div className="mb-4">
     //         <label className=" text-gray-600">Nomor Telepon</label>
-    //         <input type="tel" id="telepon" placeholder="+62" className="mt-1 p-2 w-full border rounded-xl" />
+    //         <input type="tel" id="no_hp" onChange={handleInput} placeholder="+62" className="mt-1 p-2 w-full border rounded-xl" />
     //       </div>
 
     //       <div className="relative">
@@ -177,7 +224,7 @@ export const Register = () => {
     //         </span>
     //       </div>
 
-    //       <button type="button" className="bg-[#116E63] text-white px-4 py-2 w-full rounded hover:bg-green-800">
+    //       <button type="button" onClick={registerUser} className="bg-[#116E63] text-white px-4 py-2 w-full rounded hover:bg-green-800">
     //         Daftar
     //       </button>
 

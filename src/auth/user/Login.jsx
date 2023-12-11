@@ -57,7 +57,7 @@ export const Login = () => {
 
   return (
     <div className="login-section bg-slate-600 w-screen h-screen flex justify-center items-center">
-      <div className="side bg-[#F8F8F8] w-[90vw] h-[70vh] lg:w-[30vw] rounded-tl-xl rounded-bl-xl shadow-xl lg:flex hidden justify-center flex-col items-center">
+      <div className="side bg-[#F8F8F8] w-[90vw] h-[70vh] rounded-tl-xl rounded-bl-xl shadow-xl justify-center flex-col items-center desktop:flex hidden desktop:w-[30vw]">
         <img src={logo} alt="" className="w-40 mt-3" />
         <h1 className="text-2xl text-white font-semibold font-serif">
           <span className="text-[#F2A227]">Learn</span>
@@ -67,13 +67,13 @@ export const Login = () => {
           <span className="text-[#F2A227]">time</span>
         </h1>
       </div>
-      <div className="wrapper-box bg-white w-[90vw] lg:h-[70vh] h-fit lg:w-[30vw] rounded-r-xl rounded-l-xl lg:rounded-l-none  drop-shadow-lg flex items-center  justify-center">
-        <div className="content  flex flex-col items-center py-4 lg:mt-0">
-          <div className="logo flex flex-row justify-center items-center lg:mt-4 ">
+      <div className="wrapper-box bg-white w-[90vw] h-fit rounded-r-xl rounded-l-xl drop-shadow-lg flex items-center justify-center desktop:rounded-l-none desktop:h-[70vh] desktop:w-[30vw]">
+        <div className="content flex flex-col items-center py-4 desktop:mt-0">
+          <div className="logo flex flex-row justify-center items-center desktop:mt-4 ">
             <img src={logo} alt="" className="w-20 mt-3" />
           </div>
 
-          <div className="form w-[70vw] lg:w-[20vw]">
+          <div className="form w-[70vw] desktop:w-[20vw]">
             <div className="">
               <h1 className="text-center text-[#116E63] font-serif font-semibold text-xl">Login</h1>
               <Form

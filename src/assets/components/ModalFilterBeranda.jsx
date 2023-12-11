@@ -1,17 +1,11 @@
 import React from "react";
-import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button} from "@nextui-org/react";
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button } from "@nextui-org/react";
 import { FilterKelasBeranda } from "../FilterKelasBeranda";
 
-export const ModalFilterBeranda = ({isOpen, onOpenChange, scrollBehavior}) => {
-
+const ModalFilterBeranda = ({ isOpen, onOpenChange, scrollBehavior }) => {
   return (
     <div>
-      <Modal
-        isOpen={isOpen}
-        onOpenChange={onOpenChange}
-        scrollBehavior={scrollBehavior}
-        className="block desktop:hidden"
-      >
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange} scrollBehavior={scrollBehavior} className="block desktop:hidden">
         <ModalContent>
           {(onClose) => (
             <>
@@ -31,3 +25,4 @@ export const ModalFilterBeranda = ({isOpen, onOpenChange, scrollBehavior}) => {
     </div>
   );
 };
+export default ModalFilterBeranda;

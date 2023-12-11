@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import http from "../../utils/Http";
 import { endpoint } from "../../utils/endpoint";
 import { useMutation } from "@tanstack/react-query";
@@ -5,7 +6,10 @@ import { useMutation } from "@tanstack/react-query";
 const RegisterUser = async (input) => {
   try {
     await http.post(endpoint.REGISTER_USER, input);
-  } catch (error) {}
+    window.location.href = "/otp";
+  } catch (error) {
+    toast.warning("eror ");
+  }
 };
 
 const useCreateUser = () => {

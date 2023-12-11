@@ -19,23 +19,6 @@ export const Register = () => {
     setShowPassword(!showPassword);
   };
 
-  const handleInput = (e) => {
-    if (e) {
-    }
-    if (e.target.id === "name") {
-      setname(e.target.value);
-    }
-    if (e.target.id === "email") {
-      setemail(e.target.value);
-    }
-    if (e.target.id === "no_hp") {
-      setno_hp(e.target.value);
-    }
-    if (e.target.id === "password") {
-      setpassword(e.target.value);
-    }
-  };
-
   const registerUser = () => {
     Regis({
       name: name,
@@ -85,10 +68,9 @@ export const Register = () => {
                   initialValues={{
                     remember: true,
                   }}
-                  // onFinish={onRegist}
                 >
                   <Form.Item
-                    onChange={handleInput}
+                    onChange={(e) => setname(e.target.value)}
                     id="name"
                     name="username"
                     label="Username"
@@ -104,7 +86,7 @@ export const Register = () => {
                     <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Username" />
                   </Form.Item>
                   <Form.Item
-                    onChange={handleInput}
+                    onChange={(e) => setemail(e.target.value)}
                     id="email"
                     name="email"
                     label="Email"
@@ -124,7 +106,7 @@ export const Register = () => {
                     <Input prefix={<AiOutlineMail className="site-form-item-icon" />} placeholder="Email" />
                   </Form.Item>
                   <Form.Item
-                    onChange={handleInput}
+                    onChange={(e) => setno_hp(e.target.value)}
                     id="no_hp"
                     name="phone"
                     label="Phone Number"
@@ -140,7 +122,7 @@ export const Register = () => {
                     <Input addonBefore={prefixSelector} style={{ width: "100%" }} placeholder="Phone Number" />
                   </Form.Item>
                   <Form.Item
-                    onChange={handleInput}
+                    onChange={(e) => setpassword(e.target.value)}
                     id="password"
                     name="password"
                     label="Password"
@@ -197,13 +179,13 @@ export const Register = () => {
 
     // <div>
     //   {/* section kiri */}
-    //   <div className="bg-gray-100 h-screen flex items-center justify-center w-full p-10">
-    //     <div className="bg-white px-[8rem] rounded shadow-md w-2/4 flex flex-col justify-center h-full">
+    //   <div className="bg-gray-100 h-screen flex items-center justify-center w-full p-10 mobile:p-0 desktop:p-10 ">
+    //     <div className="bg-white px-[8rem] rounded shadow-md w-2/4 flex flex-col justify-center h-full mobile:px-2 desktop:px-[8rem] mobile:w-full desktop:w-2/4">
     //       <h1 className="text-2xl font-bold mb-8 text-[#116E63]">Daftar</h1>
 
     //       <div className="mb-4">
     //         <label className=" text-gray-600">Nama</label>
-    //         <input type="text" id="nama" onChange={handleInput} placeholder="Nama Lengkap" className="mt-1 p-2 w-full border rounded-xl" />
+    //         <input type="text" id="name" onChange={handleInput} placeholder="Nama Lengkap" className="mt-1 p-2 w-full border rounded-xl" />
     //       </div>
 
     //       <div className="mb-4">
@@ -217,8 +199,8 @@ export const Register = () => {
     //       </div>
 
     //       <div className="relative">
-    //         <label className=" text-gray-600">Buat Password</label>
-    //         <input id="password" type={showPassword ? "text" : "password"} placeholder="Password" className="w-full p-2 mb-2 border rounded"></input>
+    //         <label className=" text-gray-600"> Password</label>
+    //         <input onChange={handleInput} id="password" type={showPassword ? "text" : "password"} placeholder="Password" className="w-full p-2 mb-2 border rounded"></input>
     //         <span className="absolute right-3 top-8 cursor-pointer" onClick={showPass}>
     //           {showPassword ? <i class="fa-regular fa-eye"></i> : <i class="fa-regular fa-eye-slash"></i>}
     //         </span>
@@ -230,12 +212,19 @@ export const Register = () => {
 
     //       <div className="flex mt-4 justify-center">
     //         <h3 className="mr-2">Sudah punya akun?</h3>
-    //         <button className="text-[#116E63] hover:underline rounded-xl">Masuk di sini</button>
+    //         <button
+    //           onClick={() => {
+    //             navigate("/login");
+    //           }}
+    //           className="text-[#116E63] hover:underline rounded-xl"
+    //         >
+    //           Masuk di sini
+    //         </button>
     //       </div>
     //     </div>
 
     //     {/* section kanan */}
-    //     <div className="bg-[#F8F8F8] w-2/4 h-full flex justify-center items-center p-10">
+    //     <div className="bg-[#F8F8F8] w-2/4 h-full flex justify-center items-center p-10 mobile:hidden desktop:flex">
     //       <img src={logo} className="w-[25rem] h-[8rem]"></img>
     //     </div>
     //   </div>

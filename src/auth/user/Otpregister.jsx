@@ -12,7 +12,7 @@ const OtpRegister = () => {
   const dispatch = useDispatch();
   const emailFromRedux = useSelector((state) => state.regis.user.email);
   const [Email, setEmail] = useState(emailFromRedux || "");
-  const [seconds, setSeconds] = useState(5);
+  const [seconds, setSeconds] = useState(300);
   const navigate = useNavigate();
 
   // redux otp
@@ -40,7 +40,7 @@ const OtpRegister = () => {
       })
     );
     if (resendData) {
-      setSeconds(5);
+      setSeconds(300);
     }
   };
 

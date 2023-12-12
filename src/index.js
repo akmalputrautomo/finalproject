@@ -16,9 +16,9 @@ root.render(
     <NextUIProvider>
       <Provider store={store}>
         <QueryClientProvider client={queryCourse}>
+          <ToastContainer />
           <RouterList />
         </QueryClientProvider>
-        <ToastContainer />
       </Provider>
     </NextUIProvider>
   </React.StrictMode>

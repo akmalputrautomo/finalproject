@@ -4,34 +4,17 @@ import { AiOutlineMail } from "react-icons/ai";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { useCreateUser } from "../../services/auth/authRegister";
 import { useDispatch, useSelector } from "react-redux";
 import { RegisterUserrr } from "../../redux/action/auth/authRegister";
 import { toast } from "react-toastify";
 
 export const Register = () => {
-  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [no_hp, setno_hp] = useState("");
   const [password, setpassword] = useState("");
-  // const { mutate: Regis } = useCreateUser();
   const dispatch = useDispatch();
-  const Data = useSelector((state) => state.regis);
-
-  const showPass = () => {
-    setShowPassword(!showPassword);
-  };
-
-  // const registerUser = () => {
-  //   Regis({
-  //     name: name,
-  //     email: email,
-  //     no_hp: no_hp,
-  //     password: password,
-  //   });
-  // };
 
   const registerUser = async () => {
     const success = await dispatch(
@@ -43,7 +26,6 @@ export const Register = () => {
       })
     );
     if (success) {
-      toast.success("Tautan Verifikasi telah dikirim!");
       navigate("/otp");
     }
   };
@@ -196,58 +178,5 @@ export const Register = () => {
         </div>
       </div>
     </>
-
-    // <div>
-    //   {/* section kiri */}
-    //   <div className="bg-gray-100 h-screen flex items-center justify-center w-full p-10 mobile:p-0 desktop:p-10 ">
-    //     <div className="bg-white px-[8rem] rounded shadow-md w-2/4 flex flex-col justify-center h-full mobile:px-2 desktop:px-[8rem] mobile:w-full desktop:w-2/4">
-    //       <h1 className="text-2xl font-bold mb-8 text-[#116E63]">Daftar</h1>
-
-    //       <div className="mb-4">
-    //         <label className=" text-gray-600">Nama</label>
-    //         <input type="text" id="name" onChange={handleInput} placeholder="Nama Lengkap" className="mt-1 p-2 w-full border rounded-xl" />
-    //       </div>
-
-    //       <div className="mb-4">
-    //         <label className=" text-gray-600">Email</label>
-    //         <input type="email" id="email" onChange={handleInput} placeholder="Contoh: ganteng123@gmail.com" className="mt-1 p-2 w-full border rounded-xl" />
-    //       </div>
-
-    //       <div className="mb-4">
-    //         <label className=" text-gray-600">Nomor Telepon</label>
-    //         <input type="tel" id="no_hp" onChange={handleInput} placeholder="+62" className="mt-1 p-2 w-full border rounded-xl" />
-    //       </div>
-
-    //       <div className="relative">
-    //         <label className=" text-gray-600"> Password</label>
-    //         <input onChange={handleInput} id="password" type={showPassword ? "text" : "password"} placeholder="Password" className="w-full p-2 mb-2 border rounded"></input>
-    //         <span className="absolute right-3 top-8 cursor-pointer" onClick={showPass}>
-    //           {showPassword ? <i class="fa-regular fa-eye"></i> : <i class="fa-regular fa-eye-slash"></i>}
-    //         </span>
-    //       </div>
-
-    //       <button type="button" onClick={registerUser} className="bg-[#116E63] text-white px-4 py-2 w-full rounded hover:bg-green-800">
-    //         Daftar
-    //       </button>
-
-    //       <div className="flex mt-4 justify-center">
-    //         <h3 className="mr-2">Sudah punya akun?</h3>
-    //         <button
-    //           onClick={() => {
-    //             navigate("/login");
-    //           }}
-    //           className="text-[#116E63] hover:underline rounded-xl"
-    //         >
-    //           Masuk di sini
-    //         </button>
-    //       </div>
-    //     </div>
-
-    //     {/* section kanan */}
-    //     <div className="bg-[#F8F8F8] w-2/4 h-full flex justify-center items-center p-10 mobile:hidden desktop:flex">
-    //       <img src={logo} className="w-[25rem] h-[8rem]"></img>
-    //     </div>
-    //   </div>
-    // </div>
   );
 };

@@ -16,9 +16,9 @@ export { RegisterOtp, useCreateOtp };
 
 // redux
 export const reduxOtpUser = async (input) => {
-  return await http.put(endpoint.VERIFY_OTP, input);
+  return await http.post(endpoint.VERIFY_OTP, input);
 };
 
 export const reduxResendOtpUser = async (input) => {
-  return await http.put(endpoint.VERIFY_OTP, input);
+  return await http.put(endpoint.RESEND_OTP, input);
 };

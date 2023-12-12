@@ -5,7 +5,6 @@ import { useMutation } from "@tanstack/react-query";
 const RegisterOtp = async (input) => {
   try {
     await http.put(endpoint.VERIFY_OTP, input);
-    // window.location.href = "/login";
   } catch (error) {}
 };
 

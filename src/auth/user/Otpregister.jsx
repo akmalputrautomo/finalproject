@@ -1,13 +1,10 @@
 import logo from "../../assets/img/Logo.png";
-// import { Form } from "antd";
-// import { InputOTP } from "antd-input-otp";
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getResendOtp, getVerifyOtp } from "../../redux/action/auth/otpregister";
 
 const OtpRegister = () => {
-  // const [form] = Form.useForm();
   const [otp, setotp] = useState("");
   const dispatch = useDispatch();
   const emailFromRedux = useSelector((state) => state.regis.user.email);
@@ -24,7 +21,7 @@ const OtpRegister = () => {
       })
     );
     if (otpData) {
-      navigate("/login");
+      navigate("/");
     }
   };
 
@@ -52,7 +49,6 @@ const OtpRegister = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // const handleFinish = (value) => {};
   return (
     <>
       <div className="login-section bg-slate-600 w-screen h-screen flex justify-center items-center">
@@ -116,11 +112,6 @@ const OtpRegister = () => {
           </div>
         </div>
       </div>
-      {/* <Form onFinish={handleFinish} form={form}>
-  <Form.Item name="otp" rules={[{ required: true, message: "Masukkan OTP" }]}>
-    <InputOTP autoSubmit={form} inputType="numeric" />
-  </Form.Item>
-</Form> */}
     </>
   );
 };

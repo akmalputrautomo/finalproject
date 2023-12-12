@@ -38,16 +38,28 @@ const OtpRegister = () => {
     );
     if (resendData) {
       setSeconds(300);
+    } else {
+      setSeconds(300);
     }
   };
 
   useEffect(() => {
+    const initialSeconds = 300; // Menit awal (5 menit * 60 detik)
+    setSeconds(initialSeconds);
+
     const interval = setInterval(() => {
       setSeconds((prevSeconds) => (prevSeconds > 0 ? prevSeconds - 1 : 0));
     }, 1000);
 
     return () => clearInterval(interval);
   }, []);
+
+  // Fungsi untuk mengonversi detik menjadi format menit:detik
+  const formatTime = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
+  };
 
   return (
     <>
@@ -99,7 +111,7 @@ const OtpRegister = () => {
                 <div>
                   {seconds > 0 ? (
                     <span className="py-4 pb-5 text-lg text-center">
-                      Kirim ulang OTP dalam <span className="text-primary font-bold">{seconds}</span> detik
+                      Kirim ulang OTP dalam <span className="text-primary font-bold">{formatTime(seconds)}</span> detik
                     </span>
                   ) : (
                     <span className="py-4 pb-5 text-xl text-center font-bold cursor-pointer" onClick={handleResend}>

@@ -2,15 +2,10 @@ import React, { useState } from "react";
 import logo from "../img/Logo.png";
 import { CookieKeys, CookieStorage } from "../../utils/cookies";
 import { useNavigate } from "react-router";
-import {
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
-} from "@nextui-org/dropdown";
+import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@nextui-org/dropdown";
 import { Button } from "@nextui-org/button";
 import { Avatar } from "@nextui-org/avatar";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { LogOut } from "../../redux/action/auth/authLoginUser";
 
 const Navbar = () => {
@@ -21,30 +16,18 @@ const Navbar = () => {
   const token = CookieStorage.get(CookieKeys.AuthToken);
   console.log(token, "Ini Token");
 
+  const login = useSelector((state) => state.loginUser.user.email);
+  console.log(login, "lohginn");
+
   return (
     <div>
       <div className="bg-[#F8F8F8] flex justify-between p-4">
         <img className="w-[10rem] h-[3rem]" src={logo} />
         <form className="relative flex w-1/2 ">
-          <input
-            placeholder="cari kursus terbaik...."
-            className="  border border-black px-3 rounded-md w-full"
-            type="text"
-          ></input>
+          <input placeholder="cari kursus terbaik...." className="  border border-black px-3 rounded-md w-full" type="text"></input>
           <button type="submit" className="mb-6">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              className="w-6 h-6 absolute right-3 cursor-pointer "
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"
-              />
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6 absolute right-3 cursor-pointer ">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
             </svg>
           </button>
         </form>
@@ -68,22 +51,22 @@ const Navbar = () => {
               </button>
               <Dropdown placement="bottom-end">
                 <DropdownTrigger>
-                  <Avatar
-                    isBordered
-                    as="button"
-                    className="transition-transform"
-                    src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-                  />
+                  <Avatar isBordered as="button" className="transition-transform" src="https://i.pravatar.cc/150?u=a042581f4e29026704d" />
                 </DropdownTrigger>
                 <DropdownMenu aria-label="Profile Actions" variant="flat">
                   <DropdownItem key="profile" className="h-14 gap-2">
                     <p className="font-semibold">Signed in as</p>
-                    <p className="font-semibold">User@example.com</p>
+                    <p className="font-semibold">{login}</p>
                   </DropdownItem>
-                  <DropdownItem key="profile">Profile</DropdownItem>
-                  <DropdownItem key="help_and_feedback">
-                    Help & Feedback
+                  <DropdownItem
+                    onClick={() => {
+                      navigate("/WebAkunProfil");
+                    }}
+                    key={login.id}
+                  >
+                    Profile
                   </DropdownItem>
+                  <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
                   <DropdownItem
                     onClick={() => {
                       dispatch(LogOut());

@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { Checkbox, CheckboxGroup } from "@nextui-org/checkbox";
+import { useDispatch, useSelector } from "react-redux";
+import { getDatakategori } from "../../redux/action/kategoribelajarrr";
 
 export const FilterKelasBeranda = () => {
+  const dispatch = useDispatch();
+
+  const getkategoribelajarrrr = () => {
+    dispatch(getDatakategori());
+  };
+
+  const belajar = useSelector((state) => state.kategori.kategori.categories);
+  console.log(belajar, "belajar");
+
+  useEffect(() => {
+    getkategoribelajarrrr();
+  }, []);
+
   return (
     <div>
       <div className="px-5 space-y-5">
@@ -21,13 +36,10 @@ export const FilterKelasBeranda = () => {
           <div>
             <span className="text-lg font-bold text-black">Kategori</span>
             <div className="pl-1 py-2 space-y-2">
+            {belajar && belajar.map((film) =>
               <CheckboxGroup>
-                <Checkbox value="ui/ux"><span className="text-sm">UI/UX Design</span></Checkbox>
-                <Checkbox value="web"><span className="text-sm">Web Development</span></Checkbox>
-                <Checkbox value="android"><span className="text-sm">Android Development</span></Checkbox>
-                <Checkbox value="data"><span className="text-sm">Data Science</span></Checkbox>
-                <Checkbox value="business"><span className="text-sm">Business Intelligence</span></Checkbox>
-              </CheckboxGroup>
+                <Checkbox key={film.id} value="ui/ux"><span className="text-sm">{film.name}</span></Checkbox>
+              </CheckboxGroup>)}
             </div>
           </div>
 

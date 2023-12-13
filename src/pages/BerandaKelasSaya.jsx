@@ -4,7 +4,7 @@ import { CourseKelasSaya } from "../assets/components/CourseKelasSaya";
 import { SearchKelasSaya } from "../assets/components/SearchKelasSaya";
 import NavbarAfterLogin from "../assets/components/NavbarAfterLogin";
 import {Button, useDisclosure} from "@nextui-org/react";
-import { ModalFilterBeranda } from "../assets/components/popUp/ModalFilterBeranda";
+import { ModalFilterBeranda } from "../assets/components/ModalFilterBeranda";
 
 export const BerandaKelasSaya = () => {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();

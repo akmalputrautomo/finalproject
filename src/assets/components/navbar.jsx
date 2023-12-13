@@ -59,39 +59,43 @@ const Navbar = () => {
         </button> */}
         <div className="me-5">
           {token && token.length ? (
-            <Dropdown placement="bottom-end">
-              <DropdownTrigger>
-                <Avatar
-                  isBordered
-                  as="button"
-                  className="transition-transform"
-                  src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-                />
-              </DropdownTrigger>
-              <DropdownMenu aria-label="Profile Actions" variant="flat">
-                <DropdownItem key="profile" className="h-14 gap-2">
-                  <p className="font-semibold">Signed in as</p>
-                  <p className="font-semibold">zoey@example.com</p>
-                </DropdownItem>
-                <DropdownItem key="settings">My Settings</DropdownItem>
-                <DropdownItem key="team_settings">Team Settings</DropdownItem>
-                <DropdownItem key="analytics">Analytics</DropdownItem>
-                <DropdownItem key="system">System</DropdownItem>
-                <DropdownItem key="configurations">Configurations</DropdownItem>
-                <DropdownItem key="help_and_feedback">
-                  Help & Feedback
-                </DropdownItem>
-                <DropdownItem
-                  onClick={() => {
-                    dispatch(LogOut());
-                  }}
-                  key="logout"
-                  color="danger"
-                >
-                  Log Out
-                </DropdownItem>
-              </DropdownMenu>
-            </Dropdown>
+            <div className="flex">
+              <button className="bg-[#116E63] w-[5rem] h-[2.5rem] rounded-md">
+                <i class="fa-solid fa-list text-white text-[16px]"> kelas</i>
+              </button>
+              <button className="w-[5rem] h-[2.5rem]">
+                <i class="fa-regular fa-bell text-[#116E63]"></i>
+              </button>
+              <Dropdown placement="bottom-end">
+                <DropdownTrigger>
+                  <Avatar
+                    isBordered
+                    as="button"
+                    className="transition-transform"
+                    src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
+                  />
+                </DropdownTrigger>
+                <DropdownMenu aria-label="Profile Actions" variant="flat">
+                  <DropdownItem key="profile" className="h-14 gap-2">
+                    <p className="font-semibold">Signed in as</p>
+                    <p className="font-semibold">User@example.com</p>
+                  </DropdownItem>
+                  <DropdownItem key="profile">Profile</DropdownItem>
+                  <DropdownItem key="help_and_feedback">
+                    Help & Feedback
+                  </DropdownItem>
+                  <DropdownItem
+                    onClick={() => {
+                      dispatch(LogOut());
+                    }}
+                    key="logout"
+                    color="danger"
+                  >
+                    Log Out
+                  </DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
+            </div>
           ) : (
             <button
               className="bg-[#116E63] text-white w-[6rem] h-[3rem] rounded-md"

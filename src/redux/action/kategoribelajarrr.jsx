@@ -6,6 +6,7 @@ export const getDatakategori = () => async (dispatch) => {
     .then((Response) => {
       const kategori12 = Response.data.data;
       dispatch(setkategoribelajar(kategori12));
+      console.log(kategori12, "Absascxa")
     })
     .catch((err) => {});
 };

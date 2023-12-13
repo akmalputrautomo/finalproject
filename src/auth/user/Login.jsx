@@ -1,51 +1,53 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../../assets/img/Logo.png";
 import google from "../../assets/img/google.png";
 import facebook from "../../assets/img/facebook.png";
 import { Form, Input } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
-import { useLoginUser } from "../../services/auth/authLogin";
+import { authLoginUser } from "../../redux/action/auth/authLoginUser";
+import { useDispatch } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
 
 export const Login = () => {
   const navigate = useNavigate();
-  const [Email, setEmail] = useState("");
-  const [Password, setPassword] = useState("");
+  const [Email, setEmail] = useState('')
+  const [Password, setPassword] = useState("")
+  const [getErrMsg, setErrMsg] = useState("");
+  const dispatch = useDispatch()
 
-  const handleInput = (e) => {
-    if (e) {
-      if (e.target.id === "email") {
-        setEmail(e.target.value);
+  const handleloginUser = () => {
+    dispatch(
+      authLoginUser({
+        email: Email,
+        password: Password,
+      })
+    ).then((result) => {
+      if (result.status === 200) {
+        window.location.href = "/home";
       }
-      if (e.target.id === "password") {
-        setPassword(e.target.value);
+    })
+    .catch((err) => {
+      if (err.response.status === 400 || err.response.status === 401) {
+        setErrMsg(err.response.data.message);
       }
-    }
-  };
-
-  const { mutate: postLogin, data: errMsg, status } = useLoginUser();
-
-  const handleSubmit = () => {
-    postLogin({
-      email: Email,
-      password: Password,
     });
   };
 
-  // useEffect(() => {
-  //   if (errMsg) {
-  //     toast.error(errMsg, {
-  //       position: "top-right",
-  //       autoClose: 3500,
-  //       hideProgressBar: false,
-  //       closeOnClick: true,
-  //       pauseOnHover: true,
-  //       draggable: true,
-  //       progress: undefined,
-  //       theme: "light",
-  //     });
-  //   }
-  // }, [status === "success"]);
+  useEffect(() => {
+    if (getErrMsg) {
+      toast.error(getErrMsg, {
+        position: "top-right",
+        autoClose: 3500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+  }, [getErrMsg]);
 
   const register = () => {
     navigate("/register");
@@ -57,6 +59,20 @@ export const Login = () => {
 
   return (
     <div className="login-section bg-slate-600 w-screen h-screen flex justify-center items-center">
+      <div className="fixed">
+        <ToastContainer
+          position="top-right"
+          autoClose={3500}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+      </div>
       <div className="side bg-[#F8F8F8] w-[90vw] h-[70vh] rounded-tl-xl rounded-bl-xl shadow-xl justify-center flex-col items-center desktop:flex hidden desktop:w-[30vw]">
         <img src={logo} alt="" className="w-40 mt-3" />
         <h1 className="text-2xl text-white font-semibold font-serif">
@@ -82,13 +98,12 @@ export const Login = () => {
                 initialValues={{
                   remember: true,
                 }}
-                onFinish={handleSubmit}
               >
                 <Form.Item
                   name="username"
                   label="Username"
                   id="email"
-                  onChange={handleInput}
+                  onChange={(e) => {setEmail(e.target.value)}}
                   labelCol={{ span: 24 }}
                   rules={[
                     {
@@ -104,7 +119,7 @@ export const Login = () => {
                   name="password"
                   label="Password"
                   id="password"
-                  onChange={handleInput}
+                  onChange={(e)=>{setPassword(e.target.value)}}
                   labelCol={{ span: 24 }}
                   rules={[
                     {
@@ -129,7 +144,7 @@ export const Login = () => {
                 </div>
 
                 <div className="button  items-center  flex flex-col mt-4 ">
-                  <button onClick={handleSubmit} htmlType="submit" className="login-form-button bg-[#116E63] w-full h-12 rounded-xl text-white text-sm">
+                  <button onClick={handleloginUser} htmlType="submit" className="login-form-button bg-[#116E63] w-full h-12 rounded-xl text-white text-sm">
                     Log in
                   </button>
 

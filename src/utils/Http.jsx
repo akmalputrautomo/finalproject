@@ -1,7 +1,7 @@
 import axios from "axios";
 import { CookieStorage, CookieKeys } from "./cookies";
 
-const getToken = CookieStorage.get(CookieKeys.TokenKu) ? CookieStorage.get(CookieKeys.TokenKu) : "";
+const getToken = CookieStorage.get(CookieKeys.AuthToken) ? CookieStorage.get(CookieKeys.AuthToken) : "";
 
 const http = axios.create({
   baseURL: process.env.REACT_APP_SERVER,

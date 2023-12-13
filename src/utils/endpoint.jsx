@@ -3,6 +3,8 @@ export const endpoint = {
   REGISTER_USER: "/api/v1/auth/register",
   VERIFY_OTP: "/api/v1/auth/verify",
   RESEND_OTP: "/api/v1/auth/verify/newOtp",
+  FORGET_PASS: "/api/v1/auth/forget-password",
+  RESET_PASS : "/api/v1/auth/reset-password",
   COURSE_CATEGORIES: "/api/v1/categories",
   COURSE_DETAILS: "/api/v1/categories/detail",
 };

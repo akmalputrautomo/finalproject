@@ -19,52 +19,23 @@ export const KategoriBelajar = () => {
   return (
     <div className="bg-[#CFE2E080] px-[1rem] desktop:px-[9rem] py-[1.5rem]">
       <div className="flex justify-between">
-        <span className="text-xl font-bold text-[#000000]">Kategori Belajar</span>
-        <button className="text-xs font-bold text-[#116E63] hover:opacity-70">Lihat Semua</button>
+        <span className="text-xl font-bold text-[#000000]">
+          Kategori Belajar
+        </span>
+        <button className="text-xs font-bold text-[#116E63] hover:opacity-70">
+          Lihat Semua
+        </button>
       </div>
-
-      {/* image map */}
-      {/* {belajar.map((film) => (
-        <h1>{film.title}</h1>
-      ))} */}
-
-      {/* .slice(0, 4).map */}
 
       <div className="grid grid-cols-2 desktop:grid-cols-6 py-5 gap-[2rem]">
-        {/* card 1 */}
-        <div className="space-y-5">
-          <div className="flex w-full h-[136px] bg-emerald-500 rounded-3xl"></div>
-          <div className="text-center font-bold text-sm">UI/UX Design</div>
-        </div>
-        {/* card 2 */}
-        <div className="space-y-5">
-          <div className="flex w-full h-[136px] bg-emerald-500 rounded-3xl"></div>
-          <div className="text-center font-bold text-sm">Product Management</div>
-        </div>
-        {/* card 3 */}
-        <div className="space-y-5">
-          <div className="flex w-full h-[136px] bg-emerald-500 rounded-3xl"></div>
-          <div className="text-center font-bold text-sm">Web Development</div>
-        </div>
-        {/* card 4 */}
-        <div className="space-y-5">
-          <div className="flex w-full h-[136px] bg-emerald-500 rounded-3xl"></div>
-          <div className="text-center font-bold text-sm">Android Development</div>
-        </div>
-        {/* card 5 */}
-        <div className="space-y-5">
-          <div className="flex w-full h-[136px] bg-emerald-500 rounded-3xl"></div>
-          <div className="text-center font-bold text-sm">IOS Development</div>
-        </div>
-        {/* card 6 */}
-        <div className="space-y-5">
-          <div className="flex w-full h-[136px] bg-emerald-500 rounded-3xl"></div>
-          <div className="text-center font-bold text-sm">Data Science</div>
-        </div>
-        
+
+        {belajar && belajar.map((courses) =>
+        <div className="space-y-5" key={courses.id}>
+          <img src={courses.image} className="flex w-full h-[136px] rounded-3xl"></img>
+          <div className="text-center font-bold text-sm">{courses.name}</div>
+        </div>)}
       </div>
-      {/* map */}
-      {belajar && belajar.map((film) => <p key={film.id}>{film.name} </p>)}
+
     </div>
   );
 };

@@ -19,18 +19,21 @@ export const KategoriBelajar = () => {
   return (
     <div className="bg-[#CFE2E080] px-[1rem] desktop:px-[9rem] py-[1.5rem]">
       <div className="flex justify-between">
-        <span className="text-xl font-bold text-[#000000]">Kategori Belajar</span>
-        <button className="text-xs font-bold text-[#116E63] hover:opacity-70">Lihat Semua</button>
+        <span className="text-xl font-bold text-[#000000]">
+          Kategori Belajar
+        </span>
+        <button className="text-xs font-bold text-[#116E63] hover:opacity-70">
+          Lihat Semua
+        </button>
       </div>
 
       <div className="grid grid-cols-2 desktop:grid-cols-6 py-5 gap-[2rem]">
 
-        {belajar && belajar.map((film) =>
-        <div className="space-y-5" key={film.id}>
-          <img src={film.image} className="flex w-full h-[136px] rounded-3xl"></img>
-          <div className="text-center font-bold text-sm">{film.name}</div>
+        {belajar && belajar.map((courses) =>
+        <div className="space-y-5" key={courses.id}>
+          <img src={courses.image} className="flex w-full h-[136px] rounded-3xl"></img>
+          <div className="text-center font-bold text-sm">{courses.name}</div>
         </div>)}
-        
       </div>
 
     </div>

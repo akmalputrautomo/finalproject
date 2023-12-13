@@ -1,9 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../assets/img/Logo.png";
 import { Form, Input } from "antd";
-import { LockOutlined } from "@ant-design/icons";
+import { UserOutlined } from "@ant-design/icons";
+import { useDispatch } from "react-redux";
+import { getForgetPassAction } from "../../redux/action/auth/getForgetPass";
+import { useNavigate } from "react-router";
 
 export const ForgetPass = () => {
+  const [Email, setEmail] = useState("");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleSave = async () => {
+    const forget = await dispatch(
+      getForgetPassAction({
+        email: Email,
+      }),
+    );
+    if (forget) {
+      alert("Tautan reset password terkirim, Periksa Email Anda");
+      setTimeout(() => {
+        window.location.href = "https://mail.google.com";
+        // navigate('/updatepass')
+      }, 3000);
+    }
+  };
   return (
     <div className="forgetpass-section bg-slate-600 w-screen h-screen flex justify-center items-center">
       <div className="side bg-[#F8F8F8] w-[90vw] h-[70vh] justify-center flex-col items-center rounded-tl-xl rounded-bl-xl shadow-xl desktop:w-[30vw] desktop:flex hidden">
@@ -37,61 +58,24 @@ export const ForgetPass = () => {
                 // onFinish={onLogin}
               >
                 <Form.Item
-                  name="newpassword"
-                  label="New Password"
+                  name="email"
+                  label="Email"
+                  id="email"
+                  onChange={(e) => {setEmail(e.target.value)}}
                   labelCol={{ span: 24 }}
                   rules={[
                     {
                       required: true,
-                      message: "Please input your password!",
-                    },
-                    {
-                      min: 6,
-                      message: "Password must have a minimum length of 9",
-                    },
-                    {
-                      pattern: new RegExp(
-                        "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$"
-                      ),
-                      message:
-                        "Password must contain at least one lowercase letter, uppercase letter, number, and special character",
+                      message: "Please input your Username",
                     },
                   ]}
                   hasFeedback
                 >
-                  <Input.Password
-                    prefix={<LockOutlined className="site-form-item-icon" />}
-                    placeholder="New Password here"
-                  />
-                </Form.Item>
-                <Form.Item
-                  name="ConfirmNewpassword"
-                  label="Confirm Password"
-                  dependencies={["newpassword"]}
-                  labelCol={{ span: 24 }}
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input your password!",
-                    },
-                    ({ getFieldValue }) => ({
-                      validator(_, value) {
-                        if (!value || getFieldValue("newpassword") === value) {
-                          return Promise.resolve();
-                        }
-                        return Promise.reject("The password doesn't match");
-                      },
-                    }),
-                  ]}
-                  hasFeedback
-                >
-                  <Input.Password
-                    prefix={<LockOutlined className="site-form-item-icon" />}
-                    placeholder="Confirm New Password"
-                  />
+                  <Input className={`focus:outline-none focus:ring-2 focus:ring-green-800`} prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
                 </Form.Item>
                 <div className="button  items-center  flex flex-col mt-4 ">
                   <button
+                    onClick={handleSave}
                     htmlType="submit"
                     className="login-form-button bg-[#116E63] w-full h-12 rounded-xl text-white text-sm"
                   >

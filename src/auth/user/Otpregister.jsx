@@ -1,13 +1,64 @@
-import React, { useState } from "react";
 import logo from "../../assets/img/Logo.png";
-import { Form } from "antd";
-import { InputOTP } from "antd-input-otp";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getResendOtp, getVerifyOtp } from "../../redux/action/auth/otpregister";
 
 const OtpRegister = () => {
-  const [form] = Form.useForm();
+  const [otp, setotp] = useState("");
+  const dispatch = useDispatch();
+  const emailFromRedux = useSelector((state) => state.regis.user.email);
+  const [Email, setEmail] = useState(emailFromRedux || "");
+  const [seconds, setSeconds] = useState(300);
+  const navigate = useNavigate();
 
-  const handleFinish = (values) => {
-    // Your logic
+  // redux otp
+  const handleSave = async () => {
+    const otpData = await dispatch(
+      getVerifyOtp({
+        email: Email,
+        otp: otp,
+      })
+    );
+    if (otpData) {
+      navigate("/");
+    }
+  };
+
+  useEffect(() => {
+    setEmail(emailFromRedux);
+  }, [emailFromRedux]);
+
+  // redux resend otp
+  const handleResend = async () => {
+    const resendData = await dispatch(
+      getResendOtp({
+        email: Email,
+      })
+    );
+    if (resendData) {
+      setSeconds(300);
+    } else {
+      setSeconds(300);
+    }
+  };
+
+  useEffect(() => {
+    const initialSeconds = 300; // Menit awal (5 menit * 60 detik)
+    setSeconds(initialSeconds);
+
+    const interval = setInterval(() => {
+      setSeconds((prevSeconds) => (prevSeconds > 0 ? prevSeconds - 1 : 0));
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Fungsi untuk mengonversi detik menjadi format menit:detik
+  const formatTime = (seconds) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes}:${remainingSeconds < 10 ? "0" : ""}${remainingSeconds}`;
   };
 
   return (
@@ -34,13 +85,39 @@ const OtpRegister = () => {
               <div className=" flex flex-col gap-5">
                 <h1 className="text-center text-[#116E63] font-serif font-semibold text-xl">Masukan OTP</h1>
                 <p>Ketik 6 digit kode yang dikirimkan ke</p>
-                <Form onFinish={handleFinish} form={form}>
-                  <Form.Item name="otp">
-                    <InputOTP autoSubmit={form} inputType="numeric" />
-                  </Form.Item>
-                </Form>
                 <div className="flex justify-center items-center">
-                  <button className="bg-[#116E63] w-full p-2 rounded-md text-white ">SIMPAN</button>
+                  <input
+                    id="otp"
+                    type="otp"
+                    value={otp}
+                    onChange={(e) => {
+                      setotp(e.target.value);
+                    }}
+                    maxLength={6}
+                    className="border border-gray-400 p-2 rounded-md text-[#116E63] text-center"
+                  />
+                </div>
+
+                <div className="flex justify-center items-center">
+                  <button
+                    onClick={() => {
+                      handleSave();
+                    }}
+                    className="bg-[#116E63] w-full p-2 rounded-md text-white "
+                  >
+                    SIMPAN
+                  </button>
+                </div>
+                <div>
+                  {seconds > 0 ? (
+                    <span className="py-4 pb-5 text-lg text-center">
+                      Kirim ulang OTP dalam <span className="text-primary font-bold">{formatTime(seconds)}</span> detik
+                    </span>
+                  ) : (
+                    <span className="py-4 pb-5 text-xl text-center font-bold cursor-pointer" onClick={handleResend}>
+                      Kirim Ulang OTP
+                    </span>
+                  )}
                 </div>
               </div>
             </div>

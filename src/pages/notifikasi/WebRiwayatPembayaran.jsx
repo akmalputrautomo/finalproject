@@ -43,7 +43,12 @@ export const WebRiwayatPembayaran = () => {
               >
                 <i class="fa-solid fa-pen text-[#116E63] text-[1.5rem]  "></i>Profil Saya
               </button>
-              <button className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2">
+              <button
+                onClick={() => {
+                  navigate("/WebUbahPassword");
+                }}
+                className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2"
+              >
                 <i class="fa-solid fa-gear text-[#116E63] text-[1.5rem]"></i>Ubah Password
               </button>
               <button

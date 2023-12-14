@@ -5,10 +5,18 @@ import NavbarBurger from "../../assets/components/elements/NavbarBurger";
 
 export const WebUbahPassword = () => {
   const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState(false);
+  const [showPasswordlama, setShowPasswordlama] = useState(false);
+  const [showPasswordBaru, setShowPasswprdBaru] = useState(false);
+  const [showPasswordulang, setShowPasswordulang] = useState(false);
 
-  const showpass = () => {
-    setShowPassword(!showPassword);
+  const showpasslama = () => {
+    setShowPasswordlama(!showPasswordlama);
+  };
+  const showpassbaru = () => {
+    setShowPasswprdBaru(!showPasswordBaru);
+  };
+  const showpassulang = () => {
+    setShowPasswordulang(!showPasswordulang);
   };
 
   return (
@@ -72,18 +80,24 @@ export const WebUbahPassword = () => {
                 <div className="flex flex-col gap-4 pt-4 mobile:pl-4 desktop:pl-0">
                   <div className="relative">
                     <p>Masukkan Password Lama</p>
-                    <input type={showPassword ? "text" : "password"} className=" border rounded-xl w-[80%] h-[3rem] mobile:w-[95%] desktop:w-[80%]"></input>
-                    <span className="absolute right-[7rem] top-[2.3rem] cursor-pointer mobile:right-7 desktop:right-[7rem]" onClick={showpass}>
-                      {showPassword ? "Hide" : "Show"}
+                    <input type={showPasswordlama ? "text" : "password"} className=" border rounded-xl w-[80%] h-[3rem] mobile:w-[95%] desktop:w-[80%]"></input>
+                    <span className="absolute right-[7rem] top-[2.3rem] cursor-pointer mobile:right-7 desktop:right-[7rem]" onClick={showpasslama}>
+                      {showPasswordlama ? "Hide" : "Show"}
                     </span>
                   </div>
                   <div>
                     <p>Masukkan Password Baru</p>
-                    <input type="password" className="border rounded-xl w-[80%] h-[3rem] mobile:w-[95%] desktop:w-[80%]"></input>
+                    <input type={showPasswordBaru ? "text" : "password"} className=" border rounded-xl w-[80%] h-[3rem] mobile:w-[95%] desktop:w-[80%]"></input>
+                    <span className="absolute right-[7rem] top-[25rem] cursor-pointer mobile:right-7 desktop:right-[23.5rem]" onClick={showpassbaru}>
+                      {showPasswordBaru ? "Hide" : "Show"}
+                    </span>
                   </div>
                   <div>
                     <p>Ulangi Password Baru</p>
-                    <input type="password" className="border rounded-xl w-[80%] h-[3rem] mobile:w-[95%] desktop:w-[80%]"></input>
+                    <input type={showPasswordulang ? "text" : "password"} className=" border rounded-xl w-[80%] h-[3rem] mobile:w-[95%] desktop:w-[80%]"></input>
+                    <span className="absolute right-[7rem] top-[30.5rem] cursor-pointer mobile:right-7 desktop:right-[23.5rem]" onClick={showpassulang}>
+                      {showPasswordulang ? "Hide" : "Show"}
+                    </span>
                   </div>
                   <div className="flex justify-start items-center w-full">
                     <button className="rounded-full bg-[#116E63] text-white w-[80%] h-[2.5rem] mobile:w-[90%] desktop:w-[80%]">Ubah Password</button>

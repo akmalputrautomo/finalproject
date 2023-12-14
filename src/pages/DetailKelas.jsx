@@ -1,10 +1,21 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { BeliMateriPremium } from "../assets/components/BeliMateriPremium";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Card, CardBody, Tab, Tabs } from "@nextui-org/react";
+import { useDispatch, useSelector } from "react-redux";
+import getDataDetail from "../redux/action/getDetail";
 
 export const DetailKelas = () => {
-  const navigate = useNavigate;
+  const navigate = useNavigate();
+  const params = useParams();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getDataDetail(params.courseId));
+  }, [dispatch, params.courseId]);
+
+  const dataDetail = useSelector((state) => state.courseDetail.coursesDetail);
+  console.log(dataDetail, "Detail");
 
   const [showBeli, setShowBeli] = useState(false);
 
@@ -35,7 +46,7 @@ export const DetailKelas = () => {
                     <div className="mobile:p-4 desktop:p-0 ">
                       <div className="flex justify-between">
                         <p className="text-lg font-medium text-[#116E63]">
-                          UI/UX Design
+                          {dataDetail.category[0].category.name}
                         </p>
                         <div className="flex items-center gap-1">
                           <svg
@@ -45,13 +56,13 @@ export const DetailKelas = () => {
                             viewBox="0 0 576 512">
                             <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
                           </svg>
-                          <p>4.7</p>
+                          <p> {dataDetail.rating} </p>
                         </div>
                       </div>
                       <p className="text-lg font-medium">
-                        Intro to Basic of User Interaction Design
+                      {dataDetail.title}
                         <p className="text-sm font-normal align-top">
-                          by Simon Doe
+                        {dataDetail.mentor[0].mentor.name}
                         </p>
                       </p>
 
@@ -65,7 +76,7 @@ export const DetailKelas = () => {
                             <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
                           </svg>
                           <p className="text-[#116E63] font-semibold">
-                            Intermediate Level
+                            {dataDetail.level}
                           </p>
                         </div>
                         <div className="flex items-center gap-1">
@@ -76,7 +87,7 @@ export const DetailKelas = () => {
                             viewBox="0 0 576 512">
                             <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
                           </svg>
-                          <p>10 Modul</p>
+                          <p>{dataDetail.modul} Modul</p>
                         </div>
                         <div className="flex items-center gap-1">
                           <svg
@@ -86,7 +97,7 @@ export const DetailKelas = () => {
                             viewBox="0 0 576 512">
                             <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
                           </svg>
-                          <p>120 Menit</p>
+                          <p>{dataDetail.duration} Menit</p>
                         </div>
                       </div>
                     </div>
@@ -139,56 +150,15 @@ export const DetailKelas = () => {
                                 Tentang Kelas
                               </p>
                               <p className="text-xs indent-6 leading-loose ">
-                                Design system adalah kumpulan komponen design,
-                                code, ataupun dokumentasi yang dapat digunakan
-                                sebagai panduan utama yang memunginkan designer
-                                serta developer memiliki lebih banyak kontrol
-                                atas berbagai platform. Dengan hadirnya design
-                                system, dapat menjaga konsistensi tampilan user
-                                interface dan meningkatkan user experience
-                                menjadi lebih baik. Disisi bisnis, design system
-                                sangat berguna dalam menghemat waktu dan biaya
-                                ketika mengembangkan suatu produk.
-                              </p>
-                              <p className="text-xs indent-6 leading-loose  ">
-                                Bersama mentor XXX, kita akan mempelajari design
-                                system dari mulai manfaat, alur kerja
-                                pembuatannya, tools yang digunakan, hingga pada
-                                akhirnya, kita akan membuat MVP dari design
-                                system. Selain itu, mentor juga akan menjelaskan
-                                berbagai resource yang dibutuhkan untuk mencari
-                                inspirasi mengenai design system.
-                              </p>
-                              <p className="text-xs indent-6 leading-loose mb-4  ">
-                                Kelas ini sesuai untuk Anda yang ingin memahami
-                                apa itu design system. Tidak hanya ditujukan
-                                untuk UI/UX Designer ataupun Developer, kelas
-                                ini sangat sesuai untuk stakeholder lain agar
-                                dapat memudahkan tim dalam bekerja sama. Yuk
-                                segera daftar dan kami tunggu di kelas ya!
+                                {dataDetail.desc}
                               </p>
                             </div>
                             <div className="">
                               <p className="text-lg font-medium">
                                 Kelas Ini Ditujukan Untuk
                               </p>
-                              <ol className="list-decimal text-xs pl-4 leading-loose ">
-                                <li>
-                                  Anda yang ingin memahami poin penting design
-                                  system
-                                </li>
-                                <li>
-                                  Anda yang ingin membantu perusahaan lebih
-                                  optimal dalam membuat design produk
-                                </li>
-                                <li>
-                                  Anda yang ingin latihan membangun design
-                                  system
-                                </li>
-                                <li>
-                                  Anda yang ingin latihan membangun design
-                                  system
-                                </li>
+                              <ol className="list-decimal text-xs  leading-loose ">
+                                {dataDetail.intended_for}
                               </ol>
                             </div>
                           </CardBody>
@@ -447,54 +417,25 @@ export const DetailKelas = () => {
                     </Tabs>
                   </div>
                   <div className="mobile:hidden desktop:block">
-                    <p className="text-lg font-medium">Tentang Kelas</p>
+                    <p className="text-lg font-medium flex justify-start items-start w-full">
+                      Tentang Kelas
+                    </p>
                     <p className="text-xs indent-6 leading-loose ">
-                      Design system adalah kumpulan komponen design, code,
-                      ataupun dokumentasi yang dapat digunakan sebagai panduan
-                      utama yang memunginkan designer serta developer memiliki
-                      lebih banyak kontrol atas berbagai platform. Dengan
-                      hadirnya design system, dapat menjaga konsistensi tampilan
-                      user interface dan meningkatkan user experience menjadi
-                      lebih baik. Disisi bisnis, design system sangat berguna
-                      dalam menghemat waktu dan biaya ketika mengembangkan suatu
-                      produk.
-                    </p>
-                    <p className="text-xs indent-6 leading-loose  ">
-                      Bersama mentor XXX, kita akan mempelajari design system
-                      dari mulai manfaat, alur kerja pembuatannya, tools yang
-                      digunakan, hingga pada akhirnya, kita akan membuat MVP
-                      dari design system. Selain itu, mentor juga akan
-                      menjelaskan berbagai resource yang dibutuhkan untuk
-                      mencari inspirasi mengenai design system.
-                    </p>
-                    <p className="text-xs indent-6 leading-loose  ">
-                      Kelas ini sesuai untuk Anda yang ingin memahami apa itu
-                      design system. Tidak hanya ditujukan untuk UI/UX Designer
-                      ataupun Developer, kelas ini sangat sesuai untuk
-                      stakeholder lain agar dapat memudahkan tim dalam bekerja
-                      sama. Yuk segera daftar dan kami tunggu di kelas ya!
+                      {dataDetail.desc}
                     </p>
                   </div>
                   <div className="mobile:hidden desktop:block">
                     <p className="text-lg font-medium">
                       Kelas Ini Ditujukan Untuk
                     </p>
-                    <ol className="list-decimal text-xs pl-4 leading-loose ">
-                      <li>
-                        Anda yang ingin memahami poin penting design system
-                      </li>
-                      <li>
-                        Anda yang ingin membantu perusahaan lebih optimal dalam
-                        membuat design produk
-                      </li>
-                      <li>Anda yang ingin latihan membangun design system</li>
-                      <li>Anda yang ingin latihan membangun design system</li>
+                    <ol className="list-decimal text-xs  leading-loose ">
+                      {dataDetail.intended_for}
                     </ol>
                   </div>
                 </div>
                 {/* Kanan Materi Belajar*/}
                 <div className=" mobile:hidden desktop:block desktop:ml-4  desktop:w-3/4 mobile:full flex justify-center">
-                  <div className="bg-white  desktop:w-5/6 mobile:w-full h-4/5 rounded-3xl shadow-lg ">
+                  <div className="bg-white  desktop:w-5/6 mobile:w-full h-full py-6 rounded-3xl shadow-lg ">
                     <div className="flex h-full  justify-center content-center items-center ">
                       <div className=" space-y-4 w-full mx-6 ">
                         <div className="flex justify-between">

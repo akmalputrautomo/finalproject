@@ -11,4 +11,7 @@ export const endpoint = {
     return `/api/v1/course/populer/${id}`;
   },
   AKUN_PROFILE: (userid) => `/api/v1/accounts/updateprofile/${userid}`,
+  COURSE_DETAILS: (id) => {
+    return `/api/v1/course/details/${id}`;
+  },
 };

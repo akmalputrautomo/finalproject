@@ -25,7 +25,6 @@ export const Login = () => {
     )
       .then((result) => {
         if (result.status === 200) {
-          // window.location.href = "/home";
           navigate("/");
         }
       })

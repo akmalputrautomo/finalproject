@@ -6,6 +6,6 @@ export const endpoint = {
   FORGET_PASS: "/api/v1/auth/forget-password",
   RESET_PASS : "/api/v1/auth/reset-password",
   COURSE_CATEGORIES: "/api/v1/categories",
-  COURSE_DETAILS: "/api/v1/categories/detail",
+  COURSE_DETAILS: (id)=> {return `/api/v1/course/details/${id}`},
   COURSE_POPULAR :(id)=> {return `/api/v1/course/populer/${id}`} 
 };

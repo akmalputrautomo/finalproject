@@ -6,12 +6,13 @@ import premium from "../img/premium.png";
 import { Button } from "@nextui-org/button";
 import { useDispatch, useSelector } from "react-redux";
 import getDataPopular from "../../redux/action/getPopular";
-import { useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { getDatakategori } from "../../redux/action/kategoribelajarrr";
 
 export const KursusPopuler = () => {
   const dispatch = useDispatch();
   const [id, setId] = useState(1);
+  const navigate = useNavigate();
 
   const dataPopular = useSelector(
     (state) => state.coursePopular.coursesPopular.topCourses);
@@ -45,7 +46,9 @@ export const KursusPopuler = () => {
         <p className="text-xl font-bold">Kursus Populer</p>
         <button
           className="text-xs font-bold content-center text-[#116E63] hover:opacity-70"
-          href="">
+          onClick={() => {
+            navigate("/BerandaKelas");
+          }}>
           Lihat Semua
         </button>
       </div>
@@ -68,11 +71,11 @@ export const KursusPopuler = () => {
           </div>
         ))}
       </div>
-
+      <div className=" grid grid-cols-1 desktop:grid-cols-3 gap-[2rem]">
       {dataPopular &&
         dataPopular.map((courses) => (
           <div key={courses.course_id}>
-            <div className="grid grid-cols-1 desktop:grid-cols-3 gap-[2rem]">
+              <Link to={`/detailKelas/${courses.course_id}`}>
               <div className="w-full h-52 shadow-lg rounded-3xl">
                   <img className="w-full h-2/5 bg-cover rounded-t-3xl" src={courses.course.image}/>
                 <div className="px-2 py-1 space-y-1 ">  
@@ -118,10 +121,12 @@ export const KursusPopuler = () => {
                   </button>
                 </div>
               </div>
+              </Link>
              
             </div>
-          </div>
+          
         ))}
+    </div>
     </div>
   );
 };

@@ -9,7 +9,7 @@ export const authLoginUser = (input) => async (dispatch) => {
       dispatch(setToken(result.data.data.token));
       dispatch(setIsLoggedIn("true"));
       dispatch(setUserLogin(input));
-      // dispatch(setName(result.data.data.name));
+      dispatch(setName(result.data.data.users));
       return result;
     })
     .catch((err) => {

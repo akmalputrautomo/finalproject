@@ -19,6 +19,9 @@ const Navbar = () => {
   const login = useSelector((state) => state.loginUser.user.email);
   console.log(login, "lohginn");
 
+  const id = useSelector((state) => state.loginUser.name.id);
+  console.log(id, "id");
+
   return (
     <div>
       <div className="bg-[#F8F8F8] flex justify-between p-4">
@@ -58,14 +61,16 @@ const Navbar = () => {
                     <p className="font-semibold">Signed in as</p>
                     <p className="font-semibold">{login}</p>
                   </DropdownItem>
+                  {/* {id.map((user) => ( */}
                   <DropdownItem
+                    key={id}
                     onClick={() => {
-                      navigate("/WebAkunProfil");
+                      navigate(`/WebAkunProfil/${id}`);
                     }}
-                    key={login.id}
                   >
                     Profile
                   </DropdownItem>
+                  {/* ))} */}
                   <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
                   <DropdownItem
                     onClick={() => {

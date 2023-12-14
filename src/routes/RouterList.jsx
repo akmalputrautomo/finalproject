@@ -18,6 +18,7 @@ import { WebUbahPassword } from "../pages/notifikasi/webUbahPassword";
 import { WebRiwayatPembayaran } from "../pages/notifikasi/WebRiwayatPembayaran";
 import { DetailKelas } from "../pages/DetailKelas";
 import { UpdatePass } from "../auth/user/UpdatePass";
+import { KursusPopuler } from "../assets/components/KursusPopuler";
 
 export const RouterList = () => {
   return (
@@ -40,6 +41,7 @@ export const RouterList = () => {
         <Route path="/WebNotifikasi" element={<WebNotifikasi />} />
         <Route path="/WebUbahPassword" element={<WebUbahPassword />} />
         <Route path="/WebRiwayatPembayaran" element={<WebRiwayatPembayaran />} />
+        <Route path="/popular/:courseId" element={<KursusPopuler/>} />
 
         {/* Admin */}
         <Route path="/loginAdm" element={<LoginAdmin />} />

@@ -4,11 +4,13 @@ import authRegisterSlice from "./auth/authregister";
 import otp from "./auth/otp";
 import authSliceLoginUser from "./auth/authSliceLoginUser";
 import forgetPassSlice from "./auth/forgetPassSlice";
+import GetCoursePopular from "./GetCoursePopular";
 
 export default combineReducers({
   kategori: KategoriSlice,
   regis: authRegisterSlice,
   authOtp: otp,
   loginUser : authSliceLoginUser,
-  authPass : forgetPassSlice
+  authPass : forgetPassSlice,
+  coursePopular : GetCoursePopular
 });

@@ -61,7 +61,6 @@ const Navbar = () => {
                     <p className="font-semibold">Signed in as</p>
                     <p className="font-semibold">{login}</p>
                   </DropdownItem>
-                  {/* {id.map((user) => ( */}
                   <DropdownItem
                     key={id}
                     onClick={() => {
@@ -70,8 +69,21 @@ const Navbar = () => {
                   >
                     Profile
                   </DropdownItem>
-                  {/* ))} */}
-                  <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
+                  <DropdownItem
+                    key={id}
+                    onClick={() => {
+                      navigate(`/WebUbahPassword/${id}`);
+                    }}
+                  >
+                    Update password
+                  </DropdownItem>
+                  <DropdownItem
+                    onClick={() => {
+                      navigate("/WebRiwayatPembayaran");
+                    }}
+                  >
+                    Riwayat Pembayaran
+                  </DropdownItem>
                   <DropdownItem
                     onClick={() => {
                       dispatch(LogOut());

@@ -37,9 +37,9 @@ export const RouterList = () => {
         <Route path="/detailKelasPembayaran" element={<DetailKelasPembayaran />} />
         <Route path="/pembayaranSukses" element={<PembayaranSukses />} />
         <Route path="/mulaiBelajar" element={<MulaiBelajar />} />
-        <Route path="/WebAkunProfil/:userid" element={<WebAkunProfil />} />
+        <Route path="/WebAkunProfil/:userId" element={<WebAkunProfil />} />
         <Route path="/WebNotifikasi" element={<WebNotifikasi />} />
-        <Route path="/WebUbahPassword" element={<WebUbahPassword />} />
+        <Route path="/WebUbahPassword/:userId" element={<WebUbahPassword />} />
         <Route path="/WebRiwayatPembayaran" element={<WebRiwayatPembayaran />} />
         <Route path="/popular/:courseId" element={<KursusPopuler />} />
 

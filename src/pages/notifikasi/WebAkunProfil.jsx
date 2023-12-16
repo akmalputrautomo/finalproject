@@ -1,26 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { NavbarAkun } from "../../assets/components/elements/NavbarAkun";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import NavbarBurger from "../../assets/components/elements/NavbarBurger";
 import logo from "../../assets/img/foto.png";
 import { useDispatch, useSelector } from "react-redux";
 import getakunprofile from "../../redux/action/akun/AkunProfile";
+import { LogOut } from "../../redux/action/auth/authLoginUser";
 
 export const WebAkunProfil = () => {
   const navigate = useNavigate();
-  const { userid } = useParams();
-  console.log(userid, "");
+  const { userId } = useParams();
+  console.log(userId, "id user");
   const [isEditingNama, setIsEditingNama] = useState(false);
   const [isEditingEmail, setIsEditingEmail] = useState(false);
   const [isEditingTelepon, setIsEditingTelepon] = useState(false);
-  const [image, seimage] = useState("");
+  const [image, setimage] = useState("");
   const [name, setname] = useState("");
   const [email, setemail] = useState("");
   const [no_hp, setno_hp] = useState("");
-  const [negara, setnegara] = useState("");
-  const [kota, setkota] = useState("");
+  const [country, setcountry] = useState("");
+  const [city, setcity] = useState("");
+  const inputRef = useRef(null);
 
   const dispatch = useDispatch();
+  const id = useSelector((state) => state.loginUser.name.id);
 
   const namauser = useSelector((state) => state.loginUser.name.name);
   const emailuser = useSelector((state) => state.loginUser.name.email);
@@ -38,17 +41,27 @@ export const WebAkunProfil = () => {
 
   const profilakun = async () => {
     const success = await dispatch(
-      getakunprofile(userid, {
+      getakunprofile(userId, {
         image: image,
         name: name,
         email: email,
         no_hp: no_hp,
-        negara: negara,
-        kota: kota,
+        country: country,
+        city: city,
       })
     );
     if (success) {
     }
+  };
+
+  const handleImageClick = () => {
+    inputRef.current.click();
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setimage(e.target.files[0]);
+    console.log(file);
   };
 
   return (
@@ -60,7 +73,7 @@ export const WebAkunProfil = () => {
       <div className="w-full h-[8rem] bg-[#E7F0EF] text-[16px] font-bold mobile:hidden desktop:block">
         <button
           onClick={() => {
-            Navigate();
+            navigate("/");
           }}
           className="text-[#116E63] flex gap-2 items-center text-[20px] font-serif pl-[10rem] pt-6  "
         >
@@ -85,8 +98,9 @@ export const WebAkunProfil = () => {
                 <i class="fa-solid fa-pen text-[#116E63] text-[1.5rem]  "></i>Profil Saya
               </button>
               <button
+                key={id}
                 onClick={() => {
-                  navigate("/WebUbahPassword");
+                  navigate(`/WebUbahPassword/${id}`);
                 }}
                 className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2"
               >
@@ -100,7 +114,12 @@ export const WebAkunProfil = () => {
               >
                 <i class="fa-solid fa-cart-shopping text-[#116E63] text-[1.5rem]"></i>Riwayat Pembayaran
               </button>
-              <button className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2">
+              <button
+                onClick={() => {
+                  dispatch(LogOut());
+                }}
+                className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2"
+              >
                 <i class="fa-solid fa-arrow-right-from-bracket text-[#116E63] text-[1.5rem] "></i>Keluar
               </button>
             </div>
@@ -110,9 +129,16 @@ export const WebAkunProfil = () => {
               {/* Profil Saya */}
 
               <div className="flex flex-col gap-1 mobile:gap-4 desktop:gap-1 ">
-                <div className="pt-3 mobile:flex mobile:justify-center desktop:block">
-                  <img src={logo}></img>
-                  <input type="file"></input>
+                <div className="pt-3 flex justify-center items-center cursor-pointer" onClick={handleImageClick}>
+                  {image ? <img src={URL.createObjectURL(image)} alt="" className="rounded-full object-cover w-1/4 h-1/4" /> : <img src={logo} alt="Profile" className="mr-2" />}
+                  <input
+                    type="file"
+                    id="image"
+                    accept="image/*"
+                    ref={inputRef}
+                    onChange={handleImageChange}
+                    className="hidden" // Tambahkan class hidden untuk menyembunyikan input file
+                  />
                 </div>
                 <div>
                   <p>Nama</p>
@@ -170,11 +196,11 @@ export const WebAkunProfil = () => {
                 </div>
                 <div>
                   <p>Negara</p>
-                  <input onChange={(e) => setnegara(e.target.value)} id="negara" placeholder="Masukkan Negara tempat tinggal" className="border rounded-xl w-[60%] h-[3rem] mobile:w-[90%] desktop:w-[60%]"></input>
+                  <input onChange={(e) => setcountry(e.target.value)} id="country" placeholder="Masukkan Negara tempat tinggal" className="border rounded-xl w-[60%] h-[3rem] mobile:w-[90%] desktop:w-[60%]"></input>
                 </div>
                 <div>
                   <p>Kota</p>
-                  <input onChange={(e) => setkota(e.target.value)} id="kota" placeholder="Masukkan kota tempat tinggal" className="border rounded-xl w-[60%] h-[3rem] mobile:w-[90%] desktop:w-[60%]"></input>
+                  <input onChange={(e) => setcity(e.target.value)} id="city" placeholder="Masukkan kota tempat tinggal" className="border rounded-xl w-[60%] h-[3rem] mobile:w-[90%] desktop:w-[60%]"></input>
                 </div>
                 <div>
                   <button

@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { coursesPopular: "" };
-
 const akunprofileslicer = createSlice({
   name: "akunprofile",
-  initialState,
+  initialState: {
+    akun: "",
+  },
   reducers: {
     setakunprofile: (state, action) => {
-      state.coursesPopular = action.payload;
+      state.akun = action.payload;
     },
   },
 });

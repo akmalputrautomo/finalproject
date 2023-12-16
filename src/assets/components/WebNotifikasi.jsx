@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import NavbarNotifikasi from "./NavbarNotifikasi";
 import { useNavigate, useParams } from "react-router-dom";
 import { NavbarResponsive } from "./elements/NavbarResponsive";
@@ -10,17 +10,32 @@ const WebNotifikasi = () => {
   const { userId } = useParams();
   const dispatch = useDispatch();
   console.log(userId, "id notifikasi");
+  const [intervalId, setIntervalId] = useState(null);
 
   const getnotifikasi = () => {
     dispatch(getDatanotifikasi(userId));
   };
 
-  useEffect(() => {
-    getnotifikasi();
-  }, []);
-
   const notifikasi = useSelector((state) => state.Notifikasi.notif);
   console.log(notifikasi);
+
+  useEffect(() => {
+    // Initial API call
+    getnotifikasi();
+
+    // Set up interval to call the API every 5 seconds
+    const id = setInterval(() => {
+      getnotifikasi();
+    }, 5000);
+
+    // Save the interval ID to clear it later when the component unmounts
+    setIntervalId(id);
+
+    // Cleanup function to clear the interval when the component is unmounted
+    return () => {
+      clearInterval(id);
+    };
+  }, [userId]); // Include userId
 
   return (
     <div>

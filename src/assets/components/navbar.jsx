@@ -87,6 +87,14 @@ const Navbarr = () => {
                     Riwayat Pembayaran
                   </DropdownItem>
                   <DropdownItem
+                    key={id}
+                    onClick={() => {
+                      navigate(`/WebNotifikasi/${id}`);
+                    }}
+                  >
+                    Notifikasi
+                  </DropdownItem>
+                  <DropdownItem
                     onClick={() => {
                       dispatch(LogOut());
                     }}

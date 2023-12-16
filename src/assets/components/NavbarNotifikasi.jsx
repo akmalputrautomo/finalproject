@@ -1,10 +1,13 @@
 import React from "react";
 import logo from "../img/Logo.png";
 import { useNavigate } from "react-router-dom";
-import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@nextui-org/react";
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
+import { useSelector } from "react-redux";
 
 const NavbarNotifikasi = () => {
   const navigate = useNavigate();
+  const id = useSelector((state) => state.loginUser.name.id);
+
   return (
     <div>
       <div className="bg-[#F8F8F8] flex justify-between p-4">
@@ -25,15 +28,34 @@ const NavbarNotifikasi = () => {
               </button>
             </DropdownTrigger>
             <DropdownMenu aria-label="Example with disabled actions" disabledKeys={["edit", "delete"]}>
-              <DropdownItem onClick={()=>{navigate("/kelassaya")}} key="kelassaya">Kelas Saya</DropdownItem>
-              <DropdownItem onClick={()=>{navigate("/berandakelas")}} key="kelas">Kelas</DropdownItem>
+              <DropdownItem
+                onClick={() => {
+                  navigate("/kelassaya");
+                }}
+                key="kelassaya"
+              >
+                Kelas Saya
+              </DropdownItem>
+              <DropdownItem
+                onClick={() => {
+                  navigate("/berandakelas");
+                }}
+                key="kelas"
+              >
+                Kelas
+              </DropdownItem>
             </DropdownMenu>
           </Dropdown>
           <button className="flex items-center justify-center text-white gap-3 bg-[#116E63] px-3 h-[2.5rem] rounded-md">
             <i class="fa-regular fa-bell"></i>
             <p className="text-lg font-semibold">Notifikasi</p>
           </button>
-          <button onClick={()=>{navigate("/WebAkunProfil")}}>
+          <button
+            key={id}
+            onClick={() => {
+              navigate(`/WebAkunProfil/${id}`);
+            }}
+          >
             <i class="fa-regular fa-user text-[#116E63]"></i>
           </button>
         </div>

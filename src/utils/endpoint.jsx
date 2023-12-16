@@ -14,4 +14,5 @@ export const endpoint = {
   },
   AKUN_PROFILE: (userId) => `/api/v1/accounts/updateprofile/${userId}`,
   UPDATE_PASS: (userId) => `/api/v1/accounts/updatepassword/${userId}`,
+  NOTIFIKASI: (userId) => `/api/v1/accounts/notification/${userId}`,
 };

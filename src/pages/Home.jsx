@@ -1,13 +1,13 @@
 import React from "react";
-import Navbar from "../assets/components/navbar";
 import { KategoriBelajar } from "../assets/components/KategoriBelajar";
 import Hero from "../assets/components/Hero";
 import { KursusPopuler } from "../assets/components/KursusPopuler";
+import Navbarr from "../assets/components/navbar";
 
 export const Home = () => {
   return (
     <div className="overflow-hidden">
-      <Navbar />
+      <Navbarr />
       <Hero />
       <KategoriBelajar />
       <KursusPopuler />

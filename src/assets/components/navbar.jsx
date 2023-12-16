@@ -2,19 +2,13 @@ import React, { useState } from "react";
 import logo from "../img/Logo.png";
 import { CookieKeys, CookieStorage } from "../../utils/cookies";
 import { useNavigate } from "react-router";
-import {
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
-} from "@nextui-org/dropdown";
+import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger} from "@nextui-org/dropdown";
 import { Button } from "@nextui-org/button";
 import { Avatar } from "@nextui-org/avatar";
 import { useDispatch } from "react-redux";
 import { LogOut } from "../../redux/action/auth/authLoginUser";
 
-const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+const Navbarr = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -25,10 +19,12 @@ const Navbar = () => {
     <div>
       <div className="bg-[#F8F8F8] flex justify-between p-4">
         <img className="w-[10rem] h-[3rem]" src={logo} />
-        <form className="relative flex w-1/2 ">
+
+        {/* search bar */}
+        <form className="relative hidden desktop:flex w-1/2">
           <input
             placeholder="cari kursus terbaik...."
-            className="  border border-black px-3 rounded-md w-full"
+            className="border border-black p-3 rounded-md w-full"
             type="text"
           ></input>
           <button type="submit" className="mb-6">
@@ -38,7 +34,7 @@ const Navbar = () => {
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              className="w-6 h-6 absolute right-3 cursor-pointer "
+              className="w-6 h-6 absolute right-3 cursor-pointer"
             >
               <path
                 stroke-linecap="round"
@@ -48,6 +44,7 @@ const Navbar = () => {
             </svg>
           </button>
         </form>
+
         {/* <input className="w-[25rem] border rounded-md" placeholder="cari kursus terbaik"></input> */}
         {/* <button
           className="bg-[#116E63] text-white w-[6rem] rounded-md"
@@ -97,14 +94,15 @@ const Navbar = () => {
               </Dropdown>
             </div>
           ) : (
-            <button
-              className="bg-[#116E63] text-white w-[6rem] h-[3rem] rounded-md"
+            <Button
+              className="flex items-center justify-center gap-3 bg-[#116E63] text-white w-[6rem] h-[3rem] rounded-md"
               onClick={() => {
                 navigate("/login");
               }}
             >
-              <i class="fa-solid fa-arrow-right-to-bracket "> Masuk</i>
-            </button>
+              <i class="fa-solid fa-arrow-right-to-bracket "></i>
+              <p className="text-lg font-semibold">Masuk</p>
+            </Button>
           )}
         </div>
       </div>
@@ -112,4 +110,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default Navbarr;

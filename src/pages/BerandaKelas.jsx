@@ -5,7 +5,8 @@ import { CourseKelasPrem } from "../assets/components/CourseKelasPrem";
 import NavbarAfterLogin from "../assets/components/NavbarAfterLogin";
 import { CourseKelasFree } from "../assets/components/CourseKelasFree";
 import {Button, useDisclosure} from "@nextui-org/react";
-import { ModalFilterBeranda } from "../assets/components/ModalFilterBeranda";
+import ModalFilterBeranda from "../assets/components/ModalFilterBeranda";
+import { NavbarResponsive } from "../assets/components/elements/NavbarResponsive";
 
 export const BerandaKelas = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -13,7 +14,8 @@ export const BerandaKelas = () => {
 
   return (
     <div>
-      <NavbarAfterLogin />
+      <div className="hidden desktop:block"><NavbarAfterLogin /></div>
+      <div className="block desktop:hidden"><NavbarResponsive/></div>
       <div className="bg-[#CFE2E080] h-full w-[100%] flex flex-col desktop:flex-row px-1 desktop:px-[7rem] py-[1rem] desktop:py-[3rem]">
         <div className="flex-col w-[100%] desktop:w-[25%]">
           <div className="w-full flex desktop:flex-col justify-between items-center">
@@ -25,7 +27,7 @@ export const BerandaKelas = () => {
           <div className="hidden desktop:block">
             <FilterKelasBeranda />
           </div>
-          {/* <ModalFilterBeranda isOpen={isOpen} onOpenChange={onOpenChange} scrollBehavior={scrollBehavior} /> */}
+          <ModalFilterBeranda isOpen={isOpen} onOpenChange={onOpenChange} scrollBehavior={scrollBehavior} />
         </div>
         <div className="w-[100%] desktop:w-[75%]">
           <SearchKelasBeranda />

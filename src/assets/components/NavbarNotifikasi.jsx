@@ -1,6 +1,7 @@
 import React from "react";
 import logo from "../img/Logo.png";
 import { useNavigate } from "react-router-dom";
+import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@nextui-org/react";
 
 const NavbarNotifikasi = () => {
   const navigate = useNavigate();
@@ -16,14 +17,23 @@ const NavbarNotifikasi = () => {
             </svg>
           </button>
         </form>
-        <div className="flex gap-4 items-center ">
-          <button className=" w-[5rem] h-[2.5rem] rounded-md">
-            <i class="fa-solid fa-list text-[16px]"></i>
+        <div className="flex gap-6">
+          <Dropdown>
+            <DropdownTrigger>
+              <button>
+                <i class="fa-solid fa-list text-[#116E63]"></i>
+              </button>
+            </DropdownTrigger>
+            <DropdownMenu aria-label="Example with disabled actions" disabledKeys={["edit", "delete"]}>
+              <DropdownItem onClick={()=>{navigate("/kelassaya")}} key="kelassaya">Kelas Saya</DropdownItem>
+              <DropdownItem onClick={()=>{navigate("/berandakelas")}} key="kelas">Kelas</DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+          <button className="flex items-center justify-center text-white gap-3 bg-[#116E63] px-3 h-[2.5rem] rounded-md">
+            <i class="fa-regular fa-bell"></i>
+            <p className="text-lg font-semibold">Notifikasi</p>
           </button>
-          <button className="w-[10rem] h-[2.5rem] bg-[#116E63] rounded-md ">
-            <i class="fa-regular fa-bell text-white text-[16px]"> Notifikasi</i>
-          </button>
-          <button onClick={() => navigate("/WebAkunProfil")}>
+          <button onClick={()=>{navigate("/WebAkunProfil")}}>
             <i class="fa-regular fa-user text-[#116E63]"></i>
           </button>
         </div>

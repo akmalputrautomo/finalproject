@@ -1,30 +1,21 @@
-import { Link, Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenu, NavbarMenuItem, NavbarMenuToggle } from "@nextui-org/react";
 import React, { useState } from "react";
 import logo from "../../img/Logo.png";
+import {Navbar, NavbarBrand, NavbarMenuToggle, NavbarMenuItem, NavbarMenu, NavbarContent} from "@nextui-org/react";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 
-import { Link as RouterLink } from "react-router-dom";
-
-const NavbarBurger = () => {
+export const NavbarResponsive = () => {
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const menuItems = [
     { label: "Kelas Saya", path: "/kelassaya" },
     { label: "Kelas", path: "/berandakelas" },
     { label: "Notifikasi", path: "/WebNotifikasi" },
     { label: "Akun", path: "/WebAkunProfil" },
-    { label: "Profile Saya", path: "/WebAkunProfil" },
-    { label: "Ubah Password", path: "/WebUbahPassword" },
-    { label: "Riwayat Pembayaran", path: "/WebRiwayatPembayaran" },
-    { label: "Keluar" },
   ];
-
-  // const navbarStyle = {
-  //   backgroundColor: "#116E63",
-  //   color: '#FFFFFF'
-  // };
 
   return (
     <div>
-      {/* <Navbar disableAnimation isBordered style={navbarStyle}> */}
       <Navbar
         isBordered
         isMenuOpen={isMenuOpen}
@@ -44,6 +35,16 @@ const NavbarBurger = () => {
         </NavbarContent>
 
         <NavbarMenu>
+        {/* search bar */}
+        <form className="relative flex w-full py-2">
+          <input placeholder="Cari kursus terbaik . . ." className="border border-black px-3 py-2 rounded-md w-full" type="text"></input>
+          <button type="submit" className="mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6 absolute right-3 cursor-pointer ">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+            </svg>
+          </button>
+        </form>
+
           {menuItems.map((item, index) => (
             <NavbarMenuItem key={`${item.label}-${index}`} className="hover:opacity-70 font-bold">
               {index !== menuItems.length - 1 ? (
@@ -62,4 +63,3 @@ const NavbarBurger = () => {
     </div>
   );
 };
-export default NavbarBurger;

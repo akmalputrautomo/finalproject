@@ -12,28 +12,28 @@ export const WebRiwayatPembayaran = () => {
 
   return (
     <div>
-      <div className="mobile:hidden desktop:block">
+      <div className="hidden desktop:block">
         <NavbarAkun />
       </div>
-      <div className="w-full h-[8rem] bg-[#E7F0EF] text-[16px] font-bold mobile:hidden desktop:block ">
+      <div className="block desktop:hidden">
+        <NavbarBurger />
+      </div>
+      <div className="w-full h-[4rem] desktop:h-[10rem] bg-[#E7F0EF] font-bold">
         <button
           onClick={() => {
             navigate("/");
           }}
-          className="text-[#116E63] flex gap-2 items-center text-[20px] font-serif pl-[10rem] pt-6 mobile:pl-2 desktop:pl-[10rem]  "
+          className="flex text-[#116E63] gap-3 items-center text-[16px] font-serif pl-[1rem] desktop:pl-[10rem] pt-6"
         >
           <i class="fa-solid fa-arrow-left"> </i>
-          kembali ke beranda
+          <p>Kembali ke Beranda</p>
         </button>
       </div>
 
       <div className="flex justify-center items-center mt-[-4rem] mobile:mt-0 desktop:mt-[-4rem] ">
         <div className="w-[65%] h-[37rem] flex border border-[#116E63] rounded-md flex-col mobile:w-full desktop:w-[65%]  mobile:h-screen desktop:h-[37rem]">
-          <div className="w-full bg-[#116E63] h-[4rem] flex mobile:justify-between desktop:justify-center items-center  ">
+          <div className="w-full bg-[#116E63] h-[4rem] flex justify-center items-center">
             <h1 className="text-white font-bold text-2xl mobile:pl-4 desktop:pl-0">Akun</h1>
-            <div className="mobile:block desktop:hidden ">
-              <NavbarBurger />
-            </div>
           </div>
 
           {/* button */}

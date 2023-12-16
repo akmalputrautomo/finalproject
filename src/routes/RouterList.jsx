@@ -18,13 +18,14 @@ import { WebUbahPassword } from "../pages/notifikasi/webUbahPassword";
 import { WebRiwayatPembayaran } from "../pages/notifikasi/WebRiwayatPembayaran";
 import { DetailKelas } from "../pages/DetailKelas";
 import { UpdatePass } from "../auth/user/UpdatePass";
+import { KursusPopuler } from "../assets/components/KursusPopuler";
 
 export const RouterList = () => {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
+        {/* <Route path="/home" element={<Home />} /> */}
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/otp" element={<OtpRegister />} />
@@ -32,14 +33,15 @@ export const RouterList = () => {
         <Route path="/updatepass" element={<UpdatePass />} />
         <Route path="/kelassaya" element={<BerandaKelasSaya />} />
         <Route path="/berandakelas" element={<BerandaKelas />} />
-        <Route path="/detailKelas" element={<DetailKelas />} />
+        <Route path="/detailKelas/:courseId" element={<DetailKelas />} />
         <Route path="/detailKelasPembayaran" element={<DetailKelasPembayaran />} />
         <Route path="/pembayaranSukses" element={<PembayaranSukses />} />
         <Route path="/mulaiBelajar" element={<MulaiBelajar />} />
-        <Route path="/WebAkunProfil" element={<WebAkunProfil />} />
+        <Route path="/WebAkunProfil/:userId" element={<WebAkunProfil />} />
         <Route path="/WebNotifikasi" element={<WebNotifikasi />} />
-        <Route path="/WebUbahPassword" element={<WebUbahPassword />} />
+        <Route path="/WebUbahPassword/:userId" element={<WebUbahPassword />} />
         <Route path="/WebRiwayatPembayaran" element={<WebRiwayatPembayaran />} />
+        <Route path="/popular/:courseId" element={<KursusPopuler />} />
 
         {/* Admin */}
         <Route path="/loginAdm" element={<LoginAdmin />} />

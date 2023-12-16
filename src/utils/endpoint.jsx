@@ -4,8 +4,14 @@ export const endpoint = {
   VERIFY_OTP: "/api/v1/auth/verify",
   RESEND_OTP: "/api/v1/auth/verify/newOtp",
   FORGET_PASS: "/api/v1/auth/forget-password",
-  RESET_PASS : "/api/v1/auth/reset-password",
+  RESET_PASS: "/api/v1/auth/reset-password",
   COURSE_CATEGORIES: "/api/v1/categories",
-  COURSE_DETAILS: "/api/v1/categories/detail",
-  COURSE_POPULAR :(id)=> `/api/v1/course/populer/${id}`
+  COURSE_DETAILS: (id) => {
+    return `/api/v1/course/details/${id}`;
+  },
+  COURSE_POPULAR: (id) => {
+    return `/api/v1/course/populer/${id}`;
+  },
+  AKUN_PROFILE: (userId) => `/api/v1/accounts/updateprofile/${userId}`,
+  UPDATE_PASS: (userId) => `/api/v1/accounts/updatepassword/${userId}`,
 };

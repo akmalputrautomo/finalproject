@@ -11,10 +11,10 @@ import { ToastContainer, toast } from "react-toastify";
 
 export const Login = () => {
   const navigate = useNavigate();
-  const [Email, setEmail] = useState('')
-  const [Password, setPassword] = useState("")
+  const [Email, setEmail] = useState("");
+  const [Password, setPassword] = useState("");
   const [getErrMsg, setErrMsg] = useState("");
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleloginUser = () => {
     dispatch(
@@ -22,16 +22,17 @@ export const Login = () => {
         email: Email,
         password: Password,
       })
-    ).then((result) => {
-      if (result.status === 200) {
-        window.location.href = "/home";
-      }
-    })
-    .catch((err) => {
-      if (err.response.status === 400 || err.response.status === 401) {
-        setErrMsg(err.response.data.message);
-      }
-    });
+    )
+      .then((result) => {
+        if (result.status === 200) {
+          navigate("/");
+        }
+      })
+      .catch((err) => {
+        if (err.response.status === 400 || err.response.status === 401) {
+          setErrMsg(err.response.data.message);
+        }
+      });
   };
 
   useEffect(() => {
@@ -60,18 +61,7 @@ export const Login = () => {
   return (
     <div className="login-section bg-slate-600 w-screen h-screen flex justify-center items-center">
       <div className="fixed">
-        <ToastContainer
-          position="top-right"
-          autoClose={3500}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
+        <ToastContainer position="top-right" autoClose={3500} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="light" />
       </div>
       <div className="side bg-[#F8F8F8] w-[90vw] h-[70vh] rounded-tl-xl rounded-bl-xl shadow-xl justify-center flex-col items-center desktop:flex hidden desktop:w-[30vw]">
         <img src={logo} alt="" className="w-40 mt-3" />
@@ -103,7 +93,9 @@ export const Login = () => {
                   name="username"
                   label="Username"
                   id="email"
-                  onChange={(e) => {setEmail(e.target.value)}}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
                   labelCol={{ span: 24 }}
                   rules={[
                     {
@@ -119,7 +111,9 @@ export const Login = () => {
                   name="password"
                   label="Password"
                   id="password"
-                  onChange={(e)=>{setPassword(e.target.value)}}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
                   labelCol={{ span: 24 }}
                   rules={[
                     {

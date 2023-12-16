@@ -2,18 +2,26 @@ import React from "react";
 import { NavbarAkun } from "../../assets/components/elements/NavbarAkun";
 import { Navigate, useNavigate } from "react-router-dom";
 import NavbarBurger from "../../assets/components/elements/NavbarBurger";
+import { useDispatch, useSelector } from "react-redux";
+import { LogOut } from "../../redux/action/auth/authLoginUser";
 
 export const WebRiwayatPembayaran = () => {
   const navigate = useNavigate();
+  const id = useSelector((state) => state.loginUser.name.id);
+  const dispatch = useDispatch();
 
   return (
     <div>
-      <div className="hidden desktop:block"><NavbarAkun /></div>
-      <div className="block desktop:hidden"><NavbarBurger/></div>
+      <div className="hidden desktop:block">
+        <NavbarAkun />
+      </div>
+      <div className="block desktop:hidden">
+        <NavbarBurger />
+      </div>
       <div className="w-full h-[4rem] desktop:h-[10rem] bg-[#E7F0EF] font-bold">
         <button
           onClick={() => {
-            Navigate("/berandakelas");
+            navigate("/");
           }}
           className="flex text-[#116E63] gap-3 items-center text-[16px] font-serif pl-[1rem] desktop:pl-[10rem] pt-6"
         >
@@ -32,14 +40,21 @@ export const WebRiwayatPembayaran = () => {
           <div className="flex w-full ">
             <div className="w-[50%] flex flex-col items-start gap-10 p-8 mobile:hidden desktop:flex  ">
               <button
+                key={id}
                 onClick={() => {
-                  navigate("/WebAkunProfil");
+                  navigate(`/WebAkunProfil/${id}`);
                 }}
                 className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2 "
               >
                 <i class="fa-solid fa-pen text-[#116E63] text-[1.5rem]  "></i>Profil Saya
               </button>
-              <button className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2">
+              <button
+                key={id}
+                onClick={() => {
+                  navigate(`/WebUbahPassword/${id}`);
+                }}
+                className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2"
+              >
                 <i class="fa-solid fa-gear text-[#116E63] text-[1.5rem]"></i>Ubah Password
               </button>
               <button
@@ -50,7 +65,14 @@ export const WebRiwayatPembayaran = () => {
               >
                 <i class="fa-solid fa-cart-shopping text-[#116E63] text-[1.5rem]"></i>Riwayat Pembayaran
               </button>
-              <button className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2">
+              <button
+                onClick={() => {
+                  dispatch(LogOut());
+                }}
+                key="logout"
+                color="danger"
+                className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2"
+              >
                 <i class="fa-solid fa-arrow-right-from-bracket text-[#116E63] text-[1.5rem] "></i>Keluar
               </button>
             </div>

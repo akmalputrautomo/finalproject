@@ -48,7 +48,7 @@ const WebNotifikasi = () => {
       <div className="w-full h-[4rem] desktop:h-[10rem] bg-[#E7F0EF] font-bold">
         <button
           onClick={() => {
-            navigate("/berandakelas");
+            navigate("/");
           }}
           className="flex text-[#116E63] gap-3 items-center text-[16px] font-serif pl-[1rem] desktop:pl-[10rem] pt-6"
         >

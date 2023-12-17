@@ -32,7 +32,7 @@ export const RouterList = () => {
         <Route path="/forgetpass" element={<ForgetPass />} />
         <Route path="/updatepass" element={<UpdatePass />} />
         <Route path="/kelassaya" element={<BerandaKelasSaya />} />
-        <Route path="/berandakelas" element={<BerandaKelas />} />
+        <Route path="/berandakelas/:namesearch" element={<BerandaKelas />} />
         <Route path="/detailKelas/:courseId" element={<DetailKelas />} />
         <Route path="/detailKelasPembayaran" element={<DetailKelasPembayaran />} />
         <Route path="/pembayaranSukses" element={<PembayaranSukses />} />

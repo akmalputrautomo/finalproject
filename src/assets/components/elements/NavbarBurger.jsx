@@ -3,16 +3,18 @@ import React, { useState } from "react";
 import logo from "../../img/Logo.png";
 
 import { Link as RouterLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const NavbarBurger = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const id = useSelector((state) => state.loginUser.name.id);
+
   const menuItems = [
     { label: "Kelas Saya", path: "/kelassaya" },
     { label: "Kelas", path: "/berandakelas" },
-    { label: "Notifikasi", path: "/WebNotifikasi" },
-    { label: "Akun", path: "/WebAkunProfil" },
-    { label: "Profile Saya", path: "/WebAkunProfil" },
-    { label: "Ubah Password", path: "/WebUbahPassword" },
+    { label: "Notifikasi", path: `/WebNotifikasi/${id}` },
+    { label: "Profile Saya", path: `/WebAkunProfil/${id}` },
+    { label: "Ubah Password", path: `/WebUbahPassword/${id}` },
     { label: "Riwayat Pembayaran", path: "/WebRiwayatPembayaran" },
     { label: "Keluar" },
   ];
@@ -25,12 +27,7 @@ const NavbarBurger = () => {
   return (
     <div>
       {/* <Navbar disableAnimation isBordered style={navbarStyle}> */}
-      <Navbar
-        isBordered
-        isMenuOpen={isMenuOpen}
-        onMenuOpenChange={setIsMenuOpen}
-        className="bg-[#F8F8F8] right-0"
-      >
+      <Navbar isBordered isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen} className="bg-[#F8F8F8] right-0">
         <NavbarContent className="desktop:hidden pr-3" justify="start">
           <NavbarBrand>
             <img className="w-[10rem] h-[3rem]" src={logo} />
@@ -38,9 +35,7 @@ const NavbarBurger = () => {
         </NavbarContent>
 
         <NavbarContent className="desktop:hidden" justify="end">
-          <NavbarMenuToggle
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          />
+          <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
         </NavbarContent>
 
         <NavbarMenu>

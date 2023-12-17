@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import NavbarNotifikasi from "./NavbarNotifikasi";
 import { useNavigate, useParams } from "react-router-dom";
-import { NavbarResponsive } from "./elements/NavbarResponsive";
 import { useDispatch, useSelector } from "react-redux";
 import getDatanotifikasi from "../../redux/action/akun/notifikasiAkun";
+import NavbarBurger from "./elements/NavbarBurger";
 
 const WebNotifikasi = () => {
   const navigate = useNavigate();
@@ -43,7 +43,7 @@ const WebNotifikasi = () => {
         <NavbarNotifikasi />
       </div>
       <div className="block desktop:hidden">
-        <NavbarResponsive />
+        <NavbarBurger />
       </div>
       <div className="w-full h-[4rem] desktop:h-[10rem] bg-[#E7F0EF] font-bold">
         <button

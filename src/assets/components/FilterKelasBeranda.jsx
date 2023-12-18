@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Checkbox, CheckboxGroup } from "@nextui-org/checkbox";
 import { useDispatch, useSelector } from "react-redux";
 import { getDatakategori } from "../../redux/action/kategoribelajarrr";
 
-export const FilterKelasBeranda = () => {
+export const FilterKelasBeranda = ({setId}) => {
+  // const [id, setId] = useState(1);
   const dispatch = useDispatch();
 
   const getkategoribelajarrrr = () => {
@@ -36,9 +37,9 @@ export const FilterKelasBeranda = () => {
           <div>
             <span className="text-lg font-bold text-black">Kategori</span>
             <div className="pl-1 py-2 space-y-2">
-            {belajar && belajar.map((film) =>
-              <CheckboxGroup>
-                <Checkbox key={film.id} value="ui/ux"><span className="text-sm">{film.name}</span></Checkbox>
+            {belajar && belajar.map((course) =>
+              <CheckboxGroup key={course.id}>
+                <Checkbox value="ui/ux" onClick={() => {setId(course.id);}}><span className="text-sm">{course.name}</span></Checkbox>
               </CheckboxGroup>)}
             </div>
           </div>

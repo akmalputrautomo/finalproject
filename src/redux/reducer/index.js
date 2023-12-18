@@ -7,6 +7,7 @@ import forgetPassSlice from "./auth/forgetPassSlice";
 import GetCoursePopular from "./GetCoursePopular";
 import GetCourseDetail from "./GetCourseDetail";
 import updatepasslicer from "../reducer/akun/UpdatePass";
+import GetCourseAll from "./GetCourseAll";
 
 export default combineReducers({
   kategori: KategoriSlice,
@@ -16,5 +17,6 @@ export default combineReducers({
   authPass: forgetPassSlice,
   coursePopular: GetCoursePopular,
   courseDetail: GetCourseDetail,
+  courseAll: GetCourseAll,
   updatepass: updatepasslicer,
 });

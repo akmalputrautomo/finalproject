@@ -12,6 +12,15 @@ export const endpoint = {
   COURSE_POPULAR: (id) => {
     return `/api/v1/course/populer/${id}`;
   },
+  // COURSE_PREMIUM: (categoryId) => {
+    // const queryParams = new URLSearchParams({
+    //   categoryId: categoryId || '',
+    //   level: level || '',
+    //   sortBy: sortBy || '',
+    // });
+  //   return `/api/v1/course/premium?${categoryId}`;
+  // },
+  COURSE_ALL: "/api/v1/course/all",
   AKUN_PROFILE: (userId) => `/api/v1/accounts/updateprofile/${userId}`,
   UPDATE_PASS: (userId) => `/api/v1/accounts/updatepassword/${userId}`,
 };

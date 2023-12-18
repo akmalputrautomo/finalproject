@@ -8,8 +8,6 @@ const NavbarAfterLogin = () => {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
 
-  const id = useSelector((state) => state.loginUser.name.id);
-
   function handleSubmit(e) {
     e.preventDefault();
     if (search) {
@@ -58,17 +56,15 @@ const NavbarAfterLogin = () => {
             </DropdownMenu>
           </Dropdown>
           <button
-            key={id}
             onClick={() => {
-              navigate(`/WebNotifikasi/${id}`);
+              navigate(`/WebNotifikasi`);
             }}
           >
             <i class="fa-regular fa-bell text-[#116E63]"></i>
           </button>
           <button
-            key={id}
             onClick={() => {
-              navigate(`/WebAkunProfil/${id}`);
+              navigate(`/WebAkunProfil`);
             }}
           >
             <i class="fa-regular fa-user text-[#116E63]"></i>

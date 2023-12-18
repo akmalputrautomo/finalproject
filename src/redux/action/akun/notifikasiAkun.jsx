@@ -1,8 +1,8 @@
 import { reduxNotifikasi } from "../../../services/akun/notifikasi";
 import { setnontifakun } from "../../reducer/akun/NotifikasiRedux";
 
-const getDatanotifikasi = (courseId) => async (dispatch) => {
-  return reduxNotifikasi(courseId)
+const getDatanotifikasi = () => async (dispatch) => {
+  return reduxNotifikasi()
     .then((result) => {
       dispatch(setnontifakun(result.data.data));
     })

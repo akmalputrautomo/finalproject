@@ -1,8 +1,8 @@
 import { reduxProfile } from "../../../services/akun/akunprofile";
 import { setakunprofile } from "../../reducer/akun/akunprofileredux";
 
-const getakunprofile = (userId, formData) => async (dispatch) => {
-  return reduxProfile(userId, formData)
+const getakunprofile = (formData) => async (dispatch) => {
+  return reduxProfile(formData)
     .then((result) => {
       dispatch(setakunprofile(formData));
       return result;

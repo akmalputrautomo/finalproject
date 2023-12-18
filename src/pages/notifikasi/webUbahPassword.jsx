@@ -11,8 +11,6 @@ export const WebUbahPassword = () => {
   const [showPasswordlama, setShowPasswordlama] = useState(false);
   const [showPasswordBaru, setShowPasswprdBaru] = useState(false);
   const [showPasswordulang, setShowPasswordulang] = useState(false);
-  const { userId } = useParams();
-  console.log(userId);
   const [password, setpassword] = useState("");
   const [newPassword, setnewPassword] = useState("");
   const dispatch = useDispatch();
@@ -24,13 +22,10 @@ export const WebUbahPassword = () => {
   const showpassbaru = () => {
     setShowPasswprdBaru(!showPasswordBaru);
   };
-  const showpassulang = () => {
-    setShowPasswordulang(!showPasswordulang);
-  };
 
   const updatepaswwordakun = async () => {
     const success = await dispatch(
-      getupdate(userId, {
+      getupdate({
         password: password,
         newPassword: newPassword,
       })

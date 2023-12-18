@@ -19,8 +19,8 @@ const Navbarr = () => {
   const login = useSelector((state) => state.loginUser.user.email);
   console.log(login, "lohginn");
 
-  const id = useSelector((state) => state.loginUser.name.id);
-  console.log(id, "id");
+  // const id = useSelector((state) => state.loginUser.name.id);
+  // console.log(id, "id");
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -62,9 +62,8 @@ const Navbarr = () => {
                 <i class="fa-solid fa-list text-white text-[16px]"> kelas</i>
               </button>
               <button
-                key={id}
                 onClick={() => {
-                  navigate(`/WebNotifikasi/${id}`);
+                  navigate(`/WebNotifikasi`);
                 }}
                 className="w-[5rem] h-[2.5rem]"
               >
@@ -80,17 +79,15 @@ const Navbarr = () => {
                     <p className="font-semibold">{login}</p>
                   </DropdownItem>
                   <DropdownItem
-                    key={id}
                     onClick={() => {
-                      navigate(`/WebAkunProfil/${id}`);
+                      navigate(`/WebAkunProfil`);
                     }}
                   >
                     Profile
                   </DropdownItem>
                   <DropdownItem
-                    key={id}
                     onClick={() => {
-                      navigate(`/WebUbahPassword/${id}`);
+                      navigate(`/WebUbahPassword`);
                     }}
                   >
                     Update password
@@ -103,9 +100,8 @@ const Navbarr = () => {
                     Riwayat Pembayaran
                   </DropdownItem>
                   <DropdownItem
-                    key={id}
                     onClick={() => {
-                      navigate(`/WebNotifikasi/${id}`);
+                      navigate(`/WebNotifikasi`);
                     }}
                   >
                     Notifikasi

@@ -14,16 +14,16 @@ import { useDispatch, useSelector } from "react-redux";
 export const BerandaKelas = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [scrollBehavior, setScrollBehavior] = useState("outside");
-  const { namesearch } = useParams();
-  const dispatch = useDispatch();
+  // const { namesearch } = useParams();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    search(namesearch);
-  }, [namesearch]);
+  // useEffect(() => {
+  //   search(namesearch);
+  // }, [namesearch]);
 
-  const search = () => {
-    dispatch(getDataSearchCourse(namesearch));
-  };
+  // const search = () => {
+  //   dispatch(getDataSearchCourse(namesearch));
+  // };
 
   return (
     <div>

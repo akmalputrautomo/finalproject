@@ -19,6 +19,7 @@ import { WebRiwayatPembayaran } from "../pages/notifikasi/WebRiwayatPembayaran";
 import { DetailKelas } from "../pages/DetailKelas";
 import { UpdatePass } from "../auth/user/UpdatePass";
 import { KursusPopuler } from "../assets/components/KursusPopuler";
+import { Pagesearch } from "../pages/pagesearch";
 
 export const RouterList = () => {
   return (
@@ -32,7 +33,7 @@ export const RouterList = () => {
         <Route path="/forgetpass" element={<ForgetPass />} />
         <Route path="/updatepass" element={<UpdatePass />} />
         <Route path="/kelassaya" element={<BerandaKelasSaya />} />
-        <Route path="/berandakelas/:namesearch" element={<BerandaKelas />} />
+        <Route path="/berandakelas" element={<BerandaKelas />} />
         <Route path="/detailKelas/:courseId" element={<DetailKelas />} />
         <Route path="/detailKelasPembayaran" element={<DetailKelasPembayaran />} />
         <Route path="/pembayaranSukses" element={<PembayaranSukses />} />
@@ -42,6 +43,7 @@ export const RouterList = () => {
         <Route path="/WebUbahPassword/:userId" element={<WebUbahPassword />} />
         <Route path="/WebRiwayatPembayaran" element={<WebRiwayatPembayaran />} />
         <Route path="/popular/:courseId" element={<KursusPopuler />} />
+        <Route path="/pagesearch/:namesearch" element={<Pagesearch />} />
 
         {/* Admin */}
         <Route path="/loginAdm" element={<LoginAdmin />} />

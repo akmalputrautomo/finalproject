@@ -3,7 +3,7 @@ import { FilterKelasBeranda } from "../assets/components/FilterKelasBeranda";
 import { CourseKelasSaya } from "../assets/components/CourseKelasSaya";
 import { SearchKelasSaya } from "../assets/components/SearchKelasSaya";
 import NavbarAfterLogin from "../assets/components/NavbarAfterLogin";
-import {Button, useDisclosure} from "@nextui-org/react";
+import { Button, useDisclosure } from "@nextui-org/react";
 import ModalFilterBeranda from "../assets/components/ModalFilterBeranda";
 import { NavbarResponsive } from "../assets/components/elements/NavbarResponsive";
 
@@ -13,8 +13,12 @@ export const BerandaKelasSaya = () => {
 
   return (
     <div>
-      <div className="hidden desktop:block"><NavbarAfterLogin /></div>
-      <div className="block desktop:hidden"><NavbarResponsive/></div>
+      <div className="hidden desktop:block">
+        <NavbarAfterLogin />
+      </div>
+      <div className="block desktop:hidden">
+        <NavbarResponsive />
+      </div>
       <div className="bg-[#CFE2E080] h-full w-[100%] flex flex-col desktop:flex-row px-1 desktop:px-[7rem] py-[1rem] desktop:py-[3rem]">
         <div className="flex-col w-[100%] desktop:w-[25%]">
           <div className="w-full flex desktop:flex-col justify-between items-center">

@@ -7,13 +7,13 @@ import NavbarBurger from "./elements/NavbarBurger";
 
 const WebNotifikasi = () => {
   const navigate = useNavigate();
-  const { userId } = useParams();
+
   const dispatch = useDispatch();
-  console.log(userId, "id notifikasi");
+
   const [intervalId, setIntervalId] = useState(null);
 
   const getnotifikasi = () => {
-    dispatch(getDatanotifikasi(userId));
+    dispatch(getDatanotifikasi());
   };
 
   const notifikasi = useSelector((state) => state.Notifikasi.notif);
@@ -35,7 +35,7 @@ const WebNotifikasi = () => {
     return () => {
       clearInterval(id);
     };
-  }, [userId]); // Include userId
+  }, []); // Include userId
 
   return (
     <div>

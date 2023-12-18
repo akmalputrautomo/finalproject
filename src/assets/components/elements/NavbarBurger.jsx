@@ -3,18 +3,16 @@ import React, { useState } from "react";
 import logo from "../../img/Logo.png";
 
 import { Link as RouterLink } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 const NavbarBurger = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const id = useSelector((state) => state.loginUser.name.id);
 
   const menuItems = [
     { label: "Kelas Saya", path: "/kelassaya" },
     { label: "Kelas", path: "/berandakelas" },
-    { label: "Notifikasi", path: `/WebNotifikasi/${id}` },
-    { label: "Profile Saya", path: `/WebAkunProfil/${id}` },
-    { label: "Ubah Password", path: `/WebUbahPassword/${id}` },
+    { label: "Notifikasi", path: `/WebNotifikasi` },
+    { label: "Profile Saya", path: `/WebAkunProfil` },
+    { label: "Ubah Password", path: `/WebUbahPassword` },
     { label: "Riwayat Pembayaran", path: "/WebRiwayatPembayaran" },
     { label: "Keluar" },
   ];

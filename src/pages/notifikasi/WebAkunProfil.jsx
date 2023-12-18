@@ -9,8 +9,6 @@ import { LogOut } from "../../redux/action/auth/authLoginUser";
 
 export const WebAkunProfil = () => {
   const navigate = useNavigate();
-  const { userId } = useParams();
-  console.log(userId, "id user");
   const [isEditingNama, setIsEditingNama] = useState(false);
   const [isEditingEmail, setIsEditingEmail] = useState(false);
   const [isEditingTelepon, setIsEditingTelepon] = useState(false);
@@ -42,7 +40,7 @@ export const WebAkunProfil = () => {
 
   const profilakun = async () => {
     const success = await dispatch(
-      getakunprofile(userId, {
+      getakunprofile({
         image: image,
         name: name,
         no_hp: no_hp,

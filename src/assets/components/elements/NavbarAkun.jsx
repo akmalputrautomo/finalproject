@@ -2,11 +2,9 @@ import React, { useState } from "react";
 import logo from "../../img/Logo.png";
 import { useNavigate } from "react-router-dom";
 import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button } from "@nextui-org/react";
-import { useSelector } from "react-redux";
 
 export const NavbarAkun = () => {
   const navigate = useNavigate();
-  const id = useSelector((state) => state.loginUser.name.id);
   const [search, setSearch] = useState("");
 
   function handleSubmit(e) {
@@ -58,7 +56,7 @@ export const NavbarAkun = () => {
           </Dropdown>
           <button
             onClick={() => {
-              navigate(`/WebNotifikasi/${id}`);
+              navigate(`/WebNotifikasi`);
             }}
           >
             <i class="fa-regular fa-bell text-[#116E63]"></i>

@@ -16,4 +16,5 @@ export const endpoint = {
   UPDATE_PASS: `/api/v1/accounts/updatepassword`,
   NOTIFIKASI: `/api/v1/accounts/notification`,
   COURSE_SEARCH: "/api/v1/course/search",
+  FREE_KELASSAYA: "/api/v1/course/free",
 };

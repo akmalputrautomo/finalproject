@@ -13,7 +13,7 @@ export const authLoginUser = (input) => async (dispatch) => {
       return result;
     })
     .catch((err) => {
-      throw err;
+      alert("salah");
     });
 };
 

@@ -9,6 +9,7 @@ import GetCourseDetail from "./GetCourseDetail";
 import updatepasslicer from "../reducer/akun/UpdatePass";
 import akunnotif from "./akun/NotifikasiRedux";
 import coursesearch from "./search";
+import getfree from "./getfreekelassaya";
 
 export default combineReducers({
   kategori: KategoriSlice,
@@ -21,4 +22,5 @@ export default combineReducers({
   updatepass: updatepasslicer,
   Notifikasi: akunnotif,
   Search: coursesearch,
+  Free: getfree,
 });

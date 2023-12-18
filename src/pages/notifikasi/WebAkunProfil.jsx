@@ -28,6 +28,7 @@ export const WebAkunProfil = () => {
   const namauser = useSelector((state) => state.loginUser.name.name);
   const emailuser = useSelector((state) => state.loginUser.name.email);
   const notelpuser = useSelector((state) => state.loginUser.name.no_hp);
+  const photo = useSelector((state) => state.loginUser.name.foto_profile);
 
   const handleEditNamaClick = () => {
     setIsEditingNama(!isEditingNama);
@@ -44,7 +45,6 @@ export const WebAkunProfil = () => {
       getakunprofile(userId, {
         image: image,
         name: name,
-        email: email,
         no_hp: no_hp,
         country: country,
         city: city,
@@ -129,15 +129,8 @@ export const WebAkunProfil = () => {
 
               <div className="flex flex-col gap-1 mobile:gap-4 desktop:gap-1 ">
                 <div className="pt-3 flex justify-center items-center cursor-pointer" onClick={handleImageClick}>
-                  {image ? <img src={URL.createObjectURL(image)} alt="" className="rounded-full object-cover w-1/4 h-1/4" /> : <img src={logo} alt="Profile" className="mr-2" />}
-                  <input
-                    type="file"
-                    id="image"
-                    accept="image/*"
-                    ref={inputRef}
-                    onChange={handleImageChange}
-                    className="hidden" // Tambahkan class hidden untuk menyembunyikan input file
-                  />
+                  {image ? <img src={URL.createObjectURL(image)} alt="" className="rounded-full object-cover w-1/4 h-1/4" /> : <img src={photo || logo} alt="Profile" className="mr-2 rounded-full object-cover w-1/4 h-1/4" />}
+                  <input type="file" id="image" accept="image/*" ref={inputRef} onChange={handleImageChange} className="hidden" />
                 </div>
                 <div>
                   <p>Nama</p>
@@ -157,7 +150,7 @@ export const WebAkunProfil = () => {
                     </div>
                   )}
                 </div>
-                <div>
+                {/* <div>
                   <p>Email</p>
                   {isEditingEmail ? (
                     <div className="flex items-center gap-2">
@@ -174,7 +167,7 @@ export const WebAkunProfil = () => {
                       </button>
                     </div>
                   )}
-                </div>
+                </div> */}
                 <div>
                   <p>Nomor Telepon</p>
                   {isEditingTelepon ? (

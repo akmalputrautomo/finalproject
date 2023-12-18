@@ -25,7 +25,7 @@ const Navbarr = () => {
   function handleSubmit(e) {
     e.preventDefault();
     if (search) {
-      navigate(`/berandakelas/${search}`);
+      navigate(`/pagesearch/${search}`);
     } else {
       navigate("/");
     }

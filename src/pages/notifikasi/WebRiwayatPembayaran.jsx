@@ -7,7 +7,6 @@ import { LogOut } from "../../redux/action/auth/authLoginUser";
 
 export const WebRiwayatPembayaran = () => {
   const navigate = useNavigate();
-  const id = useSelector((state) => state.loginUser.name.id);
   const dispatch = useDispatch();
 
   return (
@@ -40,18 +39,16 @@ export const WebRiwayatPembayaran = () => {
           <div className="flex w-full ">
             <div className="w-[50%] flex flex-col items-start gap-10 p-8 mobile:hidden desktop:flex  ">
               <button
-                key={id}
                 onClick={() => {
-                  navigate(`/WebAkunProfil/${id}`);
+                  navigate(`/WebAkunProfil`);
                 }}
                 className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2 "
               >
                 <i class="fa-solid fa-pen text-[#116E63] text-[1.5rem]  "></i>Profil Saya
               </button>
               <button
-                key={id}
                 onClick={() => {
-                  navigate(`/WebUbahPassword/${id}`);
+                  navigate(`/WebUbahPassword`);
                 }}
                 className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2"
               >

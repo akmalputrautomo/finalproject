@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 
 const NavbarNotifikasi = () => {
   const navigate = useNavigate();
-  const id = useSelector((state) => state.loginUser.name.id);
 
   return (
     <div>
@@ -51,9 +50,8 @@ const NavbarNotifikasi = () => {
             <p className="text-lg font-semibold">Notifikasi</p>
           </button>
           <button
-            key={id}
             onClick={() => {
-              navigate(`/WebAkunProfil/${id}`);
+              navigate(`/WebAkunProfil`);
             }}
           >
             <i class="fa-regular fa-user text-[#116E63]"></i>

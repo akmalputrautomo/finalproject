@@ -30,6 +30,10 @@ export const WebUbahPassword = () => {
       })
     );
     if (success) {
+      navigate("/");
+      alert("secces update paassword");
+    } else {
+      alert("gagal brow");
     }
   };
   return (

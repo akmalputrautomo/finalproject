@@ -3,16 +3,16 @@ import { CookieStorage, CookieKeys } from "./cookies";
 
 // const Token = CookieStorage.get(CookieKeys.AuthToken) ? CookieStorage.get(CookieKeys.AuthToken) : "";
 
-const http = axios.create({
+const http2 = axios.create({
   baseURL: process.env.REACT_APP_SERVER,
   timeout: 30000,
   headers: {
-    accept: "application/json",
-    "Content-Type": "application/json",
+    accept: "multipart/form-data",
+    "Content-Type": "multipart/form-data",
   },
 });
 
-http.interceptors.request.use((config) => {
+http2.interceptors.request.use((config) => {
   config.headers = {
     ...config.headers,
     Authorization: `${CookieStorage.get(CookieKeys.AuthToken) ? CookieStorage.get(CookieKeys.AuthToken) : ""}`,
@@ -20,4 +20,4 @@ http.interceptors.request.use((config) => {
   return config;
 });
 
-export default http;
+export default http2;

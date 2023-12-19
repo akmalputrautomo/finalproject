@@ -20,22 +20,23 @@ const WebNotifikasi = () => {
   console.log(notifikasi);
 
   useEffect(() => {
-    // Initial API call
     getnotifikasi();
 
-    // Set up interval to call the API every 5 seconds
     const id = setInterval(() => {
       getnotifikasi();
-    }, 5000);
+    }, 3000);
 
-    // Save the interval ID to clear it later when the component unmounts
     setIntervalId(id);
 
-    // Cleanup function to clear the interval when the component is unmounted
     return () => {
       clearInterval(id);
     };
-  }, []); // Include userId
+  }, []);
+
+  const formatTanggal = (tanggal) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(tanggal).toLocaleDateString("id-ID", options);
+  };
 
   return (
     <div>
@@ -76,7 +77,7 @@ const WebNotifikasi = () => {
                       <h1 className="mobile:text-[#8A8A8A] desktop:w-1/2 mobile:w-full">{courses.body}</h1>
                     </div>
                     <div className="mobile:w-[50%] desktop:w-[15%] desktop:justify-end ">
-                      <h1>{courses.createAt}</h1>
+                      <h1>{formatTanggal(courses.createAt)}</h1>
                     </div>
                   </div>
                 </div>

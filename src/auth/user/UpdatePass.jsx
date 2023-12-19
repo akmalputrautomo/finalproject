@@ -14,20 +14,22 @@ export const UpdatePass = () => {
   const [PasswordConfirmation, setPasswordConfirmation] = useState("");
   const queryParams = new URLSearchParams(location.search);
   const token = queryParams.get("token");
+  const email = queryParams.get("email")
   const handleSave = async () => {
     const updatepass = await dispatch(
       getUpdatePass(
         {
           password: Password,
-          passwordConfirmation: PasswordConfirmation,
+          password_confirmation: PasswordConfirmation,
         },
-        token
+        token,email
       )
-    );
-    alert("Upadate Password Berhasil");
-    setTimeout(() => {
-      navigate("/login");
-    }, 2000);
+    );if(updatepass){
+      alert("Upadate Password Berhasil");
+      setTimeout(() => {
+        // navigate("/login");
+      }, 2000);
+    }
   };
   return (
     <div className="forgetpass-section bg-slate-600 w-screen h-screen flex justify-center items-center">

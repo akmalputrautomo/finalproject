@@ -20,7 +20,7 @@ export const ForgetPass = () => {
     if (forget) {
       alert("Tautan reset password terkirim, Periksa Email Anda");
       setTimeout(() => {
-        window.location.href = "https://mail.google.com";
+        // window.location.href = "https://mail.google.com";
         // navigate('/updatepass')
       }, 3000);
     }

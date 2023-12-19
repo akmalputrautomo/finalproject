@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../img/Logo.png";
 import { CookieKeys, CookieStorage } from "../../utils/cookies";
 import { useNavigate } from "react-router";
@@ -7,6 +7,7 @@ import { Button } from "@nextui-org/button";
 import { Avatar } from "@nextui-org/avatar";
 import { useDispatch, useSelector } from "react-redux";
 import { LogOut } from "../../redux/action/auth/authLoginUser";
+import { GetUserrr } from "../../redux/action/akun/GetUser";
 
 const Navbarr = () => {
   const [search, setSearch] = useState("");
@@ -19,8 +20,13 @@ const Navbarr = () => {
   const login = useSelector((state) => state.loginUser.user.email);
   console.log(login, "lohginn");
 
-  // const id = useSelector((state) => state.loginUser.name.id);
-  // console.log(id, "id");
+  const getdatauser = () => {
+    dispatch(GetUserrr());
+  };
+
+  useEffect(() => {
+    getdatauser();
+  }, []);
 
   function handleSubmit(e) {
     e.preventDefault();

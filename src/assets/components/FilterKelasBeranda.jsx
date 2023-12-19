@@ -30,16 +30,16 @@ export const FilterKelasBeranda = () => {
                 <Checkbox value="ui/ux">
                   <span className="text-sm">UI/UX Design</span>
                 </Checkbox>
-                <Checkbox value="ui/ux">
+                <Checkbox value="wWeb Development">
                   <span className="text-sm">Web Development</span>
                 </Checkbox>
-                <Checkbox value="ui/ux">
+                <Checkbox value="Android Development">
                   <span className="text-sm">Android Development</span>
                 </Checkbox>
-                <Checkbox value="ui/ux">
+                <Checkbox value="Data Science">
                   <span className="text-sm">Data Science</span>
                 </Checkbox>
-                <Checkbox value="ui/ux">
+                <Checkbox value="Business Intelligence">
                   <span className="text-sm">Business Intelligence</span>
                 </Checkbox>
               </CheckboxGroup>

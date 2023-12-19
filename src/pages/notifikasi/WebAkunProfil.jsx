@@ -4,8 +4,9 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 import NavbarBurger from "../../assets/components/elements/NavbarBurger";
 import logo from "../../assets/img/foto.png";
 import { useDispatch, useSelector } from "react-redux";
-import getakunprofile from "../../redux/action/akun/AkunProfile";
 import { LogOut } from "../../redux/action/auth/authLoginUser";
+import { useDataProfil } from "../../services/akun/akunprofile";
+import { GetUserrr } from "../../redux/action/akun/GetUser";
 
 export const WebAkunProfil = () => {
   const navigate = useNavigate();
@@ -19,12 +20,19 @@ export const WebAkunProfil = () => {
   const [country, setcountry] = useState("");
   const [city, setcity] = useState("");
   const inputRef = useRef(null);
-
+  const { mutate: addprofil } = useDataProfil();
   const dispatch = useDispatch();
 
-  const data = useSelector((state) => state.loginUser.name);
-  // const notelpuser = useSelector((state) => state.loginUser.name.no_hp);
-  // const photo = useSelector((state) => state.loginUser.name.foto_profile);
+  const data = useSelector((state) => state.me.isUser);
+  console.log(data);
+
+  const getdatauser = () => {
+    dispatch(GetUserrr());
+  };
+
+  useEffect(() => {
+    getdatauser();
+  }, []);
 
   const handleEditNamaClick = () => {
     setIsEditingNama(!isEditingNama);
@@ -40,17 +48,21 @@ export const WebAkunProfil = () => {
     setIsEditingcity(!isEditingcity);
   };
 
-  const profilakun = async () => {
-    const success = await dispatch(
-      getakunprofile({
-        image: image,
-        name: name,
-        no_hp: no_hp,
-        country: country,
-        city: city,
-      })
-    );
-    if (success) {
+  const profilakun = (e) => {
+    e && e.preventDefault();
+    const formData = new FormData();
+
+    formData.append("image", image);
+    formData.append("name", name);
+    formData.append("no_hp", no_hp);
+    formData.append("country", country);
+    formData.append("city", city);
+
+    try {
+      addprofil(formData);
+      navigate("/");
+    } catch (error) {
+      alert("Gagal menyimpan profil");
     }
   };
 
@@ -171,7 +183,7 @@ export const WebAkunProfil = () => {
                   <p>Negara</p>
                   {isEditingcountry ? (
                     <div className="flex items-center gap-2">
-                      <input onChange={(e) => setcountry(e.target.value)} id="name" placeholder="John Doe" className="border rounded-xl w-[60%] h-[3rem] mobile:w-[90%] desktop:w-[60%]" />
+                      <input onChange={(e) => setcountry(e.target.value)} id="country" placeholder="John Doe" className="border rounded-xl w-[60%] h-[3rem] mobile:w-[90%] desktop:w-[60%]" />
                       <button onClick={handleEditcountry} className="text-[#116E63]">
                         Cancel Edit
                       </button>
@@ -189,7 +201,7 @@ export const WebAkunProfil = () => {
                   <p>Kota</p>
                   {isEditingcity ? (
                     <div className="flex items-center gap-2">
-                      <input onChange={(e) => setname(e.target.value)} id="name" placeholder="John Doe" className="border rounded-xl w-[60%] h-[3rem] mobile:w-[90%] desktop:w-[60%]" />
+                      <input onChange={(e) => setcity(e.target.value)} id="city" placeholder="John Doe" className="border rounded-xl w-[60%] h-[3rem] mobile:w-[90%] desktop:w-[60%]" />
                       <button onClick={handleEditcity} className="text-[#116E63]">
                         Cancel Edit
                       </button>

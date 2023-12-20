@@ -5,7 +5,11 @@ export const reduxForgetPass = async (input) => {
     return await http.post(endpoint.FORGET_PASS, input);
   };
   
-  export const reduxUpdatePass = async (input, token) => {
-    return await http.put(`${endpoint.UPDATE_PASS}?token=${token ? token : ""}`,
+  export const reduxUpdatePass = async (input, token, email) => {
+    return await http.put(`${endpoint.RESET_PASS}?token=${token ? token : ""}&email=${email ? email : ""}`,
     input,);
   };
+
+  // export const reduxUpdatePass = async (input, token, email) => {
+  //   return await http.put(endpoint.RESET_PASS, { input, token, email });
+  // };

@@ -29,26 +29,26 @@ export const Login = () => {
         }
       })
       .catch((err) => {
-        if (err.response.status === 400 || err.response.status === 401) {
-          setErrMsg(err.response.data.message);
-        }
+        // if (err.response.status === 400 || err.response.status === 401) {
+        //   setErrMsg(err.response.data.message);
+        // }
       });
   };
 
-  useEffect(() => {
-    if (getErrMsg) {
-      toast.error(getErrMsg, {
-        position: "top-right",
-        autoClose: 3500,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-    }
-  }, [getErrMsg]);
+  // useEffect(() => {
+  //   if (getErrMsg) {
+  //     toast.error(getErrMsg, {
+  //       position: "top-right",
+  //       autoClose: 3500,
+  //       hideProgressBar: false,
+  //       closeOnClick: true,
+  //       pauseOnHover: true,
+  //       draggable: true,
+  //       progress: undefined,
+  //       theme: "light",
+  //     });
+  //   }
+  // }, [getErrMsg]);
 
   const register = () => {
     navigate("/register");

@@ -14,20 +14,22 @@ export const UpdatePass = () => {
   const [PasswordConfirmation, setPasswordConfirmation] = useState("");
   const queryParams = new URLSearchParams(location.search);
   const token = queryParams.get("token");
+  const email = queryParams.get("email");
   const handleSave = async () => {
     const updatepass = await dispatch(
       getUpdatePass(
         {
           password: Password,
-          passwordConfirmation: PasswordConfirmation,
+          password_confirmation: PasswordConfirmation,
         },
-        token
+        token,
+        email
       )
     );
-    alert("Upadate Password Berhasil");
-    setTimeout(() => {
-      navigate("/login");
-    }, 2000);
+    if (updatepass) {
+      alert("Upadate Password Berhasil");
+      setTimeout(() => {}, 2000);
+    }
   };
   return (
     <div className="forgetpass-section bg-slate-600 w-screen h-screen flex justify-center items-center">
@@ -49,9 +51,7 @@ export const UpdatePass = () => {
 
           <div className="form w-[70vw] desktop:w-[20vw]">
             <div className="">
-              <h1 className="text-center text-[#116E63] font-serif font-semibold text-xl">
-                Forget Password
-              </h1>
+              <h1 className="text-center text-[#116E63] font-serif font-semibold text-xl">Forget Password</h1>
               <Form
                 name="normal_login"
                 className="login-form pt-3"
@@ -78,19 +78,13 @@ export const UpdatePass = () => {
                       message: "Password must have a minimum length of 6",
                     },
                     {
-                      pattern: new RegExp(
-                        "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$"
-                      ),
-                      message:
-                        "Password must contain at least one lowercase letter, uppercase letter, number, and special character",
+                      pattern: new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$"),
+                      message: "Password must contain at least one lowercase letter, uppercase letter, number, and special character",
                     },
                   ]}
                   hasFeedback
                 >
-                  <Input.Password
-                    prefix={<LockOutlined className="site-form-item-icon" />}
-                    placeholder="New Password here"
-                  />
+                  <Input.Password prefix={<LockOutlined className="site-form-item-icon" />} placeholder="New Password here" />
                 </Form.Item>
                 <Form.Item
                   name="ConfirmNewpassword"
@@ -116,17 +110,10 @@ export const UpdatePass = () => {
                   ]}
                   hasFeedback
                 >
-                  <Input.Password
-                    prefix={<LockOutlined className="site-form-item-icon" />}
-                    placeholder="Confirm New Password"
-                  />
+                  <Input.Password prefix={<LockOutlined className="site-form-item-icon" />} placeholder="Confirm New Password" />
                 </Form.Item>
                 <div className="button  items-center  flex flex-col mt-4 ">
-                  <button
-                    onClick={handleSave}
-                    htmlType="submit"
-                    className="login-form-button bg-[#116E63] w-full h-12 rounded-xl text-white text-sm"
-                  >
+                  <button onClick={handleSave} htmlType="submit" className="login-form-button bg-[#116E63] w-full h-12 rounded-xl text-white text-sm">
                     Save
                   </button>
                 </div>

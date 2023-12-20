@@ -4,53 +4,65 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 import NavbarBurger from "../../assets/components/elements/NavbarBurger";
 import logo from "../../assets/img/foto.png";
 import { useDispatch, useSelector } from "react-redux";
-import getakunprofile from "../../redux/action/akun/AkunProfile";
 import { LogOut } from "../../redux/action/auth/authLoginUser";
+import { useDataProfil } from "../../services/akun/akunprofile";
+import { GetUserrr } from "../../redux/action/akun/GetUser";
 
 export const WebAkunProfil = () => {
   const navigate = useNavigate();
-  const { userId } = useParams();
-  console.log(userId, "id user");
   const [isEditingNama, setIsEditingNama] = useState(false);
-  const [isEditingEmail, setIsEditingEmail] = useState(false);
   const [isEditingTelepon, setIsEditingTelepon] = useState(false);
+  const [isEditingcountry, setIsEditingcountry] = useState(false);
+  const [isEditingcity, setIsEditingcity] = useState(false);
   const [image, setimage] = useState("");
   const [name, setname] = useState("");
-  const [email, setemail] = useState("");
   const [no_hp, setno_hp] = useState("");
   const [country, setcountry] = useState("");
   const [city, setcity] = useState("");
   const inputRef = useRef(null);
-
+  const { mutate: addprofil } = useDataProfil();
   const dispatch = useDispatch();
-  const id = useSelector((state) => state.loginUser.name.id);
 
-  const namauser = useSelector((state) => state.loginUser.name.name);
-  const emailuser = useSelector((state) => state.loginUser.name.email);
-  const notelpuser = useSelector((state) => state.loginUser.name.no_hp);
+  const data = useSelector((state) => state.me.isUser);
+  console.log(data);
+
+  const getdatauser = () => {
+    dispatch(GetUserrr());
+  };
+
+  useEffect(() => {
+    getdatauser();
+  }, []);
 
   const handleEditNamaClick = () => {
     setIsEditingNama(!isEditingNama);
   };
-  const handleEditEmailClick = () => {
-    setIsEditingEmail(!isEditingEmail);
-  };
+
   const handleEditTeleponClick = () => {
     setIsEditingTelepon(!isEditingTelepon);
   };
+  const handleEditcountry = () => {
+    setIsEditingcountry(!isEditingcountry);
+  };
+  const handleEditcity = () => {
+    setIsEditingcity(!isEditingcity);
+  };
 
-  const profilakun = async () => {
-    const success = await dispatch(
-      getakunprofile(userId, {
-        image: image,
-        name: name,
-        email: email,
-        no_hp: no_hp,
-        country: country,
-        city: city,
-      })
-    );
-    if (success) {
+  const profilakun = (e) => {
+    e && e.preventDefault();
+    const formData = new FormData();
+
+    formData.append("image", image);
+    formData.append("name", name);
+    formData.append("no_hp", no_hp);
+    formData.append("country", country);
+    formData.append("city", city);
+
+    try {
+      addprofil(formData);
+      navigate("/");
+    } catch (error) {
+      alert("Gagal menyimpan profil");
     }
   };
 
@@ -97,9 +109,8 @@ export const WebAkunProfil = () => {
                 <i class="fa-solid fa-pen text-[#116E63] text-[1.5rem]  "></i>Profil Saya
               </button>
               <button
-                key={id}
                 onClick={() => {
-                  navigate(`/WebUbahPassword/${id}`);
+                  navigate(`/WebUbahPassword`);
                 }}
                 className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2"
               >
@@ -129,15 +140,8 @@ export const WebAkunProfil = () => {
 
               <div className="flex flex-col gap-1 mobile:gap-4 desktop:gap-1 ">
                 <div className="pt-3 flex justify-center items-center cursor-pointer" onClick={handleImageClick}>
-                  {image ? <img src={URL.createObjectURL(image)} alt="" className="rounded-full object-cover w-1/4 h-1/4" /> : <img src={logo} alt="Profile" className="mr-2" />}
-                  <input
-                    type="file"
-                    id="image"
-                    accept="image/*"
-                    ref={inputRef}
-                    onChange={handleImageChange}
-                    className="hidden" // Tambahkan class hidden untuk menyembunyikan input file
-                  />
+                  {image ? <img src={URL.createObjectURL(image)} alt="" className="rounded-full object-cover w-1/4 h-1/4" /> : <img src={data.foto_profile || logo} alt="Profile" className="mr-2 rounded-full object-cover w-1/4 h-1/4" />}
+                  <input type="file" id="image" accept="image/*" ref={inputRef} onChange={handleImageChange} className="hidden" />
                 </div>
                 <div>
                   <p>Nama</p>
@@ -150,26 +154,8 @@ export const WebAkunProfil = () => {
                     </div>
                   ) : (
                     <div className="flex items-center border w-[60%] mobile:w-[90%] h-[3rem] rounded-xl">
-                      <p>{namauser}</p>
+                      <p>{data.name}</p>
                       <button onClick={handleEditNamaClick} className="pl-[24rem] mobile:pl-[20rem] desktop:pl-[24rem] text-[#116E63]">
-                        Edit
-                      </button>
-                    </div>
-                  )}
-                </div>
-                <div>
-                  <p>Email</p>
-                  {isEditingEmail ? (
-                    <div className="flex items-center gap-2">
-                      <input onChange={(e) => setemail(e.target.value)} id="email" placeholder="Johndoe@gmail.com" className="border rounded-xl w-[60%] h-[3rem] mobile:w-[90%] desktop:w-[60%]" />
-                      <button onClick={handleEditEmailClick} className="text-[#116E63]">
-                        Cancel Edit
-                      </button>
-                    </div>
-                  ) : (
-                    <div className="flex items-center border w-[60%] mobile:w-[90%] h-[3rem] rounded-xl">
-                      <p>{emailuser}</p>
-                      <button onClick={handleEditEmailClick} className="pl-[16.5rem] mobile:pl-[20rem] desktop:pl-[16.5rem] text-[#116E63]">
                         Edit
                       </button>
                     </div>
@@ -186,7 +172,7 @@ export const WebAkunProfil = () => {
                     </div>
                   ) : (
                     <div className="flex items-center border w-[60%] mobile:w-[90%] h-[3rem] rounded-xl">
-                      <p>{notelpuser}</p>
+                      <p>{data.no_hp}</p>
                       <button onClick={handleEditTeleponClick} className="pl-[22rem] mobile:pl-[20rem] desktop:pl-[22rem] text-[#116E63]">
                         Edit
                       </button>
@@ -195,11 +181,39 @@ export const WebAkunProfil = () => {
                 </div>
                 <div>
                   <p>Negara</p>
-                  <input onChange={(e) => setcountry(e.target.value)} id="country" placeholder="Masukkan Negara tempat tinggal" className="border rounded-xl w-[60%] h-[3rem] mobile:w-[90%] desktop:w-[60%]"></input>
+                  {isEditingcountry ? (
+                    <div className="flex items-center gap-2">
+                      <input onChange={(e) => setcountry(e.target.value)} id="country" placeholder="John Doe" className="border rounded-xl w-[60%] h-[3rem] mobile:w-[90%] desktop:w-[60%]" />
+                      <button onClick={handleEditcountry} className="text-[#116E63]">
+                        Cancel Edit
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="flex items-center border w-[60%] mobile:w-[90%] h-[3rem] rounded-xl">
+                      <p>{data.country}</p>
+                      <button onClick={handleEditcountry} className="pl-[24rem] mobile:pl-[20rem] desktop:pl-[24rem] text-[#116E63]">
+                        Edit
+                      </button>
+                    </div>
+                  )}
                 </div>
                 <div>
                   <p>Kota</p>
-                  <input onChange={(e) => setcity(e.target.value)} id="city" placeholder="Masukkan kota tempat tinggal" className="border rounded-xl w-[60%] h-[3rem] mobile:w-[90%] desktop:w-[60%]"></input>
+                  {isEditingcity ? (
+                    <div className="flex items-center gap-2">
+                      <input onChange={(e) => setcity(e.target.value)} id="city" placeholder="John Doe" className="border rounded-xl w-[60%] h-[3rem] mobile:w-[90%] desktop:w-[60%]" />
+                      <button onClick={handleEditcity} className="text-[#116E63]">
+                        Cancel Edit
+                      </button>
+                    </div>
+                  ) : (
+                    <div className="flex items-center border w-[60%] mobile:w-[90%] h-[3rem] rounded-xl">
+                      <p>{data.city}</p>
+                      <button onClick={handleEditcity} className="pl-[24rem] mobile:pl-[20rem] desktop:pl-[24rem] text-[#116E63]">
+                        Edit
+                      </button>
+                    </div>
+                  )}
                 </div>
                 <div>
                   <button

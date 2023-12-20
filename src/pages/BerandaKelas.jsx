@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FilterKelasBeranda } from "../assets/components/FilterKelasBeranda";
 import { SearchKelasBeranda } from "../assets/components/SearchKelasBeranda";
 import NavbarAfterLogin from "../assets/components/NavbarAfterLogin";
-import {Button, useDisclosure} from "@nextui-org/react";
+import { Button, useDisclosure } from "@nextui-org/react";
 import ModalFilterBeranda from "../assets/components/ModalFilterBeranda";
 import { NavbarResponsive } from "../assets/components/elements/NavbarResponsive";
 import { CourseKelasAll } from "../assets/components/CourseKelasAll";
@@ -12,6 +12,16 @@ import getDataAll from "../redux/action/getAll";
 export const BerandaKelas = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [scrollBehavior, setScrollBehavior] = useState("outside");
+  // const { namesearch } = useParams();
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   search(namesearch);
+  // }, [namesearch]);
+
+  // const search = () => {
+  //   dispatch(getDataSearchCourse(namesearch));
+  // };
 
   const dispatch = useDispatch();
 
@@ -23,12 +33,16 @@ export const BerandaKelas = () => {
   }, [dispatch]);
 
   const [filterData, setFilterData] = useState(dataAll);
-  console.log(filterData, "filterrrrrrr")
+  console.log(filterData, "filterrrrrrr");
 
   return (
     <div>
-      <div className="hidden desktop:block"><NavbarAfterLogin /></div>
-      <div className="block desktop:hidden"><NavbarResponsive/></div>
+      <div className="hidden desktop:block">
+        <NavbarAfterLogin />
+      </div>
+      <div className="block desktop:hidden">
+        <NavbarResponsive />
+      </div>
       <div className="bg-[#CFE2E080] h-full w-[100%] flex flex-col desktop:flex-row px-1 desktop:px-[7rem] py-[1rem] desktop:py-[3rem]">
         <div className="flex-col w-[100%] desktop:w-[25%]">
           <div className="w-full flex desktop:flex-col justify-between items-center">
@@ -38,14 +52,14 @@ export const BerandaKelas = () => {
             </Button>
           </div>
           <div className="hidden desktop:block">
-            <FilterKelasBeranda/>
+            <FilterKelasBeranda />
           </div>
           <ModalFilterBeranda isOpen={isOpen} onOpenChange={onOpenChange} scrollBehavior={scrollBehavior} />
         </div>
         <div className="w-[100%] desktop:w-[75%]">
-          <SearchKelasBeranda setFilterData={setFilterData} dataAll={dataAll}/>
+          <SearchKelasBeranda setFilterData={setFilterData} dataAll={dataAll} />
           <div className="space-y-8">
-            <CourseKelasAll filterData={filterData}/>
+            <CourseKelasAll filterData={filterData} />
           </div>
         </div>
       </div>

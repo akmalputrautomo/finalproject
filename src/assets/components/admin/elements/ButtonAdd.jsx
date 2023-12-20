@@ -14,9 +14,28 @@ import {
 } from "@nextui-org/react";
 import React from "react";
 import IcAdd from "../../../img/gala_add.png";
+import { useState } from "react";
 
 export const ButtonAdd = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+  // const [title, setTitle] = useState("");
+  // const [category, setCategory] = useState("");
+  // const [kodeKelas, setKodeKelas] = useState("");
+  // const [price, setPrice] = useState(0);
+  // const [author, setAuthor] = useState("");
+  // const [level, setLevel] = useState("beginner");
+  // const [category_id, setCategoryId] = useState(1);
+  // const [requirements, setrequirements] = useState([]);
+  // const [InputRequirment, setInputRequirment] = useState("");
+  // const [chapters, setChapters] = useState([]);
+
+  // const [inputChapterName, setInputChapterName] = useState("");
+  // const [inputModuleTitle, setInputModuleTitle] = useState("");
+  // const [inputModuleDuration, setInputModuleDuration] = useState("");
+  // const [inputModuleUrl, setInputModuleUrl] = useState("");
+  // const [selectedChapterIndex, setSelectedChapterIndex] = useState(0);
+
   const [selectedKeysTipeClass, setSelectedKeysTipeClass] = React.useState(
     new Set(["Tipe Class"])
   );
@@ -54,9 +73,9 @@ export const ButtonAdd = () => {
                 Tambah Kelas
               </ModalHeader>
               <ModalBody>
-                <Input type="text" label="Nama Kelas" />
-                <Input type="text" label="Kategori" />
-                <Input type="text" label="Kode Kelas" />
+                <Input type="text" label="Nama Kelas" id="title" />
+                <Input type="text" label="Kategori" id="category" />
+                <Input type="text" label="Kode Kelas" id="kodeKelas" />
                 <Dropdown>
                   <DropdownTrigger>
                     <Button variant="bordered" className="capitalize">
@@ -86,7 +105,7 @@ export const ButtonAdd = () => {
                     variant="flat"
                     disallowEmptySelection
                     selectionMode="single"
-                    selectedKeys={selectedKeysTipeClass}
+                    selectedKeys={selectedLvlClass}
                     onSelectionChange={setSelectedLvlClass}
                   >
                     <DropdownItem key="beginner">Beginner</DropdownItem>
@@ -94,8 +113,8 @@ export const ButtonAdd = () => {
                     <DropdownItem key="advanced">Advanced</DropdownItem>
                   </DropdownMenu>
                 </Dropdown>
-                <Input type="text" label="Harga" />
-                <Input type="text" label="Materi" />
+                <Input type="text" label="Harga" id="price" />
+                <Input type="text" label="Materi" id="materi" />
               </ModalBody>
               <ModalFooter className="flex flex-row justify-between">
                 <Button color="danger" onPress={onClose}>

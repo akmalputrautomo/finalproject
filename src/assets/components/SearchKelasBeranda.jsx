@@ -1,8 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import search from "../img/search.png";
 import { Button } from "@nextui-org/button";
+import { useDispatch } from "react-redux";
+import getDataAll from "../../redux/action/getAll";
 
-export const SearchKelasBeranda = () => {
+export const SearchKelasBeranda = ({setFilterData, dataAll}) => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getDataAll());
+  }, [dispatch]);
+
+  const handleBtn = (tipe) => {
+    let filteredData = []
+  
+    if (tipe === 'All') {
+      filteredData = dataAll
+    } else if (tipe === 'Premium') {
+      filteredData = dataAll.filter((item) => item.course.type === 'isPremium')
+    } else if (tipe === 'Free') {
+      filteredData = dataAll.filter((item) => item.course.type === 'isFree')
+    }
+    setFilterData(filteredData)
+    console.log(filteredData, "filter");
+  }
+
   return (
     <div className="py-5 px-[1rem] desktop:px-16">
         {/* search */}
@@ -15,9 +37,9 @@ export const SearchKelasBeranda = () => {
 
       {/* button filter */}
       <div className="flex justify-between py-6 gap-3 desktop:gap-6">
-        <Button className="bg-white w-[25%] focus:bg-[#116E63] focus:text-white">All</Button>
-        <Button className="bg-white w-[40%] focus:bg-[#116E63] focus:text-white">Kelas Premium</Button>
-        <Button className="bg-white w-[35%] focus:bg-[#116E63] focus:text-white">Kelas Gratis</Button>
+        <Button onClick={() => handleBtn('All')} className="bg-white w-[25%] focus:bg-[#116E63] focus:text-white">All</Button>
+        <Button onClick={() => handleBtn('Premium')} className="bg-white w-[40%] focus:bg-[#116E63] focus:text-white">Kelas Premium</Button>
+        <Button onClick={() => handleBtn('Free')} className="bg-white w-[35%] focus:bg-[#116E63] focus:text-white">Kelas Gratis</Button>
       </div>
 
     </div>

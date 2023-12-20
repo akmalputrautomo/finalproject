@@ -11,6 +11,7 @@ import akunnotif from "./akun/NotifikasiRedux";
 import coursesearch from "./search";
 import getfree from "./getfreekelassaya";
 import authGetUserSlice from "./akun/getme";
+import GetCourseAll from "./GetCourseAll";
 
 export default combineReducers({
   kategori: KategoriSlice,
@@ -20,6 +21,7 @@ export default combineReducers({
   authPass: forgetPassSlice,
   coursePopular: GetCoursePopular,
   courseDetail: GetCourseDetail,
+  courseAll: GetCourseAll,
   updatepass: updatepasslicer,
   Notifikasi: akunnotif,
   Search: coursesearch,

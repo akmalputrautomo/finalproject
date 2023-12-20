@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { FilterKelasBeranda } from "../assets/components/FilterKelasBeranda";
 import { SearchKelasBeranda } from "../assets/components/SearchKelasBeranda";
-import { CourseKelasPrem } from "../assets/components/CourseKelasPrem";
 import NavbarAfterLogin from "../assets/components/NavbarAfterLogin";
-import { CourseKelasFree } from "../assets/components/CourseKelasFree";
 import { Button, useDisclosure } from "@nextui-org/react";
 import ModalFilterBeranda from "../assets/components/ModalFilterBeranda";
 import { NavbarResponsive } from "../assets/components/elements/NavbarResponsive";
-import { useParams } from "react-router-dom";
-import { getDataSearchCourse } from "../redux/action/searchCourse";
+import { CourseKelasAll } from "../assets/components/CourseKelasAll";
 import { useDispatch, useSelector } from "react-redux";
+import getDataAll from "../redux/action/getAll";
 
 export const BerandaKelas = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -24,6 +22,18 @@ export const BerandaKelas = () => {
   // const search = () => {
   //   dispatch(getDataSearchCourse(namesearch));
   // };
+
+  const dispatch = useDispatch();
+
+  const dataAll = useSelector((state) => state.courseAll.coursesAll);
+  console.log(dataAll, "All");
+
+  useEffect(() => {
+    dispatch(getDataAll());
+  }, [dispatch]);
+
+  const [filterData, setFilterData] = useState(dataAll);
+  console.log(filterData, "filterrrrrrr");
 
   return (
     <div>
@@ -47,10 +57,9 @@ export const BerandaKelas = () => {
           <ModalFilterBeranda isOpen={isOpen} onOpenChange={onOpenChange} scrollBehavior={scrollBehavior} />
         </div>
         <div className="w-[100%] desktop:w-[75%]">
-          <SearchKelasBeranda />
+          <SearchKelasBeranda setFilterData={setFilterData} dataAll={dataAll} />
           <div className="space-y-8">
-            <CourseKelasPrem />
-            <CourseKelasFree />
+            <CourseKelasAll filterData={filterData} />
           </div>
         </div>
       </div>

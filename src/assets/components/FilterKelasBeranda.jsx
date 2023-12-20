@@ -1,7 +1,23 @@
+import React, { useEffect, useState } from "react";
 import { Checkbox, CheckboxGroup } from "@nextui-org/checkbox";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getDatakategori } from "../../redux/action/kategoribelajarrr";
 
-export const FilterKelasBeranda = () => {
+export const FilterKelasBeranda = ({ setId }) => {
+  // const [id, setId] = useState(1);
+  const dispatch = useDispatch();
+
+  const getkategoribelajarrrr = () => {
+    dispatch(getDatakategori());
+  };
+
+  const belajar = useSelector((state) => state.kategori.kategori.categories);
+  console.log(belajar, "belajar");
+
+  useEffect(() => {
+    getkategoribelajarrrr();
+  }, []);
+
   return (
     <div>
       <div className="px-5 space-y-5">
@@ -26,23 +42,19 @@ export const FilterKelasBeranda = () => {
           <div>
             <span className="text-lg font-bold text-black">Kategori</span>
             <div className="pl-1 py-2 space-y-2">
-              <CheckboxGroup>
-                <Checkbox value="ui/ux">
-                  <span className="text-sm">UI/UX Design</span>
-                </Checkbox>
-                <Checkbox value="wWeb Development">
-                  <span className="text-sm">Web Development</span>
-                </Checkbox>
-                <Checkbox value="Android Development">
-                  <span className="text-sm">Android Development</span>
-                </Checkbox>
-                <Checkbox value="Data Science">
-                  <span className="text-sm">Data Science</span>
-                </Checkbox>
-                <Checkbox value="Business Intelligence">
-                  <span className="text-sm">Business Intelligence</span>
-                </Checkbox>
-              </CheckboxGroup>
+              {belajar &&
+                belajar.map((course) => (
+                  <CheckboxGroup key={course.id}>
+                    <Checkbox
+                      value="ui/ux"
+                      onClick={() => {
+                        setId(course.id);
+                      }}
+                    >
+                      <span className="text-sm">{course.name}</span>
+                    </Checkbox>
+                  </CheckboxGroup>
+                ))}
             </div>
           </div>
 

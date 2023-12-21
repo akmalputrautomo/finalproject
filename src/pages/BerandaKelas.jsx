@@ -8,6 +8,7 @@ import { NavbarResponsive } from "../assets/components/elements/NavbarResponsive
 import { CourseKelasAll } from "../assets/components/CourseKelasAll";
 import { useDispatch, useSelector } from "react-redux";
 import getDataAll from "../redux/action/getAll";
+import Navbarr from "../assets/components/navbar";
 
 export const BerandaKelas = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -38,7 +39,7 @@ export const BerandaKelas = () => {
   return (
     <div>
       <div className="hidden desktop:block">
-        <NavbarAfterLogin />
+        <Navbarr />
       </div>
       <div className="block desktop:hidden">
         <NavbarResponsive />

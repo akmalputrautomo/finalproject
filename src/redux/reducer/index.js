@@ -12,6 +12,7 @@ import coursesearch from "./search";
 import getfree from "./getfreekelassaya";
 import authGetUserSlice from "./akun/getme";
 import GetCourseAll from "./GetCourseAll";
+import getFilterSide from "./getFilterSide";
 
 export default combineReducers({
   kategori: KategoriSlice,
@@ -27,4 +28,5 @@ export default combineReducers({
   Search: coursesearch,
   Free: getfree,
   me: authGetUserSlice,
+  filterSide: getFilterSide,
 });

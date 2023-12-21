@@ -19,4 +19,5 @@ export const endpoint = {
   FREE_KELASSAYA: "/api/v1/course/free",
   GET_USER: `/api/v1/auth/me`,
   COURSE_ALL: "/api/v1/course/all",
+  FILTER_SIDEBAR: "/api/v1/course/all",
 };

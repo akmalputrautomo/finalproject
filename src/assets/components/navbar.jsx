@@ -39,7 +39,9 @@ const Navbarr = () => {
   return (
     <div>
       <div className="bg-[#F8F8F8] flex justify-between p-4">
+        <button onClick={()=> {navigate("/")}} className="cursor-pointer">
         <img className="w-[10rem] h-[3rem]" src={logo} />
+        </button>
 
         {/* search bar */}
         <form className="relative desktop:flex w-1/2" onSubmit={handleSubmit}>

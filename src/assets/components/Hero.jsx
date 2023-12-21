@@ -5,7 +5,7 @@ import { Button } from "@nextui-org/button";
 const Hero = () => {
   return (
     <div className="w-full h-full">
-      <div className="flex flex-col desktop:flex-row justify-center py-5">
+      <div className="flex flex-col-reverse desktop:flex-row justify-center py-5">
 
         {/* section kiri */}
         <div className="w-full desktop:w-1/2 flex flex-col px-[2rem] desktop:px-[7rem] my-8 ">

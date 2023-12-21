@@ -3,17 +3,10 @@ import Logo from "../../img/Logo.png";
 import Dashboard from "../../img/ic_dashboard.png";
 import ManageClass from "../../img/manage_accounts.png";
 import IconLogOut from "../../img/log-out.png";
-import IcAdd from '../../img/gala_add.png'
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableColumn,
-  TableHeader,
-  TableRow,
-} from "@nextui-org/react";
+import IcAdd from "../../img/gala_add.png";
+import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@nextui-org/react";
 import { ButtonFilter } from "./elements/ButtonFilter";
-import { Button } from '../admin/elements/Button'
+import { Button } from "../admin/elements/Button";
 import { ButtonAdd } from "./elements/ButtonAdd";
 
 const SideBar = () => {
@@ -52,9 +45,7 @@ const SideBar = () => {
           </div>
           <div className="flex flex-row gap-2">
             <img src={ManageClass} alt="" />
-            <button onClick={() => handleclick("KelolaKelas")}>
-              Kelola Kelas
-            </button>
+            <button onClick={() => handleclick("KelolaKelas")}>Kelola Kelas</button>
           </div>
           <div className="flex flex-row gap-2">
             <img src={IconLogOut} alt="" />
@@ -68,9 +59,7 @@ const SideBar = () => {
           <div className="flex flex-col ms-[440px] mt-[50px] bg-[#FFFFFF] w-[102vh] rounded-[10px] gap-10 ">
             <div className="flex flex-row items-center mt-[30px] w-full h-[100px] justify-between">
               <div>
-                <span className="font-bold ms-5 text-2xl">
-                  Status Pembayaran
-                </span>
+                <span className="font-bold ms-5 text-2xl">Status Pembayaran</span>
               </div>
               <div className="flex flex-row gap-2 me-[20px]">
                 <ButtonFilter />
@@ -82,9 +71,7 @@ const SideBar = () => {
                 <TableColumn className="text-black">Kategori</TableColumn>
                 <TableColumn className="text-black">Kelas Premium</TableColumn>
                 <TableColumn className="text-black">Status</TableColumn>
-                <TableColumn className="text-black">
-                  Metode Pembayaran
-                </TableColumn>
+                <TableColumn className="text-black">Metode Pembayaran</TableColumn>
                 <TableColumn className="text-black">Tanggal Bayar</TableColumn>
               </TableHeader>
               <TableBody>
@@ -113,12 +100,10 @@ const SideBar = () => {
           <div className="flex flex-col ms-[440px] mt-[50px] bg-[#FFFFFF] w-[102vh] rounded-[10px] gap-10 ">
             <div className="flex flex-row items-center mt-[30px] w-full h-[100px] justify-between">
               <div>
-                <span className="font-bold ms-5 text-2xl">
-                Kelola Kelas
-                </span>
+                <span className="font-bold ms-5 text-2xl">Kelola Kelas</span>
               </div>
               <div className="flex flex-row gap-2 me-[20px]">
-                <ButtonAdd/>
+                <ButtonAdd />
                 <ButtonFilter />
               </div>
             </div>
@@ -140,7 +125,9 @@ const SideBar = () => {
                   <TableCell>GRATIS</TableCell>
                   <TableCell>Beginner</TableCell>
                   <TableCell>Rp 0</TableCell>
-                  <TableCell><Button/></TableCell>
+                  <TableCell>
+                    <Button />
+                  </TableCell>
                 </TableRow>
                 <TableRow key="2">
                   <TableCell>DS0323</TableCell>
@@ -149,7 +136,9 @@ const SideBar = () => {
                   <TableCell className="text-red-400">PREMIUM</TableCell>
                   <TableCell>Advanced</TableCell>
                   <TableCell>Rp 299,000</TableCell>
-                  <TableCell><Button/></TableCell>
+                  <TableCell>
+                    <Button />
+                  </TableCell>
                 </TableRow>
                 <TableRow key="3">
                   <TableCell>supermanxx</TableCell>
@@ -158,7 +147,9 @@ const SideBar = () => {
                   <TableCell className="text-red-400">BELUM BAYAR</TableCell>
                   <TableCell>-</TableCell>
                   <TableCell>-</TableCell>
-                  <TableCell><Button/></TableCell>
+                  <TableCell>
+                    <Button />
+                  </TableCell>
                 </TableRow>
               </TableBody>
             </Table>

@@ -13,6 +13,7 @@ import getfree from "./getfreekelassaya";
 import authGetUserSlice from "./akun/getme";
 import GetCourseAll from "./GetCourseAll";
 import getFilterSide from "./getFilterSide";
+import CardAdm from "./admin/CardAdmin";
 
 export default combineReducers({
   kategori: KategoriSlice,
@@ -29,4 +30,5 @@ export default combineReducers({
   Free: getfree,
   me: authGetUserSlice,
   filterSide: getFilterSide,
+  Card: CardAdm,
 });

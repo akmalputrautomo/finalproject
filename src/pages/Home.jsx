@@ -3,6 +3,7 @@ import { KategoriBelajar } from "../assets/components/KategoriBelajar";
 import Hero from "../assets/components/Hero";
 import { KursusPopuler } from "../assets/components/KursusPopuler";
 import Navbarr from "../assets/components/navbar";
+import { Footer } from "../assets/components/Footer";
 
 export const Home = () => {
   return (
@@ -11,6 +12,7 @@ export const Home = () => {
       <Hero />
       <KategoriBelajar />
       <KursusPopuler />
+      <Footer />
     </div>
   );
 };

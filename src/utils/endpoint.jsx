@@ -20,4 +20,5 @@ export const endpoint = {
   GET_USER: `/api/v1/auth/me`,
   COURSE_ALL: "/api/v1/course/all",
   FILTER_SIDEBAR: "/api/v1/course/all",
+  CARD_ADM: `/api/v1/admin/dashboard`,
 };

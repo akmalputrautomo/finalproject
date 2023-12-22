@@ -12,13 +12,16 @@ import { getDatakategori } from "../../redux/action/kategoribelajarrr";
 export const KursusPopuler = () => {
   const dispatch = useDispatch();
   const [id, setId] = useState(1);
+  const [all, setAll] = useState();
   const navigate = useNavigate();
 
   const dataPopular = useSelector((state) => state.coursePopular.coursesPopular.topCourses);
+  const dataPopularAll = useSelector((state) => state);
 
   // const dataCourse = dataPopular()
 
-  console.log(dataPopular, "Popular");
+
+  console.log(dataPopularAll, "PopularAll");
 
   useEffect(() => {
     dispatch(getDataPopular(id));
@@ -54,9 +57,12 @@ export const KursusPopuler = () => {
       </div>
 
       <div className="flex space-x-2 scroll-pl-6 snap-x overflow-scroll scrollbar-hide">
-        <Button className="snap-start relative bg-[#E7F0EF] w-36 px-16 rounded-full text-xs font-bold focus:bg-[#116E63] focus:text-white">All</Button>
+        <Button onClick={() => {
+          setAll();
+        }} className="snap-start relative bg-[#E7F0EF] w-36 px-16 rounded-full text-xs font-bold focus:bg-[#116E63] focus:text-white">All</Button>
         {belajar &&
           belajar.map((courses) => (
+
             <div className="space-y-5" key={courses.id}>
               <Button
                 onClick={() => {

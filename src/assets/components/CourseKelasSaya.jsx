@@ -3,8 +3,9 @@ import level from "../img/level.png";
 import modul from "../img/modul.png";
 import time from "../img/time.png";
 import progress from "../img/progress.png";
+import { Link } from "react-router-dom";
 
-export const CourseKelasSaya = ({ filteredData }) => {
+export const CourseKelasSaya = ({ FilteredCourses }) => {
   return (
     <div className="pb-[1rem] px-[1rem] desktop:px-[4rem]">
       <div className="grid grid-cols-1 desktop:grid-cols-2 gap-[3rem] desktop:gap-[2rem]">
@@ -51,12 +52,13 @@ export const CourseKelasSaya = ({ filteredData }) => {
             </div>
           ))} */}
 
-        {filteredData &&
-          filteredData.map((courses) => (
+        {FilteredCourses &&
+          FilteredCourses.map((courses) => (
             <div
               key={courses.course_id}
               className="h-[16rem] bg-white shadow-lg rounded-3xl"
             >
+              <Link to={`/detailKelas/${courses.course_id}`}>
               <img
                 src={courses.course.image}
                 className="bg-emerald-500 w-full h-2/5 rounded-t-3xl "
@@ -109,6 +111,7 @@ export const CourseKelasSaya = ({ filteredData }) => {
                   </div>
                 )}
               </div>
+              </Link>
             </div>
           ))}
 

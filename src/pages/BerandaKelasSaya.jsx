@@ -27,14 +27,14 @@ export const BerandaKelasSaya = () => {
   // }, []);
 
   const dataCourses = useSelector((state) => state.courseAll.coursesAll);
-  console.log(dataCourses, "dataCourses");
+  // console.log(dataCourses, "dataCourses");
 
   useEffect(() => {
     dispatch(getDataAll());
   }, [dispatch]);
 
-  const [filteredData, setFilteredData] = useState(dataCourses);
-  console.log(filteredData, "Data Filter");
+  const [FilteredCourses, setFilteredCourses] = useState(dataCourses);
+  // console.log(FilteredCourses, "Data Filter");
 
   return (
     // <div>
@@ -199,14 +199,16 @@ export const BerandaKelasSaya = () => {
             </Button>
           </div>
           <div className="hidden desktop:block">
-            <FilterKelasBeranda />
+            <FilterKelasBeranda 
+            setFilteredCourses={setFilteredCourses}
+            />
           </div>
           <ModalFilterBeranda isOpen={isOpen} onOpenChange={onOpenChange} scrollBehavior={scrollBehavior} />
         </div>
         <div className="w-[100%] desktop:w-[75%]">
-          <SearchKelasSaya setFilteredData={setFilteredData} dataCourses={dataCourses} />
+          <SearchKelasSaya setFilteredCourses={setFilteredCourses} dataCourses={dataCourses} />
           <div className="space-y-8">
-            <CourseKelasSaya filteredData={filteredData} />
+            <CourseKelasSaya FilteredCourses={FilteredCourses} />
           </div>
         </div>
       </div>

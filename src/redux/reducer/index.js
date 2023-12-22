@@ -9,6 +9,12 @@ import GetCourseDetail from "./GetCourseDetail";
 import updatepasslicer from "../reducer/akun/UpdatePass";
 import akunnotif from "./akun/NotifikasiRedux";
 import GetCoursePopularAll from "./GetCoursePopularAll";
+import coursesearch from "./search";
+import getfree from "./getfreekelassaya";
+import authGetUserSlice from "./akun/getme";
+import GetCourseAll from "./GetCourseAll";
+import getFilterSide from "./getFilterSide";
+import CardAdm from "./admin/CardAdmin";
 
 export default combineReducers({
   kategori: KategoriSlice,
@@ -19,6 +25,12 @@ export default combineReducers({
   coursePopular: GetCoursePopular,
   coursePopularAll: GetCoursePopularAll,
   courseDetail: GetCourseDetail,
+  courseAll: GetCourseAll,
   updatepass: updatepasslicer,
   Notifikasi: akunnotif,
+  Search: coursesearch,
+  Free: getfree,
+  me: authGetUserSlice,
+  filterSide: getFilterSide,
+  Card: CardAdm,
 });

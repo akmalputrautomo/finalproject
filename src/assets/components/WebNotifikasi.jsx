@@ -1,41 +1,42 @@
 import React, { useEffect, useState } from "react";
 import NavbarNotifikasi from "./NavbarNotifikasi";
 import { useNavigate, useParams } from "react-router-dom";
-import { NavbarResponsive } from "./elements/NavbarResponsive";
 import { useDispatch, useSelector } from "react-redux";
 import getDatanotifikasi from "../../redux/action/akun/notifikasiAkun";
+import NavbarBurger from "./elements/NavbarBurger";
 
 const WebNotifikasi = () => {
   const navigate = useNavigate();
-  const { userId } = useParams();
+
   const dispatch = useDispatch();
-  console.log(userId, "id notifikasi");
+
   const [intervalId, setIntervalId] = useState(null);
 
   const getnotifikasi = () => {
-    dispatch(getDatanotifikasi(userId));
+    dispatch(getDatanotifikasi());
   };
 
   const notifikasi = useSelector((state) => state.Notifikasi.notif);
   console.log(notifikasi);
 
   useEffect(() => {
-    // Initial API call
     getnotifikasi();
 
-    // Set up interval to call the API every 5 seconds
     const id = setInterval(() => {
       getnotifikasi();
-    }, 5000);
+    }, 3000);
 
-    // Save the interval ID to clear it later when the component unmounts
     setIntervalId(id);
 
-    // Cleanup function to clear the interval when the component is unmounted
     return () => {
       clearInterval(id);
     };
-  }, [userId]); // Include userId
+  }, []);
+
+  const formatTanggal = (tanggal) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(tanggal).toLocaleDateString("id-ID", options);
+  };
 
   return (
     <div>
@@ -43,7 +44,7 @@ const WebNotifikasi = () => {
         <NavbarNotifikasi />
       </div>
       <div className="block desktop:hidden">
-        <NavbarResponsive />
+        <NavbarBurger />
       </div>
       <div className="w-full h-[4rem] desktop:h-[10rem] bg-[#E7F0EF] font-bold">
         <button
@@ -76,7 +77,7 @@ const WebNotifikasi = () => {
                       <h1 className="mobile:text-[#8A8A8A] desktop:w-1/2 mobile:w-full">{courses.body}</h1>
                     </div>
                     <div className="mobile:w-[50%] desktop:w-[15%] desktop:justify-end ">
-                      <h1>{courses.createAt}</h1>
+                      <h1>{formatTanggal(courses.createAt)}</h1>
                     </div>
                   </div>
                 </div>

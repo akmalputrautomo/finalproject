@@ -1,8 +1,8 @@
 import { reduxUpdatePass } from "../../../services/akun/updatepass";
 import { setupdatepass } from "../../reducer/akun/UpdatePass";
 
-const getupdate = (userId, input) => async (dispatch) => {
-  return reduxUpdatePass(userId, input)
+const getupdate = (input) => async (dispatch) => {
+  return reduxUpdatePass(input)
     .then((result) => {
       dispatch(setupdatepass(input));
       return result;

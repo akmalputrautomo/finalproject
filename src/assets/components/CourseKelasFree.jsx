@@ -1,14 +1,14 @@
-import React from 'react'
-import level from "../img/level.png"
-import modul from "../img/modul.png"
-import time from "../img/time.png"
+import React from "react";
+import level from "../img/level.png";
+import modul from "../img/modul.png";
+import time from "../img/time.png";
 
 export const CourseKelasFree = () => {
   return (
     <div className="pb-[1rem] px-[1rem] desktop:px-[4rem]">
       <div className="grid grid-cols-1 desktop:grid-cols-2 gap-[3rem] desktop:gap-[2rem]">
-      {/* card 1 */}
-        <div className="h-52 shadow-lg rounded-3xl">
+        {/* card 1 */}
+        {/* <div className="h-52 shadow-lg rounded-3xl">
           <div className="bg-emerald-500 w-full h-2/5 rounded-t-3xl "></div>
           <div className="px-2 py-3 space-y-1 bg-white rounded-b-3xl">
             <div className="flex justify-between text-sm">
@@ -40,10 +40,10 @@ export const CourseKelasFree = () => {
               <p>Mulai Kelas</p>
             </div>
           </div>
-        </div>
+        </div> */}
 
-      {/* card 2 */}
-        <div className="h-52 shadow-lg rounded-3xl">
+        {/* card 2 */}
+        {/* <div className="h-52 shadow-lg rounded-3xl">
           <div className="bg-emerald-500 w-full h-2/5 rounded-t-3xl "></div>
           <div className="px-2 py-3 space-y-1 bg-white rounded-b-3xl">
             <div className="flex justify-between text-sm">
@@ -75,10 +75,10 @@ export const CourseKelasFree = () => {
               <p>Mulai Kelas</p>
             </div>
           </div>
-        </div>
+        </div> */}
 
-      {/* card 3 */}
-        <div className="h-52 shadow-lg rounded-3xl">
+        {/* card 3 */}
+        {/* <div className="h-52 shadow-lg rounded-3xl">
           <div className="bg-emerald-500 w-full h-2/5 rounded-t-3xl "></div>
           <div className="px-2 py-3 space-y-1 bg-white rounded-b-3xl">
             <div className="flex justify-between text-sm">
@@ -110,10 +110,8 @@ export const CourseKelasFree = () => {
               <p>Mulai Kelas</p>
             </div>
           </div>
-        </div>
-
+        </div> */}
       </div>
-
     </div>
-  )
-}
+  );
+};

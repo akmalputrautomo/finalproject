@@ -5,7 +5,7 @@ const getDataAll = () => async (dispatch) => {
   return await reduxGetCourseAll()
     .then((result) => {
       dispatch(setCourseAll(result.data.data));
-      console.log(result);
+      // console.log(result);
     })
     .catch((err) => console.error(err, "error"));
 };

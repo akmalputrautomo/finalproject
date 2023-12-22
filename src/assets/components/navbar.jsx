@@ -15,7 +15,7 @@ const Navbarr = () => {
   const navigate = useNavigate();
 
   const token = CookieStorage.get(CookieKeys.AuthToken);
-  console.log(token, "Ini Token");
+  // console.log(token, "Ini Token");
 
   const data = useSelector((state) => state.me.isUser);
 

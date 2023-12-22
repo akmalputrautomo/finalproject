@@ -4,12 +4,12 @@ import { Button } from '@nextui-org/button';
 import { useDispatch } from 'react-redux';
 import getDataAll from '../../redux/action/getAll';
 
-export const SearchKelasSaya = ({setFilteredData, dataCourses}) => {
+export const SearchKelasSaya = ({setFilteredCourses, dataCourses}) => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getDataAll());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getDataAll());
+  // }, [dispatch]);
 
   const handleBtn = (tipe) => {
     let filteredData = []
@@ -21,8 +21,8 @@ export const SearchKelasSaya = ({setFilteredData, dataCourses}) => {
     } else if (tipe === 'Free') {
       filteredData = dataCourses.filter((item) => item.course.type === 'isFree')
     }
-    setFilteredData(filteredData)
-    console.log(filteredData, "filter");
+    setFilteredCourses(filteredData)
+    // console.log(filteredData, "filter");
   }
   return (
     <div className="py-5 px-[1rem] desktop:px-16">

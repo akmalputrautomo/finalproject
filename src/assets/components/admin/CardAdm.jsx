@@ -3,7 +3,9 @@ import React from 'react'
 import icon from "../../img/icon.png"
 export const CardAdm = () => {
   return (
-    <div className='flex flex-row gap-10 justify-center pt-[50px]'>
+    <div className=' bg-[#F8F8F8] my-[2rem] '>
+        <div className='flex justify-center items-center ml-[19rem] gap-11    '>
+
     <Card className='bg-[#F2A227] w-[322px] h-[108px] text-white rounded-[15px]'>
       <CardBody className='flex flex-row p-6 gap-3'>
         <div>
@@ -37,6 +39,7 @@ export const CardAdm = () => {
         </div>
       </CardBody>
     </Card>
+      </div>
     </div>
   )
 }

@@ -33,7 +33,7 @@ export const ButtonAdd = () => {
     [selectedLvlClass]
   );
   return (
-    <>
+    <div>
       <Button onPress={onOpen} className="bg-[#116E63] text-white">
         <img src={IcAdd} alt="" />
         Tambah
@@ -47,9 +47,10 @@ export const ButtonAdd = () => {
             "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-20",
         }}
       >
-        <ModalContent>
+
+        <ModalContent className="mb-20">
           {(onClose) => (
-            <>
+            <div>
               <ModalHeader className="flex flex-col items-center font-bold text-2xl text-[#116E63] gap-1">
                 Tambah Kelas
               </ModalHeader>
@@ -105,10 +106,10 @@ export const ButtonAdd = () => {
                   Add
                 </Button>
               </ModalFooter>
-            </>
+            </div>
           )}
         </ModalContent>
       </Modal>
-    </>
+    </div>
   );
 };

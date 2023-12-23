@@ -33,7 +33,7 @@ const SideBar = () => {
   }
 
   return (
-    <div className="static flex flex-row gap-[150px]">
+    <div className="static flex flex-row gap-[150px] bg-[#F8F8F8] w-full h-[30.5rem] ">
       <div className="absolute flex flex-col top-0 left-0 h-full w-1/5 bg-[#F3F3F3] text-black items-center pt-[30px] gap-[30px]">
         <div className="w-[10rem] h-[3rem]">
           <img src={Logo} alt="" />
@@ -44,8 +44,10 @@ const SideBar = () => {
             <button onClick={() => handleclick("DashBoard")}>Dashboard</button>
           </div>
           <div className="flex flex-row gap-2">
-            <img src={ManageClass} alt="" />
-            <button onClick={() => handleclick("KelolaKelas")}>Kelola Kelas</button>
+            <img width={27} height={12} src={ManageClass} alt="" />
+            <button onClick={() => handleclick("KelolaKelas")}>
+              Kelola Kelas
+            </button>
           </div>
           <div className="flex flex-row gap-2">
             <img src={IconLogOut} alt="" />
@@ -53,11 +55,11 @@ const SideBar = () => {
           </div>
         </div>
       </div>
-      <div className="w-[50%] ">
+      <div className="">
         {/* Dashboard */}
         {states.DashBoard && (
-          <div className="flex flex-col ms-[440px] mt-[50px] bg-[#FFFFFF] w-[102vh] rounded-[10px] gap-10 ">
-            <div className="flex flex-row items-center mt-[30px] w-full h-[100px] justify-between">
+          <div className="flex flex-col justify-center  ms-[398px]   bg-[#FFFFFF] w-[80%] rounded-[10px] gap-10 ">
+            <div className="flex flex-row items-center w-full h-[60px] justify-between">
               <div>
                 <span className="font-bold ms-5 text-2xl">Status Pembayaran</span>
               </div>
@@ -97,8 +99,8 @@ const SideBar = () => {
         )}
         {/* Kelola Kelas */}
         {states.KelolaKelas && (
-          <div className="flex flex-col ms-[440px] mt-[50px] bg-[#FFFFFF] w-[102vh] rounded-[10px] gap-10 ">
-            <div className="flex flex-row items-center mt-[30px] w-full h-[100px] justify-between">
+          <div className="flex flex-col ms-[392px]   bg-[#FFFFFF] w-[80%] rounded-[10px] gap-10 ">
+            <div className="flex flex-row items-center  w-full h-[100px] justify-between">
               <div>
                 <span className="font-bold ms-5 text-2xl">Kelola Kelas</span>
               </div>

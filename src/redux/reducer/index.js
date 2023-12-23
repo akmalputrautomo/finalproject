@@ -8,6 +8,7 @@ import GetCoursePopular from "./GetCoursePopular";
 import GetCourseDetail from "./GetCourseDetail";
 import updatepasslicer from "../reducer/akun/UpdatePass";
 import akunnotif from "./akun/NotifikasiRedux";
+import GetCoursePopularAll from "./GetCoursePopularAll";
 import coursesearch from "./search";
 import getfree from "./getfreekelassaya";
 import authGetUserSlice from "./akun/getme";
@@ -22,6 +23,7 @@ export default combineReducers({
   loginUser: authSliceLoginUser,
   authPass: forgetPassSlice,
   coursePopular: GetCoursePopular,
+  coursePopularAll: GetCoursePopularAll,
   courseDetail: GetCourseDetail,
   courseAll: GetCourseAll,
   updatepass: updatepasslicer,

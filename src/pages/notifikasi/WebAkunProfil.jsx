@@ -48,7 +48,6 @@ export const WebAkunProfil = () => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     setimage(file);
-    console.log(file);
   };
 
   return (
@@ -119,13 +118,14 @@ export const WebAkunProfil = () => {
                   <input type="file" id="image" accept="image/*" ref={inputRef} onChange={handleImageChange} className=" hidden" />
                 </div>
                 <div>
-                  <p>Nama</p>
-
+                  <div className="flex gap-2">
+                    <p>Nama</p>
+                    <span className="text-red-500 text-[0.7rem] flex items-center justify-center">*nama wajib di isi</span>
+                  </div>
                   <input value={name} onChange={(e) => setname(e.target.value)} id="name" placeholder="John Doe" className="border rounded-xl w-[60%] h-[3rem] mobile:w-[90%] desktop:w-[60%] px-2" />
                 </div>
                 <div>
                   <p>Nomor Telepon</p>
-
                   <input value={no_hp} onChange={(e) => setno_hp(e.target.value)} id="no_hp" placeholder="+62 812121121121" className="border rounded-xl w-[60%] h-[3rem] mobile:w-[90%] desktop:w-[60%] px-2" />
                 </div>
                 <div>

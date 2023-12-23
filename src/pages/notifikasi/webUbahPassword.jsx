@@ -5,6 +5,7 @@ import NavbarBurger from "../../assets/components/elements/NavbarBurger";
 import { useDispatch, useSelector } from "react-redux";
 import getupdate from "../../redux/action/akun/updatePass";
 import { LogOut } from "../../redux/action/auth/authLoginUser";
+import { toast } from "react-toastify";
 
 export const WebUbahPassword = () => {
   const navigate = useNavigate();
@@ -31,9 +32,9 @@ export const WebUbahPassword = () => {
     );
     if (success) {
       navigate("/");
-      alert("secces update paassword");
+      toast.success("secces update paassword");
     } else {
-      alert("gagal brow");
+      toast.warning("gagal brow");
     }
   };
   return (
@@ -112,7 +113,7 @@ export const WebUbahPassword = () => {
                   <div>
                     <p>Masukkan Password Baru</p>
                     <input onChange={(e) => setnewPassword(e.target.value)} id="newPassword" type={showPasswordBaru ? "text" : "password"} className=" border rounded-xl w-[80%] h-[3rem] mobile:w-[95%] desktop:w-[80%]"></input>
-                    <span className="absolute right-[7rem] top-[25rem] cursor-pointer mobile:right-7 desktop:right-[23.5rem]" onClick={showpassbaru}>
+                    <span className="absolute right-[7rem] top-[27rem] cursor-pointer mobile:right-7 mobile:top-[24rem] desktop:top-[27rem] desktop:right-[23.5rem]" onClick={showpassbaru}>
                       {showPasswordBaru ? "Hide" : "Show"}
                     </span>
                   </div>

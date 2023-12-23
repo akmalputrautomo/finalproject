@@ -16,8 +16,6 @@ export const KursusPopuler = () => {
 
   const dataPopular = useSelector((state) => state.coursePopular.coursesPopular.topCourses);
 
-  // const dataCourse = dataPopular()
-
   console.log(dataPopular, "Popular");
 
   useEffect(() => {
@@ -34,10 +32,6 @@ export const KursusPopuler = () => {
   useEffect(() => {
     getkategoribelajarrrr();
   }, []);
-
-  // const handleCourses = (id) => {
-  //   dispatch(getDataPopular(id))
-  // }
 
   return (
     <div className="px-[1rem] desktop:px-[9rem] py-[1.5rem] space-y-4">
@@ -87,7 +81,7 @@ export const KursusPopuler = () => {
                       </div>
                     </div>
                     <p className="text-sm font-bold">{courses.course.name}</p>
-                    <p className="text-xs">{courses.course.mentor[0].mentor.name}</p>
+                    <p className="text-xs">{courses.course.mentor[0]?.mentor.name}</p>
                     <div className="flex text-xs font-normal gap-4 ">
                       <div className="flex items-center gap-1">
                         <img src={level} />

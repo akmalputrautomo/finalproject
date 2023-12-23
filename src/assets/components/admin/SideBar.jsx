@@ -45,9 +45,7 @@ const SideBar = () => {
           </div>
           <div className="flex flex-row gap-2">
             <img width={27} height={12} src={ManageClass} alt="" />
-            <button onClick={() => handleclick("KelolaKelas")}>
-              Kelola Kelas
-            </button>
+            <button onClick={() => handleclick("KelolaKelas")}>Kelola Kelas</button>
           </div>
           <div className="flex flex-row gap-2">
             <img src={IconLogOut} alt="" />

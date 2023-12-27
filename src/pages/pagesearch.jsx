@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import NavbarAfterLogin from "../assets/components/NavbarAfterLogin";
 import { NavbarResponsive } from "../assets/components/elements/NavbarResponsive";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,6 +7,7 @@ import level from "../assets/img/level.png";
 import modul from "../assets/img/modul.png";
 import time from "../assets/img/time.png";
 import premium from "../assets/img/premium.png";
+import Navbarr from "../assets/components/navbar";
 
 export const Pagesearch = () => {
   const { namesearch } = useParams();
@@ -25,14 +25,17 @@ export const Pagesearch = () => {
   return (
     <div>
       <div className="hidden desktop:block">
-        <NavbarAfterLogin />
+        <Navbarr />
       </div>
       <div className="block desktop:hidden">
         <NavbarResponsive />
       </div>
-      <div className="pb-[1rem] px-[1rem] desktop:px-[4rem]">
-        <div className="grid grid-cols-1 desktop:grid-cols-2 gap-[3rem] desktop:gap-[2rem]">
-          {/* card 1 */}
+      <div className="p-[1.5rem] desktop:px-[4.5rem] desktop:py-[2rem]">
+        <div className="flex items-center pb-[1rem] font-bold text-lg">
+          Menampilkan "<span className="text-[#116E63] font-bold">{namesearch}</span>"
+        </div>
+        <div className="grid grid-cols-1 desktop:grid-cols-3 gap-[3rem] desktop:gap-[2rem]">
+          {/* card */}
           {data &&
             data.map((courses) => (
               <div key={courses.id}>

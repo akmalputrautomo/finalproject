@@ -44,7 +44,7 @@ const Navbarr = () => {
         </button>
 
         {/* search bar */}
-        <form className="relative desktop:flex w-1/2" onSubmit={handleSubmit}>
+        <form className="relative hidden desktop:flex w-1/2" onSubmit={handleSubmit}>
           <input onChange={(e) => setSearch(e.target.value)} placeholder="cari kursus terbaik...." className="border border-black p-3 rounded-md w-full" type="text"></input>
           <button type="submit" className="mb-6">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6 absolute right-3 cursor-pointer">
@@ -65,9 +65,40 @@ const Navbarr = () => {
         <div className="me-5">
           {token && token.length ? (
             <div className="flex">
-              <button className="bg-[#116E63] w-[5rem] h-[2.5rem] rounded-md">
-                <i class="fa-solid fa-list text-white text-[16px]"> kelas</i>
-              </button>
+              <Dropdown>
+                <DropdownTrigger>
+                  <button className="flex items-center justify-center text-white gap-3 bg-[#116E63] px-3 h-[2.5rem] rounded-md">
+                    <i class="fa-solid fa-list text-[16px]"></i>
+                    <p className="text-lg font-semibold">Kelas</p>
+                  </button>
+                </DropdownTrigger>
+                <DropdownMenu aria-label="Example with disabled actions">
+                  <DropdownItem
+                    onClick={() => {
+                      navigate("/");
+                    }}
+                    key="home"
+                  >
+                    Home
+                  </DropdownItem>
+                  <DropdownItem
+                    onClick={() => {
+                      navigate("/kelassaya");
+                    }}
+                    key="kelassaya"
+                  >
+                    Kelas Saya
+                  </DropdownItem>
+                  <DropdownItem
+                    onClick={() => {
+                      navigate("/berandakelas");
+                    }}
+                    key="kelas"
+                  >
+                    Kelas
+                  </DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
               <button
                 onClick={() => {
                   navigate(`/WebNotifikasi`);

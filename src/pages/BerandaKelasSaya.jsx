@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { FilterKelasBeranda } from "../assets/components/FilterKelasBeranda";
 import { CourseKelasSaya } from "../assets/components/CourseKelasSaya";
 import { SearchKelasSaya } from "../assets/components/SearchKelasSaya";
-import NavbarAfterLogin from "../assets/components/NavbarAfterLogin";
 import { Button, CheckboxGroup, useDisclosure } from "@nextui-org/react";
 import ModalFilterBeranda from "../assets/components/ModalFilterBeranda";
 import { NavbarResponsive } from "../assets/components/elements/NavbarResponsive";
@@ -13,6 +12,7 @@ import level from "../assets/img/level.png";
 import modul from "../assets/img/modul.png";
 import time from "../assets/img/time.png";
 import progress from "../assets/img/progress.png";
+import Navbarr from "../assets/components/navbar";
 
 export const BerandaKelasSaya = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -29,7 +29,7 @@ export const BerandaKelasSaya = () => {
   return (
     <div>
       <div className="hidden desktop:block">
-        <NavbarAfterLogin />
+        <Navbarr />
       </div>
       <div className="block desktop:hidden">
         <NavbarResponsive />

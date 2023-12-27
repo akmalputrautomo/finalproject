@@ -36,7 +36,15 @@ const NavbarAfterLogin = () => {
                 <p className="text-lg font-semibold">Kelas</p>
               </button>
             </DropdownTrigger>
-            <DropdownMenu aria-label="Example with disabled actions" disabledKeys={["edit", "delete"]}>
+            <DropdownMenu aria-label="Example with disabled actions">
+              <DropdownItem
+                onClick={() => {
+                  navigate("/");
+                }}
+                key="home"
+              >
+                Home
+              </DropdownItem>
               <DropdownItem
                 onClick={() => {
                   navigate("/kelassaya");

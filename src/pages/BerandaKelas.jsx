@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FilterKelasBeranda } from "../assets/components/FilterKelasBeranda";
 import { SearchKelasBeranda } from "../assets/components/SearchKelasBeranda";
 import NavbarAfterLogin from "../assets/components/NavbarAfterLogin";
+import Navbarr from "../assets/components/navbar";
 import { Button, useDisclosure } from "@nextui-org/react";
 import ModalFilterBeranda from "../assets/components/ModalFilterBeranda";
 import { NavbarResponsive } from "../assets/components/elements/NavbarResponsive";
@@ -12,33 +13,29 @@ import getDataAll from "../redux/action/getAll";
 export const BerandaKelas = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [scrollBehavior, setScrollBehavior] = useState("outside");
-  // const { namesearch } = useParams();
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   search(namesearch);
-  // }, [namesearch]);
-
-  // const search = () => {
-  //   dispatch(getDataSearchCourse(namesearch));
-  // };
+  const [activeButton, setActiveButton] = useState("All");
+  const [SearchInput, setSearchInput] = useState("");
 
   const dispatch = useDispatch();
 
   const dataAll = useSelector((state) => state.courseAll.coursesAll);
-  console.log(dataAll, "All");
+  // console.log(dataAll, "All");
 
   useEffect(() => {
     dispatch(getDataAll());
   }, [dispatch]);
 
   const [filterData, setFilterData] = useState(dataAll);
-  console.log(filterData, "filterrrrrrr");
+  console.log(filterData, "filter data")
+
+  useEffect(() => {
+    setFilterData(dataAll);
+  }, [dataAll]);
 
   return (
     <div>
       <div className="hidden desktop:block">
-        <NavbarAfterLogin />
+        <Navbarr/>
       </div>
       <div className="block desktop:hidden">
         <NavbarResponsive />
@@ -57,9 +54,11 @@ export const BerandaKelas = () => {
           <ModalFilterBeranda isOpen={isOpen} onOpenChange={onOpenChange} scrollBehavior={scrollBehavior} />
         </div>
         <div className="w-[100%] desktop:w-[75%]">
-          <SearchKelasBeranda setFilterData={setFilterData} dataAll={dataAll} />
+          <SearchKelasBeranda setFilterData={setFilterData} dataAll={dataAll} activeButton={activeButton} setActiveButton={setActiveButton} SearchInput={SearchInput} setSearchInput={setSearchInput} />
+          {/* <SearchKelasBeranda activeButton={activeButton} setActiveButton={setActiveButton}/> */}
           <div className="space-y-8">
-            <CourseKelasAll filterData={filterData} />
+            <CourseKelasAll filterData={filterData} dataAll={dataAll} SearchInput={SearchInput} />
+            {/* <CourseKelasAll/> */}
           </div>
         </div>
       </div>

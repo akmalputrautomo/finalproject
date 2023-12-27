@@ -5,7 +5,6 @@ import otp from "./auth/otp";
 import authSliceLoginUser from "./auth/authSliceLoginUser";
 import forgetPassSlice from "./auth/forgetPassSlice";
 import GetCoursePopular from "./GetCoursePopular";
-import GetCourseDetail from "./GetCourseDetail";
 import updatepasslicer from "../reducer/akun/UpdatePass";
 import akunnotif from "./akun/NotifikasiRedux";
 import GetCoursePopularAll from "./GetCoursePopularAll";
@@ -15,6 +14,8 @@ import authGetUserSlice from "./akun/getme";
 import GetCourseAll from "./GetCourseAll";
 import getFilterSide from "./getFilterSide";
 import CardAdm from "./admin/CardAdmin";
+import GetCourseDetail from "./GetCourseDetail";
+import PostUpdateIsDone from "./PostUpdateIsDone";
 import MentorAdd from "./admin/addmentor";
 import LessonAdd from "./admin/addlesson";
 import Chapter from "./admin/getchapter";
@@ -36,6 +37,7 @@ export default combineReducers({
   coursePopularAll: GetCoursePopularAll,
   courseDetail: GetCourseDetail,
   courseAll: GetCourseAll,
+  updatesIsDone: PostUpdateIsDone,
   updatepass: updatepasslicer,
   Notifikasi: akunnotif,
   Search: coursesearch,

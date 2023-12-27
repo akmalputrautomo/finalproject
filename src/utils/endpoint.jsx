@@ -10,6 +10,9 @@ export const endpoint = {
   COURSE_DETAILS: (id) => {
     return `/api/v1/course/details/${id}`;
   },
+  UPDATE_ISDONE: (id) => {
+    return `/api/v1/course/updateisdone/${id}`;
+  },
   COURSE_POPULAR: (id) => {
     return `/api/v1/course/populer/${id}`;
   },

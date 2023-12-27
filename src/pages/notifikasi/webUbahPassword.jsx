@@ -11,7 +11,6 @@ export const WebUbahPassword = () => {
   const navigate = useNavigate();
   const [showPasswordlama, setShowPasswordlama] = useState(false);
   const [showPasswordBaru, setShowPasswprdBaru] = useState(false);
-  const [showPasswordulang, setShowPasswordulang] = useState(false);
   const [password, setpassword] = useState("");
   const [newPassword, setnewPassword] = useState("");
   const dispatch = useDispatch();

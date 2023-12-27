@@ -9,8 +9,6 @@ const OtpRegister = () => {
   const [otp, setotp] = useState("");
   const dispatch = useDispatch();
   const emailFromRedux = useSelector((state) => state.regis.user.email);
-  // const emailFrologin = useSelector((state) => state.loginUser.user.email);
-  // console.log(emailFrologin);
   const [Email, setEmail] = useState(emailFromRedux || "");
   const [seconds, setSeconds] = useState(30);
   const navigate = useNavigate();

@@ -56,10 +56,10 @@ export const KursusPopuler = () => {
         </button>
       </div>
 
-      <div className="flex space-x-2 scroll-pl-6 snap-x overflow-scroll scrollbar-hide">
+      <div className="flex w-full space-x-2 scroll-pl-6 snap-x overflow-scroll scrollbar-hide  ">
         <Button onClick={() => {
           setAll();
-        }} className="snap-start relative bg-[#E7F0EF] w-36 px-16 rounded-full text-xs font-bold focus:bg-[#116E63] focus:text-white">All</Button>
+        }} className="snap-start scroll-m-0 relative bg-[#E7F0EF] w-36 px-16 rounded-full text-xs font-bold focus:bg-[#116E63] focus:text-white">All</Button>
         {belajar &&
           belajar.map((courses) => (
 
@@ -68,7 +68,7 @@ export const KursusPopuler = () => {
                 onClick={() => {
                   setId(courses.id);
                 }}
-                className="bg-[#E7F0EF] snap-start relative w-36 rounded-full text-xs font-bold focus:bg-[#116E63] focus:text-white"
+                className="bg-[#E7F0EF] snap-start scroll-m-0  relative w-36 rounded-full text-xs font-bold focus:bg-[#116E63] focus:text-white"
               >
                 {courses.name}
               </Button>
@@ -93,7 +93,7 @@ export const KursusPopuler = () => {
                       </div>
                     </div>
                     <p className="text-sm font-bold">{courses.course.name}</p>
-                    <p className="text-xs">{courses.course.mentor[0].mentor.name}</p>
+                    {/* <p className="text-xs">{courses.course.mentor[0].mentor.name}</p> */}
                     <div className="flex text-xs font-normal gap-4 ">
                       <div className="flex items-center gap-1">
                         <img src={level} />

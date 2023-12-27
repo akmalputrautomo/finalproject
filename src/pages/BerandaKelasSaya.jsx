@@ -199,9 +199,7 @@ export const BerandaKelasSaya = () => {
             </Button>
           </div>
           <div className="hidden desktop:block">
-            <FilterKelasBeranda 
-            setFilteredCourses={setFilteredCourses}
-            />
+            <FilterKelasBeranda setFilteredCourses={setFilteredCourses} />
           </div>
           <ModalFilterBeranda isOpen={isOpen} onOpenChange={onOpenChange} scrollBehavior={scrollBehavior} />
         </div>

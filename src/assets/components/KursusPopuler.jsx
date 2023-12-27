@@ -20,7 +20,6 @@ export const KursusPopuler = () => {
 
   // const dataCourse = dataPopular()
 
-
   console.log(dataPopularAll, "PopularAll");
 
   useEffect(() => {
@@ -38,10 +37,6 @@ export const KursusPopuler = () => {
     getkategoribelajarrrr();
   }, []);
 
-  // const handleCourses = (id) => {
-  //   dispatch(getDataPopular(id))
-  // }
-
   return (
     <div className="px-[1rem] desktop:px-[9rem] py-[1.5rem] space-y-4">
       <div className="flex justify-between items-center">
@@ -56,13 +51,17 @@ export const KursusPopuler = () => {
         </button>
       </div>
 
-      <div className="flex w-full space-x-2 scroll-pl-6 snap-x overflow-scroll scrollbar-hide  ">
-        <Button onClick={() => {
-          setAll();
-        }} className="snap-start scroll-m-0 relative bg-[#E7F0EF] w-36 px-16 rounded-full text-xs font-bold focus:bg-[#116E63] focus:text-white">All</Button>
+      <div className="flex space-x-2 scroll-pl-6 snap-x overflow-scroll scrollbar-hide">
+        <Button
+          onClick={() => {
+            setAll();
+          }}
+          className="snap-start relative bg-[#E7F0EF] w-36 px-16 rounded-full text-xs font-bold focus:bg-[#116E63] focus:text-white"
+        >
+          All
+        </Button>
         {belajar &&
           belajar.map((courses) => (
-
             <div className="space-y-5" key={courses.id}>
               <Button
                 onClick={() => {
@@ -93,7 +92,7 @@ export const KursusPopuler = () => {
                       </div>
                     </div>
                     <p className="text-sm font-bold">{courses.course.name}</p>
-                    {/* <p className="text-xs">{courses.course.mentor[0].mentor.name}</p> */}
+                    <p className="text-xs">{courses.course.mentor[0]?.mentor.name}</p>
                     <div className="flex text-xs font-normal gap-4 ">
                       <div className="flex items-center gap-1">
                         <img src={level} />

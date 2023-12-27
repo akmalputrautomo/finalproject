@@ -21,6 +21,8 @@ export const authLoginUser = (input) => async (dispatch) => {
       //     console.error("unexpected Error", err);
       //   }
       // }
+
+      dispatch(setUserLogin(input));
       throw err;
     });
 };

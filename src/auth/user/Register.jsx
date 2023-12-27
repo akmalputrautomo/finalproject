@@ -25,8 +25,12 @@ export const Register = () => {
         password: password,
       })
     );
+
     if (success) {
+      toast.success("otp telah terkirim di email");
       navigate("/otp");
+    } else {
+      toast.warning("email telah di gunakan atau input belum ter isi semua");
     }
   };
 

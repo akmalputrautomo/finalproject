@@ -25,4 +25,14 @@ export const endpoint = {
   COURSE_ALL: "/api/v1/course/all",
   FILTER_SIDEBAR: "/api/v1/course/all",
   CARD_ADM: `/api/v1/admin/dashboard`,
+  ADD_MENTOR: `/api/v1/admin/mentor`,
+  ADD_KATEGORI: `/api/v1/admin/category`,
+  ADD_LESSON: `/api/v1/admin/lesson`,
+  GET_CHAPTER: `/api/v1/admin/chapter`,
+  GET_COURSE: `/api/v1/admin/course`,
+  // PUT_COURSE: (id) => {
+  //   return `/api/v1/admin/course/${id}`;
+  // },
+  KELOLA_KELAS: `/api/v1/admin/kelolakelas`,
+  DELETE_COURSE: (id) => `/api/v1/admin/course/${id}`,
 };

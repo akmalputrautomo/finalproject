@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import logo from "../../assets/img/Logo.png";
 import google from "../../assets/img/google.png";
 import facebook from "../../assets/img/facebook.png";
+import "react-toastify/dist/ReactToastify.css";
 import { Form, Input } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import { authLoginUser } from "../../redux/action/auth/authLoginUser";
 import { useDispatch } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
+import { CookieKeys, CookieStorage } from "../../utils/cookies";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -24,20 +26,46 @@ export const Login = () => {
       })
     )
       .then((result) => {
-        if (result.status === 200) {
+        console.log(result, "result");
+        if (result.data.data.users.is_admin === false) {
           navigate("/");
+        } else if (result.data.data.users.is_admin === true) {
+          navigate("/HomeAdm");
         }
       })
       .catch((err) => {
-        // if (err.response.status === 400 || err.response.status === 401) {
-        //   setErrMsg(err.response.data.message);
+        // if (err.response.status >= 400 && err.response.status <= 500) {
+        //   setErrMsg(err.response.data.err);
+        // } else if (err.response.data.err === "your account is not verified yet, please verify first") {
+        //   navigate("/otp");
         // }
+        if (err.response.data.err === "your account is not verified yet, please verify first") {
+          navigate("/otp");
+        } else if (err.response.status >= 400 && err.response.status <= 500) {
+          setErrMsg(err.response.data.err);
+        }
       });
   };
 
+  useEffect(() => {
+    if (getErrMsg) {
+      toast.error(getErrMsg, {
+        position: "top-right",
+        autoClose: 3500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+  }, [getErrMsg]);
+
+  // const Token = CookieStorage.get(CookieKeys.AuthToken);
   // useEffect(() => {
-  //   if (getErrMsg) {
-  //     toast.error(getErrMsg, {
+  //   if (Token) {
+  //     toast.success("Register Berhasil, Silahkan Login!", {
   //       position: "top-right",
   //       autoClose: 3500,
   //       hideProgressBar: false,
@@ -48,7 +76,7 @@ export const Login = () => {
   //       theme: "light",
   //     });
   //   }
-  // }, [getErrMsg]);
+  // }, [Token]);
 
   const register = () => {
     navigate("/register");

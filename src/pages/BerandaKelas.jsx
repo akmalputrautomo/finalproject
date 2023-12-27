@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import { FilterKelasBeranda } from "../assets/components/FilterKelasBeranda";
 import { SearchKelasBeranda } from "../assets/components/SearchKelasBeranda";
 import NavbarAfterLogin from "../assets/components/NavbarAfterLogin";
-import Navbarr from "../assets/components/navbar";
 import { Button, useDisclosure } from "@nextui-org/react";
 import ModalFilterBeranda from "../assets/components/ModalFilterBeranda";
 import { NavbarResponsive } from "../assets/components/elements/NavbarResponsive";
 import { CourseKelasAll } from "../assets/components/CourseKelasAll";
 import { useDispatch, useSelector } from "react-redux";
 import getDataAll from "../redux/action/getAll";
+import Navbarr from "../assets/components/navbar";
 
 export const BerandaKelas = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -26,7 +26,7 @@ export const BerandaKelas = () => {
   }, [dispatch]);
 
   const [filterData, setFilterData] = useState(dataAll);
-  console.log(filterData, "filter data")
+  console.log(filterData, "filter data");
 
   useEffect(() => {
     setFilterData(dataAll);
@@ -35,7 +35,7 @@ export const BerandaKelas = () => {
   return (
     <div>
       <div className="hidden desktop:block">
-        <Navbarr/>
+        <Navbarr />
       </div>
       <div className="block desktop:hidden">
         <NavbarResponsive />

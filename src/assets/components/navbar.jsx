@@ -15,10 +15,9 @@ const Navbarr = () => {
   const navigate = useNavigate();
 
   const token = CookieStorage.get(CookieKeys.AuthToken);
-  console.log(token, "Ini Token");
+  // console.log(token, "Ini Token");
 
-  const login = useSelector((state) => state.loginUser.user.email);
-  console.log(login, "lohginn");
+  const data = useSelector((state) => state.me.isUser);
 
   const getdatauser = () => {
     dispatch(GetUserrr());
@@ -40,7 +39,9 @@ const Navbarr = () => {
   return (
     <div>
       <div className="bg-[#F8F8F8] flex justify-between p-4">
+        <button onClick={()=> {navigate("/")}} className="cursor-pointer">
         <img className="w-[10rem] h-[3rem]" src={logo} />
+        </button>
 
         {/* search bar */}
         <form className="relative hidden desktop:flex w-1/2" onSubmit={handleSubmit}>
@@ -108,12 +109,12 @@ const Navbarr = () => {
               </button>
               <Dropdown placement="bottom-end">
                 <DropdownTrigger>
-                  <Avatar isBordered as="button" className="transition-transform" src="https://i.pravatar.cc/150?u=a042581f4e29026704d" />
+                  <Avatar isBordered as="button" className="transition-transform" src={data.foto_profile} />
                 </DropdownTrigger>
                 <DropdownMenu aria-label="Profile Actions" variant="flat">
                   <DropdownItem key="profile" className="h-14 gap-2">
                     <p className="font-semibold">Signed in as</p>
-                    <p className="font-semibold">{login}</p>
+                    <p className="font-semibold">{data.email}</p>
                   </DropdownItem>
                   <DropdownItem
                     onClick={() => {

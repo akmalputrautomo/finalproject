@@ -3,13 +3,14 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getResendOtp, getVerifyOtp } from "../../redux/action/auth/otpregister";
+import { toast } from "react-toastify";
 
 const OtpRegister = () => {
   const [otp, setotp] = useState("");
   const dispatch = useDispatch();
   const emailFromRedux = useSelector((state) => state.regis.user.email);
   const [Email, setEmail] = useState(emailFromRedux || "");
-  const [seconds, setSeconds] = useState(300);
+  const [seconds, setSeconds] = useState(30);
   const navigate = useNavigate();
 
   // redux otp
@@ -21,7 +22,10 @@ const OtpRegister = () => {
       })
     );
     if (otpData) {
+      toast.success("akun berhasil di  atau di aktifkan");
       navigate("/");
+    } else {
+      toast.warning("salah memasukan otp atau sudah kadaluarsa");
     }
   };
 
@@ -37,14 +41,15 @@ const OtpRegister = () => {
       })
     );
     if (resendData) {
-      setSeconds(300);
+      toast.success("otp telah terkirim");
+      setSeconds(30);
     } else {
-      setSeconds(300);
+      setSeconds(30);
     }
   };
 
   useEffect(() => {
-    const initialSeconds = 300; // Menit awal (5 menit * 60 detik)
+    const initialSeconds = 30; // Menit awal (5 menit * 60 detik)
     setSeconds(initialSeconds);
 
     const interval = setInterval(() => {

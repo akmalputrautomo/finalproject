@@ -5,10 +5,8 @@ import SideBar from "../../assets/components/admin/SideBar";
 
 export const HomeAdm = () => {
   return (
-    <div className="bg-slate-100">
-      <div className="ms-[350px]">
-        <NavbarAdm />
-      </div>
+    <div className=" bg-[#F8F8F8]">
+      <NavbarAdm />
       <CardAdm />
       <SideBar />
     </div>

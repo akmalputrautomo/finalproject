@@ -1,3 +1,4 @@
+import { toast } from "react-toastify";
 import { reduxLoginUser } from "../../../services/auth/authLogin";
 import { CookieKeys, CookieStorage } from "../../../utils/cookies";
 import { setIsLoggedIn, setName, setToken, setUserLogin } from "../../reducer/auth/authSliceLoginUser";
@@ -13,7 +14,16 @@ export const authLoginUser = (input) => async (dispatch) => {
       return result;
     })
     .catch((err) => {
-      alert("salah");
+      // if (err.response) {
+      //   if (err.response.status >= 400 && err.response.status <= 500) {
+      //     console.log(err.response.data.err);
+      //   } else {
+      //     console.error("unexpected Error", err);
+      //   }
+      // }
+
+      dispatch(setUserLogin(input));
+      throw err;
     });
 };
 

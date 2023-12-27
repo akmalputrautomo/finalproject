@@ -9,22 +9,16 @@ import { useDataProfil } from "../../services/akun/akunprofile";
 import { GetUserrr } from "../../redux/action/akun/GetUser";
 
 export const WebAkunProfil = () => {
+  const data = useSelector((state) => state.me.isUser);
   const navigate = useNavigate();
-  const [isEditingNama, setIsEditingNama] = useState(false);
-  const [isEditingTelepon, setIsEditingTelepon] = useState(false);
-  const [isEditingcountry, setIsEditingcountry] = useState(false);
-  const [isEditingcity, setIsEditingcity] = useState(false);
   const [image, setimage] = useState("");
-  const [name, setname] = useState("");
-  const [no_hp, setno_hp] = useState("");
-  const [country, setcountry] = useState("");
-  const [city, setcity] = useState("");
+  const [name, setname] = useState(data.name);
+  const [no_hp, setno_hp] = useState(data.no_hp);
+  const [country, setcountry] = useState(data.country);
+  const [city, setcity] = useState(data.city);
   const inputRef = useRef(null);
   const { mutate: addprofil } = useDataProfil();
   const dispatch = useDispatch();
-
-  const data = useSelector((state) => state.me.isUser);
-  console.log(data);
 
   const getdatauser = () => {
     dispatch(GetUserrr());
@@ -33,20 +27,6 @@ export const WebAkunProfil = () => {
   useEffect(() => {
     getdatauser();
   }, []);
-
-  const handleEditNamaClick = () => {
-    setIsEditingNama(!isEditingNama);
-  };
-
-  const handleEditTeleponClick = () => {
-    setIsEditingTelepon(!isEditingTelepon);
-  };
-  const handleEditcountry = () => {
-    setIsEditingcountry(!isEditingcountry);
-  };
-  const handleEditcity = () => {
-    setIsEditingcity(!isEditingcity);
-  };
 
   const profilakun = (e) => {
     e && e.preventDefault();
@@ -58,12 +38,7 @@ export const WebAkunProfil = () => {
     formData.append("country", country);
     formData.append("city", city);
 
-    try {
-      addprofil(formData);
-      navigate("/");
-    } catch (error) {
-      alert("Gagal menyimpan profil");
-    }
+    addprofil(formData);
   };
 
   const handleImageClick = () => {
@@ -72,8 +47,7 @@ export const WebAkunProfil = () => {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    setimage(e.target.files[0]);
-    console.log(file);
+    setimage(file);
   };
 
   return (
@@ -141,79 +115,26 @@ export const WebAkunProfil = () => {
               <div className="flex flex-col gap-1 mobile:gap-4 desktop:gap-1 ">
                 <div className="pt-3 flex justify-center items-center cursor-pointer" onClick={handleImageClick}>
                   {image ? <img src={URL.createObjectURL(image)} alt="" className="rounded-full object-cover w-1/4 h-1/4" /> : <img src={data.foto_profile || logo} alt="Profile" className="mr-2 rounded-full object-cover w-1/4 h-1/4" />}
-                  <input type="file" id="image" accept="image/*" ref={inputRef} onChange={handleImageChange} className="hidden" />
+                  <input type="file" id="image" accept="image/*" ref={inputRef} onChange={handleImageChange} className=" hidden" />
                 </div>
                 <div>
-                  <p>Nama</p>
-                  {isEditingNama ? (
-                    <div className="flex items-center gap-2">
-                      <input onChange={(e) => setname(e.target.value)} id="name" placeholder="John Doe" className="border rounded-xl w-[60%] h-[3rem] mobile:w-[90%] desktop:w-[60%]" />
-                      <button onClick={handleEditNamaClick} className="text-[#116E63]">
-                        Cancel Edit
-                      </button>
-                    </div>
-                  ) : (
-                    <div className="flex items-center border w-[60%] mobile:w-[90%] h-[3rem] rounded-xl">
-                      <p>{data.name}</p>
-                      <button onClick={handleEditNamaClick} className="pl-[24rem] mobile:pl-[20rem] desktop:pl-[24rem] text-[#116E63]">
-                        Edit
-                      </button>
-                    </div>
-                  )}
+                  <div className="flex gap-2">
+                    <p>Nama</p>
+                    <span className="text-red-500 text-[0.7rem] flex items-center justify-center">*nama wajib di isi</span>
+                  </div>
+                  <input value={name} onChange={(e) => setname(e.target.value)} id="name" placeholder="John Doe" className="border rounded-xl w-[60%] h-[3rem] mobile:w-[90%] desktop:w-[60%] px-2" />
                 </div>
                 <div>
                   <p>Nomor Telepon</p>
-                  {isEditingTelepon ? (
-                    <div className="flex items-center gap-2">
-                      <input onChange={(e) => setno_hp(e.target.value)} id="no_hp" placeholder="+62 812121121121" className="border rounded-xl w-[60%] h-[3rem] mobile:w-[90%] desktop:w-[60%]" />
-                      <button onClick={handleEditTeleponClick} className="text-[#116E63]">
-                        Cancel Edit
-                      </button>
-                    </div>
-                  ) : (
-                    <div className="flex items-center border w-[60%] mobile:w-[90%] h-[3rem] rounded-xl">
-                      <p>{data.no_hp}</p>
-                      <button onClick={handleEditTeleponClick} className="pl-[22rem] mobile:pl-[20rem] desktop:pl-[22rem] text-[#116E63]">
-                        Edit
-                      </button>
-                    </div>
-                  )}
+                  <input value={no_hp} onChange={(e) => setno_hp(e.target.value)} id="no_hp" placeholder="+62 812121121121" className="border rounded-xl w-[60%] h-[3rem] mobile:w-[90%] desktop:w-[60%] px-2" />
                 </div>
                 <div>
                   <p>Negara</p>
-                  {isEditingcountry ? (
-                    <div className="flex items-center gap-2">
-                      <input onChange={(e) => setcountry(e.target.value)} id="country" placeholder="John Doe" className="border rounded-xl w-[60%] h-[3rem] mobile:w-[90%] desktop:w-[60%]" />
-                      <button onClick={handleEditcountry} className="text-[#116E63]">
-                        Cancel Edit
-                      </button>
-                    </div>
-                  ) : (
-                    <div className="flex items-center border w-[60%] mobile:w-[90%] h-[3rem] rounded-xl">
-                      <p>{data.country}</p>
-                      <button onClick={handleEditcountry} className="pl-[24rem] mobile:pl-[20rem] desktop:pl-[24rem] text-[#116E63]">
-                        Edit
-                      </button>
-                    </div>
-                  )}
+                  <input value={country} onChange={(e) => setcountry(e.target.value)} id="country" placeholder="John Doe" className="border rounded-xl w-[60%] h-[3rem] mobile:w-[90%] desktop:w-[60%] px-2" />
                 </div>
                 <div>
                   <p>Kota</p>
-                  {isEditingcity ? (
-                    <div className="flex items-center gap-2">
-                      <input onChange={(e) => setcity(e.target.value)} id="city" placeholder="John Doe" className="border rounded-xl w-[60%] h-[3rem] mobile:w-[90%] desktop:w-[60%]" />
-                      <button onClick={handleEditcity} className="text-[#116E63]">
-                        Cancel Edit
-                      </button>
-                    </div>
-                  ) : (
-                    <div className="flex items-center border w-[60%] mobile:w-[90%] h-[3rem] rounded-xl">
-                      <p>{data.city}</p>
-                      <button onClick={handleEditcity} className="pl-[24rem] mobile:pl-[20rem] desktop:pl-[24rem] text-[#116E63]">
-                        Edit
-                      </button>
-                    </div>
-                  )}
+                  <input value={city} onChange={(e) => setcity(e.target.value)} id="city" placeholder="John Doe" className="border rounded-xl w-[60%] h-[3rem] mobile:w-[90%] desktop:w-[60%] px-2" />
                 </div>
                 <div>
                   <button

@@ -34,7 +34,7 @@ export const BerandaKelasSaya = () => {
   }, [dispatch]);
 
   const [FilteredCourses, setFilteredCourses] = useState(dataCourses);
-  // console.log(FilteredCourses, "Data Filter");
+  console.log(FilteredCourses, "Data Filter 222");
 
   return (
     // <div>
@@ -199,11 +199,9 @@ export const BerandaKelasSaya = () => {
             </Button>
           </div>
           <div className="hidden desktop:block">
-            <FilterKelasBeranda 
-            setFilteredCourses={setFilteredCourses}
-            />
+            <FilterKelasBeranda setFilteredCourses={setFilteredCourses} />
           </div>
-          <ModalFilterBeranda isOpen={isOpen} onOpenChange={onOpenChange} scrollBehavior={scrollBehavior} />
+          <ModalFilterBeranda setFilteredCourses={setFilteredCourses} isOpen={isOpen} onOpenChange={onOpenChange} scrollBehavior={scrollBehavior} />
         </div>
         <div className="w-[100%] desktop:w-[75%]">
           <SearchKelasSaya setFilteredCourses={setFilteredCourses} dataCourses={dataCourses} />

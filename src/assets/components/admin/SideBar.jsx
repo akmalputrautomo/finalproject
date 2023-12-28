@@ -13,7 +13,7 @@ import { ButtonMentor } from "./elements/ButtonMentor";
 import { ButtonLesson } from "./elements/ButtonLesson";
 import { ButtonChapter } from "./elements/ButtonChapter";
 import { useDataKelolaKelas } from "../../../services/admin/KelolaKelas";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import getDeletecourse from "../../../redux/action/admin/Deletecourse";
 import { useDataUpdateCourse } from "../../../services/admin/UbahCourse";
 import { useParams } from "react-router-dom";
@@ -59,6 +59,10 @@ const SideBar = () => {
       return newStates;
     });
   }
+
+  const dataUsers = useSelector((state) => state.FilterAdm);
+  console.log(dataUsers, "Data Users")
+
 
   const CourseUbah = (courseId) => {
     UpdateCourses({

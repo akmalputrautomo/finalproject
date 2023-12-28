@@ -1,11 +1,43 @@
 import { Accordion, AccordionItem, Button, Input } from "@nextui-org/react";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+import postEnrollment from "../../redux/action/postEnrollment";
 
 export const DetailKelasPembayaran = () => {
-
+  const params = useParams();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [pembayaran, setPembayaran] = useState("creditCard");
+  const [number, setNumber] = useState(null);
+  const [name, setName] = useState('');
+  const [Cvv, setCvv] = useState(null);
+  const [exp, setExp] = useState('');
+
+  // useEffect(() => {
+  // enrollment();
+  // }, [dispatch, params.courseId]);
+
+  // console.log(params.courseId, "params");
+
+  // const enrollment = as  ync () => { 
+  //   await dispatch(postEnrollment(parseInt(params.courseId)));
+  // }
+
+  const handleInput = () => {
+    dispatch(postEnrollment(parseInt(params.courseId),
+      {
+        metode_pembayaran: pembayaran ,
+        card_number:parseInt(number),
+        card_name: name ,
+        cvv: parseInt(Cvv) ,
+        expired: exp,
+      }
+    )
+    )
+  }
+
+
   const defaultContent =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
 
@@ -112,20 +144,20 @@ export const DetailKelasPembayaran = () => {
                       </div>
                       <div className="text-black">
                         <p>Card number</p>
-                        <Input type="email" fill="none" label="" placeholder="4480 0000 0000 0000" className=" border border-slate-300 rounded-md " />
+                        <Input type="number" id="number"   onChange={(e) => setNumber(e.target.value) }  fill="none" label="" placeholder="4480 0000 0000 0000" className=" border border-slate-300 rounded-md " />
                       </div>
                       <div className="text-black ">
                         <p>Card holder name</p>
-                        <Input type="email" fill="none" label="" placeholder="John Doe" className=" border border-slate-300 rounded-md" />
+                        <Input type="text" id="name" fill="none" onChange={(e) => setName(e.target.value)} label="" placeholder="John Doe" className=" border border-slate-300 rounded-md" />
                       </div>
                       <div className="text-black flex w-full gap-4">
                         <div className="w-1/2">
                           <p>CVV</p>
-                          <Input type="email" fill="none" label="" placeholder="000" className=" border border-slate-300 rounded-md" />
+                          <Input type="number" id="Cvv" onChange={(e) => setCvv(e.target.value)} fill="none" label="" placeholder="000" className=" border border-slate-300 rounded-md" />
                         </div>
                         <div className="w-1/2">
                           <p>Expiry date</p>
-                          <Input type="email" fill="none" label="" placeholder="07/24" className=" border border-slate-300 rounded-md" />
+                          <Input type="text" id="exp" onChange={(e) => setExp(e.target.value)} fill="none" label="" placeholder="07/24" className=" border border-slate-300 rounded-md" />
                         </div>
                       </div>
                     </div>
@@ -133,7 +165,7 @@ export const DetailKelasPembayaran = () => {
                 </AccordionItem>
               </Accordion>
               <div className="mobile:block desktop:hidden flex justify-center items-center ">
-                  <Button className="bg-[#DB1B1B] ml-2 w-[24rem] h-[2.5rem] px-4 mt-6  flex justify-center items-center rounded-3xl text-white font-semibold text-sm gap-2 ">
+                  <Button onClick={handleInput}  className="bg-[#DB1B1B] ml-2 w-[24rem] h-[2.5rem] px-4 mt-6  flex justify-center items-center rounded-3xl text-white font-semibold text-sm gap-2 ">
                     <p>Bayar dan Ikutan Kelas Selamanya</p>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="white" height="20" width="20" viewBox="0 0 512 512">
                       <path d="M0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM281 385c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l71-71L136 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l182.1 0-71-71c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L393 239c9.4 9.4 9.4 24.6 0 33.9L281 385z" />

@@ -26,6 +26,7 @@ import MentorGet from "./admin/getmentor.jsx";
 import GetCategories from "./admin/getcategories.jsx";
 import DeleteC from "./admin/deletecourse.jsx";
 import UpdateCourses from "./admin/putcourse.jsx";
+import PostEnrollment from "./PostEnrollment.jsx";
 
 export default combineReducers({
   kategori: KategoriSlice,
@@ -36,6 +37,7 @@ export default combineReducers({
   coursePopular: GetCoursePopular,
   coursePopularAll: GetCoursePopularAll,
   courseDetail: GetCourseDetail,
+  courseEnrollment: PostEnrollment,
   courseAll: GetCourseAll,
   updatesIsDone: PostUpdateIsDone,
   updatepass: updatepasslicer,

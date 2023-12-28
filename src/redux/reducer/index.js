@@ -12,7 +12,6 @@ import coursesearch from "./search";
 import getfree from "./getfreekelassaya";
 import authGetUserSlice from "./akun/getme";
 import GetCourseAll from "./GetCourseAll";
-import getFilterSide from "./getFilterSide";
 import CardAdm from "./admin/CardAdmin";
 import GetCourseDetail from "./GetCourseDetail";
 import PostUpdateIsDone from "./PostUpdateIsDone";
@@ -26,6 +25,8 @@ import MentorGet from "./admin/getmentor.jsx";
 import GetCategories from "./admin/getcategories.jsx";
 import DeleteC from "./admin/deletecourse.jsx";
 import UpdateCourses from "./admin/putcourse.jsx";
+import getCoursesMe from "./getCoursesMe.jsx";
+import filterAdm from "./admin/filterAdm.jsx";
 
 export default combineReducers({
   kategori: KategoriSlice,
@@ -43,13 +44,14 @@ export default combineReducers({
   Search: coursesearch,
   Free: getfree,
   me: authGetUserSlice,
-  filterSide: getFilterSide,
+  CourseMe : getCoursesMe,
   Card: CardAdm,
   Mentor: MentorAdd,
   Lesson: LessonAdd,
   Chapter: Chapter,
   PostChapter: ChapterPost,
   Course: Course,
+  FilterAdm: filterAdm,
   AddCourse: CourseAdd,
   DataMentor: MentorGet,
   Categories: GetCategories,

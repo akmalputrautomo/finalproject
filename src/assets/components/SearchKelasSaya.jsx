@@ -3,27 +3,34 @@ import search from "../img/search.png";
 import { Button } from "@nextui-org/button";
 import { useDispatch } from "react-redux";
 import getDataAll from "../../redux/action/getAll";
+import getDataCourseMe from "../../redux/action/getCourseMe";
 
-export const SearchKelasSaya = ({ setFilteredCourses, dataCourses }) => {
+export const SearchKelasSaya = ({ setFilteredCourses, dataCoursesMe, setSearchInput }) => {
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(getDataAll());
-  // }, [dispatch]);
+  // console.log(dataCoursesMe, "SearchKelasSaya")
+
+  useEffect(() => {
+    dispatch(getDataCourseMe());
+  }, [dispatch]);
 
   const handleBtn = (tipe) => {
     let filteredData = [];
 
     if (tipe === "All") {
-      filteredData = dataCourses;
+      filteredData = dataCoursesMe;
     } else if (tipe === "Premium") {
-      filteredData = dataCourses.filter((item) => item.price !== 0);
+      filteredData = dataCoursesMe.filter((item) => item.price !== 0);
     } else if (tipe === "Free") {
-      filteredData = dataCourses.filter((item) => item.price === 0);
+      filteredData = dataCoursesMe.filter((item) => item.price === 0);
     }
     setFilteredCourses(filteredData);
-    // console.log(filteredData, "filter");
+    console.log(filteredData, "filterNibos");
   };
+
+  // const handleSearch = (e) => {
+  //   setSearchInput(e.target.value);
+  // };
   return (
     <div className="py-5 px-[1rem] desktop:px-16">
       {/* search */}

@@ -26,7 +26,7 @@ export const BerandaKelas = () => {
   }, [dispatch]);
 
   const [filterData, setFilterData] = useState(dataAll);
-  console.log(filterData, "filter data");
+  // console.log(filterData, "filter data");
 
   useEffect(() => {
     setFilterData(dataAll);
@@ -49,9 +49,9 @@ export const BerandaKelas = () => {
             </Button>
           </div>
           <div className="hidden desktop:block">
-            <FilterKelasBeranda />
+            <FilterKelasBeranda setFilterData={setFilterData}/>
           </div>
-          <ModalFilterBeranda isOpen={isOpen} onOpenChange={onOpenChange} scrollBehavior={scrollBehavior} />
+          <ModalFilterBeranda setFilterData={setFilterData} isOpen={isOpen} onOpenChange={onOpenChange} scrollBehavior={scrollBehavior} />
         </div>
         <div className="w-[100%] desktop:w-[75%]">
           <SearchKelasBeranda setFilterData={setFilterData} dataAll={dataAll} activeButton={activeButton} setActiveButton={setActiveButton} SearchInput={SearchInput} setSearchInput={setSearchInput} />

@@ -1,42 +1,42 @@
-import React, { useEffect, useState } from "react";
 import { Checkbox, CheckboxGroup } from "@nextui-org/checkbox";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import getDataAll from "../../redux/action/getAll";
+import getDataCourseMe from "../../redux/action/getCourseMe";
 
-export const FilterKelasBeranda = ({ setFilterData }) => {
+export const FilterBerandaSaya = ({ setFilteredCourses }) => {
   const dispatch = useDispatch();
   const [checkedItems, setCheckedItems] = useState([]);
-  const courses = useSelector((state) => state.courseAll.coursesAll);
+  const dataCoursesMeAll = useSelector((state) => state.CourseMe.coursesMe.result);
 
   useEffect(() => {
     getCourses();
   }, []);
 
   const getCourses = () => {
-    dispatch(getDataAll());
+    dispatch(getDataCourseMe());
   };
 
-  const sortByCreatedAtNewest = (courses) => {
-    return courses
+  const sortByCreatedAtNewest = (dataCoursesMeAll) => {
+    return dataCoursesMeAll
       .slice()
       .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
   };
 
-  const sortByRatingAscending = (courses) => {
-    return courses.slice().sort((a, b) => b.rating - a.rating);
+  const sortByRatingAscending = (dataCoursesMeAll) => {
+    return dataCoursesMeAll.slice().sort((a, b) => b.rating - a.rating);
   };
 
   const handleBtn = (filterType) => {
-    let filteredData = [...courses];
+    let filteredData = [...dataCoursesMeAll];
 
     if (filterType === "baru") {
-      filteredData = sortByCreatedAtNewest(courses);
-      console.log(filteredData, "Baruuuu");
+      filteredData = sortByCreatedAtNewest(dataCoursesMeAll);
+      // console.log(filteredData, "Baruuuu");
     }
 
     if (filterType === "popular") {
-      filteredData = sortByRatingAscending(courses);
-      console.log(filteredData, "popular");
+      filteredData = sortByRatingAscending(dataCoursesMeAll);
+      // console.log(filteredData, "popular");
     }
 
     if (
@@ -66,8 +66,8 @@ export const FilterKelasBeranda = ({ setFilterData }) => {
       });
     }
 
-    setFilterData(filteredData);
-    console.log(filteredData, "filter");
+    setFilteredCourses(filteredData);
+    // console.log(filteredData, "filter");
   };
 
   const handleCheckboxClick = (filterType) => {

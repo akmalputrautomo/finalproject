@@ -67,7 +67,7 @@ export const KursusPopuler = () => {
                 onClick={() => {
                   setId(courses.id);
                 }}
-                className="bg-[#E7F0EF] snap-start relative w-36 rounded-full text-xs font-bold focus:bg-[#116E63] focus:text-white"
+                className="bg-[#E7F0EF] snap-start scroll-m-0  relative w-36 rounded-full text-xs font-bold focus:bg-[#116E63] focus:text-white"
               >
                 {courses.name}
               </Button>

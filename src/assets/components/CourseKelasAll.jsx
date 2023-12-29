@@ -33,7 +33,7 @@ export const CourseKelasAll = ({ filterData, SearchInput }) => {
         const level = item.level.toLowerCase().includes(SearchInput.toLowerCase());
         // const lesson = item.total_lesson.toString().includes(SearchInput.toLowerCase());
         // const duration = item.total_duration.toString().includes(SearchInput.toLowerCase());
-        return courseName || categoryName || rating || level;
+        return courseName || rating || categoryName || level;
       })
     : [];
 

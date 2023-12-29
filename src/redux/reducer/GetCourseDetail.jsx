@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = { coursesDetail: "" };
+const initialState = { coursesDetail: ""};
 
 const detailSlicer = createSlice({
   name: "courseDetailAuth",

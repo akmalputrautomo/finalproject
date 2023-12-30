@@ -6,9 +6,11 @@ const UpdateCourse = async (input) => {
   return await http
     .put(endpoint.GET_COURSE, input)
     .then((result) => {
-      return result;
+      return true;
     })
-    .catch((err) => {});
+    .catch((err) => {
+      return false;
+    });
 };
 
 const useDataUpdateCourse = () => {
@@ -17,5 +19,5 @@ const useDataUpdateCourse = () => {
 export { UpdateCourse, useDataUpdateCourse };
 
 // export const UpdateCourse = (courseId) => async (input) => {
-//   return await http.put(endpoint.PUT_COURSE(courseId), input);
+//   return await http.put(endpoint.GET_COURSE(courseId), input);
 // };

@@ -29,7 +29,7 @@ export const ButtonAdd = () => {
         name: name,
         desc: desc,
         price: price,
-        level: selectedValueLvlClass, // Perbaikan pada baris ini
+        level: selectedValueLvlClass,
         type: Array.from(selectedType).join(", ").replaceAll("_", " "),
         intended_for: intended_for,
         mentor_id: mentor_id,
@@ -43,13 +43,38 @@ export const ButtonAdd = () => {
   };
 
   useEffect(() => {
-    dispatch(DataDAtaM());
-  }, []);
+    // Fungsi yang akan dipanggil setiap 3 detik
+    const fetchData = () => {
+      dispatch(DataDAtaM());
+    };
+
+    // Panggil fungsi pertama kali
+    fetchData();
+
+    // Set interval untuk memanggil fungsi setiap 3 detik
+    const intervalId = setInterval(fetchData, 3000);
+
+    // Membersihkan interval pada saat komponen unmount
+    return () => clearInterval(intervalId);
+  }, [dispatch]);
+
   const dataM = useSelector((state) => state.DataMentor.MentorGet.mentors);
 
   useEffect(() => {
-    dispatch(GetIdCategories());
-  }, []);
+    // Fungsi yang akan dipanggil setiap 3 detik
+    const fetchData = () => {
+      dispatch(GetIdCategories());
+    };
+
+    // Panggil fungsi pertama kali
+    fetchData();
+
+    // Set interval untuk memanggil fungsi setiap 3 detik
+    const intervalId = setInterval(fetchData, 3000);
+
+    // Membersihkan interval pada saat komponen unmount
+    return () => clearInterval(intervalId);
+  }, [dispatch]);
   const dataC = useSelector((state) => state.Categories.Categories.categories);
 
   return (
@@ -113,13 +138,22 @@ export const ButtonAdd = () => {
                   </DropdownMenu>
                 </Dropdown>
                 <Input type="text" onChange={(e) => setintended_for(e.target.value)} label="intended_for" id="intended_for" />
+
                 <Dropdown>
                   <DropdownTrigger>
                     <Button variant="bordered" className="capitalize">
                       {selectedLvlClasss}
                     </Button>
                   </DropdownTrigger>
-                  <DropdownMenu aria-label="Single selection example" variant="flat" disallowEmptySelection selectionMode="single" selectedKeys={selectedLvlClasss} onSelectionChange={setSelectedLvlClasss}>
+                  <DropdownMenu
+                    aria-label="Single selection example"
+                    variant="flat"
+                    disallowEmptySelection
+                    selectionMode="single"
+                    selectedKeys={selectedLvlClasss}
+                    onSelectionChange={setSelectedLvlClasss}
+                    style={{ maxHeight: "200px", overflowY: "auto" }} // Set max height and make it scrollable
+                  >
                     {dataM &&
                       dataM.map((courses) => (
                         <DropdownItem onClick={() => setmentor_id(courses.id)} id="mentor_id" key={courses.id}>

@@ -37,16 +37,28 @@ export const ButtonChapter = () => {
         course_id: course_id,
       })
     );
-    // if (success) {
-    //   toast.success("secces menambahkan chapter");
-    // } else {
-    //   toast.warning("gagal brow");
-    // }
+    if (success) {
+      toast.success("secces menambahkan chapter");
+    } else {
+      toast.warning("gagal brow");
+    }
   };
 
   useEffect(() => {
-    dispatch(GetDataCourse());
-  }, []);
+    // Fungsi yang akan dipanggil setiap 3 detik
+    const fetchData = () => {
+      dispatch(GetDataCourse());
+    };
+
+    // Panggil fungsi pertama kali
+    fetchData();
+
+    // Set interval untuk memanggil fungsi setiap 3 detik
+    const intervalId = setInterval(fetchData, 3000);
+
+    // Membersihkan interval pada saat komponen unmount
+    return () => clearInterval(intervalId);
+  }, [dispatch]);
 
   const data = useSelector((state) => state.Course.Course.courses);
   console.log(data, "course");
@@ -77,7 +89,15 @@ export const ButtonChapter = () => {
                       {selectedValue}
                     </Button>
                   </DropdownTrigger>
-                  <DropdownMenu aria-label="Single selection example" variant="flat" disallowEmptySelection selectionMode="single" selectedKeys={selectedKeys} onSelectionChange={setSelectedKeys}>
+                  <DropdownMenu
+                    aria-label="Single selection example"
+                    variant="flat"
+                    disallowEmptySelection
+                    selectionMode="single"
+                    selectedKeys={selectedKeys}
+                    onSelectionChange={setSelectedKeys}
+                    style={{ maxHeight: "200px", overflowY: "auto" }} // Set max height and make it scrollable
+                  >
                     {data &&
                       data.map((courses) => (
                         <DropdownItem onClick={() => setcourse_id(courses.id)} key={courses.id}>

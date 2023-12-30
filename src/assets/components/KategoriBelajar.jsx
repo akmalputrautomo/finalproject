@@ -27,10 +27,10 @@ export const KategoriBelajar = () => {
 
       <div className="grid grid-cols-2 desktop:grid-cols-6 py-5 gap-[2rem]">
         {belajar &&
-          belajar.slice(0, 6).map((courses) => (
-            <div className="space-y-5" key={courses.id}>
-              <img src={courses.image} className="flex w-full h-[136px] rounded-3xl"></img>
-              <div className="text-center font-bold text-sm">{courses.name}</div>
+          belajar.slice(0, 6).map((course) => (
+            <div className="space-y-5" key={course.id}>
+              <img src={course.image} className="flex w-full h-[136px] rounded-3xl"></img>
+              <div className="text-center font-bold text-sm">{course.name}</div>
             </div>
           ))}
       </div>

@@ -1,39 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import level from "../img/level.png";
 import modul from "../img/modul.png";
 import time from "../img/time.png";
 import premium from "../img/premium.png";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import getDataAll from "../../redux/action/getAll";
 
 export const CourseKelasAll = ({ filterData, SearchInput }) => {
-  // const dispatch = useDispatch();
-
-  // const dataAll = useSelector((state) => state.courseAll.coursesAll);
-  // console.log(dataAll, "All");
-
-  // useEffect(() => {
-  //   dispatch(getDataAll());
-  // }, [dispatch]);
-
-  // const [filterData, setFilterData] = useState(dataAll);
-  // console.log(filterData, "fiterData nih")
-
-  // useEffect(() => {
-  //   setFilterData(dataAll);
-  // }, [dataAll]);
 
   const filterSearch = filterData
     ? filterData.filter((item) => {
         const courseName = item.name.toLowerCase().includes(SearchInput.toLowerCase());
         const categoryName = item.category.name.toLowerCase().includes(SearchInput.toLowerCase());
-        const rating = item.rating.toString().includes(SearchInput.toLowerCase());
+        // const rating = item.rating.toString().includes(SearchInput.toLowerCase());
         // const mentor = item.mentor.name.toLowerCase().includes(SearchInput.toLowerCase());
         const level = item.level.toLowerCase().includes(SearchInput.toLowerCase());
         // const lesson = item.total_lesson.toString().includes(SearchInput.toLowerCase());
         // const duration = item.total_duration.toString().includes(SearchInput.toLowerCase());
-        return courseName || rating || categoryName || level;
+        return courseName || categoryName || level;
       })
     : [];
 

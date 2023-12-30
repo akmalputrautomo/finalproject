@@ -45,15 +45,8 @@ export const RouterList = () => {
         />
         <Route path="/berandakelas" element={<BerandaKelas />} />
         <Route path="/detailKelas/:courseId" element={<DetailKelas />} />
-        <Route
-          path="/detailKelasPembayaran"
-          element={
-            <TokenProtected>
-              <DetailKelasPembayaran />
-            </TokenProtected>
-          }
-        />
-        <Route path="/pembayaranSukses" element={<PembayaranSukses />} />
+        <Route path="/detailKelasPembayaran/:courseId" element={<DetailKelasPembayaran />} />
+        <Route path="/pembayaranSukses/:courseId" element={<PembayaranSukses />} />
         <Route path="/mulaiBelajar" element={<MulaiBelajar />} />
         <Route path="/WebAkunProfil" element={<WebAkunProfil />} />
         <Route path="/WebNotifikasi" element={<WebNotifikasi />} />

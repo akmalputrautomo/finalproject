@@ -40,7 +40,6 @@ const SideBar = () => {
   const [editedIndex, setEditedIndex] = useState(-1);
   const { mutate: UpdateCourses } = useDataUpdateCourse();
   const [name, setname] = useState("");
-  const [desc, setdesc] = useState("");
   const [price, setprice] = useState("");
   const [level, setlevel] = useState("");
   const [type, settype] = useState("");
@@ -76,7 +75,6 @@ const SideBar = () => {
     const succes = UpdateCourses({
       id: courseId,
       name: name,
-      desc: desc,
       price: price,
       level: level,
       type: type,
@@ -94,28 +92,6 @@ const SideBar = () => {
 
   const dataBayar = useSelector((state) => state.Card.card.enrollment);
   console.log(dataBayar, "data bayar");
-
-  // filter
-  // const [levell, setlevell] = useState("");
-  // const [typee, settypee] = useState("");
-  // const [originalData, setOriginalData] = useState(Kelola);
-  // const [filteredData, setFilteredData] = useState(Kelola);
-
-  // const PencarianData = (e) => {
-  //   const filtered = originalData.filter((item) => item.course.level.toLowerCase().includes(levell.toLowerCase()) && item.course.type.toLowerCase().includes(typee.toLowerCase()));
-  //   setFilteredData(filtered);
-  //   console.log("filteredData:", filtered);
-  // };
-  // const [DataSearch, setDataSearch] = useState("");
-  // const resetData = () => {
-  //   setOriginalData(Kelola);
-  // };
-
-  // useEffect(() => {
-  //   if (setDataSearch === "") {
-  //     resetData();
-  //   }
-  // }, [setDataSearch, resetData]);
 
   // filter kelola kelas
   const [levell, setlevell] = useState("");
@@ -382,8 +358,7 @@ const SideBar = () => {
                             <button
                               onClick={() => {
                                 setEditedIndex(index);
-                                setname(item.category.name);
-                                setdesc(item.course.name);
+                                setname(item.course.name);
                                 setintended_for(item.course.intended_for);
                                 settype(item.course.type);
                                 setlevel(item.course.level);

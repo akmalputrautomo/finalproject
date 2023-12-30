@@ -17,7 +17,16 @@ export const DetailKelas = () => {
   const [id, setId] = useState(1);
 
   useEffect(() => {
+    // Fetch data initially
     dispatch(getDataDetail(params.courseId));
+
+    // Set up interval to fetch data every 3 seconds
+    const intervalId = setInterval(() => {
+      dispatch(getDataDetail(params.courseId));
+    }, 3000);
+
+    // Clean up the interval when the component unmounts
+    return () => clearInterval(intervalId);
   }, [dispatch, params.courseId]);
 
   // useEffect(() => {
@@ -29,26 +38,13 @@ export const DetailKelas = () => {
 
   // console.log(params, "params");
 
-  const totalNilai =
-    dataDetail &&
-    dataDetail.chapter[0] &&
-    dataDetail.chapter[0].lessons.reduce(
-      (total, objek) => total + objek.duration,
-      0
-    );
-  const totalNilai2 =
-    dataDetail &&
-    dataDetail.chapter[1] &&
-    dataDetail.chapter[1].lessons.reduce(
-      (total, objek) => total + objek.duration,
-      0
-    );
 
-  const [activeVideo, setActiveVideo] = useState(null);
 
-  const changeVideo = (newVideoUrl) => {
-    setActiveVideo(newVideoUrl);
-  };
+  const [activeVideo, setActiveVideo] = useState('');
+
+  // const changeVideo = (newVideoUrl) => {
+  //   setActiveVideo(newVideoUrl);
+  // };
 
   // console.log(dataDetail, "Detail");
 
@@ -66,7 +62,11 @@ export const DetailKelas = () => {
           <div className=" desktop:mx-[8rem] desktop:pt-4 desktop:space-y-8">
             {/* Button Keluar */}
             <div className=" flex gap-2 px-4 pt-4 ">
-              <button>
+              <button onClick={() => {
+                                                      navigate(
+                                                        "/"
+                                                      );
+                                                    }}>
                 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512">
                   <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
                 </svg>
@@ -77,8 +77,8 @@ export const DetailKelas = () => {
             <div className="desktop:mx-[1rem]">
               <div className="desktop:flex justify-center ">
                 <div className="  w-full  ">
-                  <DetailBelajar></DetailBelajar>
-                  <MateriBelajarMobile></MateriBelajarMobile>
+                  <DetailBelajar activeVideo={activeVideo} ></DetailBelajar>
+                  <MateriBelajarMobile setActiveVideo={setActiveVideo}></MateriBelajarMobile>
                   {/* Desktop Tentang Kelas */}
                   <div className="mobile:hidden desktop:block mt-4">
                     <p className="text-lg font-medium flex justify-start items-start w-full">Tentang Kelas</p>
@@ -89,7 +89,7 @@ export const DetailKelas = () => {
                     <ol className="list-decimal text-xs  leading-loose ">{dataDetail.intended_for}</ol>
                   </div>
                 </div>
-                <MateriBelajarDesktop></MateriBelajarDesktop>
+                <MateriBelajarDesktop setActiveVideo={setActiveVideo}></MateriBelajarDesktop>
               </div>
             </div>
           </div>

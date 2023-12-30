@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import postEnrollment from "../../redux/action/postEnrollment";
+import getDataDetail from "../../redux/action/getDetail";
+import { toast } from "react-toastify";
 
 export const DetailKelasPembayaran = () => {
   const params = useParams();
@@ -17,15 +19,17 @@ export const DetailKelasPembayaran = () => {
   // useEffect(() => {
   // enrollment();
   // }, [dispatch, params.courseId]);
-
   // console.log(params.courseId, "params");
 
-  // const enrollment = as  ync () => { 
+  // const enrollment = async () => { 
   //   await dispatch(postEnrollment(parseInt(params.courseId)));
   // }
+  useEffect(() => {
+    dispatch(getDataDetail(params.courseId));
+  }, [dispatch, params.courseId]);
 
-  const handleInput = () => {
-    dispatch(postEnrollment(parseInt(params.courseId),
+  const handleInput = async () => {
+   const success = await dispatch(postEnrollment(parseInt(params.courseId),
       {
         metode_pembayaran: pembayaran ,
         card_number:parseInt(number),
@@ -33,10 +37,25 @@ export const DetailKelasPembayaran = () => {
         cvv: parseInt(Cvv) ,
         expired: exp,
       }
-    )
-    )
+    ))
+    if (success) {
+      toast.success("Pembayaran Berhasil");
+      navigate (`/pembayaranSukses/${dataDetail.id}`);
+    } else {
+      toast.warning("Pembayaran Gagal");
+    }
   }
+  const formatToRupiah = (value) => {
+    return new Intl.NumberFormat('id-ID', {
+      style: 'currency',
+      currency: 'IDR',
+      minimumFractionDigits: 0,
+    }).format(value);
+  };
 
+  const dataDetail = useSelector((state) => state.courseDetail.coursesDetail);
+   
+  console.log(dataDetail, "detail");
 
   const defaultContent =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
@@ -48,7 +67,7 @@ export const DetailKelasPembayaran = () => {
           <button
             className="flex items-center  gap-2"
             onClick={() => {
-              navigate("/detailKelas");
+              navigate(`/detailKelas/${dataDetail.id}`);
             }}
           >
             <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512">
@@ -174,33 +193,33 @@ export const DetailKelasPembayaran = () => {
                 </div>
             </div>
 
-            <div className=" desktop:w-2/5  desktop:h-[24rem] mobile:h-[18rem] px-6 py-6 rounded-3xl bg-white shadow-2xl  ">
+            <div className=" desktop:w-2/5  h-fit  px-6 py-6 rounded-3xl bg-white shadow-2xl  ">
               <div className="relative flex w-full  flex-col justify-center items-center space-y-4 ">
                 <p className="flex justify-start w-full  text-xl font-bold">Pembayaran Kelas</p>
-                <div className="w-80 h-36 shadow-lg rounded-3xl">
-                  <div className="bg-emerald-500 w-full h-2/5 rounded-t-3xl "></div>
-                  <div className="px-2 py-1  ">
-                    <p className="text-[#116E63] font-bold">UI/UX Design</p>
-                    <p className="text-sm font-bold">Belajar Web Designer dengan Figma</p>
-                    <p className="text-xs">by Angela Doe</p>
+                <div className=" h-fit pb-2 shadow-lg rounded-3xl">
+                <img className="w-full h-[5rem] bg-cover rounded-t-3xl" src={dataDetail.category.image} />
+                  <div className="px-3 py-1  ">
+                    <p className="text-[#116E63] font-bold">{dataDetail.category.name}</p>
+                    <p className="text-sm font-bold">{dataDetail.title}</p>
+                    <p className="text-xs">{dataDetail.mentor.name}</p>
                   </div>
                 </div>
                 <div className="w-full flex justify-around  gap-6 text-sm font-bold">
                   <div>
                     <p>Harga</p>
-                    <p className="font-normal">Rp 349,000</p>
+                    <p className="font-normal">{formatToRupiah(dataDetail.price)}</p>
                   </div>
                   <div>
                     <p>PPN 11%</p>
-                    <p className="font-normal">Rp 38,390</p>
+                    <p className="font-normal">{formatToRupiah(dataDetail.price * 11 / 100)}</p>
                   </div>
                   <div>
                     <p>Total Bayar</p>
-                    <p className="text-[#116E63]">Rp 238,372</p>
+                    <p className="text-[#116E63]">{formatToRupiah(dataDetail.price * 11 / 100 + dataDetail.price)}</p>
                   </div>
                 </div>
                 <div className="mobile:hidden desktop:block">
-                  <Button className="bg-[#DB1B1B] w-full h-[2.5rem] px-4 mt-6  flex justify-center items-center rounded-3xl text-white font-semibold text-sm gap-2 ">
+                  <Button onClick={handleInput} className="bg-[#DB1B1B] w-full h-[2.5rem] px-4 mt-6  flex justify-center items-center rounded-3xl text-white font-semibold text-sm gap-2 ">
                     <p>Bayar dan Ikutan Kelas Selamanya</p>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="white" height="20" width="20" viewBox="0 0 512 512">
                       <path d="M0 256a256 256 0 1 0 512 0A256 256 0 1 0 0 256zM281 385c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l71-71L136 280c-13.3 0-24-10.7-24-24s10.7-24 24-24l182.1 0-71-71c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0L393 239c9.4 9.4 9.4 24.6 0 33.9L281 385z" />

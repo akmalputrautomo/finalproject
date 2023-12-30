@@ -57,7 +57,7 @@ export const WebUbahPassword = () => {
       </div>
 
       <div className="flex justify-center items-center mt-[-4rem] mobile:mt-0 desktop:mt-[-4rem] ">
-        <div className="w-[65%] h-[37rem] flex border border-[#116E63] rounded-md flex-col mobile:w-full desktop:w-[65%]  mobile:h-screen desktop:h-[37rem]">
+        <div className="w-[65%] h-[37rem] flex border border-[#116E63] rounded-md flex-col mobile:w-full desktop:w-[65%]  mobile:h-screen desktop:h-[33rem]">
           <div className="w-full bg-[#116E63] h-[4rem] flex justify-center items-center">
             <h1 className="text-white font-bold text-2xl mobile:pl-4 desktop:pl-0">Akun</h1>
           </div>
@@ -100,18 +100,18 @@ export const WebUbahPassword = () => {
             <div className="w-[50%] mobile:w-full desktop:w-[50%] ">
               {/* Ubah Password */}
               <div>
-                <h1 className="font-bold text-2xl flex justify-center pt-4">Ubah Password</h1>
+                <h1 className="font-bold text-2xl bg-slate-300 flex justify-center pt-4">Ubah Password</h1>
                 <div className="flex flex-col gap-4 pt-4 mobile:pl-4 desktop:pl-0">
                   <div className="relative">
                     <p>Masukkan Password Lama</p>
-                    <input onChange={(e) => setpassword(e.target.value)} id="password" type={showPasswordlama ? "text" : "password"} className=" border rounded-xl w-[80%] h-[3rem] mobile:w-[95%] desktop:w-[80%]"></input>
+                    <input onChange={(e) => setpassword(e.target.value)} id="password" type={showPasswordlama ? "text" : "password"} className="border rounded-xl w-[60%] h-[2.5rem] mobile:w-[90%] desktop:w-[20rem] px-2"></input>
                     <span className="absolute right-[7rem] top-[2.3rem] cursor-pointer mobile:right-7 desktop:right-[7rem]" onClick={showpasslama}>
                       {showPasswordlama ? "Hide" : "Show"}
                     </span>
                   </div>
                   <div>
                     <p>Masukkan Password Baru</p>
-                    <input onChange={(e) => setnewPassword(e.target.value)} id="newPassword" type={showPasswordBaru ? "text" : "password"} className=" border rounded-xl w-[80%] h-[3rem] mobile:w-[95%] desktop:w-[80%]"></input>
+                    <input onChange={(e) => setnewPassword(e.target.value)} id="newPassword" type={showPasswordBaru ? "text" : "password"} className="border rounded-xl w-[60%] h-[2.5rem] mobile:w-[90%] desktop:w-[20rem] px-2"></input>
                     <span className="absolute right-[7rem] top-[27rem] cursor-pointer mobile:right-7 mobile:top-[24rem] desktop:top-[27rem] desktop:right-[23.5rem]" onClick={showpassbaru}>
                       {showPasswordBaru ? "Hide" : "Show"}
                     </span>
@@ -123,7 +123,7 @@ export const WebUbahPassword = () => {
                       {showPasswordulang ? "Hide" : "Show"}
                     </span>
                   </div> */}
-                  <div className="flex justify-start items-center w-full">
+                  <div className="flex justify-center bg-slate-400 items-center w-full">
                     <button
                       className="rounded-full bg-[#116E63] text-white w-[80%] h-[2.5rem] mobile:w-[90%] desktop:w-[80%]"
                       onClick={() => {

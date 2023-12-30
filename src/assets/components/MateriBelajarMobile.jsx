@@ -19,7 +19,7 @@ import ReactPlayer from "react-player";
 import getDataDetail from "../../redux/action/getDetail";
 import postUpdateIsDone from "../../redux/action/postupdateIsDone";
 
-export const MateriBelajarMobile = () => {
+export const MateriBelajarMobile = ({setActiveVideo}) => {
   const navigate = useNavigate();
   const params = useParams();
   const dispatch = useDispatch();
@@ -53,7 +53,7 @@ export const MateriBelajarMobile = () => {
     "preview"
   );
 
-  const [activeVideo, setActiveVideo] = useState(null);
+  // const [activeVideo, setActiveVideo] = useState(null);
 
   const changeVideo = (newVideoUrl) => {
     setActiveVideo(newVideoUrl);
@@ -183,7 +183,7 @@ export const MateriBelajarMobile = () => {
                                       <button
                                         className=" flex justify-end pr-3"
                                         onClick={() => {
-                                          changeVideo(lesson.video);
+                                          setActiveVideo(lesson.video);
                                           setId(lesson.id);
                                         }}>
                                         <svg
@@ -231,8 +231,8 @@ export const MateriBelajarMobile = () => {
                                                   </p>
                                                 </ModalHeader>
                                                 <ModalBody className="flex justify-center">
-                                                  <div className=" desktop:w-[28rem] mobile:w-[22rem] h-52 shadow-lg rounded-3xl ">
-                                                    <div className="bg-emerald-500 w-full h-2/5 rounded-t-3xl "></div>
+                                                  <div className=" shadow-lg rounded-3xl ">
+                                                  <img className="w-full h-[8rem] bg-cover rounded-t-3xl" src={dataDetail.category.image} />
                                                     <div className="px-2 py-1 space-y-1 ">
                                                       <div className="flex justify-between text-sm ">
                                                         <p className="text-[#116E63] font-bold">

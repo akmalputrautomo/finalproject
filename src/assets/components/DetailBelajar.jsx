@@ -6,15 +6,17 @@ import ReactPlayer from "react-player";
 // import PostUpdateIsDone from "../redux/reducer/PostUpdateIsDone";
 import getDataDetail from "../../redux/action/getDetail";
 
-export const DetailBelajar = () => {
+export const DetailBelajar = ({activeVideo}) => {
   const navigate = useNavigate();
   const params = useParams();
   const dispatch = useDispatch();
   const [id, setId] = useState(1);
+   
 
   useEffect(() => {
     dispatch(getDataDetail(params.courseId));
   }, [dispatch, params.courseId]);
+
 
   // useEffect(() => {
   //   dispatch(PostUpdateIsDone(id))
@@ -25,31 +27,16 @@ export const DetailBelajar = () => {
 
   // console.log(params, "params");
 
-  const totalNilai =
-    dataDetail &&
-    dataDetail.chapter[0] &&
-    dataDetail.chapter[0].lessons.reduce(
-      (total, objek) => total + objek.duration,
-      0
-    );
-  const totalNilai2 =
-    dataDetail &&
-    dataDetail.chapter[1] &&
-    dataDetail.chapter[1].lessons.reduce(
-      (total, objek) => total + objek.duration,
-      0
-    );
-
   const defaultVideo =
     dataDetail &&
     dataDetail.chapter[0] &&
     dataDetail.chapter[0].lessons[0].video;
 
-  const [activeVideo, setActiveVideo] = useState(null);
+  // const [activeVideo, setActiveVideo] = useState(null);
 
-  const changeVideo = (newVideoUrl) => {
-    setActiveVideo(newVideoUrl);
-  };
+  // const changeVideo = (newVideoUrl) => {
+  //   setActiveVideo(newVideoUrl);
+  // };
   return (
     <div className=" flex desktop:flex-col mobile:flex-col-reverse  ">
       <div className="mobile:p-4 desktop:p-0 ">

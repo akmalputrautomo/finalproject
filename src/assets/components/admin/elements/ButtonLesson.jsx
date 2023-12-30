@@ -22,7 +22,6 @@ export const ButtonLesson = () => {
       getLesson({
         name: Name,
         video: video,
-        desc: desc,
         duration: duration,
         chapter_id: chapter_id,
       })
@@ -35,7 +34,13 @@ export const ButtonLesson = () => {
   };
 
   useEffect(() => {
-    dispatch(GetDataChapter());
+    const fetchData = () => {
+      dispatch(GetDataChapter());
+    };
+
+    const intervalId = setInterval(fetchData, 3000);
+
+    return () => clearInterval(intervalId);
   }, [dispatch]);
 
   const data = useSelector((state) => state.Chapter.chapter?.chapters || []);
@@ -62,7 +67,6 @@ export const ButtonLesson = () => {
               <ModalBody>
                 <Input onChange={(e) => setName(e.target.value)} type="text" label="Nama" id="Name" />
                 <Input onChange={(e) => setvideo(e.target.value)} type="text" label="video" id="video" />
-                <Input onChange={(e) => setdesc(e.target.value)} type="text" label="desc" id="desc" />
                 <Input onChange={(e) => setduration(parseFloat(e.target.value))} type="text" label="duration" id="duration" />
 
                 <Dropdown>

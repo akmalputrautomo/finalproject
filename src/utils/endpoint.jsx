@@ -16,9 +16,13 @@ export const endpoint = {
   COURSE_POPULAR: (id) => {
     return `/api/v1/course/populer/${id}`;
   },
+  ENROLLMENT : (id) => {
+    return `/api/v1/enrollment/${id}`;
+  },
   AKUN_PROFILE: `/api/v1/accounts/updateprofile`,
   UPDATE_PASS: `/api/v1/accounts/updatepassword`,
   NOTIFIKASI: `/api/v1/accounts/notification`,
+  PAYMENT_HISTORY: "/api/v1/accounts/paymenthistory",
   COURSE_SEARCH: "/api/v1/course/search",
   FREE_KELASSAYA: "/api/v1/course/free",
   GET_USER: `/api/v1/auth/me`,

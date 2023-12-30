@@ -64,13 +64,22 @@ export const ButtonLesson = () => {
                 <Input onChange={(e) => setvideo(e.target.value)} type="text" label="video" id="video" />
                 <Input onChange={(e) => setdesc(e.target.value)} type="text" label="desc" id="desc" />
                 <Input onChange={(e) => setduration(parseFloat(e.target.value))} type="text" label="duration" id="duration" />
+
                 <Dropdown>
                   <DropdownTrigger>
                     <Button variant="bordered" className="capitalize">
                       {selectedValueTipeClass}
                     </Button>
                   </DropdownTrigger>
-                  <DropdownMenu aria-label="Single selection example" variant="flat" disallowEmptySelection selectionMode="single" selectedKeys={selectedKeysTipeClass} onSelectionChange={setSelectedKeysTipeClass}>
+                  <DropdownMenu
+                    aria-label="Single selection example"
+                    variant="flat"
+                    disallowEmptySelection
+                    selectionMode="single"
+                    selectedKeys={selectedKeysTipeClass}
+                    onSelectionChange={setSelectedKeysTipeClass}
+                    style={{ maxHeight: "200px", overflowY: "auto" }} // Set max height and make it scrollable
+                  >
                     {data &&
                       data.map((courses) => (
                         <DropdownItem onClick={() => setchapter_id(courses.id)} key={courses.id}>

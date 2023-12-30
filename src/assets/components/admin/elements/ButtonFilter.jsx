@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Filter from "../../../img/Prefix icon.png";
-import IcSearch from '../../../img/Vector.png'
+import IcSearch from "../../../img/Vector.png";
 
 export const ButtonFilter = () => {
   // const [filter, setFilter] = useState({

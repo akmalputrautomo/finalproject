@@ -95,7 +95,7 @@ export const WebRiwayatPembayaran = () => {
             </div>
 
             {/* Riwayat Pembayaran  */}
-            <div className="mobile:px-4 overflow-y-scroll    h-[28.8rem] flex flex-col  items-center mobile:w-full desktop:w-[50%]">
+            <div className="mobile:px-4 overflow-y-scroll  h-[28.8rem] flex flex-col  items-center mobile:w-full desktop:w-[50%]">
               {dataPayment &&
                 dataPayment.map((history) => (
                   <div className="w-80 snap-start h-fit shadow-lg rounded-3xl pt-4 ">

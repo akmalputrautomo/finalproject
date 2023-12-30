@@ -71,7 +71,7 @@ export const WebUbahPassword = () => {
                 }}
                 className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2 "
               >
-                <i class="fa-solid fa-pen text-[#116E63] text-[1.5rem]  "></i>Profil Saya
+                <i class="fa-solid fa-pen text-[#116E63] text-lg  "></i>Profil Saya
               </button>
               <button className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2">
                 <i class="fa-solid fa-gear text-[#116E63] text-[1.5rem]"></i>Ubah Password
@@ -97,23 +97,23 @@ export const WebUbahPassword = () => {
             </div>
 
             {/* page  */}
-            <div className="w-[50%] mobile:w-full desktop:w-[50%] ">
+            <div className="w-[50%] mobile:w-full desktop:w-[50%] flex flex-col justify-center items-center ">
               {/* Ubah Password */}
-              <div>
-                <h1 className="font-bold text-2xl bg-slate-300 flex justify-center pt-4">Ubah Password</h1>
-                <div className="flex flex-col gap-4 pt-4 mobile:pl-4 desktop:pl-0">
-                  <div className="relative">
+              <div className="   ">
+                <h1 className="font-bold text-2xl  flex justify-center pt-4 mb-2">Ubah Password</h1>
+                <div className="flex flex-col text-sm justify-center items-center gap-4 pt-4 mobile:pl-4 desktop:pl-0">
+                  <div className="">
                     <p>Masukkan Password Lama</p>
                     <input onChange={(e) => setpassword(e.target.value)} id="password" type={showPasswordlama ? "text" : "password"} className="border rounded-xl w-[60%] h-[2.5rem] mobile:w-[90%] desktop:w-[20rem] px-2"></input>
-                    <span className="absolute right-[7rem] top-[2.3rem] cursor-pointer mobile:right-7 desktop:right-[7rem]" onClick={showpasslama}>
-                      {showPasswordlama ? "Hide" : "Show"}
+                    <span className=" ml-4 cursor-pointer  " onClick={showpasslama}>
+                      {showPasswordlama ? <i class="fa-solid fa-eye-slash"></i>: <i class="fa-solid fa-eye"></i> }
                     </span>
                   </div>
                   <div>
                     <p>Masukkan Password Baru</p>
                     <input onChange={(e) => setnewPassword(e.target.value)} id="newPassword" type={showPasswordBaru ? "text" : "password"} className="border rounded-xl w-[60%] h-[2.5rem] mobile:w-[90%] desktop:w-[20rem] px-2"></input>
-                    <span className="absolute right-[7rem] top-[27rem] cursor-pointer mobile:right-7 mobile:top-[24rem] desktop:top-[27rem] desktop:right-[23.5rem]" onClick={showpassbaru}>
-                      {showPasswordBaru ? "Hide" : "Show"}
+                    <span className="ml-4 cursor-pointer" onClick={showpassbaru}>
+                      {showPasswordBaru ?  <i class="fa-solid fa-eye-slash"></i>: <i class="fa-solid fa-eye"></i>}
                     </span>
                   </div>
                   {/* <div>
@@ -123,9 +123,9 @@ export const WebUbahPassword = () => {
                       {showPasswordulang ? "Hide" : "Show"}
                     </span>
                   </div> */}
-                  <div className="flex justify-center bg-slate-400 items-center w-full">
+                  <div className="flex justify-center items-center w-full mt-4">
                     <button
-                      className="rounded-full bg-[#116E63] text-white w-[80%] h-[2.5rem] mobile:w-[90%] desktop:w-[80%]"
+                      className="rounded-lg bg-[#116E63] text-white text-base font-semibold w-[80%] h-[2.5rem] mobile:w-[90%] desktop:w-[80%]"
                       onClick={() => {
                         updatepaswwordakun();
                       }}

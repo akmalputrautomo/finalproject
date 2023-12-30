@@ -6,7 +6,7 @@ const GetDataChapterPost = (input) => async (dispatch) => {
   return await PostChapter(input)
     .then((result) => {
       dispatch(setChapterPost(input));
-      alert("succes");
+      // alert("succes");
     })
     .catch((err) => console.error(err, "error"));
 };

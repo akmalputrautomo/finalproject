@@ -61,7 +61,7 @@ const WebNotifikasi = () => {
       <div className="flex justify-center items-center mt-[-4rem] mb-[3rem] mobile:mt-0 desktop:mt-[-4rem]">
         <div className="w-[75%] flex border border-[#116E63] rounded-md flex-col mobile:w-full desktop:w-[75%] mobile:h-screen desktop:h-[30rem] pb-4">
           <div className="w-full bg-[#116E63] h-[13%] flex justify-center items-center pl-4">
-            <h1 className="text-white font-bold text-2xl ">Notifikasi</h1>
+            <h1 className="text-white font-bold text-2xl py-4 ">Notifikasi</h1>
           </div>
           <div className="px-2 desktop:px-0 scroll-pl-6 snap-y overflow-scroll scrollbar-hide">
             {notifikasi &&
@@ -73,7 +73,7 @@ const WebNotifikasi = () => {
                     </div>
                     <div className="flex justify-between w-full pr-10 mobile:pr-0 desktop:pr-10">
                       <div className="flex space-y-2 flex-col w-full ">
-                        <h1 className="text-[#116E63]">Promosi</h1>
+                        <h1 className="text-[#116E63]">{courses.type}</h1>
                         <p>{courses.title} </p>
                         <h1 className="mobile:text-[#8A8A8A] desktop:w-5/6 mobile:w-full">
                           {courses.body}

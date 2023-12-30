@@ -10,4 +10,13 @@ const getDataAll = () => async (dispatch) => {
     .catch((err) => console.error(err, "error"));
 };
 
+// const getDataAll = (sortBy) => async (dispatch) => {
+//   return await reduxGetCourseAll(sortBy)
+//     .then((result) => {
+//       dispatch(setCourseAll(result.data.data));
+//       // console.log(result);
+//     })
+//     .catch((err) => console.error(err, "error"));
+// };
+
 export default getDataAll;

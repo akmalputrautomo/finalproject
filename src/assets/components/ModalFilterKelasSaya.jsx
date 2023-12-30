@@ -1,8 +1,9 @@
-import React from "react";
-import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button } from "@nextui-org/react";
-import { FilterKelasBeranda } from "../components/FilterKelasBeranda";
+import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from '@nextui-org/modal'
+import React from 'react'
+import { FilterBerandaSaya } from './FilterBerandaSaya'
+import { Button } from '@nextui-org/button'
 
-const ModalFilterBeranda = ({ isOpen, onOpenChange, scrollBehavior, setFilterData }) => {
+export const ModalFilterKelasSaya = ({isOpen,onOpenChange,scrollBehavior,setFilteredCourses}) => {
   return (
     <div>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange} scrollBehavior={scrollBehavior} className="block desktop:hidden">
@@ -11,7 +12,7 @@ const ModalFilterBeranda = ({ isOpen, onOpenChange, scrollBehavior, setFilterDat
             <>
               <ModalHeader className="flex flex-col gap-1">Filter</ModalHeader>
               <ModalBody>
-                <FilterKelasBeranda setFilterData={setFilterData} />
+                <FilterBerandaSaya setFilteredCourses={setFilteredCourses} />
               </ModalBody>
               <ModalFooter>
                 <Button color="danger" variant="light" onPress={onClose}>
@@ -23,6 +24,5 @@ const ModalFilterBeranda = ({ isOpen, onOpenChange, scrollBehavior, setFilterDat
         </ModalContent>
       </Modal>
     </div>
-  );
-};
-export default ModalFilterBeranda;
+  )
+}

@@ -6,50 +6,37 @@ import ReactPlayer from "react-player";
 // import PostUpdateIsDone from "../redux/reducer/PostUpdateIsDone";
 import getDataDetail from "../../redux/action/getDetail";
 
-export const DetailBelajar = () => {
+export const DetailBelajar = ({activeVideo}) => {
   const navigate = useNavigate();
   const params = useParams();
   const dispatch = useDispatch();
   const [id, setId] = useState(1);
+   
 
   useEffect(() => {
     dispatch(getDataDetail(params.courseId));
   }, [dispatch, params.courseId]);
+
 
   // useEffect(() => {
   //   dispatch(PostUpdateIsDone(id))
   // }, [dispatch, id]);
 
   const dataDetail = useSelector((state) => state.courseDetail.coursesDetail);
-  // console.log(dataDetail, "Materi");
+  console.log(dataDetail, "Materi");
 
   // console.log(params, "params");
-
-  const totalNilai =
-    dataDetail &&
-    dataDetail.chapter[0] &&
-    dataDetail.chapter[0].lessons.reduce(
-      (total, objek) => total + objek.duration,
-      0
-    );
-  const totalNilai2 =
-    dataDetail &&
-    dataDetail.chapter[1] &&
-    dataDetail.chapter[1].lessons.reduce(
-      (total, objek) => total + objek.duration,
-      0
-    );
 
   const defaultVideo =
     dataDetail &&
     dataDetail.chapter[0] &&
     dataDetail.chapter[0].lessons[0].video;
 
-  const [activeVideo, setActiveVideo] = useState(null);
+  // const [activeVideo, setActiveVideo] = useState(null);
 
-  const changeVideo = (newVideoUrl) => {
-    setActiveVideo(newVideoUrl);
-  };
+  // const changeVideo = (newVideoUrl) => {
+  //   setActiveVideo(newVideoUrl);
+  // };
   return (
     <div className=" flex desktop:flex-col mobile:flex-col-reverse  ">
       <div className="mobile:p-4 desktop:p-0 ">
@@ -100,7 +87,7 @@ export const DetailBelajar = () => {
               viewBox="0 0 576 512">
               <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
             </svg>
-            <p>{dataDetail.modul} Modul</p>
+            <p>{dataDetail.total_lesson} Modul</p>
           </div>
           <div className="flex items-center gap-1">
             <svg
@@ -110,7 +97,7 @@ export const DetailBelajar = () => {
               viewBox="0 0 576 512">
               <path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" />
             </svg>
-            <p>{dataDetail.duration} Menit</p>
+            <p>{dataDetail.total_duration} Menit</p>
           </div>
         </div>
       </div>

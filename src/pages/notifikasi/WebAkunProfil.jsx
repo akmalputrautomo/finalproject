@@ -71,8 +71,8 @@ export const WebAkunProfil = () => {
       </div>
 
       <div className="flex justify-center items-center mt-[-4rem] mobile:mt-0 desktop:mt-[-4rem] ">
-        <div className="w-[65%] h-[37rem] flex border border-[#116E63] rounded-md flex-col mobile:w-full desktop:w-[65%] mobile:h-screen desktop:h-[37rem] ">
-          <div className="w-full bg-[#116E63] h-[4rem] flex justify-center items-center">
+        <div className="w-[65%] h-[37rem] flex border border-[#116E63] rounded-md flex-col mobile:w-full desktop:w-[65%] mobile:h-screen desktop:h-[33rem] ">
+          <div className="w-full bg-[#116E63] h-[4rem] py-4 flex justify-center items-center">
             <h1 className="text-white font-bold text-2xl mobile:pl-4 desktop:pl-0">Akun</h1>
           </div>
 
@@ -112,9 +112,9 @@ export const WebAkunProfil = () => {
             <div className="w-[50%] desktop:w-[50%] mobile:w-full mobile:px-2 desktop:px-0  ">
               {/* Profil Saya */}
 
-              <div className="flex flex-col gap-1 mobile:gap-4 desktop:gap-1 ">
-                <div className="pt-3 flex justify-center items-center cursor-pointer" onClick={handleImageClick}>
-                  {image ? <img src={URL.createObjectURL(image)} alt="" className="rounded-full object-cover w-1/4 h-1/4" /> : <img src={data.foto_profile || logo} alt="Profile" className="mr-2 rounded-full object-cover w-1/4 h-1/4" />}
+              <div className="flex flex-col justify-center   items-center gap-1 mobile:gap-4 desktop:gap-1 text-sm ">
+                <div className="pt-3 flex justify-center items-center cursor-pointer my-3" onClick={handleImageClick}>
+                  {image ? <img src={URL.createObjectURL(image)} alt="" className="rounded-full object-cover w-[6rem] h-[6rem]" /> : <img src={data.foto_profile || logo} alt="Profile" className="mr-2 rounded-full object-cover w-[6rem] h-[6rem]" />}
                   <input type="file" id="image" accept="image/*" ref={inputRef} onChange={handleImageChange} className=" hidden" />
                 </div>
                 <div>
@@ -122,26 +122,26 @@ export const WebAkunProfil = () => {
                     <p>Nama</p>
                     <span className="text-red-500 text-[0.7rem] flex items-center justify-center">*nama wajib di isi</span>
                   </div>
-                  <input value={name} onChange={(e) => setname(e.target.value)} id="name" placeholder="John Doe" className="border rounded-xl w-[60%] h-[3rem] mobile:w-[90%] desktop:w-[60%] px-2" />
+                  <input value={name} onChange={(e) => setname(e.target.value)} id="name" placeholder="John Doe" className="border rounded-xl w-[60%] h-[2.5rem] mobile:w-[90%] desktop:w-[20rem] px-2" />
                 </div>
                 <div>
                   <p>Nomor Telepon</p>
-                  <input value={no_hp} onChange={(e) => setno_hp(e.target.value)} id="no_hp" placeholder="+62 812121121121" className="border rounded-xl w-[60%] h-[3rem] mobile:w-[90%] desktop:w-[60%] px-2" />
+                  <input value={no_hp} onChange={(e) => setno_hp(e.target.value)} id="no_hp" placeholder="+62 812121121121" className="border rounded-xl w-[60%] h-[2.5rem] mobile:w-[90%] desktop:w-[20rem] px-2" />
                 </div>
                 <div>
                   <p>Negara</p>
-                  <input value={country} onChange={(e) => setcountry(e.target.value)} id="country" placeholder="John Doe" className="border rounded-xl w-[60%] h-[3rem] mobile:w-[90%] desktop:w-[60%] px-2" />
+                  <input value={country} onChange={(e) => setcountry(e.target.value)} id="country" placeholder="John Doe" className="border rounded-xl w-[60%] h-[2.5rem] mobile:w-[90%] desktop:w-[20rem] px-2" />
                 </div>
                 <div>
                   <p>Kota</p>
-                  <input value={city} onChange={(e) => setcity(e.target.value)} id="city" placeholder="John Doe" className="border rounded-xl w-[60%] h-[3rem] mobile:w-[90%] desktop:w-[60%] px-2" />
+                  <input value={city} onChange={(e) => setcity(e.target.value)} id="city" placeholder="John Doe" className="border rounded-xl w-[60%] h-[2.5rem] mobile:w-[90%] desktop:w-[20rem] px-2" />
                 </div>
                 <div>
                   <button
                     onClick={() => {
                       profilakun();
                     }}
-                    className="flex justify-center items-center  bg-[#116E63] text-white w-[75%] rounded-xl h-[3rem] text-[1rem] font-bold mobile:w-full desktop:w-[75%]"
+                    className="flex justify-center items-center  bg-[#116E63] text-white w-[75%] rounded-xl h-[2.5rem] text-[1rem] font-bold mobile:w-full desktop:w-[20rem] mt-5"
                   >
                     Simpan Profil Saya
                   </button>

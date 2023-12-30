@@ -38,9 +38,10 @@ export const ButtonChapter = () => {
       })
     );
     if (success) {
-      toast.success("secces menambahkan chapter");
-    } else {
       toast.warning("gagal brow");
+      
+    } else {
+      toast.success("secces menambahkan chapter");
     }
   };
 

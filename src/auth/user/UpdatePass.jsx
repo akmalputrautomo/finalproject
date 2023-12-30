@@ -28,6 +28,7 @@ export const UpdatePass = () => {
     );
     if (updatepass) {
       alert("Upadate Password Berhasil");
+        navigate('/login')
       setTimeout(() => {}, 2000);
     }
   };

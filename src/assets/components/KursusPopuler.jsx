@@ -19,7 +19,7 @@ export const KursusPopuler = () => {
 
   const dataPopular = useSelector((state) => state.coursePopular.coursesPopular.topCourses);
   const dataPopularAll = useSelector((state) => state.coursePopularAll.coursesPopularAll.topCourse);
-  console.log(dataPopularAll, "PopularAll");
+  console.log(dataPopular, "Popular");
 
   const [all, setAll] = useState(dataPopularAll);
   const [showAll, setShowAll] = useState(false);

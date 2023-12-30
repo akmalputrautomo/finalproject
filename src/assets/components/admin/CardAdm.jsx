@@ -11,6 +11,7 @@ export const CardAdm = () => {
   }, []);
 
   const data = useSelector((state) => state.Card.card);
+  console.log(data, "data card ");
 
   return (
     <div className=" bg-[#F8F8F8] my-[2rem] ">

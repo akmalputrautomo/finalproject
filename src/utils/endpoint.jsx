@@ -35,9 +35,6 @@ export const endpoint = {
   ADD_LESSON: `/api/v1/admin/lesson`,
   GET_CHAPTER: `/api/v1/admin/chapter`,
   GET_COURSE: `/api/v1/admin/course`,
-  // PUT_COURSE: (id) => {
-  //   return `/api/v1/admin/course/${id}`;
-  // },
   KELOLA_KELAS: `/api/v1/admin/kelolakelas`,
   DELETE_COURSE: (id) => `/api/v1/admin/course/${id}`,
 };

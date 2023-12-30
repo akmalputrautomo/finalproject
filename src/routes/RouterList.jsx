@@ -20,6 +20,7 @@ import { DetailKelas } from "../pages/DetailKelas";
 import { UpdatePass } from "../auth/user/UpdatePass";
 import { KursusPopuler } from "../assets/components/KursusPopuler";
 import { Pagesearch } from "../pages/pagesearch";
+import { InputEmail } from "../auth/user/InputEmail";
 import { MateriBelajarMobile } from "../assets/components/MateriBelajarMobile";
 
 export const RouterList = () => {
@@ -44,8 +45,9 @@ export const RouterList = () => {
         <Route path="/WebUbahPassword" element={<WebUbahPassword />} />
         <Route path="/WebRiwayatPembayaran" element={<WebRiwayatPembayaran />} />
         <Route path="/popular/:courseId" element={<KursusPopuler />} />
-        <Route path="/isDone/:courseId" element={<MateriBelajarMobile/>}/>
+        <Route path="/isDone/:courseId" element={<MateriBelajarMobile />} />
         <Route path="/pagesearch/:namesearch" element={<Pagesearch />} />
+        <Route path="/inputEmail" element={<InputEmail />} />
 
         {/* Admin */}
         <Route path="/loginAdm" element={<LoginAdmin />} />

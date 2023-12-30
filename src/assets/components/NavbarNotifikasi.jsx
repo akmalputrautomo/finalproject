@@ -18,8 +18,7 @@ const NavbarNotifikasi = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const login = useSelector((state) => state.loginUser.user.email);
-  console.log(login, "loginn");
+  const data = useSelector((state) => state.me.isUser);
 
   const getdatauser = () => {
     dispatch(GetUserrr());
@@ -106,17 +105,12 @@ const NavbarNotifikasi = () => {
           </button>
           <Dropdown placement="bottom-end">
             <DropdownTrigger>
-              <Avatar
-                isBordered
-                as="button"
-                className="transition-transform"
-                src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-              />
+              <Avatar isBordered as="button" className="transition-transform" src={data.foto_profile} />
             </DropdownTrigger>
             <DropdownMenu aria-label="Profile Actions" variant="flat">
               <DropdownItem key="profile" className="h-14 gap-2">
                 <p className="font-semibold">Signed in as</p>
-                <p className="font-semibold">{login}</p>
+                <p className="font-semibold">{data.email}</p>
               </DropdownItem>
               <DropdownItem
                 onClick={() => {

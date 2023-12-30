@@ -43,15 +43,57 @@ export const RouterList = () => {
             </TokenProtected>
           }
         />
-        <Route path="/berandakelas" element={<BerandaKelas />} />
+        <Route
+          path="/berandakelas"
+          element={
+            <TokenProtected>
+              <BerandaKelas />
+            </TokenProtected>
+          }
+        />
         <Route path="/detailKelas/:courseId" element={<DetailKelas />} />
-        <Route path="/detailKelasPembayaran/:courseId" element={<DetailKelasPembayaran />} />
+        <Route
+          path="/detailKelasPembayaran/:courseId"
+          element={
+            <TokenProtected>
+              <DetailKelasPembayaran />
+            </TokenProtected>
+          }
+        />
         <Route path="/pembayaranSukses/:courseId" element={<PembayaranSukses />} />
         <Route path="/mulaiBelajar" element={<MulaiBelajar />} />
-        <Route path="/WebAkunProfil" element={<WebAkunProfil />} />
-        <Route path="/WebNotifikasi" element={<WebNotifikasi />} />
-        <Route path="/WebUbahPassword" element={<WebUbahPassword />} />
-        <Route path="/WebRiwayatPembayaran" element={<WebRiwayatPembayaran />} />
+        <Route
+          path="/WebAkunProfil"
+          element={
+            <TokenProtected>
+              <WebAkunProfil />
+            </TokenProtected>
+          }
+        />
+        <Route
+          path="/WebNotifikasi"
+          element={
+            <TokenProtected>
+              <WebNotifikasi />
+            </TokenProtected>
+          }
+        />
+        <Route
+          path="/WebUbahPassword"
+          element={
+            <TokenProtected>
+              <WebUbahPassword />
+            </TokenProtected>
+          }
+        />
+        <Route
+          path="/WebRiwayatPembayaran"
+          element={
+            <TokenProtected>
+              <WebRiwayatPembayaran />
+            </TokenProtected>
+          }
+        />
         <Route path="/popular/:courseId" element={<KursusPopuler />} />
         <Route path="/isDone/:courseId" element={<MateriBelajarMobile />} />
         <Route path="/pagesearch/:namesearch" element={<Pagesearch />} />
@@ -59,7 +101,14 @@ export const RouterList = () => {
 
         {/* Admin */}
         <Route path="/loginAdm" element={<LoginAdmin />} />
-        <Route path="/HomeAdm" element={<HomeAdm />} />
+        <Route
+          path="/HomeAdm"
+          element={
+            <TokenProtected>
+              <HomeAdm />
+            </TokenProtected>
+          }
+        />
         {/* Admin End */}
       </Routes>
     </BrowserRouter>

@@ -5,15 +5,18 @@ import { KursusPopuler } from "../assets/components/KursusPopuler";
 import Navbarr from "../assets/components/navbar";
 import { NavbarResponsive } from "../assets/components/elements/NavbarResponsive";
 import { Footer } from "../assets/components/Footer";
+import { CookieKeys, CookieStorage } from "../utils/cookies";
 
 export const Home = () => {
+  const token = CookieStorage.get(CookieKeys.AuthToken);
+
   return (
     <div className="overflow-hidden">
       <div className="hidden desktop:block">
         <Navbarr />
       </div>
       <div className="block desktop:hidden">
-        <NavbarResponsive />
+        {token && token.length ? <NavbarResponsive /> : <Navbarr/>}
       </div>
       <Hero />
       <KategoriBelajar />

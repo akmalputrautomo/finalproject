@@ -9,8 +9,10 @@ import { CourseKelasAll } from "../assets/components/CourseKelasAll";
 import { useDispatch, useSelector } from "react-redux";
 import getDataAll from "../redux/action/getAll";
 import Navbarr from "../assets/components/navbar";
+import { CookieKeys, CookieStorage } from "../utils/cookies";
 
 export const BerandaKelas = () => {
+  const token = CookieStorage.get(CookieKeys.AuthToken);
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [scrollBehavior, setScrollBehavior] = useState("outside");
   const [activeButton, setActiveButton] = useState("All");
@@ -38,7 +40,7 @@ export const BerandaKelas = () => {
         <Navbarr />
       </div>
       <div className="block desktop:hidden">
-        <NavbarResponsive />
+        {token && token.length ? <NavbarResponsive /> : <Navbarr/>}
       </div>
       <div className="bg-[#CFE2E080] h-full w-[100%] flex flex-col desktop:flex-row px-1 desktop:px-[7rem] py-[1rem] desktop:py-[3rem]">
         <div className="flex-col w-[100%] desktop:w-[25%]">

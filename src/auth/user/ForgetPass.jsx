@@ -5,6 +5,7 @@ import { UserOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 import { getForgetPassAction } from "../../redux/action/auth/getForgetPass";
 import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 
 export const ForgetPass = () => {
   const [Email, setEmail] = useState("");
@@ -15,14 +16,11 @@ export const ForgetPass = () => {
     const forget = await dispatch(
       getForgetPassAction({
         email: Email,
-      }),
+      })
     );
     if (forget) {
-      alert("Tautan reset password terkirim, Periksa Email Anda");
-      setTimeout(() => {
-        // window.location.href = "https://mail.google.com";
-        // navigate('/updatepass')
-      }, 3000);
+      console.log(forget, "Forget");
+      toast.success(`Tautan reset password terkirim, Periksa Email ${Email}`);
     }
   };
   return (
@@ -45,9 +43,7 @@ export const ForgetPass = () => {
 
           <div className="form w-[70vw] desktop:w-[20vw]">
             <div className="">
-              <h1 className="text-center text-[#116E63] font-serif font-semibold text-xl">
-                Forget Password
-              </h1>
+              <h1 className="text-center text-[#116E63] font-serif font-semibold text-xl">Forget Password</h1>
               <Form
                 name="normal_login"
                 className="login-form pt-3"
@@ -61,7 +57,9 @@ export const ForgetPass = () => {
                   name="email"
                   label="Email"
                   id="email"
-                  onChange={(e) => {setEmail(e.target.value)}}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
                   labelCol={{ span: 24 }}
                   rules={[
                     {
@@ -74,11 +72,7 @@ export const ForgetPass = () => {
                   <Input className={`focus:outline-none focus:ring-2 focus:ring-green-800`} prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
                 </Form.Item>
                 <div className="button  items-center  flex flex-col mt-4 ">
-                  <button
-                    onClick={handleSave}
-                    htmlType="submit"
-                    className="login-form-button bg-[#116E63] w-full h-12 rounded-xl text-white text-sm"
-                  >
+                  <button onClick={handleSave} htmlType="submit" className="login-form-button bg-[#116E63] w-full h-12 rounded-xl text-white text-sm">
                     Save
                   </button>
                 </div>

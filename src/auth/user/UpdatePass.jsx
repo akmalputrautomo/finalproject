@@ -5,6 +5,8 @@ import { LockOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router";
 import { getUpdatePass } from "../../redux/action/auth/getForgetPass";
+import { toast } from "react-toastify";
+import { authLoginUser } from "../../redux/action/auth/authLoginUser";
 
 export const UpdatePass = () => {
   const dispatch = useDispatch();
@@ -26,10 +28,10 @@ export const UpdatePass = () => {
         email
       )
     );
-    if (updatepass) {
-      alert("Upadate Password Berhasil");
-      setTimeout(() => {}, 2000);
-    }
+  };
+
+  const backHome = () => {
+    navigate("/login");
   };
   return (
     <div className="forgetpass-section bg-slate-600 w-screen h-screen flex justify-center items-center">
@@ -116,6 +118,11 @@ export const UpdatePass = () => {
                   <button onClick={handleSave} htmlType="submit" className="login-form-button bg-[#116E63] w-full h-12 rounded-xl text-white text-sm">
                     Save
                   </button>
+                </div>
+                <div className="mt-1">
+                  <p className="text-sm font-medium text-[#116E63] cursor-pointer text-end" onClick={backHome}>
+                    Login
+                  </p>
                 </div>
               </Form>
             </div>

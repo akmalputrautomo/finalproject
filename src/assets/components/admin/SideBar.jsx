@@ -69,6 +69,9 @@ const SideBar = () => {
     });
   }
 
+  const dataUsers = useSelector((state) => state.FilterAdm);
+  console.log(dataUsers, "Data Users");
+
   const CourseUbah = (courseId) => {
     const succes = UpdateCourses({
       id: courseId,

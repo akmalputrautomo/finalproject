@@ -40,7 +40,7 @@ export const Login = () => {
         //   navigate("/otp");
         // }
         if (err.response.data.err === "your account is not verified yet, please verify first") {
-          navigate("/otp");
+          navigate("/inputEmail");
         } else if (err.response.status >= 400 && err.response.status <= 500) {
           setErrMsg(err.response.data.err);
         }

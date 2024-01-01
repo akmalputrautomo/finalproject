@@ -10,7 +10,7 @@ const OtpRegister = () => {
   const dispatch = useDispatch();
   const emailFromRedux = useSelector((state) => state.regis.user.email);
   const [Email, setEmail] = useState(emailFromRedux || "");
-  const [seconds, setSeconds] = useState(30);
+  const [seconds, setSeconds] = useState(300);
   const navigate = useNavigate();
 
   // redux otp
@@ -42,14 +42,14 @@ const OtpRegister = () => {
     );
     if (resendData) {
       toast.success("otp telah terkirim");
-      setSeconds(30);
+      setSeconds(300);
     } else {
-      setSeconds(30);
+      setSeconds(300);
     }
   };
 
   useEffect(() => {
-    const initialSeconds = 30; // Menit awal (5 menit * 60 detik)
+    const initialSeconds = 300; // Menit awal (5 menit * 60 detik)
     setSeconds(initialSeconds);
 
     const interval = setInterval(() => {

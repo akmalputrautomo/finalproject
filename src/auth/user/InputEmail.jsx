@@ -7,6 +7,7 @@ import { getResendOtp } from "../../redux/action/auth/otpregister";
 import { useNavigate } from "react-router-dom";
 import { input } from "@nextui-org/react";
 import { setUserRegis } from "../../redux/reducer/auth/authregister";
+import { toast } from "react-toastify";
 
 export const InputEmail = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,10 @@ export const InputEmail = () => {
     );
     if (resendData) {
       dispatch(setUserRegis({ email: email }));
+      toast.success("otp telah terkirim ke email");
       navigate("/otp");
+    } else {
+      toast.warning("silahkan isi email pada inputan");
     }
   };
 

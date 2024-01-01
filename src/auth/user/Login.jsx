@@ -40,6 +40,7 @@ export const Login = () => {
         //   navigate("/otp");
         // }
         if (err.response.data.err === "your account is not verified yet, please verify first") {
+          toast.warning("silahkan masukan email untuk mengaktifkan akun");
           navigate("/inputEmail");
         } else if (err.response.status >= 400 && err.response.status <= 500) {
           setErrMsg(err.response.data.err);
@@ -160,7 +161,6 @@ export const Login = () => {
                       Forgot Password?
                     </p>
                   </div>
-                  
 
                   <div className="button items-center flex flex-col mt-4 ">
                     <button onClick={handleloginUser} htmlType="submit" className="login-form-button bg-[#116E63] w-full h-12 rounded-xl text-white text-sm hover:opacity-80">
@@ -187,7 +187,7 @@ export const Login = () => {
                     </div>
                     {/* Oauth End */}
                   </div>
-                  
+
                   <div className="text-sm flex justify-center flex-row font-medium text-gray-500 mt-3 gap-1 cursor-pointer">
                     Don't have an account?{" "}
                     <p className="text-[#116E63] hover:underline" onClick={register}>

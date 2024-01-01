@@ -75,9 +75,7 @@ const WebNotifikasi = () => {
                       <div className="flex space-y-2 flex-col w-full ">
                         <h1 className="text-[#116E63]">{courses.type}</h1>
                         <p>{courses.title} </p>
-                        <h1 className="mobile:text-[#8A8A8A] desktop:w-5/6 mobile:w-full">
-                          {courses.body}
-                        </h1>
+                        <h1 className="mobile:text-[#8A8A8A] desktop:w-5/6 mobile:w-full">{courses.body}</h1>
                       </div>
                       <div className="mobile:w-[50%] desktop:w-[20%] desktop:justify-end ">
                         <h1>{formatTanggal(courses.createAt)}</h1>
@@ -119,7 +117,6 @@ const WebNotifikasi = () => {
                 </div>
               </div>
             </div> */}
-
           </div>
         </div>
       </div>

@@ -25,7 +25,11 @@ export const WebAkunProfil = () => {
   };
 
   useEffect(() => {
-    getdatauser();
+    const intervalId = setInterval(() => {
+      getdatauser();
+    }, 3000);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   const profilakun = (e) => {
@@ -114,7 +118,11 @@ export const WebAkunProfil = () => {
 
               <div className="flex flex-col justify-center   items-center gap-1 mobile:gap-4 desktop:gap-1 text-sm ">
                 <div className="pt-3 flex justify-center items-center cursor-pointer my-3" onClick={handleImageClick}>
-                  {image ? <img src={URL.createObjectURL(image)} alt="" className="rounded-full object-cover w-[6rem] h-[6rem]" /> : <img src={data.foto_profile || logo} alt="Profile" className="mr-2 rounded-full object-cover w-[6rem] h-[6rem]" />}
+                  {image ? (
+                    <img src={URL.createObjectURL(image)} alt="" className="rounded-full object-cover w-[6rem] h-[6rem]" />
+                  ) : (
+                    <img src={data.foto_profile || logo} alt="Profile" className="mr-2 rounded-full object-cover w-[6rem] h-[6rem]" />
+                  )}
                   <input type="file" id="image" accept="image/*" ref={inputRef} onChange={handleImageChange} className=" hidden" />
                 </div>
                 <div>

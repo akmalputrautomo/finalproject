@@ -102,17 +102,17 @@ export const WebUbahPassword = () => {
               <div className="   ">
                 <h1 className="font-bold text-2xl  flex justify-center pt-4 mb-2">Ubah Password</h1>
                 <div className="flex flex-col text-sm justify-center items-center gap-4 pt-4 mobile:pl-4 desktop:pl-0">
-                  <div className="">
+                  <div className="relative">
                     <p>Masukkan Password Lama</p>
-                    <input onChange={(e) => setpassword(e.target.value)} id="password" type={showPasswordlama ? "text" : "password"} className="border rounded-xl w-[60%] h-[2.5rem] mobile:w-[90%] desktop:w-[20rem] px-2"></input>
-                    <span className=" ml-4 cursor-pointer  " onClick={showpasslama}>
+                    <input onChange={(e) => setpassword(e.target.value)} id="password" type={showPasswordlama ? "text" : "password"} className="border rounded-xl w-[60%] h-[2.5rem] w-[20rem] px-2"></input>
+                    <span className="absolute bottom-2 right-4 cursor-pointer  " onClick={showpasslama}>
                       {showPasswordlama ? <i class="fa-solid fa-eye-slash"></i>: <i class="fa-solid fa-eye"></i> }
                     </span>
                   </div>
-                  <div>
+                  <div className="relative">
                     <p>Masukkan Password Baru</p>
-                    <input onChange={(e) => setnewPassword(e.target.value)} id="newPassword" type={showPasswordBaru ? "text" : "password"} className="border rounded-xl w-[60%] h-[2.5rem] mobile:w-[90%] desktop:w-[20rem] px-2"></input>
-                    <span className="ml-4 cursor-pointer" onClick={showpassbaru}>
+                    <input onChange={(e) => setnewPassword(e.target.value)} id="newPassword" type={showPasswordBaru ? "text" : "password"} className="border rounded-xl w-[60%] h-[2.5rem] w-[20rem] px-2"></input>
+                    <span className="absolute bottom-2 right-4 cursor-pointer" onClick={showpassbaru}>
                       {showPasswordBaru ?  <i class="fa-solid fa-eye-slash"></i>: <i class="fa-solid fa-eye"></i>}
                     </span>
                   </div>
@@ -125,7 +125,7 @@ export const WebUbahPassword = () => {
                   </div> */}
                   <div className="flex justify-center items-center w-full mt-4">
                     <button
-                      className="rounded-lg bg-[#116E63] text-white text-base font-semibold w-[80%] h-[2.5rem] mobile:w-[90%] desktop:w-[80%]"
+                      className="rounded-lg bg-[#116E63] text-white text-base font-semibold w-[80%] h-[2.5rem] w-[20rem]"
                       onClick={() => {
                         updatepaswwordakun();
                       }}

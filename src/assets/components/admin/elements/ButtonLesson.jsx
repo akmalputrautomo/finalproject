@@ -48,9 +48,9 @@ export const ButtonLesson = () => {
 
   return (
     <div>
-      <Button onPress={onOpen} className="bg-[#116E63] text-white">
-        <img src={IcAdd} alt="" />
-        Tambah lesson
+        <Button onPress={onOpen} className="bg-[#116E63] text-white px-6 font-medium">
+        <img width={20} height={20} src={IcAdd} alt="" />
+        Lesson
       </Button>
       <Modal
         backdrop="opaque"

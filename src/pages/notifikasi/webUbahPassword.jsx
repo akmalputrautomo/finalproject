@@ -69,20 +69,20 @@ export const WebUbahPassword = () => {
                 onClick={() => {
                   navigate(`/WebAkunProfil`);
                 }}
-                className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2 "
+                className="text-lg w-[80%] flex items-center gap-3 border-b-2 "
               >
-                <i class="fa-solid fa-pen text-[#116E63] text-lg  "></i>Profil Saya
+                <i class="fa-solid fa-pen text-[#116E63] text-lg   "></i>Profil Saya
               </button>
-              <button className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2">
+              <button className="text-[1.3rem] font-semibold text-[#116E63] w-[80%] flex items-center gap-3 border-b-2">
                 <i class="fa-solid fa-gear text-[#116E63] text-[1.5rem]"></i>Ubah Password
               </button>
               <button
                 onClick={() => {
                   navigate("/WebRiwayatPembayaran");
                 }}
-                className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2"
+                className="text-lg w-[80%] flex items-center gap-3 border-b-2"
               >
-                <i class="fa-solid fa-cart-shopping text-[#116E63] text-[1.5rem]"></i>Riwayat Pembayaran
+                <i class="fa-solid fa-cart-shopping text-[#116E63] text-lg"></i>Riwayat Pembayaran
               </button>
               <button
                 onClick={() => {
@@ -90,9 +90,9 @@ export const WebUbahPassword = () => {
                 }}
                 key="logout"
                 color="danger"
-                className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2"
+                className="text-lg w-[80%] flex items-center gap-3 border-b-2"
               >
-                <i class="fa-solid fa-arrow-right-from-bracket text-[#116E63] text-[1.5rem] "></i>Keluar
+                <i class="fa-solid fa-arrow-right-from-bracket text-[#116E63] text-lg "></i>Keluar
               </button>
             </div>
 
@@ -104,14 +104,14 @@ export const WebUbahPassword = () => {
                 <div className="flex flex-col text-sm justify-center items-center gap-4 pt-4 mobile:pl-4 desktop:pl-0">
                   <div className="relative">
                     <p>Masukkan Password Lama</p>
-                    <input onChange={(e) => setpassword(e.target.value)} id="password" type={showPasswordlama ? "text" : "password"} className="border rounded-xl w-[60%] h-[2.5rem] w-[20rem] px-2"></input>
+                    <input onChange={(e) => setpassword(e.target.value)} id="password" type={showPasswordlama ? "text" : "password"} className="border rounded-xl  h-[2.5rem] w-[20rem] px-2"></input>
                     <span className="absolute bottom-2 right-4 cursor-pointer  " onClick={showpasslama}>
                       {showPasswordlama ? <i class="fa-solid fa-eye-slash"></i>: <i class="fa-solid fa-eye"></i> }
                     </span>
                   </div>
                   <div className="relative">
                     <p>Masukkan Password Baru</p>
-                    <input onChange={(e) => setnewPassword(e.target.value)} id="newPassword" type={showPasswordBaru ? "text" : "password"} className="border rounded-xl w-[60%] h-[2.5rem] w-[20rem] px-2"></input>
+                    <input onChange={(e) => setnewPassword(e.target.value)} id="newPassword" type={showPasswordBaru ? "text" : "password"} className="border rounded-xl  h-[2.5rem] w-[20rem] px-2"></input>
                     <span className="absolute bottom-2 right-4 cursor-pointer" onClick={showpassbaru}>
                       {showPasswordBaru ?  <i class="fa-solid fa-eye-slash"></i>: <i class="fa-solid fa-eye"></i>}
                     </span>
@@ -125,7 +125,7 @@ export const WebUbahPassword = () => {
                   </div> */}
                   <div className="flex justify-center items-center w-full mt-4">
                     <button
-                      className="rounded-lg bg-[#116E63] text-white text-base font-semibold w-[80%] h-[2.5rem] w-[20rem]"
+                      className="rounded-lg bg-[#116E63] text-white text-base font-semibold  h-[2.5rem] w-[20rem]"
                       onClick={() => {
                         updatepaswwordakun();
                       }}

@@ -168,7 +168,7 @@ export const Login = () => {
                     </button>
 
                     {/* Oauth Google & Facebook */}
-                    <div className="flex items-center gap-4">
+                    {/* <div className="flex items-center gap-4">
                       <hr className="w-full bg-[#116E63]" />
                       <div>OR</div>
                       <hr className="w-full bg-green-800" />
@@ -184,7 +184,7 @@ export const Login = () => {
                           <img className="w-[28px] h-[28px]" src={facebook} alt="facebook" />
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                     {/* Oauth End */}
                   </div>
 

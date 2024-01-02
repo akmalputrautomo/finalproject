@@ -43,14 +43,7 @@ export const RouterList = () => {
             </TokenProtected>
           }
         />
-        <Route
-          path="/berandakelas"
-          element={
-            <TokenProtected>
-              <BerandaKelas />
-            </TokenProtected>
-          }
-        />
+        <Route path="/berandakelas" element={<BerandaKelas />} />
         <Route path="/detailKelas/:courseId" element={<DetailKelas />} />
         <Route
           path="/detailKelasPembayaran/:courseId"

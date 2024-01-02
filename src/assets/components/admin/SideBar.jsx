@@ -3,20 +3,7 @@ import Logo from "../../img/Logo.png";
 import Dashboard from "../../img/ic_dashboard.png";
 import ManageClass from "../../img/manage_accounts.png";
 import IconLogOut from "../../img/log-out.png";
-import {
-  Button,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
-  Table,
-  TableBody,
-  TableCell,
-  TableColumn,
-  TableColumn as TableColumnNext,
-  TableHeader,
-  TableRow,
-} from "@nextui-org/react";
+import { Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Table, TableBody, TableCell, TableColumn, TableColumn as TableColumnNext, TableHeader, TableRow } from "@nextui-org/react";
 import { ButtonAdd } from "./elements/ButtonAdd";
 import { ButtonKategori } from "./elements/ButtonKategori";
 import { ButtonMentor } from "./elements/ButtonMentor";
@@ -118,15 +105,9 @@ const SideBar = () => {
 
   const PencarianData = () => {
     const filtered = originalData.filter((item) => {
-      const levelMatch = item.course.level
-        .toLowerCase()
-        .includes(levell.toLowerCase());
-      const typeMatch = item.course.type
-        .toLowerCase()
-        .includes(typee.toLowerCase());
-      const nameMatch = item.course.name
-        .toLowerCase()
-        .includes(namakelas.toLowerCase());
+      const levelMatch = item.course.level.toLowerCase().includes(levell.toLowerCase());
+      const typeMatch = item.course.type.toLowerCase().includes(typee.toLowerCase());
+      const nameMatch = item.course.name.toLowerCase().includes(namakelas.toLowerCase());
 
       return levelMatch && typeMatch && nameMatch;
     });
@@ -150,11 +131,7 @@ const SideBar = () => {
   }, [dataBayar]);
 
   const PencarianDataBayar = () => {
-    const filteredbayar = originalDatabayar.filter(
-      (item) =>
-        item.course.name.toLowerCase().includes(kelaspremium.toLowerCase()) &&
-        item.statusPembayaran.toLowerCase().includes(status.toLowerCase())
-    );
+    const filteredbayar = originalDatabayar.filter((item) => item.course.name.toLowerCase().includes(kelaspremium.toLowerCase()) && item.statusPembayaran.toLowerCase().includes(status.toLowerCase()));
     setFilteredDatabayar(filteredbayar);
     console.log("filteredbayarDataBayar:", filteredbayar);
   };
@@ -169,7 +146,7 @@ const SideBar = () => {
   const handleDropdownChangeLevel = (event) => {
     setlevel(event.target.value);
   };
-  
+
   return (
     <div className="static flex flex-row gap-[150px] bg-[#F8F8F8] w-full h-[30.5rem] ">
       <div className="absolute flex flex-col top-0 left-0 h-full w-[17rem] bg-[#F3F3F3] text-black items-center pt-[30px] gap-[30px]">
@@ -183,9 +160,7 @@ const SideBar = () => {
           </div>
           <div className="flex flex-row gap-2">
             <img width={27} height={12} src={ManageClass} alt="" />
-            <button onClick={() => handleclick("KelolaKelas")}>
-              Kelola Kelas
-            </button>
+            <button onClick={() => handleclick("KelolaKelas")}>Kelola Kelas</button>
           </div>
           <div className="flex flex-row gap-2">
             <img src={IconLogOut} alt="" />
@@ -194,7 +169,8 @@ const SideBar = () => {
                 dispatch(LogOut());
               }}
               key="logout"
-              color="danger">
+              color="danger"
+            >
               Keluar
             </button>
           </div>
@@ -206,71 +182,52 @@ const SideBar = () => {
           <div className="flex flex-col justify-center  ms-[310px]   bg-[#FFFFFF] w-[78%] rounded-[10px] gap-10 ">
             <div className="flex flex-row py-4 items-center w-full h-[100px] justify-between">
               <div className="h-full space-y-4">
-                <span className="font-bold ms-5   text-2xl">
-                  Status Pembayaran
-                </span>
+                <span className="font-bold ms-5   text-2xl">Status Pembayaran</span>
                 <div className="flex ml-[1.2rem]  flex-row gap-2 me-[20px]">
-                <div>
-                  <p>Nama Kelas</p>
-                  <Input
-                    value={kelaspremium}
-                    onChange={(e) => {
-                      setkelaspremium(e.target.value);
-                    }}
-                    id="kelaspremium"
-                    placeholder="nama kelas premium"></Input>
-                </div>
-                <div>
-                  <p>Status Pembayaran</p>
-                  <Input
-                    value={status}
-                    onChange={(e) => {
-                      setstatus(e.target.value);
-                    }}
-                    id="status"
-                    placeholder="sudahBayar, belumBayar"></Input>
+                  <div>
+                    <p>Nama Kelas</p>
+                    <Input
+                      value={kelaspremium}
+                      onChange={(e) => {
+                        setkelaspremium(e.target.value);
+                      }}
+                      id="kelaspremium"
+                      placeholder="nama kelas premium"
+                    ></Input>
+                  </div>
+                  <div>
+                    <p>Status Pembayaran</p>
+                    <Input
+                      value={status}
+                      onChange={(e) => {
+                        setstatus(e.target.value);
+                      }}
+                      id="status"
+                      placeholder="sudahBayar, belumBayar"
+                    ></Input>
+                  </div>
                 </div>
               </div>
-              </div>
-             
             </div>
-            <Table
-              aria-label="Example static collection table"
-              className="h-[21rem]">
+            <Table aria-label="Example static collection table" className="h-[21rem]">
               <TableHeader>
                 <TableColumn className="text-black">ID</TableColumn>
                 <TableColumn className="text-black">Kategori</TableColumn>
                 <TableColumn className="text-black">Kelas Premium</TableColumn>
                 <TableColumn className="text-black">Status</TableColumn>
-                <TableColumn className="text-black">
-                  Metode Pembayaran
-                </TableColumn>
+                <TableColumn className="text-black">Metode Pembayaran</TableColumn>
                 <TableColumn className="text-black">Tanggal Bayar</TableColumn>
               </TableHeader>
               <TableBody>
                 {filteredDatabayar &&
                   filteredDatabayar.map((item, index) => (
                     <TableRow key="1">
-                      <TableCell>
-                        {" "}
-                        {item.course &&
-                        item.course.mentor &&
-                        item.course.mentor[0] &&
-                        item.course.mentor[0].mentor
-                          ? item.course.mentor[0].mentor.name
-                          : "N/A"}
-                      </TableCell>
-                      <TableCell>
-                        {item.course.category[0]?.category.name}
-                      </TableCell>
+                      <TableCell>{item.user.name}</TableCell>
+                      <TableCell>{item.course.category[0]?.category.name}</TableCell>
                       <TableCell>{item.course.name}</TableCell>
                       <TableCell>{item.statusPembayaran}</TableCell>
                       <TableCell>{item.metodePembayaran}</TableCell>
-                      <TableCell>
-                        {item.tanggalBayar
-                          ? new Date(item.tanggalBayar).toLocaleString()
-                          : "N/A"}
-                      </TableCell>
+                      <TableCell>{item.tanggalBayar ? new Date(item.tanggalBayar).toLocaleString() : "N/A"}</TableCell>
                     </TableRow>
                   ))}
               </TableBody>
@@ -284,61 +241,42 @@ const SideBar = () => {
               <div>
                 <span className="font-bold  ms-5 text-2xl">Kelola Kelas</span>
               </div>
-              <div className="flex  w-full ml-6  me-[20px] mt-[1rem]  items-center pb-4 ">    
+              <div className="flex  w-full ml-6  me-[20px] mt-[1rem]  items-center pb-4 ">
                 <div className="flex mr-[10rem] gap-[5rem]  items-end justify-between ">
                   <div className="flex gap-4">
-                  <div className=" gap-2">
-                    <p>Level </p>
-                    <Input
-                      placeholder="Beginner,Intermediate,Advanced"
-                      type="text"
-                      label="levell"
-                      value={levell}
-                      onChange={(e) => {
-                        setlevell(e.target.value);
-                      }}
-                      id="level"
-                    />
-                  </div>
-                  <div className="gap-2">
-                    <p>Type </p>
-                    <Input
-                      placeholder="isFree,isPremium"
-                      type="text"
-                      label="typee"
-                      value={typee}
-                      onChange={(e) => settypee(e.target.value)}
-                      id="type"
-                    />
-                  </div>
-                  <div className=" ">
-                    <p>Nama kelas </p>
-                    <Input
-                      placeholder="nama kelas"
-                      type="text"
-                      label="namakelas"
-                      value={namakelas}
-                      onChange={(e) => setnamakelas(e.target.value)}
-                      id="namakelas"
-                    />
-                  </div>
+                    <div className=" gap-2">
+                      <p>Level </p>
+                      <Input
+                        placeholder="Beginner,Intermediate,Advanced"
+                        type="text"
+                        label="levell"
+                        value={levell}
+                        onChange={(e) => {
+                          setlevell(e.target.value);
+                        }}
+                        id="level"
+                      />
+                    </div>
+                    <div className="gap-2">
+                      <p>Type </p>
+                      <Input placeholder="isFree,isPremium" type="text" label="typee" value={typee} onChange={(e) => settypee(e.target.value)} id="type" />
+                    </div>
+                    <div className=" ">
+                      <p>Nama kelas </p>
+                      <Input placeholder="nama kelas" type="text" label="namakelas" value={namakelas} onChange={(e) => setnamakelas(e.target.value)} id="namakelas" />
+                    </div>
                   </div>
                   <div className="flex gap-4 justify-end">
-
-                <ButtonChapter />
-                <ButtonLesson />
-                <ButtonMentor />
-                <ButtonKategori />
-                <ButtonAdd />
+                    <ButtonChapter />
+                    <ButtonLesson />
+                    <ButtonMentor />
+                    <ButtonKategori />
+                    <ButtonAdd />
                   </div>
                 </div>
-                
-               
               </div>
             </div>
-            <Table
-              aria-label="Example static collection table"
-              className="h-[21rem] ">
+            <Table aria-label="Example static collection table" className="h-[21rem] ">
               <TableHeader className="snap-none">
                 <TableColumn className="text-black">Kategori</TableColumn>
                 <TableColumn className="text-black">Nama Kelas</TableColumn>
@@ -356,7 +294,7 @@ const SideBar = () => {
                       <TableCell>
                         {editedIndex === index ? (
                           <input
-                          className="w-[5rem]"
+                            className="w-[5rem]"
                             type="text"
                             value={name} // Gantilah dengan nilai yang sesuai
                             onChange={(e) => setname(e.target.value)}
@@ -426,9 +364,7 @@ const SideBar = () => {
                             className="w-[3rem] "
                             type="text"
                             value={price} // Gantilah dengan nilai yang sesuai
-                            onChange={(e) =>
-                              setprice(parseFloat(e.target.value))
-                            }
+                            onChange={(e) => setprice(parseFloat(e.target.value))}
                             id="price"
                           />
                         ) : (
@@ -444,7 +380,8 @@ const SideBar = () => {
 
                                 setEditedIndex(-1);
                               }}
-                              className="bg-[#116E63] rounded-[10px] p-1 w-[60px]">
+                              className="bg-[#116E63] rounded-[10px] p-1 w-[60px]"
+                            >
                               Simpan
                             </button>
                           ) : (
@@ -457,7 +394,8 @@ const SideBar = () => {
                                 setlevel(item.course.level);
                                 setprice(item.course.price);
                               }}
-                              className="bg-[#116E63] rounded-[10px] p-1 w-[60px]">
+                              className="bg-[#116E63] rounded-[10px] p-1 w-[60px]"
+                            >
                               Ubah
                             </button>
                           )}
@@ -465,7 +403,8 @@ const SideBar = () => {
                             onClick={() => {
                               deletea(item.course.id);
                             }}
-                            className="bg-[#DB1B1B] rounded-[10px] p-1 w-[60px]">
+                            className="bg-[#DB1B1B] rounded-[10px] p-1 w-[60px]"
+                          >
                             Hapus
                           </button>
                         </div>

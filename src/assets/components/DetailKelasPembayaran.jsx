@@ -78,7 +78,7 @@ export const DetailKelasPembayaran = () => {
         </div>
         <div className="flex flex-col  w-full justify-center items-center desktop:space-y-20 mobile:space-y-8 mobile:px-2 desktop:px-0 mobile:py-4 desktop:py-0">
           <div className="bg-[#DB1B1B] desktop:w-2/4 mobile:w-[23rem] mobile:text-sm desktop:text-base  h-12  rounded-xl align-middle text-white flex items-center justify-center   ">
-            <p>Selesaikan Pembayaran sampai 10 Maret 2023 12:00</p>
+            <p>Selesaikan Pembayaran sampai 04 Maret 2024 24:00</p>
           </div>
           <div className=" flex desktop:flex-row mobile:flex-col-reverse gap-6 mobile:justify-center mobile:items-center desktop:items-start ">
             <div className="flex-row  justify-center items-center desktop:w-[40rem] mobile:w-[25rem] ">

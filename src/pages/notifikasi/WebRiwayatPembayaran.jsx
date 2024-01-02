@@ -62,24 +62,24 @@ export const WebRiwayatPembayaran = () => {
                 onClick={() => {
                   navigate(`/WebAkunProfil`);
                 }}
-                className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2 ">
-                <i class="fa-solid fa-pen text-[#116E63] text-[1.5rem]  "></i>
+                className="text-lg w-[80%] flex items-center gap-3 border-b-2 ">
+                <i class="fa-solid fa-pen text-[#116E63] text-lg  "></i>
                 Profil Saya
               </button>
               <button
                 onClick={() => {
                   navigate(`/WebUbahPassword`);
                 }}
-                className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2">
-                <i class="fa-solid fa-gear text-[#116E63] text-[1.5rem]"></i>
+                className="text-lg w-[80%] flex items-center gap-3 border-b-2">
+                <i class="fa-solid fa-gear text-[#116E63] text-lg"></i>
                 Ubah Password
               </button>
               <button
                 onClick={() => {
                   navigate("/WebRiwayatPembayaran");
                 }}
-                className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2">
-                <i class="fa-solid fa-cart-shopping text-[#116E63] text-[1.5rem]"></i>
+                className="text-[1.3rem] w-[80%] text-[#116E63] font-semibold flex items-center gap-3 border-b-2">
+                <i class="fa-solid fa-cart-shopping text-[#116E63] text-[1.3rem]" ></i>
                 Riwayat Pembayaran
               </button>
               <button
@@ -88,8 +88,8 @@ export const WebRiwayatPembayaran = () => {
                 }}
                 key="logout"
                 color="danger"
-                className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2">
-                <i class="fa-solid fa-arrow-right-from-bracket text-[#116E63] text-[1.5rem] "></i>
+                className="text-lg w-[80%] flex items-center gap-3 border-b-2">
+                <i class="fa-solid fa-arrow-right-from-bracket text-[#116E63] text-lg "></i>
                 Keluar
               </button>
             </div>

@@ -83,32 +83,32 @@ export const WebAkunProfil = () => {
           {/* button */}
           <div className="flex w-full ">
             <div className="w-[50%] flex flex-col items-start gap-10 p-8 mobile:hidden desktop:flex  ">
-              <button className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2 ">
-                <i class="fa-solid fa-pen text-[#116E63] text-[1.5rem]  "></i>Profil Saya
+              <button className="text-[1.3rem] w-[80%] flex items-center font-semibold text-[#116E63] gap-3 border-b-2 ">
+                <i class="fa-solid fa-pen text-[#116E63] text-[1.3rem]  "></i>Profil Saya
               </button>
               <button
                 onClick={() => {
                   navigate(`/WebUbahPassword`);
                 }}
-                className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2"
+                className="text-lg w-[80%] flex items-center gap-3 border-b-2"
               >
-                <i class="fa-solid fa-gear text-[#116E63] text-[1.5rem]"></i>Ubah Password
+                <i class="fa-solid fa-gear text-[#116E63] text-lg"></i>Ubah Password
               </button>
               <button
                 onClick={() => {
                   navigate("/WebRiwayatPembayaran");
                 }}
-                className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2"
+                className="text-lg w-[80%] flex items-center gap-3 border-b-2"
               >
-                <i class="fa-solid fa-cart-shopping text-[#116E63] text-[1.5rem]"></i>Riwayat Pembayaran
+                <i class="fa-solid fa-cart-shopping text-[#116E63] text-lg"></i>Riwayat Pembayaran
               </button>
               <button
                 onClick={() => {
                   dispatch(LogOut());
                 }}
-                className="text-[1.3rem] w-[80%] flex items-center gap-3 border-b-2"
+                className="text-lg w-[80%] flex items-center gap-3 border-b-2"
               >
-                <i class="fa-solid fa-arrow-right-from-bracket text-[#116E63] text-[1.5rem] "></i>Keluar
+                <i class="fa-solid fa-arrow-right-from-bracket text-[#116E63] text-lg "></i>Keluar
               </button>
             </div>
 
@@ -130,26 +130,26 @@ export const WebAkunProfil = () => {
                     <p>Nama</p>
                     <span className="text-red-500 text-[0.7rem] flex items-center justify-center">*nama wajib di isi</span>
                   </div>
-                  <input value={name} onChange={(e) => setname(e.target.value)} id="name" placeholder="John Doe" className="border rounded-xl w-[60%] h-[2.5rem] w-[20rem] px-2" />
+                  <input value={name} onChange={(e) => setname(e.target.value)} id="name" placeholder="John Doe" className="border rounded-xl h-[2.5rem] w-[20rem] px-2" />
                 </div>
                 <div>
                   <p>Nomor Telepon</p>
-                  <input value={no_hp} onChange={(e) => setno_hp(e.target.value)} id="no_hp" placeholder="+62 812121121121" className="border rounded-xl w-[60%] h-[2.5rem] w-[20rem] px-2" />
+                  <input value={no_hp} onChange={(e) => setno_hp(e.target.value)} id="no_hp" placeholder="+62 812121121121" className="border rounded-xl  h-[2.5rem] w-[20rem] px-2" />
                 </div>
                 <div>
                   <p>Negara</p>
-                  <input value={country} onChange={(e) => setcountry(e.target.value)} id="country" placeholder="John Doe" className="border rounded-xl w-[60%] h-[2.5rem] w-[20rem] px-2" />
+                  <input value={country} onChange={(e) => setcountry(e.target.value)} id="country" placeholder="John Doe" className="border rounded-xl h-[2.5rem] w-[20rem] px-2" />
                 </div>
                 <div>
                   <p>Kota</p>
-                  <input value={city} onChange={(e) => setcity(e.target.value)} id="city" placeholder="John Doe" className="border rounded-xl w-[60%] h-[2.5rem] w-[20rem] px-2" />
+                  <input value={city} onChange={(e) => setcity(e.target.value)} id="city" placeholder="John Doe" className="border rounded-xl h-[2.5rem] w-[20rem] px-2" />
                 </div>
                 <div>
                   <button
                     onClick={() => {
                       profilakun();
                     }}
-                    className="flex justify-center items-center  bg-[#116E63] text-white w-[75%] rounded-xl h-[2.5rem] text-[1rem] font-bold w-[20rem] mt-5"
+                    className="flex justify-center items-center  bg-[#116E63] text-white  rounded-xl h-[2.5rem] text-[1rem] font-bold w-[20rem] mt-5"
                   >
                     Simpan Profil Saya
                   </button>

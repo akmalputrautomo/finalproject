@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import logo from "../../assets/img/Logo.png";
-import google from "../../assets/img/google.png";
-import facebook from "../../assets/img/facebook.png";
 import "react-toastify/dist/ReactToastify.css";
 import { Form, Input } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
@@ -9,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import { authLoginUser } from "../../redux/action/auth/authLoginUser";
 import { useDispatch } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
-import { CookieKeys, CookieStorage } from "../../utils/cookies";
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -28,17 +25,14 @@ export const Login = () => {
       .then((result) => {
         console.log(result, "result");
         if (result.data.data.users.is_admin === false) {
+          toast.success(`Hallo ${result.data.data.users.name}, Selamat datang di Liver Academy`);
           navigate("/");
         } else if (result.data.data.users.is_admin === true) {
+          toast.success(`Hallo ${result.data.data.users.name} Admin, Selamat datang kembali`);
           navigate("/HomeAdm");
         }
       })
       .catch((err) => {
-        // if (err.response.status >= 400 && err.response.status <= 500) {
-        //   setErrMsg(err.response.data.err);
-        // } else if (err.response.data.err === "your account is not verified yet, please verify first") {
-        //   navigate("/otp");
-        // }
         if (err.response.data.err === "your account is not verified yet, please verify first") {
           toast.warning("silahkan masukan email untuk mengaktifkan akun");
           navigate("/inputEmail");
@@ -62,22 +56,6 @@ export const Login = () => {
       });
     }
   }, [getErrMsg]);
-
-  // const Token = CookieStorage.get(CookieKeys.AuthToken);
-  // useEffect(() => {
-  //   if (Token) {
-  //     toast.success("Register Berhasil, Silahkan Login!", {
-  //       position: "top-right",
-  //       autoClose: 3500,
-  //       hideProgressBar: false,
-  //       closeOnClick: true,
-  //       pauseOnHover: true,
-  //       draggable: true,
-  //       progress: undefined,
-  //       theme: "light",
-  //     });
-  //   }
-  // }, [Token]);
 
   const register = () => {
     navigate("/register");
@@ -166,26 +144,6 @@ export const Login = () => {
                     <button onClick={handleloginUser} htmlType="submit" className="login-form-button bg-[#116E63] w-full h-12 rounded-xl text-white text-sm hover:opacity-80">
                       Log in
                     </button>
-
-                    {/* Oauth Google & Facebook */}
-                    {/* <div className="flex items-center gap-4">
-                      <hr className="w-full bg-[#116E63]" />
-                      <div>OR</div>
-                      <hr className="w-full bg-green-800" />
-                    </div>
-                    <div className="flex flex-row gap-5 items-center justify-center">
-                      <div className="flex items-center justify-center shadow-lg bg-slate-800 hover:bg-[#116E63] border-2 border-inherit rounded-2xl w-[50px] h-[50px] cursor-pointer">
-                        <div>
-                          <img className="w-[20px] h-[20px]" src={google} alt="google" />
-                        </div>
-                      </div>
-                      <div className="flex items-center justify-center shadow-lg bg-slate-800 hover:bg-[#116E63] border-2 border-inherit rounded-2xl w-[50px] h-[50px] cursor-pointer">
-                        <div>
-                          <img className="w-[28px] h-[28px]" src={facebook} alt="facebook" />
-                        </div>
-                      </div>
-                    </div> */}
-                    {/* Oauth End */}
                   </div>
 
                   <div className="text-sm flex justify-center flex-row font-medium text-gray-500 mt-3 gap-1 cursor-pointer">

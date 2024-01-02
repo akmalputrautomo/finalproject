@@ -15,7 +15,6 @@ const Navbarr = () => {
   const navigate = useNavigate();
 
   const token = CookieStorage.get(CookieKeys.AuthToken);
-  // console.log(token, "Ini Token");
 
   const data = useSelector((state) => state.me.isUser);
 
@@ -39,8 +38,13 @@ const Navbarr = () => {
   return (
     <div>
       <div className="bg-[#F8F8F8] flex justify-between p-4">
-        <button onClick={()=> {navigate("/")}} className="cursor-pointer">
-        <img className="w-[10rem] h-[3rem]" src={logo} />
+        <button
+          onClick={() => {
+            navigate("/");
+          }}
+          className="cursor-pointer"
+        >
+          <img className="w-[10rem] h-[3rem]" src={logo} />
         </button>
 
         {/* search bar */}
@@ -52,16 +56,6 @@ const Navbarr = () => {
             </svg>
           </button>
         </form>
-
-        {/* <input className="w-[25rem] border rounded-md" placeholder="cari kursus terbaik"></input> */}
-        {/* <button
-          className="bg-[#116E63] text-white w-[6rem] rounded-md"
-          onClick={() => {
-            navigate("/login");
-          }}
-        >
-          <i class="fa-solid fa-arrow-right-to-bracket "> Masuk</i>
-        </button> */}
         <div className="me-5">
           {token && token.length ? (
             <div className="flex">
@@ -114,7 +108,7 @@ const Navbarr = () => {
                 <DropdownMenu aria-label="Profile Actions" variant="flat">
                   <DropdownItem key="profile" className="h-14 gap-2">
                     <p className="font-semibold">Signed in as</p>
-                    <p className="font-semibold">{data.email}</p>
+                    <p className="font-semibold">{data.name}</p>
                   </DropdownItem>
                   <DropdownItem
                     onClick={() => {

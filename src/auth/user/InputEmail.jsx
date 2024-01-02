@@ -7,6 +7,7 @@ import { getResendOtp } from "../../redux/action/auth/otpregister";
 import { useNavigate } from "react-router-dom";
 import { input } from "@nextui-org/react";
 import { setUserRegis } from "../../redux/reducer/auth/authregister";
+import { toast } from "react-toastify";
 
 export const InputEmail = () => {
   const dispatch = useDispatch();
@@ -21,12 +22,15 @@ export const InputEmail = () => {
     );
     if (resendData) {
       dispatch(setUserRegis({ email: email }));
+      toast.success("otp telah terkirim ke email");
       navigate("/otp");
+    } else {
+      toast.warning("silahkan isi email pada inputan");
     }
   };
 
   return (
-    <div className="forgetpass-section bg-slate-600 w-screen h-screen flex justify-center items-center">
+    <div className="forgetpass-section bg-[#093732] w-screen h-screen flex justify-center items-center">
       <div className="side bg-[#F8F8F8] w-[90vw] h-[70vh] justify-center flex-col items-center rounded-tl-xl rounded-bl-xl shadow-xl desktop:w-[30vw] desktop:flex hidden">
         <img src={logo} alt="" className="w-40 mt-3" />
         <h1 className="text-2xl text-white font-semibold font-serif">

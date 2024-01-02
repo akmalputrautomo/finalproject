@@ -79,9 +79,9 @@ export const ButtonAdd = () => {
 
   return (
     <div>
-      <Button onPress={onOpen} className="bg-[#116E63] text-white">
-        <img src={IcAdd} alt="" />
-        Tambah Course
+       <Button onPress={onOpen} className="bg-[#116E63] text-white px-6 font-medium">
+        <img width={20} height={20} src={IcAdd} alt="" />
+        Course
       </Button>
       <Modal
         backdrop="opaque"

@@ -22,6 +22,7 @@ import { KursusPopuler } from "../assets/components/KursusPopuler";
 import { Pagesearch } from "../pages/pagesearch";
 import { InputEmail } from "../auth/user/InputEmail";
 import { MateriBelajarMobile } from "../assets/components/MateriBelajarMobile";
+import TokenProtected from "../assets/components/protected/protected";
 
 export const RouterList = () => {
   return (
@@ -34,16 +35,65 @@ export const RouterList = () => {
         <Route path="/otp" element={<OtpRegister />} />
         <Route path="/forgetpass" element={<ForgetPass />} />
         <Route path="/updatepass" element={<UpdatePass />} />
-        <Route path="/kelassaya" element={<BerandaKelasSaya />} />
-        <Route path="/berandakelas" element={<BerandaKelas />} />
+        <Route
+          path="/kelassaya"
+          element={
+            <TokenProtected>
+              <BerandaKelasSaya />
+            </TokenProtected>
+          }
+        />
+        <Route
+          path="/berandakelas"
+          element={
+            <TokenProtected>
+              <BerandaKelas />
+            </TokenProtected>
+          }
+        />
         <Route path="/detailKelas/:courseId" element={<DetailKelas />} />
-        <Route path="/detailKelasPembayaran" element={<DetailKelasPembayaran />} />
-        <Route path="/pembayaranSukses" element={<PembayaranSukses />} />
+        <Route
+          path="/detailKelasPembayaran/:courseId"
+          element={
+            <TokenProtected>
+              <DetailKelasPembayaran />
+            </TokenProtected>
+          }
+        />
+        <Route path="/pembayaranSukses/:courseId" element={<PembayaranSukses />} />
         <Route path="/mulaiBelajar" element={<MulaiBelajar />} />
-        <Route path="/WebAkunProfil" element={<WebAkunProfil />} />
-        <Route path="/WebNotifikasi" element={<WebNotifikasi />} />
-        <Route path="/WebUbahPassword" element={<WebUbahPassword />} />
-        <Route path="/WebRiwayatPembayaran" element={<WebRiwayatPembayaran />} />
+        <Route
+          path="/WebAkunProfil"
+          element={
+            <TokenProtected>
+              <WebAkunProfil />
+            </TokenProtected>
+          }
+        />
+        <Route
+          path="/WebNotifikasi"
+          element={
+            <TokenProtected>
+              <WebNotifikasi />
+            </TokenProtected>
+          }
+        />
+        <Route
+          path="/WebUbahPassword"
+          element={
+            <TokenProtected>
+              <WebUbahPassword />
+            </TokenProtected>
+          }
+        />
+        <Route
+          path="/WebRiwayatPembayaran"
+          element={
+            <TokenProtected>
+              <WebRiwayatPembayaran />
+            </TokenProtected>
+          }
+        />
         <Route path="/popular/:courseId" element={<KursusPopuler />} />
         <Route path="/isDone/:courseId" element={<MateriBelajarMobile />} />
         <Route path="/pagesearch/:namesearch" element={<Pagesearch />} />
@@ -51,7 +101,14 @@ export const RouterList = () => {
 
         {/* Admin */}
         <Route path="/loginAdm" element={<LoginAdmin />} />
-        <Route path="/HomeAdm" element={<HomeAdm />} />
+        <Route
+          path="/HomeAdm"
+          element={
+            <TokenProtected>
+              <HomeAdm />
+            </TokenProtected>
+          }
+        />
         {/* Admin End */}
       </Routes>
     </BrowserRouter>

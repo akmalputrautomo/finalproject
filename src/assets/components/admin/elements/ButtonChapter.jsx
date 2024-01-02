@@ -38,9 +38,10 @@ export const ButtonChapter = () => {
       })
     );
     if (success) {
-      toast.success("secces menambahkan chapter");
-    } else {
       toast.warning("gagal brow");
+      
+    } else {
+      toast.success("secces menambahkan chapter");
     }
   };
 
@@ -65,9 +66,9 @@ export const ButtonChapter = () => {
 
   return (
     <div>
-      <Button onPress={onOpen} className="bg-[#116E63] text-white">
-        <img src={IcAdd} alt="" />
-        Tambah chapter
+       <Button onPress={onOpen} className="bg-[#116E63] text-white px-6 font-medium">
+        <img width={20} height={20} src={IcAdd} alt="" />
+        Chapter
       </Button>
       <Modal
         backdrop="opaque"

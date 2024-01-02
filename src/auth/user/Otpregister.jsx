@@ -10,15 +10,28 @@ const OtpRegister = () => {
   const dispatch = useDispatch();
   const emailFromRedux = useSelector((state) => state.regis.user.email);
   const [Email, setEmail] = useState(emailFromRedux || "");
-  const [seconds, setSeconds] = useState(30);
+  const [seconds, setSeconds] = useState(300);
   const navigate = useNavigate();
+
+  // otp
+  const [otpp, setotpp] = useState(new Array(6).fill(""));
+  const handlechange = (element, index) => {
+    if (isNaN(element.value)) return false;
+    setotpp([...otpp.map((d, idx) => (idx === index ? element.value : d))]);
+
+    // fokus next input
+    if (element.nextSibling) {
+      element.nextSibling.focus();
+    }
+  };
 
   // redux otp
   const handleSave = async () => {
+    const joinedOtp = otpp.join("");
     const otpData = await dispatch(
       getVerifyOtp({
         email: Email,
-        otp: otp,
+        otp: joinedOtp,
       })
     );
     if (otpData) {
@@ -42,14 +55,14 @@ const OtpRegister = () => {
     );
     if (resendData) {
       toast.success("otp telah terkirim");
-      setSeconds(30);
+      setSeconds(300);
     } else {
-      setSeconds(30);
+      setSeconds(300);
     }
   };
 
   useEffect(() => {
-    const initialSeconds = 30; // Menit awal (5 menit * 60 detik)
+    const initialSeconds = 300; // Menit awal (5 menit * 60 detik)
     setSeconds(initialSeconds);
 
     const interval = setInterval(() => {
@@ -68,7 +81,7 @@ const OtpRegister = () => {
 
   return (
     <>
-      <div className="login-section bg-slate-600 w-screen h-screen flex justify-center items-center">
+      <div className="login-section bg-[#093732] w-screen h-screen flex justify-center items-center">
         <div className="side bg-[#F8F8F8] w-[90vw] h-[70vh] justify-center flex-col items-center rounded-tl-xl rounded-bl-xl shadow-xl desktop:w-[30vw] desktop:flex hidden">
           <img src={logo} alt="" className="w-40 mt-3" />
           <h1 className="text-2xl text-white font-semibold font-serif">
@@ -90,25 +103,44 @@ const OtpRegister = () => {
               <div className=" flex flex-col gap-5">
                 <h1 className="text-center text-[#116E63] font-serif font-semibold text-xl">Masukan OTP</h1>
                 <p>Ketik 6 digit kode yang dikirimkan ke</p>
-                <div className="flex justify-center items-center">
-                  <input
+                <div className="flex gap-2 justify-center items-center">
+                  {/* <input
                     id="otp"
-                    type="otp"
+                    type="text"
                     value={otp}
                     onChange={(e) => {
                       setotp(e.target.value);
                     }}
                     maxLength={6}
                     className="border border-gray-400 p-2 rounded-md text-[#116E63] text-center"
-                  />
+                  /> */}
+                  {otpp.map((data, index) => {
+                    return (
+                      <input
+                        id="otp"
+                        type="text"
+                        value={data}
+                        onChange={(e) => {
+                          handlechange(e.target, index);
+                        }}
+                        maxLength="1"
+                        key={index}
+                        onFocus={(e) => e.target.select()}
+                        className="border border-black p-2 w-1/4 flex gap-2 rounded-md text-[#116E63] text-center"
+                      />
+                    );
+                  })}
                 </div>
 
-                <div className="flex justify-center items-center">
+                <div className="flex justify-center items-center w-full gap-2">
+                  <button className="bg-[#116E63] w-1/2 p-2 rounded-md text-white" onClick={(e) => setotpp([...otpp.map((v) => "")])}>
+                    Clear Otp
+                  </button>
                   <button
                     onClick={() => {
                       handleSave();
                     }}
-                    className="bg-[#116E63] w-full p-2 rounded-md text-white "
+                    className="bg-[#116E63] w-1/2 p-2 rounded-md text-white "
                   >
                     SIMPAN
                   </button>

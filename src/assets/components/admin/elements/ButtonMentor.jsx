@@ -33,9 +33,9 @@ export const ButtonMentor = () => {
 
   return (
     <div>
-      <Button onPress={onOpen} className="bg-[#116E63] text-white">
-        <img src={IcAdd} alt="" />
-        Tambah Mentor
+      <Button onPress={onOpen} className="bg-[#116E63] text-white px-6 font-medium">
+        <img width={20} height={20} src={IcAdd} alt="" />
+        Mentor
       </Button>
       <Modal
         backdrop="opaque"

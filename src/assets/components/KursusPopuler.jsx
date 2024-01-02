@@ -19,7 +19,7 @@ export const KursusPopuler = () => {
 
   const dataPopular = useSelector((state) => state.coursePopular.coursesPopular.topCourses);
   const dataPopularAll = useSelector((state) => state.coursePopularAll.coursesPopularAll.topCourse);
-  console.log(dataPopularAll, "PopularAll");
+  console.log(dataPopular, "Popular");
 
   const [all, setAll] = useState(dataPopularAll);
   const [showAll, setShowAll] = useState(false);
@@ -48,6 +48,14 @@ export const KursusPopuler = () => {
     dispatch(getDatakategori());
   }, [dispatch]);
 
+  const formatToRupiah = (value) => {
+    return new Intl.NumberFormat("id-ID", {
+      style: "currency",
+      currency: "IDR",
+      minimumFractionDigits: 0,
+    }).format(value);
+  };
+
   return (
     <div className="px-[1rem] desktop:px-[9rem] py-[1.5rem] space-y-4">
       <div className="flex justify-between items-center">
@@ -63,26 +71,22 @@ export const KursusPopuler = () => {
       </div>
 
       <div className="flex space-x-2 scroll-pl-6 snap-x overflow-scroll scrollbar-hide">
-        <Button
-          onClick={handleAll}
-          className={`snap-start relative bg-[#E7F0EF] w-36 px-16 rounded-full text-xs font-bold ${activeButton === "All" && 'bg-[#116E63] text-white'}`}
-        >
+        <Button onClick={handleAll} className={`snap-start relative bg-[#E7F0EF] w-36 px-16 rounded-full text-xs font-bold ${activeButton === "All" && "bg-[#116E63] text-white"}`}>
           All
         </Button>
         {belajar &&
           belajar.map((courses) => (
             <div className="space-y-5" key={courses.id}>
-              <Button
-                onClick={() => handleCourse(courses.id)}
-                className={`bg-[#E7F0EF] snap-start relative w-36 rounded-full text-xs font-bold ${activeButton === courses.id && 'bg-[#116E63] text-white'}`}
-              >
+              <Button onClick={() => handleCourse(courses.id)} className={`bg-[#E7F0EF] snap-start relative w-36 rounded-full text-xs font-bold ${activeButton === courses.id && "bg-[#116E63] text-white"}`}>
                 {courses.name}
               </Button>
             </div>
           ))}
       </div>
 
-      {showAll ? <KursusPopulerAll all={dataPopularAll}/> : (
+      {showAll ? (
+        <KursusPopulerAll all={dataPopularAll} />
+      ) : (
         <div className=" grid grid-cols-1 desktop:grid-cols-3 gap-[2rem]">
           {dataPopular &&
             dataPopular.map((courses) => (
@@ -100,7 +104,9 @@ export const KursusPopuler = () => {
                           <p>{courses.course.rating}</p>
                         </div>
                       </div>
-                      <p className="text-sm font-bold">{courses.course.name}</p>
+                      <p className="text-sm font-bold" style={{ overflow: "hidden", whiteSpace: "nowrap", textOverflow: "ellipsis" }}>
+                        {courses.course.name}
+                      </p>
                       <p className="text-xs">{courses.course.mentor[0]?.mentor.name}</p>
                       <div className="flex text-xs font-normal gap-4 ">
                         <div className="flex items-center gap-1">
@@ -116,12 +122,16 @@ export const KursusPopuler = () => {
                           <p>{courses.course.total_duration} menit</p>
                         </div>
                       </div>
-                      <button className="flex bg-[#F2A227] text-xs px-4 py-1 rounded-full gap-8 text-white font-semibold">
-                        <div className="flex items-center gap-2">
-                          <img src={premium} />
-                          <p>Beli</p>
-                        </div>
-                        <p>Rp {courses.course.price}</p>
+                      <button className={`flex text-xs px-4 py-1 rounded-full gap-8 text-white font-semibold ${courses.course.price === 0 ? "bg-[#116E63]" : "bg-[#F2A227]"}`}>
+                        {courses.course.price === 0 ? (
+                          <p>Ikuti Kelas</p>
+                        ) : (
+                          <div className="flex gap-1">
+                            <img src={premium} />
+                            <p>Beli</p>
+                            <p> {formatToRupiah(courses.course.price)} </p>
+                          </div>
+                        )}
                       </button>
                     </div>
                   </div>
@@ -130,7 +140,6 @@ export const KursusPopuler = () => {
             ))}
         </div>
       )}
-
     </div>
   );
 };

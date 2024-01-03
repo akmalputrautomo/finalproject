@@ -19,7 +19,14 @@ export const NavbarAkun = () => {
   return (
     <div>
       <div className="bg-[#F8F8F8] flex justify-between p-4" onSubmit={handleSubmit}>
-        <img className="w-[10rem] h-[3rem]" src={logo} />
+        <button
+          onClick={() => {
+            navigate("/");
+          }}
+          className="cursor-pointer"
+        >
+          <img className="w-[10rem] h-[3rem]" src={logo} />
+        </button>
         <form className="relative flex w-1/2 ">
           <input onChange={(e) => setSearch(e.target.value)} placeholder="cari kursus terbaik...." className="  border border-black px-3 rounded-md w-full" type="text"></input>
           <button type="submit" className="mb-6">

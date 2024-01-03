@@ -56,11 +56,11 @@ export const CourseKelasAll = ({ filterData, SearchInput }) => {
                       </div>
                     </div>
                     <p className="text-sm font-bold">{courses.name}</p>
-                    <p className="text-xs">by {courses.mentor.name}</p>
+                    <p className="text-xs">By {courses.mentor.name}</p>
                     <div className="flex text-xs font-normal gap-4 desktop:gap-5">
                       <div className="flex items-center gap-1">
                         <img src={level} />
-                        <p className="text-[#116E63] font-semibold">{courses.level}</p>
+                        <p className="text-[#116E63] font-semibold">{courses.level} Level</p>
                       </div>
                       <div className="flex items-center gap-1">
                         <img src={modul} />

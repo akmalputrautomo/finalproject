@@ -29,7 +29,7 @@ export const FilterBerandaSaya = ({ setFilteredCourses }) => {
     dataCoursesMeAll.slice().sort((a, b) => b.rating - a.rating);
 
   const applyFilters = () => {
-    let filteredData = [...dataCoursesMeAll];
+    let filteredData = dataCoursesMeAll;
 
     checkedFilters.filter.forEach((filterType) => {
       if (filterType === "baru") {

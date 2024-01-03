@@ -35,7 +35,7 @@ const OtpRegister = () => {
       })
     );
     if (otpData) {
-      toast.success("akun berhasil di  atau di aktifkan");
+      toast.success("akun berhasil di buat  atau di aktifkan");
       navigate("/");
     } else {
       toast.warning("salah memasukan otp atau sudah kadaluarsa");

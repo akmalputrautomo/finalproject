@@ -60,19 +60,37 @@ export const FilterKelasBeranda = ({ setFilterData }) => {
   const handleCheckboxClick = (type, value) => {
     setCheckedFilters((prevFilters) => {
       const updatedFilters = { ...prevFilters };
-      const index = updatedFilters[type].indexOf(value);
 
-      if (index !== -1) {
-        updatedFilters[type].splice(index, 1);
+      if (type === "level" && value === "All") {
+        // Handle the "All" checkbox separately
+        if (
+          updatedFilters.level.length === 0 ||
+          updatedFilters.level.length === 3
+        ) {
+          // If no levels are selected or all levels are selected, unselect all
+          updatedFilters.level = [];
+        } else {
+          // If some levels are selected, select all
+          updatedFilters.level = ["Beginner", "Intermediate", "Advanced"];
+        }
       } else {
-        updatedFilters[type].push(value);
+        // Handle other checkboxes
+        const index = updatedFilters[type].indexOf(value);
+
+        if (index !== -1) {
+          updatedFilters[type].splice(index, 1);
+        } else {
+          updatedFilters[type].push(value);
+        }
       }
 
       return updatedFilters;
     });
-
-    applyFilters();
   };
+
+  useEffect(() => {
+    applyFilters();
+  }, [checkedFilters]);
 
   const resetCheckboxChecked = () => {
     setCheckedFilters({ filter: [], category: [], level: [] });

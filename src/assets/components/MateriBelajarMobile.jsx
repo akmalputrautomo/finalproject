@@ -201,10 +201,7 @@ export const MateriBelajarMobile = ({setActiveVideo}) => {
                                       </button>
                                     ) : (
                                       <>
-                                        <Button
-                                          className="bg-transparent flex justify-end"
-                                          onPress={onOpen}>
-                                          <svg
+                                      <svg
                                             width="16"
                                             height="20"
                                             viewBox="0 0 16 20"
@@ -215,7 +212,26 @@ export const MateriBelajarMobile = ({setActiveVideo}) => {
                                               fill="#D9D9D9"
                                             />
                                           </svg>
-                                        </Button>
+                                      
+                                      </>
+                                    )}
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        ))}
+                    </div>
+                  </div>
+                  {dataDetail.is_buy ? (
+                    <div></div>
+                  ) : (
+                    <div className="flex justify-center ">
+                        <Button
+                                className="bg-[#116E63] text-white  font-semibold w-[22rem] my-6 h-[2.5rem] rounded-xl hover:opacity-70"
+                                onPress={onOpen}>Beli Sekarang
+                                
+                              </Button>
                                         <Modal
                                           isOpen={isOpen}
                                           onOpenChange={onOpenChange}>
@@ -328,16 +344,9 @@ export const MateriBelajarMobile = ({setActiveVideo}) => {
                                             )}
                                           </ModalContent>
                                         </Modal>
-                                      </>
-                                    )}
-                                  </div>
-                                );
-                              })}
-                            </div>
-                          </div>
-                        ))}
                     </div>
-                  </div>
+                  )}
+                  <div></div>
                 </div>
               </div>
             </CardBody>

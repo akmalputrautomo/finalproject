@@ -20,13 +20,9 @@ export const FilterKelasBeranda = ({ setFilterData }) => {
     dispatch(getDataAll());
   };
 
-  const sortByCreatedAtNewest = (courses) =>
-    courses
-      .slice()
-      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  const sortByCreatedAtNewest = (courses) => courses.slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
-  const sortByRatingAscending = (courses) =>
-    courses.slice().sort((a, b) => b.rating - a.rating);
+  const sortByRatingAscending = (courses) => courses.slice().sort((a, b) => b.rating - a.rating);
 
   const applyFilters = () => {
     let filteredData = [...courses];
@@ -42,15 +38,11 @@ export const FilterKelasBeranda = ({ setFilterData }) => {
     });
 
     if (checkedFilters.category.length > 0) {
-      filteredData = filteredData.filter((data) =>
-        checkedFilters.category.includes(data.category.name)
-      );
+      filteredData = filteredData.filter((data) => checkedFilters.category.includes(data.category.name));
     }
 
     if (checkedFilters.level.length > 0) {
-      filteredData = filteredData.filter((data) =>
-        checkedFilters.level.includes(data.level)
-      );
+      filteredData = filteredData.filter((data) => checkedFilters.level.includes(data.level));
     }
 
     setFilterData(filteredData);
@@ -63,10 +55,7 @@ export const FilterKelasBeranda = ({ setFilterData }) => {
 
       if (type === "level" && value === "All") {
         // Handle the "All" checkbox separately
-        if (
-          updatedFilters.level.length === 0 ||
-          updatedFilters.level.length === 3
-        ) {
+        if (updatedFilters.level.length === 0 || updatedFilters.level.length === 3) {
           // If no levels are selected or all levels are selected, unselect all
           updatedFilters.level = [];
         } else {
@@ -102,25 +91,13 @@ export const FilterKelasBeranda = ({ setFilterData }) => {
         <div className="rounded-lg bg-white px-0 desktop:p-5 space-y-4">
           {/* Filter Section */}
           <div>
-            <span className="text-lg font-bold text-black hidden desktop:block">
-              Filter
-            </span>
+            <span className="text-lg font-bold text-black hidden desktop:block">Filter</span>
             <div className="pl-1 py-2 space-y-2 text-xs">
               <CheckboxGroup>
-                <Checkbox
-                  value="baru"
-                  id="new"
-                  checked={checkedFilters.filter.includes("baru")}
-                  onClick={() => handleCheckboxClick("filter", "baru")}
-                >
+                <Checkbox value="baru" id="new" checked={checkedFilters.filter.includes("baru")} onClick={() => handleCheckboxClick("filter", "baru")}>
                   <span className="text-sm">Paling Baru</span>
                 </Checkbox>
-                <Checkbox
-                  value="populer"
-                  id="popular"
-                  checked={checkedFilters.filter.includes("populer")}
-                  onClick={() => handleCheckboxClick("filter", "populer")}
-                >
+                <Checkbox value="populer" id="popular" checked={checkedFilters.filter.includes("populer")} onClick={() => handleCheckboxClick("filter", "populer")}>
                   <span className="text-sm">Paling Populer</span>
                 </Checkbox>
               </CheckboxGroup>
@@ -132,24 +109,8 @@ export const FilterKelasBeranda = ({ setFilterData }) => {
             <span className="text-lg font-bold text-black">Category</span>
             <div className="pl-1 py-2 space-y-2">
               <CheckboxGroup>
-                {[
-                  "UI/UX Design",
-                  "Python",
-                  "Kotlin",
-                  "JavaScript",
-                  "Java",
-                  "PHP",
-                  "Flutter",
-                  "iOS Development",
-                  "HTML & CSS",
-                ].map((category) => (
-                  <Checkbox
-                    key={category}
-                    value={category}
-                    id={category}
-                    checked={checkedFilters.category.includes(category)}
-                    onClick={() => handleCheckboxClick("category", category)}
-                  >
+                {["UI/UX Design", "Python", "Kotlin", "JavaScript", "Java", "PHP", "Flutter", "iOS Development", "HTML & CSS"].map((category) => (
+                  <Checkbox key={category} value={category} id={category} checked={checkedFilters.category.includes(category)} onClick={() => handleCheckboxClick("category", category)}>
                     <span className="text-sm">{category}</span>
                   </Checkbox>
                 ))}
@@ -159,26 +120,14 @@ export const FilterKelasBeranda = ({ setFilterData }) => {
 
           {/* Level Section */}
           <div>
-            <span className="text-lg font-bold text-black">
-              Level Kesulitan
-            </span>
+            <span className="text-lg font-bold text-black">Level Kesulitan</span>
             <div className="pl-1 py-2 space-y-2">
               <CheckboxGroup>
-                {["All", "Beginner", "Intermediate", "Advanced"].map(
-                  (level) => (
-                    <Checkbox
-                      key={level}
-                      checked={checkedFilters.level.includes(level)}
-                      onClick={() => handleCheckboxClick("level", level)}
-                      value={level}
-                      id={level}
-                    >
-                      <span className="text-sm">
-                        {level === "All" ? "Semua Level" : `${level} Level`}
-                      </span>
-                    </Checkbox>
-                  )
-                )}
+                {["All", "Beginner", "Intermediate", "Advanced"].map((level) => (
+                  <Checkbox key={level} checked={checkedFilters.level.includes(level)} onClick={() => handleCheckboxClick("level", level)} value={level} id={level}>
+                    <span className="text-sm">{level === "All" ? "Semua Level" : `${level} Level`}</span>
+                  </Checkbox>
+                ))}
               </CheckboxGroup>
             </div>
           </div>
@@ -186,7 +135,7 @@ export const FilterKelasBeranda = ({ setFilterData }) => {
           {/* Reset Button */}
           <button
             onClick={resetCheckboxChecked}
-            className="flex items-center h-10 text-white desktop:text-[#DB1B1B] text-md hover:opacity-70 flex justify-center w-full pt-2 desktop:pt-10 desktop:pb-5 bg-[#DB1B1B] desktop:bg-transparent rounded-md"
+            className=" items-center h-10 text-white desktop:text-[#DB1B1B] text-md hover:opacity-70 flex justify-center w-full pt-2 desktop:pt-10 desktop:pb-5 bg-[#DB1B1B] desktop:bg-transparent rounded-md"
           >
             Hapus Filter
           </button>

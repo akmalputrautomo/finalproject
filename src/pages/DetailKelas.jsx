@@ -23,7 +23,7 @@ export const DetailKelas = () => {
     // Set up interval to fetch data every 3 seconds
     const intervalId = setInterval(() => {
       dispatch(getDataDetail(params.courseId));
-    }, 3000);
+    }, 10000);
 
     // Clean up the interval when the component unmounts
     return () => clearInterval(intervalId);
@@ -38,9 +38,7 @@ export const DetailKelas = () => {
 
   // console.log(params, "params");
 
-
-
-  const [activeVideo, setActiveVideo] = useState('');
+  const [activeVideo, setActiveVideo] = useState("");
 
   // const changeVideo = (newVideoUrl) => {
   //   setActiveVideo(newVideoUrl);
@@ -48,10 +46,7 @@ export const DetailKelas = () => {
 
   // console.log(dataDetail, "Detail");
 
-  const defaultVideo =
-    dataDetail &&
-    dataDetail.chapter[0] &&
-    dataDetail.chapter[0].lessons[0].video;
+  const defaultVideo = dataDetail && dataDetail.chapter[0] && dataDetail.chapter[0].lessons[0].video;
 
   const [showBeli, setShowBeli] = useState(false);
 
@@ -62,11 +57,11 @@ export const DetailKelas = () => {
           <div className=" desktop:mx-[8rem] desktop:pt-4 desktop:space-y-8">
             {/* Button Keluar */}
             <div className=" flex gap-2 px-4 pt-4 ">
-              <button onClick={() => {
-                                                      navigate(
-                                                        "/"
-                                                      );
-                                                    }}>
+              <button
+                onClick={() => {
+                  navigate("/");
+                }}
+              >
                 <svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512">
                   <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z" />
                 </svg>
@@ -77,7 +72,7 @@ export const DetailKelas = () => {
             <div className="desktop:mx-[1rem]">
               <div className="desktop:flex justify-center ">
                 <div className="  w-full  ">
-                  <DetailBelajar activeVideo={activeVideo} ></DetailBelajar>
+                  <DetailBelajar activeVideo={activeVideo}></DetailBelajar>
                   <MateriBelajarMobile setActiveVideo={setActiveVideo}></MateriBelajarMobile>
                   {/* Desktop Tentang Kelas */}
                   <div className="mobile:hidden desktop:block mt-4">

@@ -39,9 +39,7 @@ export const BerandaKelas = () => {
       <div className="hidden desktop:block">
         <Navbarr />
       </div>
-      <div className="block desktop:hidden">
-        {token && token.length ? <NavbarResponsive /> : <Navbarr/>}
-      </div>
+      <div className="block desktop:hidden">{token && token.length ? <NavbarResponsive /> : <Navbarr />}</div>
       <div className="bg-[#CFE2E080] h-full w-[100%] flex flex-col desktop:flex-row px-1 desktop:px-[7rem] py-[1rem] desktop:py-[3rem]">
         <div className="flex-col w-[100%] desktop:w-[25%]">
           <div className="w-full flex desktop:flex-col justify-between items-center">
@@ -51,7 +49,7 @@ export const BerandaKelas = () => {
             </Button>
           </div>
           <div className="hidden desktop:block">
-            <FilterKelasBeranda setFilterData={setFilterData}/>
+            <FilterKelasBeranda setFilterData={setFilterData} />
           </div>
           <ModalFilterBeranda setFilterData={setFilterData} isOpen={isOpen} onOpenChange={onOpenChange} scrollBehavior={scrollBehavior} />
         </div>

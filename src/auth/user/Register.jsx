@@ -27,8 +27,8 @@ export const Register = () => {
     );
 
     if (success) {
-      toast.success("OTP telah terkirim ke email");
-      navigate("/otp");
+      toast.success("Berhasil membuat akun");
+      navigate("/login");
     } else {
       toast.warning("Email telah digunakan atau input belum terisi semua");
     }
@@ -155,7 +155,7 @@ export const Register = () => {
                   >
                     <Input.Password prefix={<LockOutlined className="site-form-item-icon" />} placeholder="Password" />
                   </Form.Item>
-                  
+
                   <Form.Item className="mb-2">
                     <div className="button flex items-center justify-between mt-4">
                       <button
@@ -169,7 +169,7 @@ export const Register = () => {
                       </button>
                     </div>
                   </Form.Item>
-                  
+
                   <div className="text-sm flex justify-center flex-row gap-1 font-medium text-gray-500 mb-3">
                     <p>Have an account?</p>
                     <button
